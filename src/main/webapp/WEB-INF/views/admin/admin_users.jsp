@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -214,14 +215,18 @@
               </tr>
             </tbody>
           </table>
-          <div class="pagination pagination-sm justify-content-center mt-4">
-            <a class="page-item page-link" href="">Pre</a>
-            <a class="page-item page-link" href="">1</a>
-            <a class="page-item page-link" href="">2</a>
-            <a class="page-item page-link" href="">3</a>
-            <a class="page-item page-link" href="">4</a>
-            <a class="page-item page-link" href="">Next</a>
-          </div>
+          <div>
+            <span class="ms-2">총 회원수 : </span>
+            <span class="ms-2">17</span>
+            <div class="pagination pagination-sm justify-content-center mt-4">
+              <a class="page-item page-link" href="">Pre</a>
+              <a class="page-item page-link" href="">1</a>
+              <a class="page-item page-link" href="">2</a>
+              <a class="page-item page-link" href="">3</a>
+              <a class="page-item page-link" href="">4</a>
+              <a class="page-item page-link" href="">Next</a>
+            </div>
+          <div>
         </div>
       </main>
     </div>
