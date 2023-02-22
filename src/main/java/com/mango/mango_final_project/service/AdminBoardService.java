@@ -1,6 +1,3 @@
-package com.mango.finalproject_mango.service;
+package com.mango.mango_final_project.service;
 
-
-public class AdminBoardService {
-    
-}
+public class AdminBoardService {}
