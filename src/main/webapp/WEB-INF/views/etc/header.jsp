@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <%-- header --%>
   <header
@@ -6,7 +7,7 @@
     >
       <nav class="navbar p-0" id="navbarHeader">
         <a href="/index" class="navbar-brand p-3">
-          <img src="../img/와인.png" alt="logo" height="50rem" />
+          <img src="/img/와인.png" alt="logo" height="50rem" />
         </a>
         <div>
            <nav class="fw-bold nav">
