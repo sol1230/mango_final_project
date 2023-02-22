@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="userMapper">
+
+<resultMap id="userResult" type="User">
+ <result column="user_uid" property="user_uid" />
+ <result column="password" property="password"/>
+ <result column="name" property="name"/>
+ <result column="birth" property="birth"/>
+ <result column="gender" property="gender"/>
+ <result column="phone" property="phone"/>
+ <result column="authority" property="authority"/>
+</resultMap>
+
+<!-- 유저 로그인-->
+<select id="userLogin" resultMap="userResult">
+select
+    user_uid
+  , password
+  , name
+  , birth
+  , gender
+  , phone
+  , authority
+from user
+where user_uid = #{user_uid}
+and password = #{password}
+</select>
+
+<!-- 회원가입 -->
+<insert id="signUpUser">
+insert into user
+( 
+    user_uid
+  , password
+  , name
+  , birth
+  , gender
+  , phone
+  , authority
+)
+values
+(
+    #{user_uid}
+  , #{password}
+  , #{name}
+  , #{birth}
+  , #{gender}
+  , #{phone}
+  , #{authority}
+)
+</insert>
+
+<!-- 유저 정보 수정-->
+<update id="changeUserInfo">
+update
+    user
+set password = #{password}
+  , name = #{name}
+  , birth = #{birth}
+  , gender = #{gender}
+  , phone = #{phone}
+  , authority = #{authority}
+  where user_uid = #{user_uid}
+</update>
+
+<!-- 회원 탈퇴, 정보 삭제-->
+<delete id="deleteUser">
+delete 
+from user
+where user_uid = #{user_uid}
+</delete>
+
+
+
+
+
+</mapper>
