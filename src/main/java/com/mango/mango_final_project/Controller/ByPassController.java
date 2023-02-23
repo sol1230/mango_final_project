@@ -57,6 +57,11 @@ public class ByPassController {
     int i = 0;
   }
 
+  @RequestMapping(value = { "/admin/admin_stores_add" })
+  public void admin_stores_add() {
+    int i = 0;
+  }
+
   @RequestMapping(value = { "/admin/admin_users_add" })
   public void admin_users_add() {
     int i = 0;
@@ -79,6 +84,11 @@ public class ByPassController {
 
   @RequestMapping(value = { "/admin/admin_coupon_add" })
   public void admin_coupon_add() {
+    int i = 0;
+  }
+
+  @RequestMapping(value = { "/admin/admin_coupon_modify" })
+  public void admin_coupon_modify() {
     int i = 0;
   }
 
