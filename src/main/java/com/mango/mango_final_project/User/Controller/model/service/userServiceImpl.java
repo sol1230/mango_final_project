@@ -24,22 +24,23 @@ public class userServiceImpl implements userService {
 
     @Override
     public int insertUser(User user) {
-        throw new UnsupportedOperationException("Unimplemented method 'insertUser'");
+        int result = uDao.insertUser(sqlSession, user);
+        return result;
     }
 
     @Override
     public int updateUser(User user) {
-        throw new UnsupportedOperationException("Unimplemented method 'updateUser'");
+        return uDao.updateUser(sqlSession, user);
     }
 
     @Override
     public int deleteUser(String user_uid) {
-        throw new UnsupportedOperationException("Unimplemented method 'deleteUser'");
+        return uDao.deleteUser(sqlSession, user_uid);
     }
 
     @Override
     public int idCheck(String checkId) {
-        throw new UnsupportedOperationException("Unimplemented method 'idCheck'");
+        return uDao.idCheck(sqlSession, checkId);
     }
     
 }

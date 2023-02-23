@@ -29,7 +29,7 @@ and password = #{password}
 </select>
 
 <!-- 회원가입 -->
-<insert id="signUpUser">
+<insert id="insertUser">
 insert into user
 ( 
     user_uid
@@ -72,7 +72,12 @@ from user
 where user_uid = #{user_uid}
 </delete>
 
-
+<select id="checkId" resultType="_int">
+select
+count(*)
+from user
+where user_uid = #{checkId}
+</select>
 
 
 
