@@ -32,7 +32,7 @@ FROM USER;
 -- 와인 목록 채우기
 INSERT INTO WINE (WINE_UID, WINE_NAME, WINE_NAME_EN, WINE_SCOPE, WINE_COMPANY, WINE_VARIETY, WINE_COUNTRY, WINE_REGION, WINE_TYPE, WINE_ALCOHOL_DEGREE, WINE_PRICE, WINE_IMAGE, WINE_FILE, WINE_INFO, WINE_FOOD_PAIRING)
 VALUES ('ROSE01', '도제화이트스파클링', 'DOZE WHITE SPARKLING', '4.6', '도제', '모스카토100', '이탈리아', '피몬테', '화이트', '5.5', '26000', '이미지', '파일', '바디감 낮음, 산도 높음', '돼지, 닭'),
-('DASPERED01', '다스페 레드 쥬아', 'DASPE RED JUA', '4.8', '다스페', '쥬셈50', '스위스', '보슈아', '레드', '5.0', '32000', '이미지', '파일', '바디감 낮음, 산도 낮음', '소, 치즈')
+('RED01', '다스페 레드 쥬아', 'DASPE RED JUA', '4.8', '다스페', '쥬셈50', '스위스', '보슈아', '레드', '5.0', '32000', '이미지', '파일', '바디감 낮음, 산도 낮음', '소, 치즈')
 ;
 -- 와인 목록 한개 추가
 INSERT INTO WINE (WINE_UID, WINE_NAME, WINE_NAME_EN, WINE_SCOPE, WINE_COMPANY, WINE_VARIETY, WINE_COUNTRY, WINE_REGION, WINE_TYPE, WINE_ALCOHOL_DEGREE, WINE_PRICE, WINE_IMAGE, WINE_FILE, WINE_INFO, WINE_FOOD_PAIRING)
