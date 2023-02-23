@@ -10,14 +10,14 @@
     </select>
 
     <!-- 와인 삭제 -->
-    <delete id="wineDelete" parameterType="Map" resultType="Map">
+    <delete id="wineDelete" parameterType="Map">
         DELETE
         FROM WINE
         WHERE WINE_UID = #{WINE_UID}
     </delete>
 
     <!-- 와인 추가 -->
-    <insert id="wineInsert" parameterType="Map" resultType="Map">
+    <insert id="wineInsert" parameterType="Map">
         INSERT INTO WINE 
             (WINE_UID, WINE_NAME, WINE_NAME_EN, WINE_SCOPE, 
             WINE_COMPANY, WINE_VARIETY, WINE_COUNTRY, WINE_REGION, 
@@ -31,7 +31,7 @@
     </insert>
 
     <!-- 와인 수정 -->
-    <update id="wineUpdate" parameterType="Map" resultType="Map">
+    <update id="wineUpdate" parameterType="Map">
         UPDATE WINE 
         SET WINE_UID='r01'
         WHERE WINE_UID='ROSE01'
