@@ -3,8 +3,8 @@
     "version": "2.2.11",
     "width": 2200,
     "height": 2200,
-    "scrollTop": -1164.6666666666674,
-    "scrollLeft": -860.6666666666666,
+    "scrollTop": -95.3333333333333,
+    "scrollLeft": -198,
     "zoomLevel": 0.9,
     "show": {
       "tableComment": true,
@@ -293,29 +293,6 @@
             }
           },
           {
-            "name": "STORE_CODE",
-            "comment": "상품코드",
-            "dataType": "VARCHAR(100)",
-            "default": "",
-            "option": {
-              "autoIncrement": false,
-              "primaryKey": false,
-              "unique": false,
-              "notNull": true
-            },
-            "ui": {
-              "active": false,
-              "pk": false,
-              "fk": false,
-              "pfk": false,
-              "widthName": 91.3369140625,
-              "widthComment": 60,
-              "widthDataType": 94.94873046875,
-              "widthDefault": 60
-            },
-            "id": "a026d992-53c1-4cfb-9b7a-6c8b4d8abcef"
-          },
-          {
             "name": "STORE_URL",
             "comment": "URL",
             "dataType": "VARCHAR(100)",
@@ -389,7 +366,7 @@
           "active": false,
           "left": 809.5993,
           "top": 212.9042,
-          "zIndex": 9,
+          "zIndex": 10,
           "widthName": 60,
           "widthComment": 60
         },
@@ -720,7 +697,7 @@
           "active": false,
           "left": 1505.7753,
           "top": 1326.0254,
-          "zIndex": 10,
+          "zIndex": 9,
           "widthName": 60,
           "widthComment": 60
         },
@@ -897,7 +874,7 @@
           "active": false,
           "left": 982.3197,
           "top": 1741.0109,
-          "zIndex": 6,
+          "zIndex": 5,
           "widthName": 60,
           "widthComment": 60
         },
@@ -1320,7 +1297,7 @@
           "active": false,
           "left": 633.9236,
           "top": 1180.9708,
-          "zIndex": 7,
+          "zIndex": 6,
           "widthName": 60,
           "widthComment": 60
         },
@@ -1743,7 +1720,7 @@
           "active": false,
           "left": 629.9497,
           "top": 690.5649,
-          "zIndex": 8,
+          "zIndex": 7,
           "widthName": 63.39453125,
           "widthComment": 67
         },
@@ -1933,7 +1910,7 @@
             "8df22663-a36d-4450-8492-ccd2ff0487fc"
           ],
           "x": 1039.2421222656249,
-          "y": 445.9042,
+          "y": 425.4042,
           "direction": "bottom"
         },
         "constraintName": "fk_user_to_store",
@@ -1985,7 +1962,7 @@
             "cb539799-5478-4a68-b10c-82b28d0ef08c"
           ],
           "x": 809.5993,
-          "y": 329.4042,
+          "y": 319.1542,
           "direction": "left"
         },
         "constraintName": "fk_wine_to_store",
