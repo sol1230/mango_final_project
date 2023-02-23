@@ -18,9 +18,16 @@
             </li>
             <li class="d-flex align-items-center">
               <a
-                href="/admin/admin_boards"
+                href="/admin/adminQna/1"
                 class="text-decoration-none nav-link"
-                >문의/공지 관리</a
+                >문의 관리</a
+              >
+            </li>
+            <li class="d-flex align-items-center">
+              <a
+                href="/admin/adminNotice/1"
+                class="text-decoration-none nav-link"
+                >공지 관리</a
               >
             </li>
             <li class="d-flex align-items-center">
