@@ -12,7 +12,7 @@ public class ByPassController {
     return "/index";
   }
 
-  @RequestMapping(value = { "/admin/admin_boards_add" })
+  @RequestMapping(value = { "/admin/admin_notice_add" })
   public void admin_boards_add() {
     int i = 0;
   }
