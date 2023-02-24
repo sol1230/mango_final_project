@@ -22,7 +22,7 @@ private userService uService;
 @Autowired
 private BCryptPasswordEncoder bcryptPasswordEncoder;
 
-@RequestMapping("login")
+@RequestMapping("login.me")
 public ModelAndView loginUser(User user, HttpSession session, ModelAndView mv){
 
     User loginUser = uService.loginUser(user);
