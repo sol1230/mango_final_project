@@ -2,15 +2,52 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="AdminUser">
-<!-- AdminUser.userList -->
-<select id="userList" parameterType="Map" resultType="Map">
-    SELECT *
-    FROM USER
-</select>
+<!-- ADMIN USER LIST -->
+    <!-- AdminUser.selectUserList -->
+    <select id="selectUserList" parameterType="Map" resultType="Map">
+        SELECT *
+        FROM USER
+        <if test="pageScale != null">
+            ORDER BY USER_UID
+            <!-- 첫번째 리스트 -->
+            LIMIT #{pageBegin}, #{pageScale}
+        </if>
+    </select>
 
-<!-- AdminUser. -->
-<select id="" parameterType="Map" resultType="Map">
+    <!-- AdminUser.selectUserUID -->
+    <select id="selectUserUID" parameterType="Map" resultType="Map">
+        SELECT *
+        FROM USER
+        WHERE USER_UID = #{USER_UID}
+    </select>
 
-</select>
+    <!-- AdminUser.selectUserTotal -->
+    <select id="selectUserTotal" parameterType="Map" resultType="int">
+        SELECT count(*) as cnt
+        FROM USER
+    </select>
+
+    <!-- AdminUser.insertUser -->
+    <insert id="insertUser" parameterType="Map">
+        INSERT INTO USER (USER_UID, PASSWORD, NAME, BIRTH, GENDER, PHONE, AUTHORITY)
+        VALUES (#{USER_UID}, #{PASSWORD}, #{NAME}, #{BIRTH}, #{GENDER}, #{PHONE}, #{AUTHORITY})
+    </insert>
+
+    <!-- AdminUser.updateUser  -->
+    <update id="updateUser" parameterType="Map">
+        UPDATE USER
+        SET PASSWORD = #{PASSWORD},
+            NAME = #{NAME},
+            BIRTH = #{BIRTH},
+            GENDER = #{GENDER},
+            PHONE = #{PHONE}
+        WHERE USER_UID = #{USER_UID}
+    </update>
+
+    <!-- AdminUser.deleteUser -->
+    <delete id="deleteUser" parameterType="Map">
+        DELETE FROM USER
+        WHERE USER_UID = #{USER_UID}
+    </delete>
 
 </mapper>
