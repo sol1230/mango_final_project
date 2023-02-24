@@ -3,9 +3,9 @@
     "version": "2.2.11",
     "width": 2200,
     "height": 2200,
-    "scrollTop": -817.7310217563003,
-    "scrollLeft": -335.65568336439674,
-    "zoomLevel": 1,
+    "scrollTop": -95.3333333333333,
+    "scrollLeft": -198,
+    "zoomLevel": 0.9,
     "show": {
       "tableComment": true,
       "columnComment": true,
@@ -50,7 +50,7 @@
             "id": "87947880-ff62-41ff-8780-825e1e67d7e0",
             "name": "COUPON_UID",
             "comment": "쿠폰 UID",
-            "dataType": "VARCHAR(100)",
+            "dataType": "INT",
             "default": "",
             "option": {
               "autoIncrement": false,
@@ -65,7 +65,7 @@
               "pfk": false,
               "widthName": 88.67724609375,
               "widthComment": 60,
-              "widthDataType": 94.94873046875,
+              "widthDataType": 60,
               "widthDefault": 60
             }
           },
@@ -189,7 +189,7 @@
           "active": false,
           "left": 1514.0473,
           "top": 772.6666,
-          "zIndex": 5,
+          "zIndex": 3,
           "widthName": 60,
           "widthComment": 60
         },
@@ -204,7 +204,7 @@
             "id": "841ae586-9bde-454e-8ecc-f6960d5288a5",
             "name": "STORE_UID",
             "comment": "판매처UID",
-            "dataType": "VARCHAR(100)",
+            "dataType": "INT",
             "default": "",
             "option": {
               "autoIncrement": false,
@@ -219,7 +219,7 @@
               "pfk": false,
               "widthName": 76.166015625,
               "widthComment": 63.38818359375,
-              "widthDataType": 94.94873046875,
+              "widthDataType": 60,
               "widthDefault": 60
             }
           },
@@ -293,29 +293,6 @@
             }
           },
           {
-            "name": "STORE_CODE",
-            "comment": "상품코드",
-            "dataType": "VARCHAR(100)",
-            "default": "",
-            "option": {
-              "autoIncrement": false,
-              "primaryKey": false,
-              "unique": false,
-              "notNull": true
-            },
-            "ui": {
-              "active": false,
-              "pk": false,
-              "fk": false,
-              "pfk": false,
-              "widthName": 91.3369140625,
-              "widthComment": 60,
-              "widthDataType": 94.94873046875,
-              "widthDefault": 60
-            },
-            "id": "a026d992-53c1-4cfb-9b7a-6c8b4d8abcef"
-          },
-          {
             "name": "STORE_URL",
             "comment": "URL",
             "dataType": "VARCHAR(100)",
@@ -364,7 +341,7 @@
           {
             "name": "WINE_UID",
             "comment": "와인UID",
-            "dataType": "VARCHAR(100)",
+            "dataType": "INT",
             "default": "",
             "option": {
               "autoIncrement": false,
@@ -379,7 +356,7 @@
               "pfk": false,
               "widthName": 65.55908203125,
               "widthComment": 60,
-              "widthDataType": 94.94873046875,
+              "widthDataType": 60,
               "widthDefault": 60
             },
             "id": "cb539799-5478-4a68-b10c-82b28d0ef08c"
@@ -389,97 +366,12 @@
           "active": false,
           "left": 809.5993,
           "top": 212.9042,
-          "zIndex": 6,
+          "zIndex": 10,
           "widthName": 60,
           "widthComment": 60
         },
         "visible": true,
         "id": "8fc4ef4d-ffcd-42c1-beb0-fc3855079ba4"
-      },
-      {
-        "name": "WISHLIST",
-        "comment": "위시리스트",
-        "columns": [
-          {
-            "id": "db1eb4d6-b69c-471b-88e1-aad73da4dcb1",
-            "name": "WISHLIST_UID",
-            "comment": "위시리스트UID",
-            "dataType": "VARCHAR(100)",
-            "default": "",
-            "option": {
-              "autoIncrement": false,
-              "primaryKey": true,
-              "unique": false,
-              "notNull": true
-            },
-            "ui": {
-              "active": false,
-              "pk": true,
-              "fk": false,
-              "pfk": false,
-              "widthName": 93.0126953125,
-              "widthComment": 89.38818359375,
-              "widthDataType": 94.94873046875,
-              "widthDefault": 60
-            }
-          },
-          {
-            "name": "USER_UID",
-            "comment": "회원아이디",
-            "dataType": "VARCHAR(100)",
-            "default": "",
-            "option": {
-              "autoIncrement": false,
-              "primaryKey": false,
-              "unique": false,
-              "notNull": true
-            },
-            "ui": {
-              "active": false,
-              "pk": false,
-              "fk": true,
-              "pfk": false,
-              "widthName": 67.736328125,
-              "widthComment": 67,
-              "widthDataType": 94.94873046875,
-              "widthDefault": 60
-            },
-            "id": "ef686b5b-082a-42bc-9d95-d7b8bcfb77e1"
-          },
-          {
-            "name": "WINE_UID",
-            "comment": "와인UID",
-            "dataType": "VARCHAR(100)",
-            "default": "",
-            "option": {
-              "autoIncrement": false,
-              "primaryKey": false,
-              "unique": false,
-              "notNull": true
-            },
-            "ui": {
-              "active": false,
-              "pk": false,
-              "fk": true,
-              "pfk": false,
-              "widthName": 65.55908203125,
-              "widthComment": 60,
-              "widthDataType": 94.94873046875,
-              "widthDefault": 60
-            },
-            "id": "9dee5f75-994e-4c06-835b-5e4bf906869b"
-          }
-        ],
-        "ui": {
-          "active": false,
-          "left": 629.9497,
-          "top": 690.5649,
-          "zIndex": 7,
-          "widthName": 63.39453125,
-          "widthComment": 67
-        },
-        "visible": true,
-        "id": "dd962a97-5890-405e-afef-3a2c58a91441"
       },
       {
         "name": "EVENT",
@@ -489,7 +381,7 @@
             "id": "adef9bdc-1719-4862-92a5-cbc8e0cb6337",
             "name": "EVENT_UID",
             "comment": "이벤트게시판UID",
-            "dataType": "VARCHAR(100)",
+            "dataType": "INT",
             "default": "",
             "option": {
               "autoIncrement": false,
@@ -504,7 +396,7 @@
               "pfk": false,
               "widthName": 74.9599609375,
               "widthComment": 102.38818359375,
-              "widthDataType": 94.94873046875,
+              "widthDataType": 60,
               "widthDefault": 60
             }
           },
@@ -666,7 +558,7 @@
             "id": "83fa0cc4-c4dc-4296-bc7a-733846c2c486",
             "name": "NOTICE_UID",
             "comment": "공지게시판UID",
-            "dataType": "VARCHAR(100)",
+            "dataType": "INT",
             "default": "",
             "option": {
               "autoIncrement": false,
@@ -681,7 +573,7 @@
               "pfk": false,
               "widthName": 80.72998046875,
               "widthComment": 89.38818359375,
-              "widthDataType": 94.94873046875,
+              "widthDataType": 60,
               "widthDefault": 60
             }
           },
@@ -703,29 +595,6 @@
               "fk": false,
               "pfk": false,
               "widthName": 92.0478515625,
-              "widthComment": 67,
-              "widthDataType": 94.94873046875,
-              "widthDefault": 60
-            }
-          },
-          {
-            "id": "332ee48b-1be1-4a84-8566-8610a4b9e3d8",
-            "name": "NOTICE_WRITER",
-            "comment": "공지작성자",
-            "dataType": "VARCHAR(100)",
-            "default": "",
-            "option": {
-              "autoIncrement": false,
-              "primaryKey": false,
-              "unique": false,
-              "notNull": true
-            },
-            "ui": {
-              "active": false,
-              "pk": false,
-              "fk": false,
-              "pfk": false,
-              "widthName": 109.61181640625,
               "widthComment": 67,
               "widthDataType": 94.94873046875,
               "widthDefault": 60
@@ -828,7 +697,7 @@
           "active": false,
           "left": 1505.7753,
           "top": 1326.0254,
-          "zIndex": 3,
+          "zIndex": 9,
           "widthName": 60,
           "widthComment": 60
         },
@@ -843,7 +712,7 @@
             "id": "def8dce8-9fa6-4a41-8ede-f33bac62e24e",
             "name": "REVIEW_UID",
             "comment": "리뷰UID",
-            "dataType": "VARCHAR(100)",
+            "dataType": "INT",
             "default": "",
             "option": {
               "autoIncrement": false,
@@ -858,7 +727,7 @@
               "pfk": false,
               "widthName": 82.90087890625,
               "widthComment": 60,
-              "widthDataType": 94.94873046875,
+              "widthDataType": 60,
               "widthDefault": 60
             }
           },
@@ -980,7 +849,7 @@
           {
             "name": "WINE_UID",
             "comment": "와인UID",
-            "dataType": "VARCHAR(100)",
+            "dataType": "INT",
             "default": "",
             "option": {
               "autoIncrement": false,
@@ -995,7 +864,7 @@
               "pfk": false,
               "widthName": 65.55908203125,
               "widthComment": 60,
-              "widthDataType": 94.94873046875,
+              "widthDataType": 60,
               "widthDefault": 60
             },
             "id": "7a46e708-fae6-41f0-96ab-3fa592787176"
@@ -1005,7 +874,7 @@
           "active": false,
           "left": 982.3197,
           "top": 1741.0109,
-          "zIndex": 9,
+          "zIndex": 5,
           "widthName": 60,
           "widthComment": 60
         },
@@ -1182,7 +1051,7 @@
           "active": false,
           "left": 921.945,
           "top": 919.0002,
-          "zIndex": 2,
+          "zIndex": 1,
           "widthName": 60,
           "widthComment": 60
         },
@@ -1197,7 +1066,7 @@
             "id": "a7ffaa82-5832-4838-a58e-a8a9b6f62d67",
             "name": "QNA_UID",
             "comment": "문의내역UID",
-            "dataType": "VARCHAR(100)",
+            "dataType": "INT",
             "default": "",
             "option": {
               "autoIncrement": false,
@@ -1212,7 +1081,7 @@
               "pfk": false,
               "widthName": 60,
               "widthComment": 76.38818359375,
-              "widthDataType": 94.94873046875,
+              "widthDataType": 60,
               "widthDefault": 60
             }
           },
@@ -1403,7 +1272,7 @@
           {
             "name": "WINE_UID",
             "comment": "와인UID",
-            "dataType": "VARCHAR(100)",
+            "dataType": "INT",
             "default": "",
             "option": {
               "autoIncrement": false,
@@ -1418,7 +1287,7 @@
               "pfk": false,
               "widthName": 65.55908203125,
               "widthComment": 60,
-              "widthDataType": 94.94873046875,
+              "widthDataType": 60,
               "widthDefault": 60
             },
             "id": "631db437-cda5-4665-bfd5-8a8125f53f26"
@@ -1426,9 +1295,9 @@
         ],
         "ui": {
           "active": false,
-          "left": 633.9234,
-          "top": 1180.9706,
-          "zIndex": 8,
+          "left": 633.9236,
+          "top": 1180.9708,
+          "zIndex": 6,
           "widthName": 60,
           "widthComment": 60
         },
@@ -1443,7 +1312,7 @@
             "id": "32a6d0f4-2dd3-4134-b5f5-71613035071c",
             "name": "WINE_UID",
             "comment": "와인UID",
-            "dataType": "VARCHAR(100)",
+            "dataType": "INT",
             "default": "",
             "option": {
               "autoIncrement": false,
@@ -1458,7 +1327,7 @@
               "pfk": false,
               "widthName": 65.55908203125,
               "widthComment": 60,
-              "widthDataType": 94.94873046875,
+              "widthDataType": 60,
               "widthDefault": 60
             }
           },
@@ -1789,12 +1658,74 @@
           "active": false,
           "left": 49.2001,
           "top": 780.1999,
-          "zIndex": 1,
+          "zIndex": 2,
           "widthName": 60,
           "widthComment": 60
         },
         "visible": true,
         "id": "9ab17fcc-3bd4-4b14-906c-aabf9de57735"
+      },
+      {
+        "name": "WISHLIST",
+        "comment": "위시리스트",
+        "columns": [
+          {
+            "name": "USER_UID",
+            "comment": "회원아이디",
+            "dataType": "VARCHAR(100)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": true,
+              "pfk": false,
+              "widthName": 67.736328125,
+              "widthComment": 67,
+              "widthDataType": 94.94873046875,
+              "widthDefault": 60
+            },
+            "id": "ef686b5b-082a-42bc-9d95-d7b8bcfb77e1"
+          },
+          {
+            "name": "WINE_UID",
+            "comment": "와인UID",
+            "dataType": "INT",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": true,
+              "pfk": false,
+              "widthName": 65.55908203125,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "9dee5f75-994e-4c06-835b-5e4bf906869b"
+          }
+        ],
+        "ui": {
+          "active": false,
+          "left": 629.9497,
+          "top": 690.5649,
+          "zIndex": 7,
+          "widthName": 63.39453125,
+          "widthComment": 67
+        },
+        "visible": true,
+        "id": "dd962a97-5890-405e-afef-3a2c58a91441"
       }
     ],
     "indexes": []
@@ -1813,58 +1744,6 @@
           "columnIds": [
             "1d7f4f0f-597f-409b-8a96-7145ee51d6fa"
           ],
-          "x": 1023.46013671875,
-          "y": 919.0002,
-          "direction": "top"
-        },
-        "end": {
-          "tableId": "dd962a97-5890-405e-afef-3a2c58a91441",
-          "columnIds": [
-            "ef686b5b-082a-42bc-9d95-d7b8bcfb77e1"
-          ],
-          "x": 1074.2993093750001,
-          "y": 755.8149,
-          "direction": "right"
-        },
-        "constraintName": "fk_user_to_wishlist",
-        "visible": true,
-        "id": "a2872d13-d303-4873-85d2-9ab8099933e1"
-      },
-      {
-        "identification": false,
-        "relationshipType": "OneN",
-        "startRelationshipType": "Dash",
-        "start": {
-          "tableId": "9ab17fcc-3bd4-4b14-906c-aabf9de57735",
-          "columnIds": [
-            "32a6d0f4-2dd3-4134-b5f5-71613035071c"
-          ],
-          "x": 571.58144765625,
-          "y": 874.3249,
-          "direction": "right"
-        },
-        "end": {
-          "tableId": "dd962a97-5890-405e-afef-3a2c58a91441",
-          "columnIds": [
-            "9dee5f75-994e-4c06-835b-5e4bf906869b"
-          ],
-          "x": 629.9497,
-          "y": 755.8149,
-          "direction": "left"
-        },
-        "constraintName": "fk_wine_to_wishlist",
-        "visible": true,
-        "id": "cd72b6dc-ee12-41fe-9436-02081164ad5f"
-      },
-      {
-        "identification": false,
-        "relationshipType": "OneN",
-        "startRelationshipType": "Dash",
-        "start": {
-          "tableId": "1e75a5db-eafd-4944-82c7-74622267aaa3",
-          "columnIds": [
-            "1d7f4f0f-597f-409b-8a96-7145ee51d6fa"
-          ],
           "x": 921.945,
           "y": 1025.2502,
           "direction": "left"
@@ -1874,8 +1753,8 @@
           "columnIds": [
             "8f85a0b9-c69e-4499-a39c-c078f7ecfc33"
           ],
-          "x": 880.901671484375,
-          "y": 1180.9706,
+          "x": 880.901871484375,
+          "y": 1180.9708,
           "direction": "top"
         },
         "constraintName": "fk_user_to_user_inquiry",
@@ -1926,8 +1805,8 @@
           "columnIds": [
             "631db437-cda5-4665-bfd5-8a8125f53f26"
           ],
-          "x": 633.9234,
-          "y": 1317.9706,
+          "x": 633.9236,
+          "y": 1317.9708,
           "direction": "left"
         },
         "constraintName": "fk_wine_to_user_qna",
@@ -2005,7 +1884,7 @@
             "7966f9ad-3671-47ff-a309-4395b527a831"
           ],
           "x": 1505.7753,
-          "y": 1432.2754,
+          "y": 1422.0254,
           "direction": "left"
         },
         "constraintName": "fk_user_to_admin_notice",
@@ -2031,7 +1910,7 @@
             "8df22663-a36d-4450-8492-ccd2ff0487fc"
           ],
           "x": 1039.2421222656249,
-          "y": 445.9042,
+          "y": 425.4042,
           "direction": "bottom"
         },
         "constraintName": "fk_user_to_store",
@@ -2083,12 +1962,64 @@
             "cb539799-5478-4a68-b10c-82b28d0ef08c"
           ],
           "x": 809.5993,
-          "y": 329.4042,
+          "y": 319.1542,
           "direction": "left"
         },
         "constraintName": "fk_wine_to_store",
         "visible": true,
         "id": "87db4595-8430-4ccb-ba08-8b0c7d056048"
+      },
+      {
+        "identification": false,
+        "relationshipType": "OneN",
+        "startRelationshipType": "Dash",
+        "start": {
+          "tableId": "1e75a5db-eafd-4944-82c7-74622267aaa3",
+          "columnIds": [
+            "1d7f4f0f-597f-409b-8a96-7145ee51d6fa"
+          ],
+          "x": 1023.46013671875,
+          "y": 919.0002,
+          "direction": "top"
+        },
+        "end": {
+          "tableId": "dd962a97-5890-405e-afef-3a2c58a91441",
+          "columnIds": [
+            "ef686b5b-082a-42bc-9d95-d7b8bcfb77e1"
+          ],
+          "x": 1026.6347585937501,
+          "y": 745.5649,
+          "direction": "right"
+        },
+        "constraintName": "fk_user_to_wishlist",
+        "visible": true,
+        "id": "a2872d13-d303-4873-85d2-9ab8099933e1"
+      },
+      {
+        "identification": false,
+        "relationshipType": "OneN",
+        "startRelationshipType": "Dash",
+        "start": {
+          "tableId": "9ab17fcc-3bd4-4b14-906c-aabf9de57735",
+          "columnIds": [
+            "32a6d0f4-2dd3-4134-b5f5-71613035071c"
+          ],
+          "x": 571.58144765625,
+          "y": 874.3249,
+          "direction": "right"
+        },
+        "end": {
+          "tableId": "dd962a97-5890-405e-afef-3a2c58a91441",
+          "columnIds": [
+            "9dee5f75-994e-4c06-835b-5e4bf906869b"
+          ],
+          "x": 629.9497,
+          "y": 745.5649,
+          "direction": "left"
+        },
+        "constraintName": "fk_wine_to_wishlist",
+        "visible": true,
+        "id": "cd72b6dc-ee12-41fe-9436-02081164ad5f"
       }
     ]
   }

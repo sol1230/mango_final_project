@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -84,12 +85,12 @@
                   <div class="d-flex justify-content-center">
                     <div>
                       <form action="" class="ps-2">
-                        <button
-                          type="submit"
-                          class="btn btn btn-sm btn-outline-danger"
-                        >
-                          삭제
-                        </button>
+                    <button
+                        class="btn btn-outline-danger btn-sm"
+                        onclick="if(!confirm('정말로 삭제하시겠습니까?')) return false"
+                      >
+                        삭제
+                      </button>
                       </form>
                     </div>
                   </div>
