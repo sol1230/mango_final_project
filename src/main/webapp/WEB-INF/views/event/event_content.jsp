@@ -1,4 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<jsp:useBean id="now" class="java.util.Date" />
 
 <!DOCTYPE html>
 <html lang="en">
@@ -31,9 +34,30 @@
     
     <!-- 본 페이지  -->
     <div class="container">
+      <%-- 진행중, 종료 표시... --%>
+      <fmt:formatDate value="${now}" pattern="yyyy-MM-dd" var="todayDateForm" />
+      <fmt:parseDate value="${resultMap.EVENT_DATETIME.substring(13,23)}" pattern="yyyy-MM-dd" var="EVENT_DATE_END"/>
+      <fmt:formatDate value="${EVENT_DATE_END}" pattern="yyyy-MM-dd" var="EVENT_DATE_END_FORM" />
       <div class="fs-3 fw-bold text-center mt-5">이벤트</div>
       <div class="d-flex justify-content-between mt-5">
-        <div>${resultMap.EVENT_TITLE}</div>
+        <div>
+          ${resultMap.EVENT_TITLE}
+          <c:if test="${todayDateForm le EVENT_DATE_END_FORM}">
+            <span
+              class="badge badge-pill"
+              style="background-color: rgb(220, 53, 69)"
+              >
+              진행중</span
+            >
+          </c:if>
+          <c:if test="${todayDateForm gt EVENT_DATE_END_FORM}">
+            <span
+              class="badge badge-pill bg-secondary"
+              >
+              종료</span
+            >
+          </c:if>
+        </div>
         <div>${resultMap.EVENT_DATETIME}</div>
       </div>
       <hr />

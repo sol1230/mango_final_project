@@ -56,11 +56,10 @@
       <hr class="mb-1"/>
       <table class="table table-hover">
         <c:forEach items="${resultMap}" var="resultData" varStatus="loop">
-          <%-- 진행중, 종료 표시 test중..... --%>
+          <%-- 진행중, 종료 표시... --%>
           <fmt:formatDate value="${now}" pattern="yyyy-MM-dd" var="todayDateForm" />
           <fmt:parseDate value="${resultData.EVENT_DATETIME.substring(13,23)}" pattern="yyyy-MM-dd" var="EVENT_DATE_END"/>
           <fmt:formatDate value="${EVENT_DATE_END}" pattern="yyyy-MM-dd" var="EVENT_DATE_END_FORM" />
-          <%-- <fmt:parseDate value="${now}" pattern="yyyy-MM-dd" var="today"/> --%>
           <tr>
             <td scope="">
               <div class="d-flex align-items-center text-align-center">
@@ -68,7 +67,7 @@
                   <img src="/img/files/${resultData.PHYSICALFILE_NAME}/${resultData.ORIGINALFILE_NAME}" alt="${resultData.ORIGINALFILE_NAME}" 
                   style="width: 200px; heigth: 200px; object-fit: cover;" class=""/>
                 </div>
-                <div class="ms-3">
+                <div class="ms-4">
                   <a
                     href="/event/eventContent/${resultData.EVENT_UID}"
                     class="text-decoration-none"
