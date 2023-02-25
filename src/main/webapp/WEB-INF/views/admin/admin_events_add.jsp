@@ -34,9 +34,8 @@
     <%@ include file="../etc/admin_nav.jsp" %>
 
       <main class="col-9 p-0 mb-5 ms-5">
-        <form action="/admin/admin_events" method="">
-          <input type="hidden" name="notice_date" value="2023.02.05" />
-          <input type="hidden" name="notice_writer" value="관리자" />
+        <form action="/admin/adminEventInsert/1" method="post" enctype = "multipart/form-data">
+          <input type="hidden" name="USER_UID" value="ADMIN" />
           <div class="mt-4 p-4 border bg-white">
             <div>
               <label for="" class="form-label fw-bold pe-3 m-0"
@@ -47,35 +46,49 @@
               class="mt-3 table border text-center align-middle"
               style="font-size: small"
             >
-              <thead class="">
+              <thead class=" align-middle">
                 <tr>
                   <th scope="" class="bg-secondary bg-opacity-25">작성일</th>
-                  <td scope="" name="notice_date">2023.02.05</td>
+                  <td scope="" name="EVENT_DATE" class="w-50">
+                  <input type="date" class="form-control" name="EVENT_DATE" />
+                  </td>
 
                   <th scope="" class="bg-secondary bg-opacity-25">작성자</th>
-                  <td scope="" name="notice_writer">관리자</td>
+                  <td scope="" name="NAME">관리자</td>
                 </tr>
                 <tr scope="row">
                   <th scope="" class="bg-secondary bg-opacity-25">제목</th>
                   <td scope="" colspan="3">
                     <input
                       type="text"
-                      name="notice_title"
-                      id="notice_title"
+                      name="EVENT_TITLE"
+                      id="EVENT_TITLE"
                       class="form-control"
                       placeholder="제목을 입력해 주세요."
                     />
                   </td>
                 </tr>
+                <tr scope="row">
+                  <th scope="" class="bg-secondary bg-opacity-25">이벤트 기간</th>
+                  <td scope="" colspan="3">
+                    <input
+                      type="text"
+                      name="EVENT_DATETIME"
+                      id="EVENT_DATETIME"
+                      class="form-control"
+                      placeholder="이벤트 진행 기간을 입력해 주세요."
+                    />
+                  </td>
+                </tr>
               </thead>
-              <tbody>
+              <tbody class=" align-middle">
                 <tr scope="row">
                   <th class="bg-secondary bg-opacity-25">내용</th>
                   <td colspan="3">
                     <textarea
                       class="form-control"
-                      name="notice_contents"
-                      id="notice_contents"
+                      name="EVENT_CONTENT"
+                      id="EVENT_CONTENT"
                       cols="30"
                       rows="10"
                     ></textarea>
@@ -85,7 +98,7 @@
                   <th class="bg-secondary bg-opacity-25">파일첨부</th>
                   <td colspan="3">
                     <div class="">
-                      <input type="file" name="" id="" class="form-control" />
+                      <input type="file" name="EVENT_FILE" id="" class="form-control" />
                     </div>
                   </td>
                 </tr>

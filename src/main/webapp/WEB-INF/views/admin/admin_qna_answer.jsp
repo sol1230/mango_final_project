@@ -6,7 +6,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Admin boards notice modify</title>
+    <title>Admin boards qna</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -26,22 +26,19 @@
 
   </head>
   <body class="bg-light">
-
     <%-- header --%>
     <%@ include file="../etc/header.jsp" %>
 
     <!-- 본 페이지 content -->
     <div class="row g-0 vh-100">
-    <%@ include file="../etc/admin_nav.jsp" %>
+     <%@ include file="../etc/admin_nav.jsp" %>
 
       <main class="col-9 p-0 mb-5 ms-5">
-        <form action="/admin/admin_boards" method="">
-          <input type="hidden" name="notice_date" value="2023.02.05" />
-          <input type="hidden" name="notice_writer" value="관리자" />
+        <form action="/admin/adminQnaAnswer/1" method="post">
           <div class="mt-4 p-4 border bg-white">
             <div>
               <label for="" class="form-label fw-bold pe-3 m-0"
-                >공지사항 수정하기</label
+                >답변 등록하기</label
               >
             </div>
             <table
@@ -51,45 +48,38 @@
               <thead class="">
                 <tr>
                   <th scope="" class="bg-secondary bg-opacity-25">작성일</th>
-                  <td scope="" name="notice_date">2023.02.05</td>
+                  <td scope="" name="notice_date">${resultMap.QNA_DATE}</td>
 
                   <th scope="" class="bg-secondary bg-opacity-25">작성자</th>
-                  <td scope="" name="notice_writer">관리자</td>
+                  <td scope="" name="USER_UID">${resultMap.USER_UID}</td>
+                  <input type="hidden" name="USER_UID" value="${resultMap.USER_UID}" />
                 </tr>
                 <tr scope="row">
                   <th scope="" class="bg-secondary bg-opacity-25">제목</th>
-                  <td scope="" colspan="3">
-                    <input
-                      type="text"
-                      name="notice_title"
-                      id="notice_title"
-                      class="form-control"
-                      placeholder="휴무안내"
-                    />
-                  </td>
+                  <td scope="" colspan="3">${resultMap.QNA_TITLE}</td>
+                  <input type="hidden" name="QNA_TITLE" value="${resultMap.QNA_TITLE}" />
                 </tr>
               </thead>
               <tbody>
                 <tr scope="row">
-                  <th class="bg-secondary bg-opacity-25">내용</th>
+                  <th class="bg-secondary bg-opacity-25" style="height: 4rem">
+                    내용
+                  </th>
+                  <td colspan="3">
+                    ${resultMap.QNA_CONTENT}
+                  </td>
+                  <input type="hidden" name="QNA_CONTENT" value="${resultMap.QNA_CONTENT}" />
+                </tr>
+                <tr scope="row">
+                  <th class="bg-secondary bg-opacity-25">답변</th>
                   <td colspan="3">
                     <textarea
                       class="form-control"
-                      name="notice_contents"
-                      id="notice_contents"
+                      name="QNA_ANSWER"
+                      id="QNA_ANSWER"
                       cols="30"
-                      rows="10"
-                    >
-설 연휴기간으로 불편함에 유의하시기 바랍니다.</textarea
-                    >
-                  </td>
-                </tr>
-                <tr scope="row">
-                  <th class="bg-secondary bg-opacity-25">파일첨부</th>
-                  <td colspan="3">
-                    <div class="">
-                      <input type="file" name="" id="" class="form-control" />
-                    </div>
+                      rows="5"
+                    >${resultMap.QNA_ANSWER}</textarea>
                   </td>
                 </tr>
               </tbody>

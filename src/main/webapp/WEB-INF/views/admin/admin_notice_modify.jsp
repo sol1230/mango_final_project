@@ -6,7 +6,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Admin boards qna</title>
+    <title>Admin boards notice modify</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -26,64 +26,69 @@
 
   </head>
   <body class="bg-light">
+
     <%-- header --%>
     <%@ include file="../etc/header.jsp" %>
 
     <!-- 본 페이지 content -->
     <div class="row g-0 vh-100">
-     <%@ include file="../etc/admin_nav.jsp" %>
+    <%@ include file="../etc/admin_nav.jsp" %>
 
       <main class="col-9 p-0 mb-5 ms-5">
-        <form action="/admin/admin_boards" method="">
-          <input type="hidden" name="notice_date" value="2023.02.05" />
-          <input type="hidden" name="notice_writer" value="관리자" />
+        <form action="/admin/adminNoticeUpate/1" method="post">
+          <input type="hidden" name="NOTICE_UID" value="${resultMap.NOTICE_UID}" />
+          <input type="hidden" name="NOTICE_DATE" value="${resultMap.NOTICE_DATE}" />
+          <input type="hidden" name="NAME" value="${resultMap.NAME}" />
+
           <div class="mt-4 p-4 border bg-white">
             <div>
               <label for="" class="form-label fw-bold pe-3 m-0"
-                >답변 등록하기</label
+                >공지사항 수정하기</label
               >
             </div>
             <table
-              class="mt-3 table border text-center align-middle"
+              class="mt-3 table border align-middle"
               style="font-size: small"
             >
               <thead class="">
-                <tr>
+                <tr class="text-center">
                   <th scope="" class="bg-secondary bg-opacity-25">작성일</th>
-                  <td scope="" name="notice_date">2023.02.04</td>
-
+                  <td scope="" name="NOTICE_DATE">${resultMap.NOTICE_DATE}</td>
                   <th scope="" class="bg-secondary bg-opacity-25">작성자</th>
-                  <td scope="" name="notice_writer">김민아</td>
+                  <td scope="" name="NAME">${resultMap.NAME}</td>
                 </tr>
                 <tr scope="row">
-                  <th scope="" class="bg-secondary bg-opacity-25">제목</th>
-                  <td scope="" colspan="3">상품 문의드립니다.</td>
-                </tr>
-                <tr scope="row">
-                  <th scope="" class="bg-secondary bg-opacity-25">구분</th>
-                  <td scope="" colspan="3">상품관련</td>
+                  <th scope="" class="text-center bg-secondary bg-opacity-25">제목</th>
+                  <td scope="" colspan="3">
+                    <input
+                      type="text"
+                      name="NOTICE_TITLE"
+                      id="NOTICE_TITLE"
+                      class="form-control"
+                      value="${resultMap.NOTICE_TITLE}"
+                    />
+                  </td>
                 </tr>
               </thead>
               <tbody>
                 <tr scope="row">
-                  <th class="bg-secondary bg-opacity-25" style="height: 4rem">
-                    내용
-                  </th>
-                  <td colspan="3">
-                    선물용으로도 인기가 많은 상품인가요? 기념일에 선물용으로
-                    괜찮을지 궁금해요. 너무 당도가 높지는 않겠죠?
-                  </td>
-                </tr>
-                <tr scope="row">
-                  <th class="bg-secondary bg-opacity-25">답변</th>
+                  <th class="bg-secondary bg-opacity-25 text-center">내용</th>
                   <td colspan="3">
                     <textarea
                       class="form-control"
-                      name="notice_contents"
-                      id="notice_contents"
+                      name="NOTICE_CONTENT"
+                      id="NOTICE_CONTENT"
                       cols="30"
-                      rows="5"
-                    ></textarea>
+                      rows="10"
+                    >${resultMap.NOTICE_CONTENT}</textarea>
+                  </td>
+                </tr>
+                <tr scope="row" class="text-center">
+                  <th class="bg-secondary bg-opacity-25">파일첨부</th>
+                  <td colspan="3">
+                    <div class="">
+                      <input type="file" name="" id="" class="form-control" />
+                    </div>
                   </td>
                 </tr>
               </tbody>

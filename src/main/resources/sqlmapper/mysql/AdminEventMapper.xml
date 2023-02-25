@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="AdminEvent">
+    <!-- call AdminEvent.selectEvent -->
+    <select id="selectEvent" parameterType="Map" resultType="Map">
+        SELECT *
+        FROM EVENT
+        <if test="pageScale != null">
+            ORDER BY EVENT_DATE
+            LIMIT #{pageBegin}, #{pageScale}
+        </if>
+    </select>
+
+    <!-- call AdminEvent.selectEventTotal -->
+    <select id="selectEventTotal" parameterType="Map" resultType="int">
+        SELECT count(*) as cnt
+        FROM EVENT
+    </select>
+
+    <!-- call AdminEvent.insertEventWithFile -->
+    <insert id="insertEventWithFile" parameterType="Map">
+        INSERT INTO EVENT
+        (EVENT_DATETIME, EVENT_FILE, ATTACHFILE_SEQ, ORIGINALFILE_NAME, PHYSICALFILE_NAME, EVENT_TITLE, EVENT_DATE, EVENT_CONTENT, USER_UID) 
+        VALUES
+        <!-- ('2023-02-21 ~ 2023-02-24', NULL, 'UUID', '이벤트.txt','파일들 폴더명','와인강의',sysdate(),'와인강의 진행합니다', '관리자')
+        ,('2023-02-22 ~ 2023-02-23', NULL, 'UUID', '이벤트.txt','파일들 폴더명','와인페스티벌',sysdate(),'와인페스티벌 진행예정', '관리자')     -->
+        <foreach collection="attachfiles" item="attachfile"
+                open="(" close=")" separator="),(">
+            #{attachfile.EVENT_DATETIME}, #{attachfile.EVENT_FILE}, #{attachfile.ATTACHFILE_SEQ}, #{attachfile.ORIGINALFILE_NAME}
+            ,#{attachfile.PHYSICALFILE_NAME},#{attachfile.EVENT_TITLE},#{attachfile.EVENT_DATE},#{attachfile.EVENT_CONTENT},#{USER_UID}
+        </foreach>
+    </insert>
+
+    <!-- call AdminEvent.selectEventByUID -->
+    <select id="selectEventByUID" parameterType="Map" resultType="Map">
+        SELECT *
+        FROM EVENT
+        WHERE EVENT_UID = #{EVENT_UID}
+    </select>
+    
+    <!-- call AdminEvent.insertEvent -->
+    <insert id="insertEvent" parameterType="Map">
+        INSERT INTO EVENT
+            (EVENT_DATETIME, EVENT_FILE, ATTACHFILE_SEQ, ORIGINALFILE_NAME, PHYSICALFILE_NAME, EVENT_TITLE, EVENT_DATE, EVENT_CONTENT, USER_UID) 
+        VALUES (
+            #{EVENT_DATETIME}, #{EVENT_FILE}, #{ATTACHFILE_SEQ}, #{ORIGINALFILE_NAME}, #{PHYSICALFILE_NAME}, #{EVENT_TITLE},#{EVENT_DATE},#{EVENT_CONTENT},#{USER_UID})
+    </insert>
+
+    <!-- call AdminEvent.deleteEvent -->
+    <delete id="deleteEvent" parameterType="Map"> 
+        DELETE FROM EVENT
+        WHERE EVENT_UID = #{EVENT_UID}
+    </delete>
+
+    <!-- call AdminEvent.selectEventContent -->
+    <select id="selectEventContent" parameterType="Map" resultType="Map">
+        SELECT *
+        FROM EVENT INNER JOIN USER
+        ON EVENT.USER_UID = USER.USER_UID
+        WHERE EVENT_UID = #{EVENT_UID} AND EVENT_TITLE = #{EVENT_TITLE} AND EVENT_CONTENT = #{EVENT_CONTENT}
+    </select>
+
+    <!-- call AdminEvent.updateEvent -->
+    <update id="updateEvent" parameterType="Map"> 
+        UPDATE EVENT
+        SET EVENT_TITLE = #{EVENT_TITLE}, EVENT_CONTENT = #{EVENT_CONTENT}, EVENT_FILE = #{EVENT_FILE}
+        WHERE EVENT_UID = #{EVENT_UID}
+    </update>
+
+</mapper>
