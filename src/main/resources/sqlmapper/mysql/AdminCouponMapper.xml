@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="AdminCoupon">
+<!-- ADMIN COUPON -->
+    <!-- AdminCoupon.adminCoupon -->
+    <select id="adminCoupon" parameterType="Map" resultType="Map">
+        SELECT *
+        FROM COUPON
+        <if test="pageScale != null">
+            ORDER BY COUPON_UID
+            <!-- 첫번째 리스트 -->
+            LIMIT #{pageBegin}, #{pageScale}
+        </if>
+    </select>
+
+    <!-- AdminCoupon.selectCouponUID -->
+    <select id="selectCouponUID" parameterType="Map" resultType="Map">
+        SELECT *
+        FROM COUPON
+        WHERE COUPON_UID = #{COUPON_UID}
+    </select>
+
+    <!-- AdminCoupon.selectCouponTotal -->
+    <select id="selectCouponTotal" parameterType="Map" resultType="int">
+        SELECT count(*) as cnt
+        FROM COUPON
+    </select>
+
+    <!-- AdminCoupon.insertCoupon -->
+    <insert id="insertCoupon" parameterType="Map">
+        INSERT INTO COUPON (COUPON_FILE, COUPON_NAME, COUPON_DATE, COUPON_DATETIME, USER_UID)
+        VALUE (#{COUPON_FILE}, #{COUPON_NAME}, DATE(NOW()), #{COUPON_DATETIME}, #{USER_UID})
+    </insert>
+
+    <!-- AdminCoupon.updateCoupon  -->
+    <update id="updateCoupon" parameterType="Map">
+        UPDATE COUPON
+        SET COUPON_FILE = #{COUPON_FILE},
+            COUPON_NAME = #{COUPON_NAME},
+            COUPON_DATETIME = #{COUPON_DATETIME},
+            USER_UID = #{USER_UID}
+        WHERE COUPON_UID = #{COUPON_UID}
+    </update>
+
+    <!-- AdminCoupon.deleteCoupon -->
+    <delete id="deleteCoupon" parameterType="Map">
+        DELETE FROM COUPON
+        WHERE COUPON_UID = #{COUPON_UID}
+    </delete>
+</mapper>

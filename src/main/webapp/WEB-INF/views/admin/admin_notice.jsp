@@ -7,7 +7,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Admin event</title>
+    <title>Admin boards</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -24,15 +24,14 @@
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
     />
     <link rel="stylesheet" href="/css/admin.css" />
-
   </head>
-  <body class="bg-light h-100">
+  <body class="bg-light">
     <%-- header --%>
     <%@ include file="../etc/header.jsp" %>
 
     <!-- 본 페이지 content -->
     <div class="row g-0 vh-100">
-     <%@ include file="../etc/admin_nav.jsp" %>
+    <%@ include file="../etc/admin_nav.jsp" %>
 
       <main class="col-9 p-0 mb-5 ms-5">
         <div class="mt-4 p-4 border bg-white">
@@ -42,50 +41,50 @@
             >
               <div class="d-flex align-items-center">
                 <div>
-                  <label for="" class="form-label fw-bold pe-3 m-0"
-                    >이벤트 목록</label
-                  >
+                  <label for="" class="form-label fw-bold pe-3 m-0">공지</label>
                 </div>
               </div>
               <div class="justify-content-right align-items-center pt-2">
-                <a href="/admin/admin_events_add" class="text-secondary">
+                <a href="/admin/admin_notice_add" class="text-secondary">
                   <span class="material-symbols-outlined fs-3"> add_box </span>
                 </a>
               </div>
             </div>
           </form>
           <table
-            class="mt-3 mb-1 table table-hover text-center align-middle"
+            class="mt-3 mb-1 table table-hover align-middle"
             style="font-size: small"
           >
-            <thead class="bg-secondary bg-opacity-25">
+            <thead class="bg-secondary bg-opacity-25 text-center ">
               <tr>
                 <th scope="">번호</th>
-                <th scope="">이벤트이미지</th>
-                <th scope="">이벤트제목</th>
-                <th scope="">이벤트기간</th>
+                <th scope="">제목</th>
+                <th scope="">작성자</th>
                 <th scope="">작성일</th>
+                <th scope="">조회수</th>
                 <th scope="">기능</th>
               </tr>
             </thead>
             <tbody>
               <c:forEach items="${resultMap.resultList}" var="resultData" varStatus="loop">
-                <tr>
-                  <th scope="">${resultData.EVENT_UID}</th>
-                  <td scope="">
-                    <img src="/img/files/${resultData.PHYSICALFILE_NAME}/${resultData.ORIGINALFILE_NAME}" style="width: 3rem" alt="${resultData.ORIGINALFILE_NAME}">
+                <tr class="text-center">
+                  <th scope="">${resultData.NOTICE_UID}</th>
+                  <td>
+                    <a href="#noticeCont${loop.count}" class="text-decoration-none text-black" data-bs-toggle="collapse">
+                      ${resultData.NOTICE_TITLE}</a
+                    >
                   </td>
-                  <td>${resultData.EVENT_TITLE}</td>
-                  <td>${resultData.EVENT_DATETIME}</td>
-                  <td>${resultData.EVENT_DATE}</td>
+                  <td>${resultData.NAME}</td>
+                  <td>${resultData.NOTICE_DATE}</td>
+                  <td>15</td>
                   <td>
                     <div class="d-flex justify-content-center">
                       <div>
-                        <form action="/admin/adminEventModify" method="post">
-                          <input type="hidden" name="EVENT_UID" value="${resultData.EVENT_UID}" />
-                          <input type="hidden" name="EVENT_TITLE" value="${resultData.EVENT_TITLE}" />
-                          <input type="hidden" name="EVENT_DATETIME" value="${resultData.EVENT_DATETIME}" />
-                          <input type="hidden" name="EVENT_CONTENT" value="${resultData.EVENT_CONTENT}" />
+                        <form action="/admin/adminNoticeModify" method="post">
+                          <input type="hidden" name="NOTICE_UID" value="${resultData.NOTICE_UID}" />
+                          <input type="hidden" name="NOTICE_TITLE" value="${resultData.NOTICE_TITLE}" />
+                          <input type="hidden" name="NOTICE_DATE" value="${resultData.NOTICE_DATE}" />
+                          <input type="hidden" name="NOTICE_CONTENT" value="${resultData.NOTICE_CONTENT}" />
                           <button
                             type="submit"
                             class="btn btn-sm btn-outline-secondary"
@@ -95,8 +94,8 @@
                         </form>
                       </div>
                       <div>
-                        <form action="/admin/adminEventDelete/1" class="ps-2" method="post">
-                        <input type="hidden" name="EVENT_UID" value="${resultData.EVENT_UID}" />
+                        <form action="/admin/adminNoticeDelete/1" class="ps-2" method="post">
+                          <input type="hidden" name="NOTICE_UID" value="${resultData.NOTICE_UID}" />
                           <button
                             type="submit"
                             class="btn btn btn-sm btn-outline-danger"
@@ -106,6 +105,16 @@
                           </button>
                         </form>
                       </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr class="collapse" id="noticeCont${loop.count}">
+                  <td  class="bg-light p-4" colspan="6">
+                    <%-- 공지 내용 --%>
+                    <div>
+                      <span>
+                        ${resultData.NOTICE_CONTENT}
+                      </span>
                     </div>
                   </td>
                 </tr>
@@ -119,16 +128,16 @@
             <nav aria-label="Page navigation example ">
               <ul class="pagination pagination-sm">
                 <li class="page-item">
-                  <a class="page-link" href="/admin/adminEvent/${_pagination.previousPage}" aria-label="Previous">
+                  <a class="page-link" href="/admin/adminNotice/${_pagination.previousPage}" aria-label="Previous">
                     <span class="sr-only">Pre</span>
                   </a>
                 </li>
                 <%-- for(int i = 0; i > 9; i++){} --%>
                 <c:forEach var="i" begin="${_pagination.blockStart}" end="${_pagination.blockEnd}">
-                  <li class="page-item"><a class="page-link" href="/admin/adminEvent/${i}">${i}</a></li>
+                  <li class="page-item"><a class="page-link" href="/admin/adminNotice/${i}">${i}</a></li>
                 </c:forEach>
                 <li class="page-item">
-                  <a class="page-link" href="/admin/adminEvent/${_pagination.nextPage}" aria-label="Next">
+                  <a class="page-link" href="/admin/adminNotice/${_pagination.nextPage}" aria-label="Next">
                     <span class="sr-only">Next</span>
                   </a>
                 </li>
@@ -138,7 +147,6 @@
         </div>
       </main>
     </div>
-
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"

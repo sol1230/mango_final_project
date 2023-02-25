@@ -46,6 +46,11 @@
                   >
                 </div>
               </div>
+              <div class="justify-content-right align-items-center pt-2">
+                <a href="/admin/admin_stores_add" class="text-secondary">
+                  <span class="material-symbols-outlined fs-3"> add_box </span>
+                </a>
+              </div>
             </div>
           </form>
           <table
@@ -69,12 +74,12 @@
                   <div class="d-flex justify-content-center">
                     <div>
                       <form action="" class="ps-2">
-                        <button
-                          type="submit"
-                          class="btn btn btn-sm btn-outline-danger"
-                        >
-                          삭제
-                        </button>
+                    <button
+                        class="btn btn-outline-danger btn-sm"
+                        onclick="if(!confirm('정말로 삭제하시겠습니까?')) return false"
+                      >
+                        삭제
+                      </button>
                       </form>
                     </div>
                   </div>

@@ -36,7 +36,6 @@
 
       <main class="col-9 p-0 mb-5 ms-5">
         <div class="mt-4 p-4 border bg-white">
-          <form action="">
             <div
               class="d-flex justify-content-between align-items-center input-group"
             >
@@ -60,13 +59,14 @@
                   </div>
                 </div>
               </div>
+              <form action="/admin/admin_users_insert" method="get">
               <div class="justify-content-right align-items-center pt-2">
-                <a href="/admin/admin_users_add" class="text-secondary">
+                <a href="/admin/admin_users_insert" class="text-secondary">
                   <span class="material-symbols-outlined fs-3"> add_box </span>
                 </a>
               </div>
+              </form>
             </div>
-          </form>
           <table
             class="mt-3 table table-hover text-center align-middle"
             style="font-size: small"
@@ -83,150 +83,66 @@
               </tr>
             </thead>
             <tbody>
+        <c:forEach items="${resultMap.resultList}" var="resultData" varStatus="loop">
               <tr>
-                <th scope="">1</th>
-                <td>somsom</td>
-                <td>이소미</td>
-                <td>2001-02-04</td>
-                <td>여</td>
-                <td>010-2033-5487</td>
+                <td>1</td>
+                <td>${resultData.USER_UID}</td>
+                <td>${resultData.NAME}</td>
+                <td>${resultData.BIRTH}</td>
+                <td>${resultData.GENDER}</td>
+                <td>${resultData.PHONE}</td>
                 <td class="d-flex justify-content-center">
-                  <form action="/admin/admin_users_modify">
-                    <button
-                      type="submit"
-                      class="btn btn-sm btn-outline-secondary"
-                    >
+                  <form action="/admin/admin_users_edit/${resultData.USER_UID}" method="post">
+                    <input type="hidden" name="USER_UID" value="${resultData.USER_UID}" />
+                    <input type="hidden" name="NAME" value="${resultData.NAME}" />
+                    <input type="hidden" name="BIRTH" value="${resultData.BIRTH}" />
+                    <input type="hidden" name="GENDER" value="${resultData.GENDER}" />
+                    <input type="hidden" name="PHONE" value="${resultData.PHONE}" />
+                    <button class="btn btn-sm btn-outline-secondary">
                       수정
                     </button>
                   </form>
-                  <form action="" class="ps-2">
-                    <button
-                      type="submit"
-                      class="btn btn btn-sm btn-outline-danger"
-                    >
-                      삭제
-                    </button>
+                  <form action="/admin/admin_users_delete/${resultData.USER_UID}" method="post" class="ps-2">
+                       <input type="hidden" name="USER_UID" value="${resultData.USER_UID}" />
+                     <button
+                        class="btn btn-outline-danger btn-sm"
+                        onclick="if(!confirm('정말로 삭제하시겠습니까?')) return false"
+                      >
+                        삭제
+                      </button>
                   </form>
                 </td>
               </tr>
-              <tr>
-                <th scope="">2</th>
-                <td>jin0916</td>
-                <td>김진우</td>
-                <td>1995-11-21</td>
-                <td>남</td>
-                <td>010-5513-0422</td>
-                <td class="d-flex justify-content-center">
-                  <form action="/admin/admin_users_modify">
-                    <button
-                      type="submit"
-                      class="btn btn-sm btn-outline-secondary"
-                    >
-                      수정
-                    </button>
-                  </form>
-                  <form action="" class="ps-2">
-                    <button
-                      type="submit"
-                      class="btn btn btn-sm btn-outline-danger"
-                    >
-                      삭제
-                    </button>
-                  </form>
-                </td>
-              </tr>
-              <tr>
-                <th scope="">3</th>
-                <td>hi_i</td>
-                <td>주현영</td>
-                <td>1993-08-08</td>
-                <td>여</td>
-                <td>010-9885-5165</td>
-                <td class="d-flex justify-content-center">
-                  <form action="/admin/admin_users_modify">
-                    <button
-                      type="submit"
-                      class="btn btn-sm btn-outline-secondary"
-                    >
-                      수정
-                    </button>
-                  </form>
-                  <form action="" class="ps-2">
-                    <button
-                      type="submit"
-                      class="btn btn btn-sm btn-outline-danger"
-                    >
-                      삭제
-                    </button>
-                  </form>
-                </td>
-              </tr>
-              <tr>
-                <th scope="">4</th>
-                <td>happy01</td>
-                <td>강혁</td>
-                <td>1992-09-27</td>
-                <td>남</td>
-                <td>010-6547-6465</td>
-                <td class="d-flex justify-content-center">
-                  <form action="/admin/admin_users_modify">
-                    <button
-                      type="submit"
-                      class="btn btn-sm btn-outline-secondary"
-                    >
-                      수정
-                    </button>
-                  </form>
-                  <form action="" class="ps-2">
-                    <button
-                      type="submit"
-                      class="btn btn btn-sm btn-outline-danger"
-                    >
-                      삭제
-                    </button>
-                  </form>
-                </td>
-              </tr>
-              <tr>
-                <th scope="">5</th>
-                <td>gugu</td>
-                <td>김석훈</td>
-                <td>1990-03-14</td>
-                <td>남</td>
-                <td>010-3566-9182</td>
-                <td class="d-flex justify-content-center">
-                  <form action="/admin/admin_users_modify">
-                    <button
-                      type="submit"
-                      class="btn btn-sm btn-outline-secondary"
-                    >
-                      수정
-                    </button>
-                  </form>
-                  <form action="" class="ps-2">
-                    <button
-                      type="submit"
-                      class="btn btn btn-sm btn-outline-danger"
-                    >
-                      삭제
-                    </button>
-                  </form>
-                </td>
-              </tr>
+            </c:forEach>
             </tbody>
           </table>
-          <div>
-            <span class="ms-2">총 회원수 : </span>
-            <span class="ms-2">17</span>
-            <div class="pagination pagination-sm justify-content-center mt-4">
-              <a class="page-item page-link" href="">Pre</a>
-              <a class="page-item page-link" href="">1</a>
-              <a class="page-item page-link" href="">2</a>
-              <a class="page-item page-link" href="">3</a>
-              <a class="page-item page-link" href="">4</a>
-              <a class="page-item page-link" href="">Next</a>
-            </div>
-          <div>
+          <%-- pagination --%>
+          <c:set var="_pagination" value="${resultMap.paginations}" />
+          ${paginations}
+          <span>총 회원수 : ${_pagination.totalCount}명</span>
+          <div class="pagination pagination-sm justify-content-center">
+            <nav aria-label="Page navigation">
+              <ul class="pagination pagination-sm">
+                <li class="page-item">
+                  <a class="page-link" href="${_pagination.previousPage}" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                    <span class="sr-only">이전</span>
+                  </a>
+                </li>
+                <c:forEach var="i" begin="${_pagination.blockStart}" end="${_pagination.blockEnd}" >
+                <li class="page-item">
+                  <a class="page-link" href="/admin/admin_users/${i}">${i}</a>
+                </li>
+                </c:forEach>
+                <li class="page-item">
+                  <a class="page-link" href="${_pagination.nextPage}" aria-label="Next">
+                    <span class="sr-only">다음</span>
+                    <span aria-hidden="true">&raquo;</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
         </div>
       </main>
     </div>

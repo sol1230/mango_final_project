@@ -6,7 +6,7 @@
           <ul class="list-unstyled navbar-nav">
             <li class="d-flex align-items-center">
             <a
-                href="/admin/admin_users"
+                href="/admin/admin_users/1"
                 class="text-decoration-none nav-link fs-5 fw-bold"
                 >관리자페이지</a
               >
@@ -32,7 +32,7 @@
             </li>
             <li class="d-flex align-items-center">
               <a
-                href="/admin/admin_events"
+                href="/admin/adminEvent/1"
                 class="text-decoration-none nav-link"
                 >이벤트 관리</a
               >
@@ -46,7 +46,7 @@
             </li>
             <li class="d-flex align-items-center">
               <a
-                href="/admin/admin_reviews"
+                href="/admin/adminReview/1"
                 class="text-decoration-none nav-link"
                 >리뷰 관리</a
               >

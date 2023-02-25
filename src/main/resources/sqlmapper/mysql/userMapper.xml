@@ -3,7 +3,7 @@
 
 <mapper namespace="userMapper">
 
-<resultMap id="userResult" type="User">
+<resultMap id="userResult">
  <result column="user_uid" property="user_uid" />
  <result column="password" property="password"/>
  <result column="name" property="name"/>

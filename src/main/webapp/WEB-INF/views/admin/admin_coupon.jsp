@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -69,66 +70,77 @@
               </tr>
             </thead>
             <tbody>
+        <c:forEach items="${resultMap.resultList}" var="resultData" varStatus="loop">
               <tr>
-                <th scope="">E01B01</th>
-                <td scope="">
+                <th>${resultData.COUPON_UID}</th>
+                <td>${resultData.COUPON_FILE}
                   <img src="../img/할인 쿠폰.PNG" alt="" style="width: 3rem" />
                 </td>
-                <td>할인쿠폰</td>
-                <td>2023.01.05</td>
-                <td>2023.01.05~2023.01.20</td>
-                <td>
-                  <div>
-                    <form action="" class="ps-2">
+                <td>${resultData.COUPON_NAME}</td>
+                <td>${resultData.COUPON_DATE}</td>
+                <td>${resultData.COUPON_DATETIME}</td>
+                 <td>
+                  <div class="d-flex justify-content-center">
+                    <div>
+                      <form action="/admin_coupon_edit/${resultData.COUPON_UID}" method="post">
+                        <input type="hidden" name="COUPON_FILE" value="${resultData.COUPON_FILE}" />
+                        <input type="hidden" name="COUPON_NAME" value="${resultData.COUPON_NAME}" />
+                        <input type="hidden" name="COUPON_DATETIME" value="${resultData.COUPON_DATETIME}" />
+                        <button
+                          type="submit"
+                          class="btn btn-sm btn-outline-secondary"
+                        >
+                          수정
+                        </button>
+                      </form>
+                    </div>
+                    <div>
+                      <form action="" class="ps-2">
+                        <input type="hidden" name="COUPON_UID" value="${resultData.COUPON_UID}" />
                       <button
-                        type="submit"
-                        class="btn btn btn-sm btn-outline-danger"
-                      >
-                        삭제
-                      </button>
-                    </form>
+                          class="btn btn-outline-danger btn-sm"
+                          onclick="if(!confirm('정말로 삭제하시겠습니까?')) return false"
+                        >
+                          삭제
+                        </button>
+                      </form>
+                    </div>
                   </div>
                 </td>
               </tr>
-              <tr>
-                <th scope="">E01B02</th>
-                <td scope="">
-                  <img
-                    src="../img/무료 배송 쿠폰.PNG"
-                    alt=""
-                    style="width: 3rem"
-                  />
-                </td>
-                <td>무료 배송 쿠폰</td>
-                <td>2023.01.05</td>
-                <td>2023.01.05~2023.01.20</td>
-                <td>
-                  <div>
-                    <form action="" class="ps-2">
-                      <button
-                        type="submit"
-                        class="btn btn btn-sm btn-outline-danger"
-                      >
-                        삭제
-                      </button>
-                    </form>
-                  </div>
-                </td>
-              </tr>
+            </c:forEach>
             </tbody>
           </table>
-          <div class="pagination pagination-sm justify-content-center mt-4">
-            <a class="page-item page-link" href="">Pre</a>
-            <a class="page-item page-link" href="">1</a>
-            <a class="page-item page-link" href="">2</a>
-            <a class="page-item page-link" href="">3</a>
-            <a class="page-item page-link" href="">4</a>
-            <a class="page-item page-link" href="">Next</a>
+          <%-- pagination --%>
+          <c:set var="_pagination" value="${resultMap.paginations}" />
+          ${paginations}
+          <span>총 쿠폰 갯수 : ${_pagination.totalCount}개</span>
+          <div class="pagination pagination-sm justify-content-center">
+            <nav aria-label="Page navigation">
+              <ul class="pagination pagination-sm">
+                <li class="page-item">
+                  <a class="page-link" href="${_pagination.previousPage}" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                    <span class="sr-only">이전</span>
+                  </a>
+                </li>
+                <c:forEach var="i" begin="${_pagination.blockStart}" end="${_pagination.blockEnd}" >
+                <li class="page-item">
+                  <a class="page-link" href="/admin/admin_coupon/${i}">${i}</a>
+                </li>
+                </c:forEach>
+                <li class="page-item">
+                  <a class="page-link" href="${_pagination.nextPage}" aria-label="Next">
+                    <span class="sr-only">다음</span>
+                    <span aria-hidden="true">&raquo;</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
           </div>
         </div>
       </main>
     </div>
-
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"

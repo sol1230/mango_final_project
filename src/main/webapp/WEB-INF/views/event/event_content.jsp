@@ -1,4 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<jsp:useBean id="now" class="java.util.Date" />
 
 <!DOCTYPE html>
 <html lang="en">
@@ -31,26 +34,43 @@
     
     <!-- 본 페이지  -->
     <div class="container">
+      <%-- 진행중, 종료 표시... --%>
+      <fmt:formatDate value="${now}" pattern="yyyy-MM-dd" var="todayDateForm" />
+      <fmt:parseDate value="${resultMap.EVENT_DATETIME.substring(13,23)}" pattern="yyyy-MM-dd" var="EVENT_DATE_END"/>
+      <fmt:formatDate value="${EVENT_DATE_END}" pattern="yyyy-MM-dd" var="EVENT_DATE_END_FORM" />
       <div class="fs-3 fw-bold text-center mt-5">이벤트</div>
       <div class="d-flex justify-content-between mt-5">
-        <div>2월 이달의 와인</div>
-        <div>2023.02.01 ~ 2023.02.28</div>
+        <div>
+          ${resultMap.EVENT_TITLE}
+          <c:if test="${todayDateForm le EVENT_DATE_END_FORM}">
+            <span
+              class="badge badge-pill"
+              style="background-color: rgb(220, 53, 69)"
+              >
+              진행중</span
+            >
+          </c:if>
+          <c:if test="${todayDateForm gt EVENT_DATE_END_FORM}">
+            <span
+              class="badge badge-pill bg-secondary"
+              >
+              종료</span
+            >
+          </c:if>
+        </div>
+        <div>${resultMap.EVENT_DATETIME}</div>
       </div>
       <hr />
-      <div class="text-center mt-5">
-        <div>
-          <img src="../img/event01-1.PNG" alt="" style="width: 800px" />
+        <div class="text-center mt-5">
+          <div class="">
+            ${resultMap.EVENT_CONTENT}
+          </div>
+          <c:if test="${not empty resultMap.PHYSICALFILE_NAME}">
+            <div class="mt-5 mb-5">
+              <img src="/img/files/${resultMap.PHYSICALFILE_NAME}/${resultMap.ORIGINALFILE_NAME}" alt="${resultMap.ORIGINALFILE_NAME}" style="width: 800px" />
+            </div>
+          </c:if>
         </div>
-        <div>
-          <img src="../img/event01-2.PNG" alt="" style="width: 800px" />
-        </div>
-        <div>
-          <img src="../img/event01-3.PNG" alt="" style="width: 800px" />
-        </div>
-        <div>
-          <img src="../img/event01-4.PNG" alt="" style="width: 800px" />
-        </div>
-      </div>
       <div class="text-center mt-5 mb-5">
         <a href="/event/event" class="btn btn-danger">목록</a>
       </div>

@@ -39,6 +39,9 @@
               language
             </i></a
           >
+          <c:choose>
+          <c:when test="${empty loginUser}">
+          <!--로그인 전 -->
           <a
             href="#modalTarget02"
             class="nav-link link-dark"
@@ -47,6 +50,21 @@
               person</i
             ></a
           >
+          </c:when>
+          
+          <!-- 로그인 후 -->
+
+          <c:otherwise>
+          <a
+            href="user/myPage"
+            class="nav-link link-dark"
+            data-bs-toggle="modal"
+            ><i class="material-icons col-1 text-secondary fs-3" id="">
+              </i
+            ></a
+          >
+          </c:otherwise>
+          </c:choose>
           <a
             href="/user/user_wishlist"
             class="nav-link link-dark"
@@ -63,7 +81,7 @@
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content text-center p-5">
           <div class="fs-4 fw-bold">로그인</div>
-          <form action="/index">
+          <form action="login.me" method="post">
             <div class="pt-3">
               <div class="">
                 <div class="">
@@ -89,6 +107,7 @@
                 <button type="submit" class="btn btn-danger form-control">
                   확인
                 </button>
+          </form>
               </div>
               <div class="pt-2 d-flex justify-content-between">
                 <div>
@@ -109,7 +128,6 @@
                 </div>
               </div>
             </div>
-          </form>
         </div>
       </div>
     </div>

@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -32,9 +33,8 @@
     <!-- 본 페이지 content -->
     <div class="row g-0 vh-100">
     <%@ include file="../etc/admin_nav.jsp" %>
-
       <main class="col-9 p-0 mb-5 ms-5">
-        <form action="/admin/admin_users">
+        <form action="/admin/admin_users_insert_done/1" method="post">
           <div class="mt-4 p-4 border bg-white">
             <div
               class="d-flex justify-content-between align-items-center input-group"
@@ -57,19 +57,23 @@
               <thead class="bg-secondary bg-opacity-25">
                 <tr>
                   <th scope="">아이디</th>
+                  <th scope="">비밀번호</th>
                   <th scope="">이름</th>
                   <th scope="">생년월일</th>
                   <th scope="">성별</th>
                   <th scope="">휴대전화</th>
+                  <th scope="">권한</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td><input type="text" class="form-control" /></td>
-                  <td><input type="text" class="form-control" /></td>
-                  <td><input type="text" class="form-control" /></td>
-                  <td><input type="text" class="form-control" /></td>
-                  <td><input type="text" class="form-control" /></td>
+                  <td><input type="text" class="form-control" name="USER_UID" value="${resultData.USER_UID}" /></td>
+                  <td><input type="text" class="form-control" name="PASSWORD" value="${resultData.PASSWORD}" /></td>
+                  <td><input type="text" class="form-control" name="NAME" value="${resultData.NAME}" /></td>
+                  <td><input type="text" class="form-control" name="BIRTH" value="${resultData.BIRTH}" /></td>
+                  <td><input type="text" class="form-control" name="GENDER" value="${resultData.GENDER}" /></td>
+                  <td><input type="text" class="form-control" name="PHONE" value="${resultData.PHONE}"/></td>
+                  <td><input type="text" class="form-control" name="AUTHORITY" value="${resultData.AUTHORITY}"/></td>
                 </tr>
               </tbody>
             </table>

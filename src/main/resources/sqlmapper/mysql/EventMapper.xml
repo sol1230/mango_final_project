@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Event">
+    <!-- call Event.selectEventList -->
+    <select id="selectEventList" parameterType="Map" resultType="Map">
+        SELECT *
+        FROM EVENT
+        ORDER BY SUBSTRING(EVENT_DATETIME, 1, 10) DESC, SUBSTRING(EVENT_DATETIME, 14, 10) DESC
+    </select>
+
+    <!-- call Event.selectEventListSearchWithDate -->
+    <select id="selectEventListSearchWithDate" parameterType="Map" resultType="Map">
+        SELECT * 
+        FROM EVENT
+        <choose>
+            <when test="selectKeyField == 'ongoing'">
+                WHERE SUBSTRING(EVENT_DATETIME, 14, 10) <![CDATA[ >= ]]> DATE_FORMAT(NOW(), '%Y-%m-%d')
+            </when>
+            <when test="selectKeyField == 'done'">
+                WHERE SUBSTRING(EVENT_DATETIME, 14, 10) <![CDATA[ < ]]> DATE_FORMAT(NOW(), '%Y-%m-%d')
+            </when>
+        </choose>
+        ORDER BY SUBSTRING(EVENT_DATETIME, 1, 10) DESC, SUBSTRING(EVENT_DATETIME, 14, 10) DESC
+    </select>
+
+    <!-- call Event.selectEventListWithUID -->
+    <select id="selectEventListWithUID" parameterType="Map" resultType="Map">
+        SELECT *
+        FROM EVENT
+        WHERE EVENT_UID = #{EVENT_UID}
+    </select>
+
+
+</mapper>

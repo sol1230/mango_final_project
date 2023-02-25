@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="AdminStore">
+<!-- ADMIN STORE -->
+    <!-- AdminStore.adminStore -->
+    <select id="adminStore" parameterType="Map" resultType="Map">
+        SELECT *
+        FROM STORE
+        <if test="pageScale != null">
+            ORDER BY STORE_UID
+            <!-- 첫번째 리스트 -->
+            LIMIT #{pageBegin}, #{pageScale}
+        </if>
+    </select>
+
+    
+    <!-- AdminStore.selectStoreTotal -->
+    <select id="selectStoreTotal" parameterType="Map" resultType="int">
+        SELECT count(*) as cnt
+        FROM STORE
+    </select>
+
+    <!-- AdminStore.insertStore -->
+    <insert id="insertStore" parameterType="Map">
+        INSERT INTO STORE(STORE_NAME, STORE_NO, STORE_CEO, STORE_URL, USER_UID, WINE_UID)
+        VALUE (#{STORE_NAME}, #{STORE_NO}, #{STORE_CEO}, #{STORE_URL}, #{USER_UID}, #{WINE_UID})
+    </insert>
+
+    <!-- AdminStore.deleteStore -->
+    <delete id="deleteStore" parameterType="Map">
+        DELETE FROM STORE
+        WHERE STORE_UID = #{STORE_UID}
+    </delete>
+</mapper>

@@ -35,9 +35,11 @@
     <%@ include file="../etc/admin_nav.jsp" %>
 
       <main class="col-9 p-0 mb-5 ms-5">
-        <form action="/admin/admin_boards" method="">
-          <input type="hidden" name="notice_date" value="2023.02.05" />
-          <input type="hidden" name="notice_writer" value="관리자" />
+        <form action="/admin/adminNoticeUpate/1" method="post">
+          <input type="hidden" name="NOTICE_UID" value="${resultMap.NOTICE_UID}" />
+          <input type="hidden" name="NOTICE_DATE" value="${resultMap.NOTICE_DATE}" />
+          <input type="hidden" name="NAME" value="${resultMap.NAME}" />
+
           <div class="mt-4 p-4 border bg-white">
             <div>
               <label for="" class="form-label fw-bold pe-3 m-0"
@@ -45,53 +47,61 @@
               >
             </div>
             <table
-              class="mt-3 table border text-center align-middle"
+              class="mt-3 table border align-middle"
               style="font-size: small"
             >
               <thead class="">
-                <tr>
+                <tr class="text-center">
                   <th scope="" class="bg-secondary bg-opacity-25">작성일</th>
-                  <td scope="" name="notice_date">2023.02.05</td>
-
+                  <td scope="" name="NOTICE_DATE">${resultMap.NOTICE_DATE}</td>
                   <th scope="" class="bg-secondary bg-opacity-25">작성자</th>
-                  <td scope="" name="notice_writer">관리자</td>
+                  <td scope="" name="NAME">${resultMap.NAME}</td>
                 </tr>
                 <tr scope="row">
-                  <th scope="" class="bg-secondary bg-opacity-25">제목</th>
+                  <th scope="" class="text-center bg-secondary bg-opacity-25">제목</th>
                   <td scope="" colspan="3">
                     <input
                       type="text"
-                      name="notice_title"
-                      id="notice_title"
+                      name="NOTICE_TITLE"
+                      id="NOTICE_TITLE"
                       class="form-control"
-                      placeholder="휴무안내"
+                      value="${resultMap.NOTICE_TITLE}"
                     />
                   </td>
                 </tr>
               </thead>
               <tbody>
                 <tr scope="row">
-                  <th class="bg-secondary bg-opacity-25">내용</th>
+                  <th class="bg-secondary bg-opacity-25 text-center">내용</th>
                   <td colspan="3">
                     <textarea
                       class="form-control"
-                      name="notice_contents"
-                      id="notice_contents"
+                      name="NOTICE_CONTENT"
+                      id="NOTICE_CONTENT"
                       cols="30"
                       rows="10"
-                    >
-설 연휴기간으로 불편함에 유의하시기 바랍니다.</textarea
-                    >
+                    >${resultMap.NOTICE_CONTENT}</textarea>
                   </td>
                 </tr>
-                <tr scope="row">
+                <%-- <tr scope="row" class="text-center">
                   <th class="bg-secondary bg-opacity-25">파일첨부</th>
                   <td colspan="3">
                     <div class="">
                       <input type="file" name="" id="" class="form-control" />
                     </div>
                   </td>
-                </tr>
+                </tr> --%>
+                <c:choose>
+                  <c:when test="${not empty resultMap.PHYSICALFILE_NAME}">
+                    <tr scope="row">
+                      <th class="bg-secondary bg-opacity-25 text-center">첨부한파일</th>
+                      <td colspan="3" class="">
+                        <img src="/img/files/${resultMap.PHYSICALFILE_NAME}/${resultMap.ORIGINALFILE_NAME}" class="w-25">
+                        <a href="/img/files/${resultMap.PHYSICALFILE_NAME}/${resultMap.ORIGINALFILE_NAME}">${resultMap.ORIGINALFILE_NAME}</a>
+                      </td>
+                    </tr>
+                  </c:when>
+                </c:choose>
               </tbody>
             </table>
             <div class="text-center">

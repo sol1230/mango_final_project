@@ -7,7 +7,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Admin reviews</title>
+    <title>Admin boards</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -24,35 +24,31 @@
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
     />
     <link rel="stylesheet" href="/css/admin.css" />
-
   </head>
-  <body class="bg-light h-100">
+  <body class="bg-light">
     <%-- header --%>
     <%@ include file="../etc/header.jsp" %>
 
     <!-- 본 페이지 content -->
     <div class="row g-0 vh-100">
-     <%@ include file="../etc/admin_nav.jsp" %>
-
+    <%@ include file="../etc/admin_nav.jsp" %>
       <main class="col-9 p-0 mb-5 ms-5">
-        <div class="mt-4 p-4 border bg-white">
-          <form action="/admin/adminReviewSearch" method="post">
+        <div class="mt-4 p-4 border bg-white" id="qnaBoard">
+          <form action="/admin/adminQnaSearch/1" method="post">
             <div
               class="d-flex justify-content-between align-items-center input-group"
             >
               <div class="d-flex align-items-center">
                 <div>
-                  <label for="" class="form-label fw-bold pe-3 m-0"
-                    >리뷰목록</label
-                  >
+                  <label for="" class="form-label fw-bold pe-3 m-0">문의</label>
                 </div>
                 <div>
                   <div class="input-group">
                     <select class="form-select" name="selectKeyField" id="" required="required">
                       <option value="">선택</option>
-                      <option value="WINE_NAME">상품명</option>
+                      <option value="QNA_TITLE">제목</option>
                       <option value="USER_UID">작성자</option>
-                      <option value="REVIEW_SCOPE">평점</option>
+                      <option value="ANSWER_STATUS">답변상태</option>
                     </select>
                     <input type="text" name="selectKeyWord" class="form-control w-50" required/>
                     <button type="submit" class="btn btn-outline-secondary">검색</button>
@@ -65,49 +61,72 @@
             class="mt-3 mb-1 table table-hover align-middle"
             style="font-size: small"
           >
-            <thead class="bg-secondary bg-opacity-25 text-center">
-              <tr>
+            <thead class="bg-secondary bg-opacity-25">
+              <tr class=" text-center">
                 <th scope="">번호</th>
-                <th scope="">상품명</th>
                 <th scope="">제목</th>
                 <th scope="">작성자</th>
-                <th scope="">평점</th>
-                <th scope="">작성일</th>
+                <th scope="">답변상태</th>
+                <th scope="">등록일</th>
                 <th scope="">기능</th>
               </tr>
             </thead>
             <tbody>
               <c:forEach items="${resultMap.resultList}" var="resultData" varStatus="loop">
-                <tr class="text-center">
-                  <td scope="">${resultData.REVIEW_UID}</td>
-                  <td scope="">${resultData.WINE_NAME}</td>
-                  <td scope="" class=""><a href="#reviewCont${loop.count}" class="text-decoration-none text-black" data-bs-toggle="collapse">
-                  ${resultData.REVIEW_TITLE}</a></td>
-                  <td>${resultData.USER_UID}</td>
-                  <td>${resultData.REVIEW_SCOPE}</td>
-                  <td>${resultData.REVIEW_DATE}</td>
+                <tr class=" text-center">
+                  <th scope="">${loop.count}</th>
                   <td>
-                    <div class="d-flex justify-content-center">
-                      <div>
-                        <form action="/admin/adminReviewDelete/1" class="ps-2">
-                        <input type="hidden" name="REVIEW_UID" value="${resultData.REVIEW_UID}" />
-                          <button
-                              class="btn btn-outline-danger btn-sm"
-                              onclick="if(!confirm('정말로 삭제하시겠습니까?')) return false"
-                            >
-                            삭제
-                          </button>
-                        </form>
-                      </div>
-                    </div>
+                    <a href="#qnaCont${loop.index}" class="text-decoration-none text-black" data-bs-toggle="collapse">
+                      ${resultData.QNA_TITLE}</a
+                    >
+                  </td>
+
+                  <td>${resultData.USER_UID}</td>
+                  <td>${resultData.ANSWER_STATUS}</td>
+                  <td>${resultData.QNA_DATE}</td>
+                  <td class="d-flex justify-content-center">
+                    <form action="/admin/adminQnaContent" method="post">
+                      <input type="hidden" name="USER_UID" value="${resultData.USER_UID}"/>
+                      <input type="hidden" name="QNA_DATE" value="${resultData.QNA_DATE}"/>
+                      <input type="hidden" name="QNA_TITLE" value="${resultData.QNA_TITLE}"/>
+                      <input type="hidden" name="QNA_CONTENT" value="${resultData.QNA_CONTENT}"/>
+                      <button
+                        type="submit"
+                        class="btn btn-sm btn-outline-secondary"
+                      >
+                        답변등록
+                      </button>
+                    </form>
+                    <form action="/admin/adminQnaDelete/1" class="ps-2" method="post">
+                      <input type="hidden" name="QNA_UID" value="${resultData.QNA_UID}"/>
+                      <button
+                        type="submit"
+                        class="btn btn btn-sm btn-outline-danger"
+                        onclick="if(!confirm('정말로 삭제하시겠습니까?')) return false"
+                      >
+                        삭제
+                      </button>
+                    </form>
                   </td>
                 </tr>
-                <tr class="collapse" id="reviewCont${loop.count}">
-                  <td  class="bg-light p-4" colspan="7">
-                    <%-- 공지 내용 --%>
+                <tr class="collapse" id="qnaCont${loop.index}">
+                  <td  class="bg-light p-4" colspan="6">
+                    <%-- 문의 내용 --%>
                     <div>
+                      <span class="fw-bold fs-5 text-secondary">
+                        Q. 
+                      </span>
                       <span>
-                        ${resultData.REVIEW_CONTENT}
+                        ${resultData.QNA_CONTENT}
+                      </span>
+                    </div>
+                    <%-- 답변 내용 --%>
+                    <div class="mt-2">
+                      <span class="fw-bold fs-5 text-danger">
+                        A. 
+                      </span>
+                      <span>
+                        ${resultData.QNA_ANSWER}
                       </span>
                     </div>
                   </td>
@@ -124,16 +143,16 @@
                 <nav aria-label="Page navigation example ">
                   <ul class="pagination pagination-sm">
                     <li class="page-item">
-                      <a class="page-link" href="/admin/adminReview/${_pagination.previousPage}" aria-label="Previous">
+                      <a class="page-link" href="/admin/adminQna/${_pagination.previousPage}" aria-label="Previous">
                         <span class="sr-only">Pre</span>
                       </a>
                     </li>
                     <%-- for(int i = 0; i > 9; i++){} --%>
                     <c:forEach var="i" begin="${_pagination.blockStart}" end="${_pagination.blockEnd}">
-                      <li class="page-item"><a class="page-link" href="/admin/adminReview/${i}">${i}</a></li>
+                      <li class="page-item"><a class="page-link" id="qnaPaginationBtn" href="/admin/adminQna/${i}">${i}</a></li>
                     </c:forEach>
                     <li class="page-item">
-                      <a class="page-link" href="/admin/adminReview/${_pagination.nextPage}" aria-label="Next">
+                      <a class="page-link" href="/admin/adminQna/${_pagination.nextPage}" aria-label="Next">
                         <span class="sr-only">Next</span>
                       </a>
                     </li>
@@ -145,7 +164,6 @@
         </div>
       </main>
     </div>
-
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"

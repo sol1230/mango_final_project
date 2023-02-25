@@ -1,10 +1,112 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="mapper">
-    <select id="selectByUID" parameterType="Map" resultType="Map">
+<mapper namespace="AdminBoard">
+    <!-- call AdminBoard.selectQna -->
+    <select id="selectQna" parameterType="Map" resultType="Map">
         SELECT * 
-        FROM CIP_COMMON_CODE
-        WHERE COMMON_CODE_ID = #{COMMON_CODE_ID}
+        FROM QNA
+        <if test="pageScale != null">
+            ORDER BY QNA_DATE
+            LIMIT #{pageBegin}, #{pageScale}
+        </if>
     </select>
+
+    <!-- call AdminBoard.selectQnaSearch -->
+    <select id="selectQnaSearch" parameterType="Map" resultType="Map">
+        SELECT * 
+        FROM QNA
+        <if test="selectKeyField != '' and selectKeyWord != null" >
+            WHERE ${selectKeyField} = #{selectKeyWord}
+        </if>
+    </select>
+
+    <!-- call AdminBoard.selectQnaContent -->
+    <select id="selectQnaContent" parameterType="Map" resultType="Map">
+        SELECT *
+        FROM QNA
+        WHERE USER_UID = #{USER_UID} AND QNA_TITLE = #{QNA_TITLE} AND QNA_CONTENT = #{QNA_CONTENT}
+    </select>
+
+    <!-- call AdminBoard.updateQnaAnswer -->
+    <update id="updateQnaAnswer" parameterType="Map"> 
+        UPDATE QNA
+        SET 
+        <choose>
+            <when test="QNA_ANSWER != ''">
+                QNA_ANSWER = #{QNA_ANSWER}, ANSWER_STATUS = '답변완료'
+            </when>
+            <otherwise>
+                ANSWER_STATUS = '답변완료'
+            </otherwise>
+        </choose>
+        WHERE USER_UID = #{USER_UID} AND QNA_TITLE = #{QNA_TITLE} AND QNA_CONTENT = #{QNA_CONTENT}
+    </update>
+
+    <!-- call AdminBoard.deleteQna -->
+    <delete id="deleteQna" parameterType="Map"> 
+        DELETE FROM QNA 
+        WHERE QNA_UID = #{QNA_UID}
+    </delete>
+
+    <!-- call AdminBoard.selectQnaTotal -->
+    <select id="selectQnaTotal" parameterType="Map" resultType="int">
+        SELECT count(*) as cnt
+        FROM QNA
+    </select>
+
+
+    <!-- 여기서부터 공지 -->
+    
+    <!-- call AdminBoard.selectNoticeTotal -->
+    <select id="selectNoticeTotal" parameterType="Map" resultType="int">
+        SELECT count(*) as cnt
+        FROM NOTICE
+    </select>
+
+    <!-- call AdminBoard.selectNotice -->
+    <select id="selectNotice" parameterType="Map" resultType="Map">
+        SELECT *
+        FROM USER INNER JOIN NOTICE
+        ON USER.USER_UID = NOTICE.USER_UID
+        <if test="pageScale != null">
+            ORDER BY NOTICE_DATE
+            LIMIT #{pageBegin}, #{pageScale}
+        </if>
+    </select>
+
+    <!-- call AdminBoard.selectNoticeContent -->
+    <select id="selectNoticeContent" parameterType="Map" resultType="Map">
+        SELECT *
+        FROM NOTICE INNER JOIN USER
+        ON NOTICE.USER_UID = USER.USER_UID
+        WHERE NOTICE_UID = #{NOTICE_UID} AND NOTICE_TITLE = #{NOTICE_TITLE} AND NOTICE_CONTENT = #{NOTICE_CONTENT}
+    </select>
+
+    <!-- call AdminBoard.updateNotice -->
+    <update id="updateNotice" parameterType="Map"> 
+        UPDATE NOTICE
+        SET NOTICE_TITLE = #{NOTICE_TITLE}, NOTICE_CONTENT = #{NOTICE_CONTENT}
+        WHERE NOTICE_UID = #{NOTICE_UID}
+    </update>
+
+    <!-- call AdminBoard.deleteNotice -->
+    <delete id="deleteNotice" parameterType="Map"> 
+        DELETE FROM NOTICE 
+        WHERE NOTICE_UID = #{NOTICE_UID}
+    </delete>
+
+    <!-- call AdminBoard.insertNoticeWithFile -->
+    <insert id="insertNoticeWithFile" parameterType="Map"> 
+        INSERT INTO NOTICE (NOTICE_DATE, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_FILE, ATTACHFILE_SEQ, ORIGINALFILE_NAME, PHYSICALFILE_NAME, USER_UID)
+        VALUES
+        <!-- ('2023-02-21', '서버점검안내', '서버점검이 2023년...', NULL,'UUID','공지.txt','파일들 폴더명', '관리자')
+        ,('2023-02-23', '비밀번호변경', '마이페이지에서...', NULL,'UUID','공지.txt','파일들 폴더명', '관리자')     -->
+        <foreach collection="attachfiles" item="attachfile"
+                open="(" close=")" separator="),(">
+            #{attachfile.NOTICE_DATE}, #{attachfile.NOTICE_TITLE}, #{attachfile.NOTICE_CONTENT}, #{attachfile.NOTICE_FILE}, #{attachfile.ATTACHFILE_SEQ}
+            ,#{attachfile.ORIGINALFILE_NAME},#{attachfile.PHYSICALFILE_NAME},#{USER_UID}
+        </foreach>
+    </insert>
+
 </mapper>

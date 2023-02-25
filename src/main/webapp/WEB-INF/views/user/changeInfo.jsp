@@ -39,7 +39,7 @@
         <div class="pt-3">
           <div class="">
             <label for="" class="pb-1">아이디</label>
-            <input type="text" class="form-control" name="user_id" readonly />
+            <input type="text" class="form-control" name="user_uid" value="${loginUser.user_uid}" readonly />
           </div>
           <div class="pt-3">
             <label for="" class="pb-1">현재 비밀번호</label>
@@ -73,7 +73,7 @@
 
           <div class="pt-3">
             <label for="" class="pb-1">이름</label>
-            <input type="text" class="form-control" name="name" required />
+            <input type="text" class="form-control" name="name" value="${loginUser.name}" required />
           </div>
           <div class="pt-3">
             <label for="" class="pb-1">생년월일</label>
@@ -82,6 +82,7 @@
               name="birth"
               id="birth"
               class="form-control"
+              vlaue="${loginUser.birth}"
               required
             />
           </div>
@@ -96,7 +97,7 @@
             <label for="" class="pb-1">휴대전화</label>
             <div class="row">
               <div class="col">
-                <select class="form-select" name="phone0" required>
+                <select class="form-select" name="phone0" value="${loginUser.phone}"required>
                   <option>선택</option>
                   <option value="010">010</option>
                   <option value="012">012</option>

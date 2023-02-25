@@ -1,13 +1,11 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Admin users modify</title>
+    <title>Admin users add</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -26,27 +24,30 @@
     <link rel="stylesheet" href="/css/admin.css" />
 
   </head>
-  <body class="bg-light">
+  <body class="bg-light h-100">
     <%-- header --%>
     <%@ include file="../etc/header.jsp" %>
 
     <!-- 본 페이지 content -->
     <div class="row g-0 vh-100">
     <%@ include file="../etc/admin_nav.jsp" %>
+
       <main class="col-9 p-0 mb-5 ms-5">
+        <form action="/admin/admin_stores">
           <div class="mt-4 p-4 border bg-white">
-        <form action="/admin/admin_users_update" method="post">
             <div
               class="d-flex justify-content-between align-items-center input-group"
             >
               <div>
                 <label for="" class="form-label fw-bold pe-3 m-0"
-                  >회원수정</label
+                  >판매처 추가</label
                 >
               </div>
+              <div class="">
                 <button tpye="submit" class="btn btn-sm btn-outline-secondary">
-                  수정하기
+                  추가하기
                 </button>
+              </div>
             </div>
             <table
               class="mt-3 table text-center align-middle"
@@ -54,50 +55,18 @@
             >
               <thead class="bg-secondary bg-opacity-25">
                 <tr>
-                  <th scope="">아이디</th>
-                  <th scope="">이름</th>
-                  <th scope="">생년월일</th>
-                  <th scope="">성별</th>
-                  <th scope="">휴대전화</th>
+                  <th scope="">판매처</th>
+                  <th scope="">사업자번호</th>
+                  <th scope="">대표자</th>
+                  <th scope="">기능</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>
-                    <input
-                      type="text"
-                      class="form-control"
-                      value="${resultMap.USER_UID}"
-                    />
-                  </td>
-                  <td>
-                    <input
-                      type="text"
-                      class="form-control"
-                      value="${resultMap.NAME}"
-                    />
-                  </td>
-                  <td>
-                    <input
-                      type="text"
-                      class="form-control"
-                      value="${resultMap.BIRTH}"
-                    />
-                  </td>
-                  <td>
-                    <input 
-                      type="text"
-                      class="form-control"
-                      value="${resultMap.GENDER}"
-                    />
-                  </td>
-                  <td>
-                    <input
-                      type="text"
-                      class="form-control"
-                      value="${resultMap.PHONE}"
-                    />
-                  </td>
+                  <td><input type="text" class="form-control" /></td>
+                  <td><input type="text" class="form-control" /></td>
+                  <td><input type="text" class="form-control" /></td>
+                  <td><input type="text" class="form-control" /></td>
                 </tr>
               </tbody>
             </table>

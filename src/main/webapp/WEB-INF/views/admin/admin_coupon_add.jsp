@@ -49,10 +49,10 @@
               style="font-size: small"
             >
               <thead class="">
-                <tr>
+                <tr scope="row">
                   <th scope="" class="bg-secondary bg-opacity-25">작성일</th>
-                  <td scope="" name="notice_date">2023.02.05</td>
-
+                  <td scope="" colspan="" name="notice_date">2022.12.02
+                  </td>
                   <th scope="" class="bg-secondary bg-opacity-25">작성자</th>
                   <td scope="" name="notice_writer">관리자</td>
                 </tr>
@@ -64,7 +64,7 @@
                       name="notice_title"
                       id="notice_title"
                       class="form-control"
-                      placeholder="제목을 입력해 주세요."
+                      placeholder="이름을 입력해 주세요."
                     />
                   </td>
                 </tr>

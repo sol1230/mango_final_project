@@ -34,9 +34,7 @@
      <%@ include file="../etc/admin_nav.jsp" %>
 
       <main class="col-9 p-0 mb-5 ms-5">
-        <form action="/admin/admin_boards" method="">
-          <input type="hidden" name="notice_date" value="2023.02.05" />
-          <input type="hidden" name="notice_writer" value="관리자" />
+        <form action="/admin/adminQnaAnswer/1" method="post">
           <div class="mt-4 p-4 border bg-white">
             <div>
               <label for="" class="form-label fw-bold pe-3 m-0"
@@ -50,18 +48,16 @@
               <thead class="">
                 <tr>
                   <th scope="" class="bg-secondary bg-opacity-25">작성일</th>
-                  <td scope="" name="notice_date">2023.02.04</td>
+                  <td scope="" name="notice_date">${resultMap.QNA_DATE}</td>
 
                   <th scope="" class="bg-secondary bg-opacity-25">작성자</th>
-                  <td scope="" name="notice_writer">김민아</td>
+                  <td scope="" name="USER_UID">${resultMap.USER_UID}</td>
+                  <input type="hidden" name="USER_UID" value="${resultMap.USER_UID}" />
                 </tr>
                 <tr scope="row">
                   <th scope="" class="bg-secondary bg-opacity-25">제목</th>
-                  <td scope="" colspan="3">상품 문의드립니다.</td>
-                </tr>
-                <tr scope="row">
-                  <th scope="" class="bg-secondary bg-opacity-25">구분</th>
-                  <td scope="" colspan="3">상품관련</td>
+                  <td scope="" colspan="3">${resultMap.QNA_TITLE}</td>
+                  <input type="hidden" name="QNA_TITLE" value="${resultMap.QNA_TITLE}" />
                 </tr>
               </thead>
               <tbody>
@@ -70,20 +66,20 @@
                     내용
                   </th>
                   <td colspan="3">
-                    선물용으로도 인기가 많은 상품인가요? 기념일에 선물용으로
-                    괜찮을지 궁금해요. 너무 당도가 높지는 않겠죠?
+                    ${resultMap.QNA_CONTENT}
                   </td>
+                  <input type="hidden" name="QNA_CONTENT" value="${resultMap.QNA_CONTENT}" />
                 </tr>
                 <tr scope="row">
                   <th class="bg-secondary bg-opacity-25">답변</th>
                   <td colspan="3">
                     <textarea
                       class="form-control"
-                      name="notice_contents"
-                      id="notice_contents"
+                      name="QNA_ANSWER"
+                      id="QNA_ANSWER"
                       cols="30"
                       rows="5"
-                    ></textarea>
+                    >${resultMap.QNA_ANSWER}</textarea>
                   </td>
                 </tr>
               </tbody>
