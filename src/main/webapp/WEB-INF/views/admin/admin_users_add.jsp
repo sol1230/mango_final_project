@@ -34,7 +34,7 @@
     <div class="row g-0 vh-100">
     <%@ include file="../etc/admin_nav.jsp" %>
       <main class="col-9 p-0 mb-5 ms-5">
-        <form action="/admin/admin_users_insert_done" method="post">
+        <form action="/admin/admin_users_insert_done/1" method="post">
           <div class="mt-4 p-4 border bg-white">
             <div
               class="d-flex justify-content-between align-items-center input-group"

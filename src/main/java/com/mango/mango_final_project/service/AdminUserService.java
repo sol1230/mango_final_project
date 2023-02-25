@@ -50,10 +50,10 @@ public class AdminUserService {
 
   // 동작 후 list로 돌아가기
 
-  // insert and get list
+  // insert and get list + 페이지네이션(sh)
   public Object insertAndGetList(Object dataMap) {
-    Object result = this.insertUser(dataMap);
-    result = this.getList(dataMap);
+    Object result = this.insertUser(dataMap);  // --> 회원 insert 완료
+    result = this.userWithPagination(dataMap); // --> 페이지네이션 + 회원 목록 리스트 출력
     return result;
   }
 
@@ -78,10 +78,8 @@ public class AdminUserService {
     int currentPage = (int) ((Map<String, Object>) dataMap).get("currentPage");
     Paginations paginations = new Paginations(totalCount, currentPage);
     result.put("paginations", paginations);
-    ((Map<String, Object>) dataMap).put(
-        "pageBegin",
-        paginations.getPageBegin()
-      );
+       ((Map<String, Object>) dataMap).put("pageBegin", paginations.getPageBegin());
+        ((Map<String, Object>) dataMap).put("pageScale", paginations.getPageScale());
     result.put("resultList", this.getList(dataMap));
     return result;
   }

@@ -105,13 +105,15 @@ public class AdminUserController {
 
   // user insert complete
   @RequestMapping(
-    value = "/admin_users_insert_done",
+    value = "/admin_users_insert_done/{currentPage}",
     method = RequestMethod.POST
   )
   public ModelAndView userInsertDone(
     @RequestParam Map<String, Object> params,
+    @PathVariable String currentPage,
     ModelAndView modelAndView
   ) {
+    params.put("currentPage", Integer.parseInt(currentPage));
     Object resultMap = adminUserService.insertAndGetList(params);
     modelAndView.addObject("resultMap", resultMap);
     modelAndView.setViewName("admin/admin_users");
