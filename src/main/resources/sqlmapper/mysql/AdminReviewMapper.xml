@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="AdminReview">
+    <!-- call AdminReview.selectReview -->
+    <select id="selectReview" parameterType="Map" resultType="Map">
+        SELECT *
+        FROM REVIEW INNER JOIN WINE
+        ON REVIEW.WINE_UID = WINE.WINE_UID
+        <if test="pageScale != null">
+            ORDER BY REVIEW_DATE
+            LIMIT #{pageBegin}, #{pageScale}
+        </if>
+    </select>
+
+    <!-- call AdminReview.selectReviewSearch -->
+    <select id="selectReviewSearch" parameterType="Map" resultType="Map">
+        SELECT * 
+        FROM REVIEW INNER JOIN WINE
+        ON REVIEW.WINE_UID = WINE.WINE_UID
+        <if test="selectKeyField != '' and selectKeyWord != null" >
+            WHERE ${selectKeyField} = #{selectKeyWord}
+        </if>
+    </select>
+
+    <!-- call AdminReview.selectQnaContent -->
+    <select id="selectQnaContent" parameterType="Map" resultType="Map">
+        SELECT *
+        FROM QNA
+        WHERE USER_UID = #{USER_UID} AND QNA_TITLE = #{QNA_TITLE} AND QNA_CONTENT = #{QNA_CONTENT}
+    </select>
+
+    <!-- call AdminReview.selectReviewTotal -->
+    <select id="selectReviewTotal" parameterType="Map" resultType="int">
+        SELECT count(*) as cnt
+        FROM REVIEW
+    </select>
+
+    <!-- call AdminReview.deleteReview -->
+    <delete id="deleteReview" parameterType="Map"> 
+        DELETE FROM REVIEW
+        WHERE REVIEW_UID = #{REVIEW_UID}
+    </delete>
+
+</mapper>
