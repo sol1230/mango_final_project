@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="Wine">
+<mapper namespace="WineList">
 
-    <!-- 와인목록 -->
+    <!-- 와인 목록 -->
     <select id="wineList" parameterType="Map" resultType="Map">
         SELECT * 
         FROM WINE
     </select>
+
 
     <!-- 와인 삭제 -->
     <delete id="wineDelete" parameterType="Map">
@@ -19,12 +20,12 @@
     <!-- 와인 추가 -->
     <insert id="wineInsert" parameterType="Map">
         INSERT INTO WINE 
-            (WINE_UID, WINE_NAME, WINE_NAME_EN, WINE_SCOPE, 
+            (WINE_NAME, WINE_NAME_EN, WINE_SCOPE, 
             WINE_COMPANY, WINE_VARIETY, WINE_COUNTRY, WINE_REGION, 
             WINE_TYPE, WINE_ALCOHOL_DEGREE, WINE_PRICE, WINE_IMAGE, 
             WINE_FILE, WINE_INFO, WINE_FOOD_PAIRING)
         VALUES 
-            (#{WINE_UID}, #{WINE_NAME}, #{WINE_NAME_EN}, #{WINE_SCOPE}, 
+            (#{WINE_NAME}, #{WINE_NAME_EN}, #{WINE_SCOPE}, 
             #{WINE_COMPANY}, #{WINE_VARIETY}, #{WINE_COUNTRY}, #{WINE_REGION}, 
             #{WINE_TYPE}, #{WINE_ALCOHOL_DEGREE}, #{WINE_PRICE}, #{WINE_IMAGE}, 
             #{WINE_FILE}, #{WINE_INFO}, #{WINE_FOOD_PAIRING})

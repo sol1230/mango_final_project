@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="WineCountry">
+    <!-- 프랑스 와인 목록 -->
+    <select id="wineFranceList" parameterType="Map" resultType="Map">
+        SELECT *
+        FROM WINE
+        WHERE WINE_COUNTRY LIKE '프랑스%'
+    </select>
+    <!-- 스페인 와인 목록 -->
+    <select id="wineSpainList" parameterType="Map" resultType="Map">
+        SELECT *
+        FROM WINE
+        WHERE WINE_COUNTRY LIKE '스페인%'
+    </select>
+
+</mapper>
