@@ -73,11 +73,7 @@
                 <tr>
                   <th scope="">${resultData.EVENT_UID}</th>
                   <td scope="">
-                    <img
-                      src="../img/2023대한민국와인출품안내썸네일.jpg"
-                      alt=""
-                      style="width: 3rem"
-                    />
+                    <img src="/img/files/${resultData.PHYSICALFILE_NAME}/${resultData.ORIGINALFILE_NAME}" style="width: 3rem" alt="${resultData.ORIGINALFILE_NAME}">
                   </td>
                   <td>${resultData.EVENT_TITLE}</td>
                   <td>${resultData.EVENT_DATETIME}</td>

@@ -42,7 +42,7 @@ public class AdminEventController {
 
     // Event 추가 + 페이지네이션
     @RequestMapping(value = "/admin/adminEventInsert/{currentPage}", method = RequestMethod.POST)
-    public ModelAndView adminEventInsert(MultipartHttpServletRequest multipartHttpServletRequest, @RequestParam Map<String, Object> params, @PathVariable String currentPage, ModelAndView modelAndView) throws IllegalStateException, IOException {
+    public ModelAndView adminEventInsert(MultipartHttpServletRequest multipartHttpServletRequest, @RequestParam Map<String, Object> params, @PathVariable String currentPage, ModelAndView modelAndView) {
         
         Iterator<String> fileNames = multipartHttpServletRequest.getFileNames(); // 파일 이름들 가져옴
         String absolutePath = commonUtils.getRelativeToAbsolutePath("src/main/resources/static/img/files/") ;
@@ -61,10 +61,11 @@ public class AdminEventController {
             if(originalFileName != null && multipartFile.getSize() > 0) { // 방어처리
 
                 String storePathFileName = storePath + originalFileName; // 저장할 path 이름
-                multipartFile.transferTo(new File(storePathFileName)); // relativePath 경로 설정
-                
-                // SOURCE_UNIQUE_SEQ, ORGINALFILE_NAME, PHYSICALFILE_NAME 이 3가지를 중점적으로 넣어야 한다
-                // 이걸 모아서 뭉치로 묶어 params로 넣어야 한다. 3가지를 list로 넣고 각각을 map으로
+                try {
+                    multipartFile.transferTo(new File(storePathFileName)); // relativePath 경로 설정
+                    
+                    // SOURCE_UNIQUE_SEQ, ORGINALFILE_NAME, PHYSICALFILE_NAME 이 3가지를 중점적으로 넣어야 한다
+                    // 이걸 모아서 뭉치로 묶어 params로 넣어야 한다. 3가지를 list로 넣고 각각을 map으로
                 // 1. HashMap에 넣어주기
                 attachfile = new HashMap<>();
                 attachfile.put("EVENT_UID", params.get("EVENT_UID"));
@@ -80,6 +81,12 @@ public class AdminEventController {
                 
                 // 2. ArrayList로 묶기
                 attachfiles.add(attachfile);
+                
+                } catch (IllegalStateException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         }
         params.put("attachfiles", attachfiles);
