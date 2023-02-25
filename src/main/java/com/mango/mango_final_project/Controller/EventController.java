@@ -4,6 +4,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -32,6 +33,16 @@ public class EventController {
         Object resultMap = eventService.getEventListSearchWithDate(params);
         modelAndView.addObject("resultMap", resultMap);
         modelAndView.setViewName("event/event");
+        return modelAndView;
+    }
+
+    // Event 내용 출력
+    @RequestMapping(value = "/event/eventContent/{uniqueId}", method = RequestMethod.GET)
+    public ModelAndView eventPage(@RequestParam Map<String, Object> params, @PathVariable String uniqueId, ModelAndView modelAndView) {
+        params.put("EVENT_UID", uniqueId);
+        Object resultMap = eventService.getEventContentWithUID(params);
+        modelAndView.addObject("resultMap", resultMap);
+        modelAndView.setViewName("event/event_content");
         return modelAndView;
     }
 }

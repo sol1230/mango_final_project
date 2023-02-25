@@ -36,7 +36,7 @@
     <%@ include file="../etc/admin_nav.jsp" %>
 
       <main class="col-9 p-0 mb-5 ms-5">
-        <form action="/admin/adminNoticeInsert/1" method="post">
+        <form action="/admin/adminNoticeInsert/1" method="post" enctype = "multipart/form-data">
           <input type="hidden" name="USER_UID" value="ADMIN" />
           <div class="mt-4 p-4 border bg-white">
             <div>

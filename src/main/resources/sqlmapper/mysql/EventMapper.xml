@@ -6,7 +6,7 @@
     <select id="selectEventList" parameterType="Map" resultType="Map">
         SELECT *
         FROM EVENT
-        ORDER BY SUBSTRING(EVENT_DATETIME, 1, 10)
+        ORDER BY SUBSTRING(EVENT_DATETIME, 1, 10) DESC, SUBSTRING(EVENT_DATETIME, 14, 10) DESC
     </select>
 
     <!-- call Event.selectEventListSearchWithDate -->
@@ -21,6 +21,14 @@
                 WHERE SUBSTRING(EVENT_DATETIME, 14, 10) <![CDATA[ < ]]> DATE_FORMAT(NOW(), '%Y-%m-%d')
             </when>
         </choose>
+        ORDER BY SUBSTRING(EVENT_DATETIME, 1, 10) DESC, SUBSTRING(EVENT_DATETIME, 14, 10) DESC
+    </select>
+
+    <!-- call Event.selectEventListWithUID -->
+    <select id="selectEventListWithUID" parameterType="Map" resultType="Map">
+        SELECT *
+        FROM EVENT
+        WHERE EVENT_UID = #{EVENT_UID}
     </select>
 
 

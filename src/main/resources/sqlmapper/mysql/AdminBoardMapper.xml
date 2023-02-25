@@ -96,10 +96,17 @@
         WHERE NOTICE_UID = #{NOTICE_UID}
     </delete>
 
-    <!-- call AdminBoard.insertNotice -->
-    <delete id="insertNotice" parameterType="Map"> 
-        INSERT INTO NOTICE (NOTICE_DATE, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_FILE, USER_UID)
-        VALUE (#{NOTICE_DATE}, #{NOTICE_TITLE}, #{NOTICE_CONTENT}, #{NOTICE_FILE}, #{USER_UID})
-    </delete>
+    <!-- call AdminBoard.insertNoticeWithFile -->
+    <insert id="insertNoticeWithFile" parameterType="Map"> 
+        INSERT INTO NOTICE (NOTICE_DATE, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_FILE, ATTACHFILE_SEQ, ORIGINALFILE_NAME, PHYSICALFILE_NAME, USER_UID)
+        VALUES
+        <!-- ('2023-02-21', '서버점검안내', '서버점검이 2023년...', NULL,'UUID','공지.txt','파일들 폴더명', '관리자')
+        ,('2023-02-23', '비밀번호변경', '마이페이지에서...', NULL,'UUID','공지.txt','파일들 폴더명', '관리자')     -->
+        <foreach collection="attachfiles" item="attachfile"
+                open="(" close=")" separator="),(">
+            #{attachfile.NOTICE_DATE}, #{attachfile.NOTICE_TITLE}, #{attachfile.NOTICE_CONTENT}, #{attachfile.NOTICE_FILE}, #{attachfile.ATTACHFILE_SEQ}
+            ,#{attachfile.ORIGINALFILE_NAME},#{attachfile.PHYSICALFILE_NAME},#{USER_UID}
+        </foreach>
+    </insert>
 
 </mapper>

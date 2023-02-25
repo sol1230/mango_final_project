@@ -40,8 +40,8 @@
     <!-- 본 페이지 -->
     <div class="container mb-5">
       <div class="fs-3 fw-bold text-center mt-5">이벤트</div>
-      <div class="d-flex justify-content-between mt-4">
-        <div>전체 이벤트</div>
+      <div class="d-flex justify-content-between mt-3 align-middle">
+        <div class="pt-2">전체 이벤트</div>
         <form action="/event/eventSearchWithDate" method="get">
           <div>
             <select class="custom-select form-control text-center" name="selectKeyField" id="selectKeyField" onchange="this.form.submit()">
@@ -53,8 +53,8 @@
           </div>
         </form>
       </div>
-      <hr />
-      <table class="table">
+      <hr class="mb-1"/>
+      <table class="table table-hover">
         <c:forEach items="${resultMap}" var="resultData" varStatus="loop">
           <%-- 진행중, 종료 표시 test중..... --%>
           <fmt:formatDate value="${now}" pattern="yyyy-MM-dd" var="todayDateForm" />
@@ -62,14 +62,15 @@
           <fmt:formatDate value="${EVENT_DATE_END}" pattern="yyyy-MM-dd" var="EVENT_DATE_END_FORM" />
           <%-- <fmt:parseDate value="${now}" pattern="yyyy-MM-dd" var="today"/> --%>
           <tr>
-            <td>
-              <div class="d-flex align-items-center">
-                <div>
-                  <img src="/img/files/${resultData.PHYSICALFILE_NAME}/${resultData.ORIGINALFILE_NAME}" alt="${resultData.ORIGINALFILE_NAME}" style="width: 250px" />
+            <td scope="">
+              <div class="d-flex align-items-center text-align-center">
+                <div style="width: 200px; height: 200px; overflow: hidden;" class="">
+                  <img src="/img/files/${resultData.PHYSICALFILE_NAME}/${resultData.ORIGINALFILE_NAME}" alt="${resultData.ORIGINALFILE_NAME}" 
+                  style="width: 200px; heigth: 200px; object-fit: cover;" class=""/>
                 </div>
                 <div class="ms-3">
                   <a
-                    href="/event/event_content01"
+                    href="/event/eventContent/${resultData.EVENT_UID}"
                     class="text-decoration-none"
                     style="color: black"
                     >${resultData.EVENT_TITLE}</a

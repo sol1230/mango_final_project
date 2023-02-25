@@ -83,14 +83,25 @@
                     >${resultMap.NOTICE_CONTENT}</textarea>
                   </td>
                 </tr>
-                <tr scope="row" class="text-center">
+                <%-- <tr scope="row" class="text-center">
                   <th class="bg-secondary bg-opacity-25">파일첨부</th>
                   <td colspan="3">
                     <div class="">
                       <input type="file" name="" id="" class="form-control" />
                     </div>
                   </td>
-                </tr>
+                </tr> --%>
+                <c:choose>
+                  <c:when test="${not empty resultMap.PHYSICALFILE_NAME}">
+                    <tr scope="row">
+                      <th class="bg-secondary bg-opacity-25 text-center">첨부한파일</th>
+                      <td colspan="3" class="">
+                        <img src="/img/files/${resultMap.PHYSICALFILE_NAME}/${resultMap.ORIGINALFILE_NAME}" class="w-25">
+                        <a href="/img/files/${resultMap.PHYSICALFILE_NAME}/${resultMap.ORIGINALFILE_NAME}">${resultMap.ORIGINALFILE_NAME}</a>
+                      </td>
+                    </tr>
+                  </c:when>
+                </c:choose>
               </tbody>
             </table>
             <div class="text-center">

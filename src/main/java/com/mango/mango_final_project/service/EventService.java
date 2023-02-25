@@ -18,10 +18,17 @@ public class EventService {
         return result;
     }
     
-    // 진행중, 종료 이벤트 검색 
+    // 진행중, 종료 이벤트 검색 + 리스트 출력
     public Object getEventListSearchWithDate(Object dataMap) {
         String sqlMapId = "Event.selectEventListSearchWithDate";
         Object result = commonDao.getList(sqlMapId, dataMap);
+        return result;
+    }
+
+    // 이벤트 내용 출력
+    public Object getEventContentWithUID(Object dataMap) {
+        String sqlMapId = "Event.selectEventListWithUID";
+        Object result = commonDao.getOne(sqlMapId, dataMap);
         return result;
     }
 }

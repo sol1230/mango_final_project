@@ -150,17 +150,19 @@ public class AdminBoardService {
         return result;
     }
 
-    // 공지 insert
-    public Object insertNotice(Object dataMap) {
-        String sqlMapId = "AdminBoard.insertNotice";
+    // 공지 insert + File insert
+    public Object insertNoticeWithFile(Object dataMap) {
+        String sqlMapId = "AdminBoard.insertNoticeWithFile";
         Object result = commonDao.insert(sqlMapId, dataMap);
         return result;
     }
 
-    // 공지 insert 후 리스트 출력 + 페이지네이션
-    public Object insertNoticeAndGetNoticeList(Object dataMap) {
-        Object result = this.insertNotice(dataMap);
+    // 공지 insert 후 리스트 출력 + 페이지네이션 + File insert
+    public Object insertNoticeWithFileAndGetNoticeList(Object dataMap) {
+        Object result = this.insertNoticeWithFile(dataMap);
         result = this.getNoticeListWithPagination(dataMap);
         return result;
     }
+
+    // 공지 insert
 }
