@@ -6,7 +6,9 @@
     <select id="winePrice3List" parameterType="Map" resultType="Map">
         SELECT *
         FROM WINE
+        <![CDATA[
         WHERE WINE_PRICE <= 30000
+        ]]>
     </select>
 
 </mapper>
