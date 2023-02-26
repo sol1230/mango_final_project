@@ -38,14 +38,14 @@ public class AdminStoreService {
   // insert and get store list
   public Object insertStoreAndGetList(Object dataMap) {
     Object result = this.insertStore(dataMap);
-    result = this.getStoreList(dataMap);
+    result = this.storeWithPagination(dataMap);
     return result;
   }
 
   // delete and get store list
   public Object deleteStoreAndGetList(Object dataMap) {
     Object result = this.deleteStore(dataMap);
-    result = this.getStoreList(dataMap);
+    result = this.storeWithPagination(dataMap);
     return result;
   }
 

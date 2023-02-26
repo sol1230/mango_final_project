@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -35,7 +36,7 @@
     <!-- 본 페이지 content -->
     <div class="container mb-5">
       <div class="fs-3 text-center mt-5 fw-bold">공지사항</div>
-      <table class="table mt-5 text-center">
+      <table class="table mt-5 text-center justify-content-center">
         <thead>
           <tr>
             <th>번호</th>
@@ -44,54 +45,23 @@
           </tr>
         </thead>
         <tbody>
+        <form action="/notice/notice_content" method="get">
+        <c:forEach items="${resultMap.resultList}" var="resultData" varStatus="loop">
           <tr>
-            <td>10</td>
+            <td>${resultData.NOTICE_UID}</td>
             <td>
               <a
-                href="/notice_N_qna/notice_content"
+                href="/notice/notice_content/${resultData.NOTICE_UID}"
                 class="text-decoration-none"
                 style="color: black"
-                >배송 불가 안내</a
+                >${resultData.NOTICE_TITLE}</a
               >
             </td>
-            <td>2023.01.06</td>
+            <td>${resultData.NOTICE_DATE}</td>
           </tr>
-          <tr>
-            <td>9</td>
-            <td>
-              <a
-                href="/notice_N_qna/notice_content"
-                class="text-decoration-none"
-                style="color: black"
-                >휴무 안내</a
-              >
-            </td>
-            <td>2023.01.04</td>
-          </tr>
-          <tr>
-            <td>8</td>
-            <td>
-              <a
-                href="/notice_N_qna/notice_content"
-                class="text-decoration-none"
-                style="color: black"
-                >회원가입 오류 시 해결 방법 안내</a
-              >
-            </td>
-            <td>2023.01.02</td>
-          </tr>
-          <tr>
-            <td>7</td>
-            <td>
-              <a
-                href="/notice_N_qna/notice_content"
-                class="text-decoration-none"
-                style="color: black"
-                >TOP3 와인 판매일 변경 안내</a
-              >
-            </td>
-            <td>2022.12.30</td>
-          </tr>
+        </c:forEach>
+        </form>
+
         </tbody>
       </table>
 
@@ -111,14 +81,32 @@
         </div>
       </div>
 
-      <div class="pagination pagination-sm justify-content-center mt-5">
-        <a class="page-item page-link" href="">Pre</a>
-        <a class="page-item page-link" href="">1</a>
-        <a class="page-item page-link" href="">2</a>
-        <a class="page-item page-link" href="">3</a>
-        <a class="page-item page-link" href="">4</a>
-        <a class="page-item page-link" href="">Next</a>
-      </div>
+          <%-- pagination --%>
+          <c:set var="_pagination" value="${resultMap.paginations}" />
+          ${paginations}
+          <div class="pagination pagination-sm justify-content-center mt-3">
+            <nav aria-label="Page navigation">
+              <ul class="pagination pagination-sm">
+                <li class="page-item">
+                  <a class="page-link" href="/notice/notice/${_pagination.previousPage}" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                    <span class="sr-only">이전</span>
+                  </a>
+                </li>
+                <c:forEach var="i" begin="${_pagination.blockStart}" end="${_pagination.blockEnd}" >
+                <li class="page-item">
+                  <a class="page-link" href="/notice/notice/${i}">${i}</a>
+                </li>
+                </c:forEach>
+                <li class="page-item">
+                  <a class="page-link" href="/notice/notice/${_pagination.nextPage}" aria-label="Next">
+                    <span class="sr-only">다음</span>
+                    <span aria-hidden="true">&raquo;</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
     </div>
 
     <%-- footer --%>
