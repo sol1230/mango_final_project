@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="SearchWine">
+    <!-- call SearchWine.wineList -->
+    <select id="wineList" parameterType="Map" resultType="Map">
+        SELECT *
+        FROM WINE
+        WHERE REPLACE(WINE_NAME, ' ', '') LIKE CONCAT('%', #{WINE_NAME}, '%')
+    </select>
+
+    <!-- call SearchWine.wineListCount -->
+    <select id="wineListCount" parameterType="Map" resultType="Map">
+        SELECT count(*) as cnt
+        FROM WINE
+        WHERE REPLACE(WINE_NAME, ' ', '') LIKE CONCAT('%', #{WINE_NAME}, '%')
+    </select>
+
+
+
+</mapper>

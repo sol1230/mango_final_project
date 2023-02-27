@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="IndexNotice">
+
+<!-- NOTICE -->
+    <!-- IndexNotice.selectNotice -->
+    <select id="selectNotice" parameterType="Map" resultType="Map">
+        SELECT *
+        FROM NOTICE
+        <if test="pageScale != null">
+            ORDER BY NOTICE_UID
+            <!-- 첫번째 리스트 -->
+            LIMIT #{pageBegin}, #{pageScale}
+        </if>
+    </select>
+
+    <!-- IndexNotice.selectNoticeUID -->
+    <select id="selectNoticeUID" parameterType="Map" resultType="Map">
+        SELECT *
+        FROM NOTICE
+        WHERE NOTICE_UID = #{NOTICE_UID}
+    </select>
+
+    <!-- IndexNotice.viewNoticeCont -->
+    <select id="viewNoticeCont" parameterType="Map" resultType="Map">
+        SELECT NOTICE_TITLE, NOTICE_DATE, NOTICE_CONTENT
+        FROM NOTICE
+    </select>
+
+     <!-- IndexNotice.selectNoticeTotal -->
+    <select id="selectNoticeTotal" parameterType="Map" resultType="int">
+        SELECT count(*) as cnt
+        FROM NOTICE
+    </select>
+
+<!-- INDEX -->
+
+</mapper>

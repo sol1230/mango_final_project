@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -46,11 +47,13 @@
                   >
                 </div>
               </div>
+              <form action="/admin/admin_stores_insert" method="get">
               <div class="justify-content-right align-items-center pt-2">
-                <a href="/admin/admin_stores_add" class="text-secondary">
+                <a href="/admin/admin_stores_insert" class="text-secondary">
                   <span class="material-symbols-outlined fs-3"> add_box </span>
                 </a>
               </div>
+              </form>
             </div>
           </form>
           <table
@@ -62,18 +65,24 @@
                 <th scope="">판매처</th>
                 <th scope="">사업자번호</th>
                 <th scope="">대표자</th>
+                <th scope="">와인UID</th>
+                <th scope="">와인URL</th>
                 <th scope="">기능</th>
               </tr>
             </thead>
             <tbody>
+        <c:forEach items="${resultMap.resultList}" var="resultData" varStatus="loop">
               <tr>
-                <th scope="">와인컴</th>
-                <td scope="">123-45-67890</td>
-                <td>이한길</td>
+                <th scope="">${resultData.STORE_NAME}</th>
+                <td scope="">${resultData.STORE_NO}</td>
+                <td>${resultData.STORE_CEO}</td>
+                <td>${resultData.WINE_UID}</td>
+                <td><a href="${resultData.STORE_URL}" target="_blank">${resultData.STORE_URL}</a></td>
                 <td>
                   <div class="d-flex justify-content-center">
                     <div>
-                      <form action="" class="ps-2">
+                      <form action="/admin/admin_stores_delete/1" method="post" class="ps-2">
+                       <input type="hidden" name="STORE_UID" value="${resultData.STORE_UID}" />
                     <button
                         class="btn btn-outline-danger btn-sm"
                         onclick="if(!confirm('정말로 삭제하시겠습니까?')) return false"
@@ -85,73 +94,36 @@
                   </div>
                 </td>
               </tr>
+        </c:forEach>
 
-              <tr>
-                <th scope="">와인이지</th>
-                <td scope="">456-78-90123</td>
-                <td>신지민</td>
-                <td>
-                  <div class="d-flex justify-content-center">
-                    <div>
-                      <form action="" class="ps-2">
-                        <button
-                          type="submit"
-                          class="btn btn btn-sm btn-outline-danger"
-                        >
-                          삭제
-                        </button>
-                      </form>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="">그린</th>
-                <td scope="">987-65-43210</td>
-                <td>한수영</td>
-                <td>
-                  <div class="d-flex justify-content-center">
-                    <div>
-                      <form action="" class="ps-2">
-                        <button
-                          type="submit"
-                          class="btn btn btn-sm btn-outline-danger"
-                        >
-                          삭제
-                        </button>
-                      </form>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="">조인와인</th>
-                <td scope="">789-01-23456</td>
-                <td>송영택</td>
-                <td>
-                  <div class="d-flex justify-content-center">
-                    <div>
-                      <form action="" class="ps-2">
-                        <button
-                          type="submit"
-                          class="btn btn btn-sm btn-outline-danger"
-                        >
-                          삭제
-                        </button>
-                      </form>
-                    </div>
-                  </div>
-                </td>
-              </tr>
             </tbody>
           </table>
-          <div class="pagination pagination-sm justify-content-center mt-4">
-            <a class="page-item page-link" href="">Pre</a>
-            <a class="page-item page-link" href="">1</a>
-            <a class="page-item page-link" href="">2</a>
-            <a class="page-item page-link" href="">3</a>
-            <a class="page-item page-link" href="">4</a>
-            <a class="page-item page-link" href="">Next</a>
+          <%-- pagination --%>
+          <c:set var="_pagination" value="${resultMap.paginations}" />
+          ${paginations}
+          <span>총 판매처 수 : ${_pagination.totalCount} 개</span>
+          <div class="pagination pagination-sm justify-content-center">
+            <nav aria-label="Page navigation">
+              <ul class="pagination pagination-sm">
+                <li class="page-item">
+                  <a class="page-link" href="/admin/admin_stores/${_pagination.previousPage}" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                    <span class="sr-only">이전</span>
+                  </a>
+                </li>
+                <c:forEach var="i" begin="${_pagination.blockStart}" end="${_pagination.blockEnd}" >
+                <li class="page-item">
+                  <a class="page-link" href="/admin/admin_stores/${i}">${i}</a>
+                </li>
+                </c:forEach>
+                <li class="page-item">
+                  <a class="page-link" href="/admin/admin_stores/${_pagination.nextPage}" aria-label="Next">
+                    <span class="sr-only">다음</span>
+                    <span aria-hidden="true">&raquo;</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
           </div>
         </div>
       </main>

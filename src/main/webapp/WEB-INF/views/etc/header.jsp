@@ -12,15 +12,16 @@
         <div>
            <nav class="fw-bold nav">
             <a href="/notice_N_qna/notice_questions" class="nav-link link-dark">FAQ</a>
-            <a href="/notice_N_qna/notice" class="nav-link link-dark">공지</a>
+            <a href="/notice/notice/1" class="nav-link link-dark">공지</a>
             <a href="/event/event" class="nav-link link-dark">이벤트</a>
           </nav>
         </div>
-        <form class="d-flex">
+        <form action="/search/searchWineList" method="get" class="d-flex">
           <input
             class="form-control me-2"
+            name="WINE_NAME"
             type="search"
-            placeholder="검색어를 입력하세요."
+            placeholder="상품을 입력하세요."
             aria-label="Search"
           />
           <button
@@ -77,6 +78,7 @@
     </header>
     
     <%-- <!-- 로그인 modal --> --%>
+
     <div class="modal fade" id="modalTarget02">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content text-center p-5">

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
+@RequestMapping(value = "/admin")
 public class AdminStoreController {
   @Autowired
   AdminStoreService adminStoreService;
@@ -18,7 +19,7 @@ public class AdminStoreController {
   // ADMIN STORE
   // store list
   @RequestMapping(
-    value = "/admin_store/{currentPage}",
+    value = "/admin_stores/{currentPage}",
     method = RequestMethod.GET
   )
   public ModelAndView adminStoreList(
@@ -35,7 +36,7 @@ public class AdminStoreController {
   }
 
   // store insert
-  @RequestMapping(value = "/admin_store_insert", method = RequestMethod.GET)
+  @RequestMapping(value = "/admin_stores_insert", method = RequestMethod.GET)
   public ModelAndView storeInsert(
     @RequestParam Map<String, Object> params,
     ModelAndView modelAndView
@@ -43,7 +44,38 @@ public class AdminStoreController {
     modelAndView.setViewName("admin/admin_stores_add");
     return modelAndView;
   }
-  // store insert complete
-  // @RequestMapping(value = "admin_store_insert_done", method = RequestMethod.POST)
 
+  // store insert complete
+  @RequestMapping(
+    value = "admin_stores_insert_done/{currentPage}",
+    method = RequestMethod.POST
+  )
+  public ModelAndView storeInsertDone(
+    @RequestParam Map<String, Object> params,
+    @PathVariable String currentPage,
+    ModelAndView modelAndView
+  ) {
+    params.put("currentPage", Integer.parseInt(currentPage));
+    Object resultMap = adminStoreService.insertStoreAndGetList(params);
+    modelAndView.addObject("resultMap", resultMap);
+    modelAndView.setViewName("admin/admin_stores");
+    return modelAndView;
+  }
+
+  // store delete
+  @RequestMapping(
+    value = "/admin_stores_delete/{currentPage}",
+    method = RequestMethod.POST
+  )
+  public ModelAndView storeDelete(
+    @RequestParam Map<String, Object> params,
+    @PathVariable String currentPage,
+    ModelAndView modelAndView
+  ) {
+    params.put("currentPage", Integer.parseInt(currentPage));
+    Object resultMap = adminStoreService.deleteStoreAndGetList(params);
+    modelAndView.addObject("resultMap", resultMap);
+    modelAndView.setViewName("admin/admin_stores");
+    return modelAndView;
+  }
 }

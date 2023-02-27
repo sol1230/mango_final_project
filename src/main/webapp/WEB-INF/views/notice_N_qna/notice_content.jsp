@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -34,22 +35,21 @@
     <%-- 본 페이지 --%>
     <div class="container">
       <div class="fs-3 text-center mt-5 fw-bold">공지사항</div>
-      <div class="mt-5 fw-bold fs-4">배송 불가 안내</div>
-      <div class="text-end text-muted">2023.01.06</div>
+      <div class="mt-5 fw-bold fs-4">${resultMap.NOTICE_TITLE}</div>
+      <div class="text-end text-muted">${resultMap.NOTICE_DATE}</div>
       <hr />
       <div>
-        <div>안녕하세요. 와인타임입니다.</div>
-        <div>02/03~02/15 까지 서울창고 이전으로</div>
-        <div>해당일자 배송일 선택이 중지됩니다.</div>
-        <div>이용에 참고 부탁드리며,</div>
-        <div>
-          고객님의 편리한 쇼핑을 위해 더욱 노력하는 와인타임이 되겠습니다.
-        </div>
-        <div>감사합니다.</div>
-        <div>와인타임 드림</div>
+        ${resultMap.NOTICE_CONTENT}
       </div>
       <div class="text-center mb-5">
-        <a href="/notice_N_qna/notice" class="btn btn-danger mt-5">목록으로</a>
+        <form action="/notice/notice/1" class="ps-2" method="get">
+        <button
+         type="submit"
+         class="btn btn-danger mt-5"
+         >
+           목록으로
+       </button>
+        </form>
       </div>
     </div>
 

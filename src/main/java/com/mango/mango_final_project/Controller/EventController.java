@@ -32,6 +32,8 @@ public class EventController {
     public ModelAndView eventSearchWithDate(@RequestParam Map<String, Object> params, ModelAndView modelAndView) {
         Object resultMap = eventService.getEventListSearchWithDate(params);
         modelAndView.addObject("resultMap", resultMap);
+        Object eventStatus = params.get("selectKeyField");  // select option 상태
+        modelAndView.addObject("eventStatus", eventStatus);
         modelAndView.setViewName("event/event");
         return modelAndView;
     }
