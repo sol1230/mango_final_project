@@ -12,7 +12,7 @@
         <div>
            <nav class="fw-bold nav">
             <a href="/notice_N_qna/notice_questions" class="nav-link link-dark">FAQ</a>
-            <a href="/notice/notice" class="nav-link link-dark">공지</a>
+            <a href="/notice_N_qna/notice" class="nav-link link-dark">공지</a>
             <a href="/event/event" class="nav-link link-dark">이벤트</a>
           </nav>
         </div>
@@ -39,7 +39,9 @@
               language
             </i></a
           >
-          <!--로그인 전 -->
+          <c:choose>
+          <c:when test="${empty loginUser}">
+          <%--로그인 전 --%>
           <a
             href="#modalTarget02"
             class="nav-link link-dark"
@@ -48,10 +50,11 @@
               person</i
             ></a
           >
+          </c:when>
           
-          <!-- 로그인 후 -->
+          <%-- 로그인 후 --%>
 
-
+          <c:otherwise>
           <a
             href="user/myPage"
             class="nav-link link-dark"
@@ -60,6 +63,8 @@
               </i
             ></a
           >
+          </c:otherwise>
+          </c:choose>
           <a
             href="/user/user_wishlist"
             class="nav-link link-dark"
@@ -71,7 +76,7 @@
       </div>
     </header>
     
-    <!-- 로그인 modal -->
+    <%-- 로그인 modal --%>
     <div class="modal fade" id="modalTarget02">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content text-center p-5">
