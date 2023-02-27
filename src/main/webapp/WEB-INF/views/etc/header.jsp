@@ -16,13 +16,14 @@
             <a href="/event/event" class="nav-link link-dark">이벤트</a>
           </nav>
         </div>
-        <form action="/search/searchWineList" method="get" class="d-flex">
+        <form action="/search/searchWineList/1" method="get" class="d-flex">
           <input
             class="form-control me-2"
             name="WINE_NAME"
             type="search"
             placeholder="상품을 입력하세요."
             aria-label="Search"
+            required
           />
           <button
             class="btn btn-outline-danger"
