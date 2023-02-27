@@ -12,7 +12,7 @@
         <div>
            <nav class="fw-bold nav">
             <a href="/notice_N_qna/notice_questions" class="nav-link link-dark">FAQ</a>
-            <a href="/notice_N_qna/notice" class="nav-link link-dark">공지</a>
+            <a href="/notice/notice/1" class="nav-link link-dark">공지</a>
             <a href="/event/event" class="nav-link link-dark">이벤트</a>
           </nav>
         </div>
