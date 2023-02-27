@@ -37,28 +37,40 @@
       <div class="fs-3 text-center mt-5 fw-bold">자주하는 질문</div>
       <div class="list-group mt-5">
         <a class="list-group-item" href="#answer01" data-bs-toggle="collapse"
-          >Q . 택배 발송 가능한가요?</a
+          >Q . 와인의 바디감과 타닌은 무슨 뜻인가요?</a
         >
         <div class="collapse" id="answer01">
           <div class="card card-body">
-            A . 와인나라 직영점, 서울 6개점에서 수령이 가능합니다
+            A . 바디감은 와인의 무게감을 나타내는 말입니다. 품종이나 재배 환경에 따라 달라질 수 있는데,
+            입 안에서 느껴지는 무게감의 정도에 따라 가볍거나 무겁다고 표현할 수 있습니다.
+            <br />
+            와인에서 떫은 맛이 느껴지는 것이 타닌입니다. 타닌 성분은 포도껍질과 씨에 많이 함유되어
+            있으며 산화를 막는 천연 방부제 역할을 하면서 숙성을 돕기도 합니다.
           </div>
         </div>
         <a class="list-group-item" href="#answer02" data-bs-toggle="collapse"
-          >Q . 수령 일자 변경은 어떻게 하나요?</a
+          >Q . 비밀번호 변경은 어떻게 하나요?</a
         >
         <div class="collapse" id="answer02">
           <div class="card card-body">
-            A . 지정하신 수령점으로 전화 하셔서 변경이 가능합니다
+            A . 로그인 후 마이페이지에 접속하셔서 회원 정보 수정 버튼을 클릭하시어 비밀번호 변경을 해주시면 됩니다.
           </div>
         </div>
         <a class="list-group-item" href="#answer03" data-bs-toggle="collapse"
-          >Q . 주문자가 직접 가지 못하여, 대리인이 가서 수령하려고 합니다</a
+          >Q . 위시리스트는 어떻게 이용하나요?</a
         >
         <div class="collapse" id="answer03">
           <div class="card card-body">
-            A . 기본적으로 주문하신 고객님 본인께서 매장에 방문해주셔야 합니다.
-            예외적인 경우애는 수령점으로 전화 주시기 바랍니다
+            A . 와인 상세페이지에서 와인 이름 우측에 하트 모양 아이콘을 클릭하시면 해당 상품이 위시리스트로 저장됩니다.
+            위시리스트는 홈페이지 우상단 하트 모양의 아이콘 클릭하시면 보실 수 있으며 마이페이지에서도 확인이 가능합니다.
+          </div>
+        </div>
+        <a class="list-group-item" href="#answer04" data-bs-toggle="collapse"
+          >Q . 이벤트 참가는 어떻게 하나요?</a
+        >
+        <div class="collapse" id="answer04">
+          <div class="card card-body">
+            A . 원하시는 이벤트 상세 내용 확인하시어 이미지 클릭하여 이벤트 주최 사이트를 방문해주시고 해당 이벤트 진행 일정에 맞게 참여해주시면 됩니다.
           </div>
         </div>
       </div>

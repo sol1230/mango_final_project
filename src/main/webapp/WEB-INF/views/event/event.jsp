@@ -41,16 +41,14 @@
     <div class="container mb-5">
       <div class="ms-5 me-5">
         <div class="fs-3 fw-bold text-center mt-5">이벤트</div>
-        <div class="d-flex justify-content-between mt-2 align-middle">
-        
-          <div class="pt-2">전체 이벤트</div>
+        <div class="d-flex justify-content-end mt-2 align-middle">
           <form action="/event/eventSearchWithDate" method="get">
             <div>
-              <select class="custom-select form-control text-center" name="selectKeyField" id="selectKeyField" onchange="this.form.submit()">
-                <option selected>---- 선택 ----</option>
-                <option value="all">전체 이벤트</option>
-                <option value="ongoing">진행중인 이벤트</option>
-                <option value="done">종료된 이벤트</option>
+              <select class="form-select" name="selectKeyField" id="selectKeyField" onchange="this.form.submit()">
+                <option selected>선택하기</option>
+                <option value="all" <c:if test = "${eventStatus eq 'all'}">selected</c:if>>전체 이벤트</option>
+                <option value="ongoing" <c:if test = "${eventStatus eq 'ongoing'}">selected</c:if>>진행 중인 이벤트</option>
+                <option value="done" <c:if test = "${eventStatus eq 'done'}">selected</c:if>>종료된 이벤트</option>
               </select>
             </div>
           </form>
