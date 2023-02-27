@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="WineFood">
+    <!-- 소고기 와인 목록 -->
+    <select id="wineBeefList" parameterType="Map" resultType="Map">
+        SELECT *
+        FROM WINE
+        WHERE WINE_FOOD_PAIRING LIKE '%소%'
+    </select>
+    <!-- 소고기 와인 총 갯수 -->
+    <select id="wineBeefTotal" 
+        parameterType="Map" resultType="int">
+        SELECT count(*) as cnt
+        FROM WINE
+        WHERE WINE_FOOD_PAIRING LIKE '%소%'
+    </select>
+
+    <!-- 돼지고기 와인 목록 -->
+    <select id="winePorkList" parameterType="Map" resultType="Map">
+        SELECT *
+        FROM WINE
+        WHERE WINE_FOOD_PAIRING LIKE '%돼지%'
+    </select>
+    <!-- 돼지고기 와인 총 갯수 -->
+    <select id="winePorkTotal" 
+        parameterType="Map" resultType="int">
+        SELECT count(*) as cnt
+        FROM WINE
+        WHERE WINE_FOOD_PAIRING LIKE '%돼지%'
+    </select>
+
+    <!-- 양고기 와인 목록 -->
+    <select id="wineLambList" parameterType="Map" resultType="Map">
+        SELECT *
+        FROM WINE
+        WHERE WINE_FOOD_PAIRING LIKE '%양%'
+    </select>
+    <!-- 양고기 와인 총 갯수 -->
+    <select id="wineLambTotal" 
+        parameterType="Map" resultType="int">
+        SELECT count(*) as cnt
+        FROM WINE
+        WHERE WINE_FOOD_PAIRING LIKE '%양%'
+    </select>
+
+    <!-- 닭고기 와인 목록 -->
+    <select id="wineChickenList" parameterType="Map" resultType="Map">
+        SELECT *
+        FROM WINE
+        WHERE WINE_FOOD_PAIRING LIKE '%닭%'
+    </select>
+    <!-- 닭고기 와인 총 갯수 -->
+    <select id="wineChickenTotal" 
+        parameterType="Map" resultType="int">
+        SELECT count(*) as cnt
+        FROM WINE
+        WHERE WINE_FOOD_PAIRING LIKE '%닭%'
+    </select>
+    
+    <!-- 치즈 와인 목록 -->
+    <select id="wineCheeseList" parameterType="Map" resultType="Map">
+        SELECT *
+        FROM WINE
+        WHERE WINE_FOOD_PAIRING LIKE '%치즈%'
+    </select>
+    <!-- 치즈 와인 총 갯수 -->
+    <select id="wineCheeseTotal" 
+        parameterType="Map" resultType="int">
+        SELECT count(*) as cnt
+        FROM WINE
+        WHERE WINE_FOOD_PAIRING LIKE '%치즈%'
+    </select>
+
+    <!-- 버섯 와인 목록 -->
+    <select id="wineMushroomList" parameterType="Map" resultType="Map">
+        SELECT *
+        FROM WINE
+        WHERE WINE_FOOD_PAIRING LIKE '%버섯%'
+    </select>
+    <!-- 버섯 와인 총 갯수 -->
+    <select id="wineMushroomTotal" 
+        parameterType="Map" resultType="int">
+        SELECT count(*) as cnt
+        FROM WINE
+        WHERE WINE_FOOD_PAIRING LIKE '%버섯%'
+    </select>
+
+</mapper>

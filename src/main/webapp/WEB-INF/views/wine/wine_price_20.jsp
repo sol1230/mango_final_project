@@ -37,7 +37,9 @@
           class="row d-flex justify-content-between"
           style="margin-left: 45%"
         >
-          <div class="col fs-3 mt-5 fw-bold">프랑스</div>
+          <div class="col fs-3 mt-5 fw-bold" style="width: 13rem">
+            20만원 이상
+          </div>
           <div class="col input-group mt-5">
             <div class="container-fluid dropdown nav-item">
               <div class="ps-2">
@@ -68,10 +70,10 @@
 
       <hr />
       <%-- 상품 --%>
-      <div class="mt-5 ">
+      <div class="mt-5">
         <div class="mb-5">
           <nav aria-label="Page navigation example">
-          <c:set var="_pagination" value="${resultMap.paginations}" />
+            <c:set var="_pagination" value="${resultMap.paginations}" />
           <span>총 ${resultMap.paginations.totalCount}개 상품</span>
           <span class="float-end">
             <select
@@ -80,16 +82,15 @@
               id=""
               style="color: #e06767"
             >
-              <option value="0">선택하기</option>
-              <a href="#"><option value="1">최신순</option></a>
+              <option selected>선택하기</option>
+              <a href="#"><option value="1" selected>최신순</option></a>
               <a href="#"><option value="2">낮은 가격순</option></a>
               <a href="#"><option value="3">높은 가격순</option></a>
               <a href="#"><option value="4">인기순</option></a>
             </select>
           </span>
         </div>
-
-        <ul class="row">
+        <ul class="row mb-5">
           <c:forEach items="${resultMap.resultList}" var="resultData" varStatus="loop">
           <c:choose>
             <c:when test="${resultData.WINE_TYPE eq '레드'}">
@@ -278,7 +279,7 @@
         </li>
 	      <%-- for(int i=0; i > 9; i++ {}) --%>
 	      <c:forEach var="i" begin="${_pagination.blockStart}" end="${_pagination.blockEnd}">
-    	    <li class="page-item"><a class="page-link" href="/wine/wine_france/${i}">${i}</a></li>
+    	    <li class="page-item"><a class="page-link" href="/wine/wine_price_20/${i}">${i}</a></li>
         </c:forEach>
 	      <li class="page-item">
           <a class="page-link" href="#" aria-label="Next">
@@ -290,9 +291,9 @@
     </nav>
     </div>
 
-    <%-- footer --%>
+   <%-- footer --%>
     <%@ include file="../etc/footer.jsp" %>
-
+    
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"

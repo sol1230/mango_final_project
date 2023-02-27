@@ -10,86 +10,86 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.mango.mango_final_project.service.WineCountryService;
+import com.mango.mango_final_project.service.WineFoodService;
 import com.mango.mango_final_project.utils.CommonUtils;
 
 @Controller
-public class WineCountryController {
+public class WineFoodController {
     @Autowired
-    WineCountryService wineCountryService;
+    WineFoodService wineFoodService;
 
     @Autowired
     CommonUtils commonUtils;
 
-    // 프랑스 와인 목록
-    @RequestMapping(value = "/wine/wine_france/{currentPage}", method = RequestMethod.GET)
-    public ModelAndView wineFrance(@RequestParam Map<String, Object> params
+    // 소고기 와인 목록
+    @RequestMapping(value = "/wine/wine_beef/{currentPage}", method = RequestMethod.GET)
+    public ModelAndView wineBeef(@RequestParam Map<String, Object> params
     , @PathVariable String currentPage, ModelAndView modelAndView) {
         params.put("currentPage", Integer.parseInt(currentPage));
         params.put("pageScale", 10);
-        Object resultMap = wineCountryService.wineFranceListWithPagination(params);
+        Object resultMap = wineFoodService.wineBeefListWithPagination(params);
         modelAndView.addObject("resultMap",resultMap);
-        modelAndView.setViewName("wine/wine_country_france");
+        modelAndView.setViewName("wine/wine_food_beef");
         return modelAndView;
     }
 
-    // 스페인 와인 목록
-    @RequestMapping(value = "/wine/wine_spain/{currentPage}", method = RequestMethod.GET)
-    public ModelAndView wineSpain(@RequestParam Map<String, Object> params
+    // 돼지고기 와인 목록
+    @RequestMapping(value = "/wine/wine_pork/{currentPage}", method = RequestMethod.GET)
+    public ModelAndView winePork(@RequestParam Map<String, Object> params
     , @PathVariable String currentPage, ModelAndView modelAndView) {
         params.put("currentPage", Integer.parseInt(currentPage));
         params.put("pageScale", 10);
-        Object resultMap = wineCountryService.wineSpainListWithPagination(params);
+        Object resultMap = wineFoodService.winePorkListWithPagination(params);
         modelAndView.addObject("resultMap",resultMap);
-        modelAndView.setViewName("wine/wine_country_spain");
+        modelAndView.setViewName("wine/wine_food_pork");
         return modelAndView;
     }
 
-    // 이탈리아 와인 목록
-    @RequestMapping(value = "/wine/wine_italy/{currentPage}", method = RequestMethod.GET)
-    public ModelAndView wineItaly(@RequestParam Map<String, Object> params
+    // 양고기 와인 목록
+    @RequestMapping(value = "/wine/wine_lamb/{currentPage}", method = RequestMethod.GET)
+    public ModelAndView wineLamb(@RequestParam Map<String, Object> params
     , @PathVariable String currentPage, ModelAndView modelAndView) {
         params.put("currentPage", Integer.parseInt(currentPage));
         params.put("pageScale", 10);
-        Object resultMap = wineCountryService.wineItalyListWithPagination(params);
+        Object resultMap = wineFoodService.wineLambListWithPagination(params);
         modelAndView.addObject("resultMap",resultMap);
-        modelAndView.setViewName("wine/wine_country_italy");
+        modelAndView.setViewName("wine/wine_food_lamb");
         return modelAndView;
     }
 
-    // 독일 와인 목록
-    @RequestMapping(value = "/wine/wine_germany/{currentPage}", method = RequestMethod.GET)
-    public ModelAndView wineGermany(@RequestParam Map<String, Object> params
+    // 닭고기 와인 목록
+    @RequestMapping(value = "/wine/wine_chicken/{currentPage}", method = RequestMethod.GET)
+    public ModelAndView wineChicken(@RequestParam Map<String, Object> params
     , @PathVariable String currentPage, ModelAndView modelAndView) {
         params.put("currentPage", Integer.parseInt(currentPage));
         params.put("pageScale", 10);
-        Object resultMap = wineCountryService.wineGermanyListWithPagination(params);
+        Object resultMap = wineFoodService.wineChickenListWithPagination(params);
         modelAndView.addObject("resultMap",resultMap);
-        modelAndView.setViewName("wine/wine_country_germany");
+        modelAndView.setViewName("wine/wine_food_chicken");
         return modelAndView;
     }
 
-    // 칠레 와인 목록
-    @RequestMapping(value = "/wine/wine_chile/{currentPage}", method = RequestMethod.GET)
-    public ModelAndView wineChile(@RequestParam Map<String, Object> params
+    // 치즈 와인 목록
+    @RequestMapping(value = "/wine/wine_cheese/{currentPage}", method = RequestMethod.GET)
+    public ModelAndView wineCheese(@RequestParam Map<String, Object> params
     , @PathVariable String currentPage, ModelAndView modelAndView) {
         params.put("currentPage", Integer.parseInt(currentPage));
         params.put("pageScale", 10);
-        Object resultMap = wineCountryService.wineChileListWithPagination(params);
+        Object resultMap = wineFoodService.wineCheeseListWithPagination(params);
         modelAndView.addObject("resultMap",resultMap);
-        modelAndView.setViewName("wine/wine_country_chile");
+        modelAndView.setViewName("wine/wine_food_cheese");
         return modelAndView;
     }
 
-    // 미국 와인 목록
-    @RequestMapping(value = "/wine/wine_usa/{currentPage}", method = RequestMethod.GET)
-    public ModelAndView wineUsa(@RequestParam Map<String, Object> params
+    // 버섯 와인 목록
+    @RequestMapping(value = "/wine/wine_mushroom/{currentPage}", method = RequestMethod.GET)
+    public ModelAndView wineMushroom(@RequestParam Map<String, Object> params
     , @PathVariable String currentPage, ModelAndView modelAndView) {
         params.put("currentPage", Integer.parseInt(currentPage));
         params.put("pageScale", 10);
-        Object resultMap = wineCountryService.wineUsaListWithPagination(params);
+        Object resultMap = wineFoodService.wineMushroomListWithPagination(params);
         modelAndView.addObject("resultMap",resultMap);
-        modelAndView.setViewName("wine/wine_country_usa");
+        modelAndView.setViewName("wine/wine_food_mushroom");
         return modelAndView;
     }
     

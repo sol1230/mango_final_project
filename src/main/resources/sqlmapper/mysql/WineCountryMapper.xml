@@ -8,11 +8,82 @@
         FROM WINE
         WHERE WINE_COUNTRY LIKE '프랑스%'
     </select>
+    <!-- 프랑스 와인 총 갯수 -->
+    <select id="wineFranceTotal" 
+        parameterType="Map" resultType="int">
+        SELECT count(*) as cnt
+        FROM WINE
+        WHERE WINE_COUNTRY LIKE '프랑스%'
+    </select>
+
     <!-- 스페인 와인 목록 -->
     <select id="wineSpainList" parameterType="Map" resultType="Map">
         SELECT *
         FROM WINE
         WHERE WINE_COUNTRY LIKE '스페인%'
+    </select>
+    <!-- 스페인 와인 총 갯수 -->
+    <select id="wineSpainTotal" 
+        parameterType="Map" resultType="int">
+        SELECT count(*) as cnt
+        FROM WINE
+        WHERE WINE_COUNTRY LIKE '스페인%'
+    </select>
+
+    <!-- 이탈리아 와인 목록 -->
+    <select id="wineItalyList" parameterType="Map" resultType="Map">
+        SELECT *
+        FROM WINE
+        WHERE WINE_COUNTRY LIKE '이탈리아%'
+    </select>
+    <!-- 이탈리아 와인 총 갯수 -->
+    <select id="wineItalyTotal" 
+        parameterType="Map" resultType="int">
+        SELECT count(*) as cnt
+        FROM WINE
+        WHERE WINE_COUNTRY LIKE '이탈리아%'
+    </select>
+
+    <!-- 독일 와인 목록 -->
+    <select id="wineGermanyList" parameterType="Map" resultType="Map">
+        SELECT *
+        FROM WINE
+        WHERE WINE_COUNTRY LIKE '독일%'
+    </select>
+    <!-- 독일 와인 총 갯수 -->
+    <select id="wineGermanyTotal" 
+        parameterType="Map" resultType="int">
+        SELECT count(*) as cnt
+        FROM WINE
+        WHERE WINE_COUNTRY LIKE '독일%'
+    </select>
+
+    <!-- 칠레 와인 목록 -->
+    <select id="wineChileList" parameterType="Map" resultType="Map">
+        SELECT *
+        FROM WINE
+        WHERE WINE_COUNTRY LIKE '칠레%'
+    </select>
+    <!-- 칠레 와인 총 갯수 -->
+    <select id="wineChileTotal" 
+        parameterType="Map" resultType="int">
+        SELECT count(*) as cnt
+        FROM WINE
+        WHERE WINE_COUNTRY LIKE '칠레%'
+    </select>
+
+    <!-- 미국 와인 목록 -->
+    <select id="wineUsaList" parameterType="Map" resultType="Map">
+        SELECT *
+        FROM WINE
+        WHERE WINE_COUNTRY LIKE '미국%'
+    </select>
+    <!-- 미국 와인 총 갯수 -->
+    <select id="wineUsaTotal" 
+        parameterType="Map" resultType="int">
+        SELECT count(*) as cnt
+        FROM WINE
+        WHERE WINE_COUNTRY LIKE '미국%'
     </select>
 
 </mapper>

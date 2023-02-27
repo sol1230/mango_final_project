@@ -37,7 +37,7 @@
           class="row d-flex justify-content-between"
           style="margin-left: 45%"
         >
-          <div class="col fs-3 mt-5 fw-bold">프랑스</div>
+          <div class="col fs-3 mt-5 fw-bold">이탈리아</div>
           <div class="col input-group mt-5">
             <div class="container-fluid dropdown nav-item">
               <div class="ps-2">
@@ -278,7 +278,7 @@
         </li>
 	      <%-- for(int i=0; i > 9; i++ {}) --%>
 	      <c:forEach var="i" begin="${_pagination.blockStart}" end="${_pagination.blockEnd}">
-    	    <li class="page-item"><a class="page-link" href="/wine/wine_france/${i}">${i}</a></li>
+    	    <li class="page-item"><a class="page-link" href="/wine/wine_italy/${i}">${i}</a></li>
         </c:forEach>
 	      <li class="page-item">
           <a class="page-link" href="#" aria-label="Next">

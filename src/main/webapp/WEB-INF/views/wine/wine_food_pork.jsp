@@ -37,7 +37,7 @@
           class="row d-flex justify-content-between"
           style="margin-left: 45%"
         >
-          <div class="col fs-3 mt-5 fw-bold">프랑스</div>
+          <div class="col fs-3 mt-5 fw-bold">돼지고기</div>
           <div class="col input-group mt-5">
             <div class="container-fluid dropdown nav-item">
               <div class="ps-2">
@@ -71,7 +71,7 @@
       <div class="mt-5 ">
         <div class="mb-5">
           <nav aria-label="Page navigation example">
-          <c:set var="_pagination" value="${resultMap.paginations}" />
+            <c:set var="_pagination" value="${resultMap.paginations}" />
           <span>총 ${resultMap.paginations.totalCount}개 상품</span>
           <span class="float-end">
             <select
@@ -278,7 +278,7 @@
         </li>
 	      <%-- for(int i=0; i > 9; i++ {}) --%>
 	      <c:forEach var="i" begin="${_pagination.blockStart}" end="${_pagination.blockEnd}">
-    	    <li class="page-item"><a class="page-link" href="/wine/wine_france/${i}">${i}</a></li>
+    	    <li class="page-item"><a class="page-link" href="/wine/wine_pork/${i}">${i}</a></li>
         </c:forEach>
 	      <li class="page-item">
           <a class="page-link" href="#" aria-label="Next">

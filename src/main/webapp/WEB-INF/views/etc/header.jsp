@@ -41,7 +41,7 @@
           >
           <c:choose>
           <c:when test="${empty loginUser}">
-          <!--로그인 전 -->
+          <%-- <!--로그인 전 --> --%>
           <a
             href="#modalTarget02"
             class="nav-link link-dark"
@@ -52,7 +52,7 @@
           >
           </c:when>
           
-          <!-- 로그인 후 -->
+          <%-- <!-- 로그인 후 --> --%>
 
           <c:otherwise>
           <a
@@ -76,7 +76,7 @@
       </div>
     </header>
     
-    <!-- 로그인 modal -->
+    <%-- <!-- 로그인 modal --> --%>
     <div class="modal fade" id="modalTarget02">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content text-center p-5">

@@ -9,6 +9,14 @@
         FROM WINE
     </select>
 
+    <!-- 와인 총 갯수 -->
+    <select id="wineTotal" 
+        parameterType="Map" resultType="int">
+        SELECT count(*) as cnt
+        FROM WINE
+    </select>
+
+
 
     <!-- 와인 삭제 -->
     <delete id="wineDelete" parameterType="Map">

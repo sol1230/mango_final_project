@@ -70,7 +70,9 @@
       <%-- 상품 --%>
       <div class="mt-5">
         <div class="mb-5">
-          <span>총 20개 상품</span>
+          <nav aria-label="Page navigation example">
+            <c:set var="_pagination" value="${resultMap.paginations}" />
+          <span>총 ${resultMap.paginations.totalCount}개 상품</span>
           <span class="float-end">
             <select
               class="form-select"
@@ -88,7 +90,7 @@
         </div>
 
         <ul class="row">
-          <c:forEach items="${resultMap}" var="resultData" varStatus="loop">
+          <c:forEach items="${resultMap.resultList}" var="resultData" varStatus="loop">
               <li class="col" style="list-style: none">
                  <div class="item" style="text-align: center; width: 230px">
                  <div
@@ -101,9 +103,9 @@
                     >
                      <div class="pt-4">
                        <img
-                         src="../img/wine/wine_canti.png"
+                         src="../img/wine/${resultData.WINE_NAME_EN}.png"
                           alt="wine2"
-                         width="55"
+                         width="200"
                         />
                      </div>
                     </a>
@@ -134,14 +136,25 @@
         </c:forEach>
         </ul>
       </div>
-      <div class="pagination pagination-sm justify-content-center mt-5">
-        <a class="page-item page-link" href="">이전</a>
-        <a class="page-item page-link" href="">1</a>
-        <a class="page-item page-link" href="">2</a>
-        <a class="page-item page-link" href="">3</a>
-        <a class="page-item page-link" href="">4</a>
-        <a class="page-item page-link" href="">다음</a>
-      </div>
+      <ul class="pagination pagination-sm justify-content-center mt-5">
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+            <span class="sr-only"></span>
+          </a>
+        </li>
+	      <%-- for(int i=0; i > 9; i++ {}) --%>
+	      <c:forEach var="i" begin="${_pagination.blockStart}" end="${_pagination.blockEnd}">
+    	    <li class="page-item"><a class="page-link" href="/wine/wine_sparkling/${i}">${i}</a></li>
+        </c:forEach>
+	      <li class="page-item">
+          <a class="page-link" href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+            <span class="sr-only"></span>
+          </a>
+        </li>
+      </ul>
+    </nav>
     </div>
 
     <%-- footer --%>

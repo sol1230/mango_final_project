@@ -10,5 +10,88 @@
         WHERE WINE_PRICE <= 30000
         ]]>
     </select>
+    <!-- 3만원 이하 와인 총 갯수 -->
+    <select id="winePrice3Total" 
+        parameterType="Map" resultType="int">
+        SELECT count(*) as cnt
+        FROM WINE
+        <![CDATA[
+        WHERE WINE_PRICE <= 30000
+        ]]>
+    </select>
+
+    <!-- 3만원 ~ 6만원 와인 목록 -->
+    <select id="winePrice3_6List" parameterType="Map" resultType="Map">
+        SELECT *
+        FROM WINE
+        WHERE WINE_PRICE BETWEEN 30000 AND 60000
+    </select>
+    <!-- 3만원 ~ 6만원 와인 총 갯수 -->
+    <select id="winePrice3_6Total" 
+        parameterType="Map" resultType="int">
+        SELECT count(*) as cnt
+        FROM WINE
+        WHERE WINE_PRICE BETWEEN 30000 AND 60000
+    </select>
+
+    <!-- 6만원 ~ 9만원 와인 목록 -->
+    <select id="winePrice6_9List" parameterType="Map" resultType="Map">
+        SELECT *
+        FROM WINE
+        WHERE WINE_PRICE BETWEEN 60000 AND 90000
+    </select>
+    <!-- 6만원 ~ 9만원 와인 총 갯수 -->
+    <select id="winePrice6_9Total" 
+        parameterType="Map" resultType="int">
+        SELECT count(*) as cnt
+        FROM WINE
+        WHERE WINE_PRICE BETWEEN 60000 AND 90000
+    </select>
+
+    <!-- 9만원 ~ 15만원 와인 목록 -->
+    <select id="winePrice9_15List" parameterType="Map" resultType="Map">
+        SELECT *
+        FROM WINE
+        WHERE WINE_PRICE BETWEEN 90000 AND 150000
+    </select>
+    <!-- 9만원 ~ 15만원 와인 총 갯수 -->
+    <select id="winePrice9_15Total" 
+        parameterType="Map" resultType="int">
+        SELECT count(*) as cnt
+        FROM WINE
+        WHERE WINE_PRICE BETWEEN 90000 AND 150000
+    </select>
+
+    <!-- 15만원 ~ 20만원 와인 목록 -->
+    <select id="winePrice15_20List" parameterType="Map" resultType="Map">
+        SELECT *
+        FROM WINE
+        WHERE WINE_PRICE BETWEEN 150000 AND 200000
+    </select>
+    <!-- 15만원 ~ 20만원 와인 총 갯수 -->
+    <select id="winePrice15_20Total" 
+        parameterType="Map" resultType="int">
+        SELECT count(*) as cnt
+        FROM WINE
+        WHERE WINE_PRICE BETWEEN 150000 AND 200000
+    </select>
+
+    <!-- 20만원 이상 와인 목록 -->
+    <select id="winePrice20List" parameterType="Map" resultType="Map">
+        SELECT *
+        FROM WINE
+        <![CDATA[
+        WHERE WINE_PRICE >= 200000
+        ]]>
+    </select>
+    <!-- 20만원 이상 와인 총 갯수 -->
+    <select id="winePrice20Total" 
+        parameterType="Map" resultType="int">
+        SELECT count(*) as cnt
+        FROM WINE
+        <![CDATA[
+        WHERE WINE_PRICE >= 200000
+        ]]>
+    </select>
 
 </mapper>

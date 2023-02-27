@@ -37,9 +37,7 @@
           class="row d-flex justify-content-between"
           style="margin-left: 45%"
         >
-          <div class="col fs-3 mt-5 fw-bold" style="width: 13rem">
-            3만원 이하
-          </div>
+          <div class="col fs-3 mt-5 fw-bold">닭고기</div>
           <div class="col input-group mt-5">
             <div class="container-fluid dropdown nav-item">
               <div class="ps-2">
@@ -70,9 +68,11 @@
 
       <hr />
       <%-- 상품 --%>
-      <div class="mt-5">
+      <div class="mt-5 ">
         <div class="mb-5">
-          <span>총 21개 상품</span>
+          <nav aria-label="Page navigation example">
+            <c:set var="_pagination" value="${resultMap.paginations}" />
+          <span>총 ${resultMap.paginations.totalCount}개 상품</span>
           <span class="float-end">
             <select
               class="form-select"
@@ -80,16 +80,17 @@
               id=""
               style="color: #e06767"
             >
-              <option selected>선택하기</option>
-              <a href="#"><option value="1" selected>최신순</option></a>
+              <option value="0">선택하기</option>
+              <a href="#"><option value="1">최신순</option></a>
               <a href="#"><option value="2">낮은 가격순</option></a>
               <a href="#"><option value="3">높은 가격순</option></a>
               <a href="#"><option value="4">인기순</option></a>
             </select>
           </span>
         </div>
-        <ul class="row mb-5">
-          <c:forEach items="${resultMap}" var="resultData" varStatus="loop">
+
+        <ul class="row">
+          <c:forEach items="${resultMap.resultList}" var="resultData" varStatus="loop">
           <c:choose>
             <c:when test="${resultData.WINE_TYPE eq '레드'}">
               <li class="col" style="list-style: none">
@@ -101,7 +102,7 @@
                   <a href="#" class="text-decoration-none text-black">
                     <div class="pt-4">
                       <img
-                        src="../img/wine/wine_escudo_rojo.png"
+                        src="../img/wine/${resultData.WINE_NAME_EN}.png"
                         alt="wine1"
                         width="200"
                       />
@@ -146,7 +147,7 @@
                 <a href="#" class="text-decoration-none text-black">
                   <div class="pt-4">
                     <img
-                      src="../img/wine/wine_arras.png"
+                      src="../img/wine/${resultData.WINE_NAME_EN}.png"
                       alt="wine2"
                       width="200"
                     />
@@ -188,7 +189,7 @@
                 <a href="#" class="text-decoration-none text-black">
                   <div class="pt-4">
                     <img
-                      src="../img/wine/wine_moet_rose.png"
+                      src="../img/wine/${resultData.WINE_NAME_EN}.png"
                       alt="wine2"
                       width="200"
                     />
@@ -233,9 +234,9 @@
                     >
                      <div class="pt-4">
                        <img
-                         src="../img/wine/wine_canti.png"
+                         src="../img/wine/${resultData.WINE_NAME_EN}.png"
                           alt="wine2"
-                         width="55"
+                         width="200"
                         />
                      </div>
                     </a>
@@ -268,19 +269,30 @@
         </c:forEach>
         </ul>
       </div>
-      <div class="pagination pagination-sm justify-content-center mt-5">
-        <a class="page-item page-link" href="">이전</a>
-        <a class="page-item page-link" href="">1</a>
-        <a class="page-item page-link" href="">2</a>
-        <a class="page-item page-link" href="">3</a>
-        <a class="page-item page-link" href="">4</a>
-        <a class="page-item page-link" href="">다음</a>
-      </div>
+      <ul class="pagination pagination-sm justify-content-center mt-5">
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+            <span class="sr-only"></span>
+          </a>
+        </li>
+	      <%-- for(int i=0; i > 9; i++ {}) --%>
+	      <c:forEach var="i" begin="${_pagination.blockStart}" end="${_pagination.blockEnd}">
+    	    <li class="page-item"><a class="page-link" href="/wine/wine_chicken/${i}">${i}</a></li>
+        </c:forEach>
+	      <li class="page-item">
+          <a class="page-link" href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+            <span class="sr-only"></span>
+          </a>
+        </li>
+      </ul>
+    </nav>
     </div>
 
-   <%-- footer --%>
+    <%-- footer --%>
     <%@ include file="../etc/footer.jsp" %>
-    
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
