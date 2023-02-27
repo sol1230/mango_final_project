@@ -17,18 +17,6 @@ public class AdminUserController {
   AdminUserService adminUserService;
 
   // -- USER --
-  //list
-  // @RequestMapping(value = "/admin_users", method = RequestMethod.GET)
-  // public ModelAndView list(
-  //   @RequestParam Map<String, Object> params,
-  //   ModelAndView modelAndView
-  // ) {
-  //   Object resultMap = adminOneService.getList(params);
-  //   modelAndView.addObject("resultMap", resultMap);
-  //   modelAndView.setViewName("admin/admin_users");
-  //   return modelAndView;
-  // }
-
   // user list
   @RequestMapping(
     value = "/admin_users/{currentPage}",
@@ -42,52 +30,6 @@ public class AdminUserController {
     params.put("currentPage", Integer.parseInt(currentPage));
     params.put("pageScale", 10);
     Object resultMap = adminUserService.userWithPagination(params);
-    modelAndView.addObject("resultMap", resultMap);
-    modelAndView.setViewName("admin/admin_users");
-    return modelAndView;
-  }
-
-  // user update
-  @RequestMapping(
-    value = "/admin_users_edit/{uniqueId}",
-    method = RequestMethod.POST
-  )
-  public ModelAndView userEdit(
-    @RequestParam Map<String, Object> params,
-    @PathVariable String uniqueId,
-    ModelAndView modelAndView
-  ) {
-    params.put("USER_UID", uniqueId);
-    Object resultMap = adminUserService.getOne(params);
-    modelAndView.addObject("resultMap", resultMap);
-    modelAndView.setViewName("admin/admin_users_modify");
-    return modelAndView;
-  }
-
-  // user update complete
-  @RequestMapping(value = "/admin_users_update", method = RequestMethod.POST)
-  public ModelAndView userUpdate(
-    @RequestParam Map<String, Object> params,
-    ModelAndView modelAndView
-  ) {
-    Object resultMap = adminUserService.updateAndGetList(params);
-    modelAndView.addObject("resultMap", resultMap);
-    modelAndView.setViewName("admin/admin_users");
-    return modelAndView;
-  }
-
-  // user delete
-  @RequestMapping(
-    value = "/admin_users_delete/{uniqueId}",
-    method = RequestMethod.POST
-  )
-  public ModelAndView userDelete(
-    @RequestParam Map<String, Object> params,
-    @PathVariable String uniqueId,
-    ModelAndView modelAndView
-  ) {
-    params.put("USER_UID", uniqueId);
-    Object resultMap = adminUserService.deleteAndGetList(params);
     modelAndView.addObject("resultMap", resultMap);
     modelAndView.setViewName("admin/admin_users");
     return modelAndView;
@@ -115,6 +57,52 @@ public class AdminUserController {
   ) {
     params.put("currentPage", Integer.parseInt(currentPage));
     Object resultMap = adminUserService.insertAndGetList(params);
+    modelAndView.addObject("resultMap", resultMap);
+    modelAndView.setViewName("admin/admin_users");
+    return modelAndView;
+  }
+
+  // user update
+  @RequestMapping(value = "/admin_users_edit", method = RequestMethod.POST)
+  public ModelAndView userEdit(
+    @RequestParam Map<String, Object> params,
+    ModelAndView modelAndView
+  ) {
+    Object resultMap = adminUserService.getuserInfo(params);
+    modelAndView.addObject("resultMap", resultMap);
+    modelAndView.setViewName("admin/admin_users_modify");
+    return modelAndView;
+  }
+
+  // user update complete
+  @RequestMapping(
+    value = "/admin_users_update/{currentPage}",
+    method = RequestMethod.POST
+  )
+  public ModelAndView userUpdate(
+    @RequestParam Map<String, Object> params,
+    @PathVariable String currentPage,
+    ModelAndView modelAndView
+  ) {
+    params.put("currentPage", Integer.parseInt(currentPage));
+    Object resultMap = adminUserService.updateAndGetList(params);
+    modelAndView.addObject("resultMap", resultMap);
+    modelAndView.setViewName("admin/admin_users");
+    return modelAndView;
+  }
+
+  // user delete
+  @RequestMapping(
+    value = "/admin_users_delete/{currentPage}",
+    method = RequestMethod.POST
+  )
+  public ModelAndView userDelete(
+    @RequestParam Map<String, Object> params,
+    @PathVariable String currentPage,
+    ModelAndView modelAndView
+  ) {
+    params.put("currentPage", Integer.parseInt(currentPage));
+    Object resultMap = adminUserService.deleteAndGetList(params);
     modelAndView.addObject("resultMap", resultMap);
     modelAndView.setViewName("admin/admin_users");
     return modelAndView;

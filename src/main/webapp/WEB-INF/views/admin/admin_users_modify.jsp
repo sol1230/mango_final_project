@@ -34,8 +34,16 @@
     <div class="row g-0 vh-100">
     <%@ include file="../etc/admin_nav.jsp" %>
       <main class="col-9 p-0 mb-5 ms-5">
+        <form action="/admin/admin_users_update/1" method="post">
+          <input type="hidden" name="USER_UID" value="${resultMap.USER_UID}" />
+          <input type="hidden" name="PASSWORD" value="${resultMap.PASSWORD}" />
+          <input type="hidden" name="NAME" value="${resultMap.NAME}" />
+          <input type="hidden" name="BIRTH" value="${resultMap.BIRTH}" />
+          <input type="hidden" name="GENDER" value="${resultMap.GENDER}" />
+          <input type="hidden" name="PHONE" value="${resultMap.PHONE}" />
+          <input type="hidden" name="AUTHORITY" value="${resultMap.AUTHORITY}" />
+          
           <div class="mt-4 p-4 border bg-white">
-        <form action="/admin/admin_users_update" method="post">
             <div
               class="d-flex justify-content-between align-items-center input-group"
             >
@@ -55,10 +63,12 @@
               <thead class="bg-secondary bg-opacity-25">
                 <tr>
                   <th scope="">아이디</th>
+                  <th scope="">비밀번호</th>
                   <th scope="">이름</th>
                   <th scope="">생년월일</th>
                   <th scope="">성별</th>
                   <th scope="">휴대전화</th>
+                  <th scope="">권한</th>
                 </tr>
               </thead>
               <tbody>
@@ -67,6 +77,7 @@
                     <input
                       type="text"
                       class="form-control"
+                      name="USER_UID"
                       value="${resultMap.USER_UID}"
                     />
                   </td>
@@ -74,6 +85,15 @@
                     <input
                       type="text"
                       class="form-control"
+                      name="PASSWORD"
+                      value="${resultMap.PASSWORD}"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="NAME"
                       value="${resultMap.NAME}"
                     />
                   </td>
@@ -81,6 +101,7 @@
                     <input
                       type="text"
                       class="form-control"
+                      name="BIRTH"
                       value="${resultMap.BIRTH}"
                     />
                   </td>
@@ -88,6 +109,7 @@
                     <input 
                       type="text"
                       class="form-control"
+                      name="GENDER"
                       value="${resultMap.GENDER}"
                     />
                   </td>
@@ -95,7 +117,16 @@
                     <input
                       type="text"
                       class="form-control"
+                      name="PHONE"
                       value="${resultMap.PHONE}"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="AUTHORITY"
+                      value="${resultMap.AUTHORITY}"
                     />
                   </td>
                 </tr>
