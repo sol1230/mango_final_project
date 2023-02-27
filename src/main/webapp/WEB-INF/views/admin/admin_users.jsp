@@ -92,17 +92,19 @@
                 <td>${resultData.GENDER}</td>
                 <td>${resultData.PHONE}</td>
                 <td class="d-flex justify-content-center">
-                  <form action="/admin/admin_users_edit/${resultData.USER_UID}" method="post">
+                  <form action="/admin/admin_users_edit" method="post">
                     <input type="hidden" name="USER_UID" value="${resultData.USER_UID}" />
+                    <input type="hidden" name="PASSWORD" value="${resultData.PASSWORD}" />
                     <input type="hidden" name="NAME" value="${resultData.NAME}" />
                     <input type="hidden" name="BIRTH" value="${resultData.BIRTH}" />
                     <input type="hidden" name="GENDER" value="${resultData.GENDER}" />
                     <input type="hidden" name="PHONE" value="${resultData.PHONE}" />
+                    <input type="hidden" name="AUTHORITY" value="${resultData.AUTHORITY}" />
                     <button class="btn btn-sm btn-outline-secondary">
                       수정
                     </button>
                   </form>
-                  <form action="/admin/admin_users_delete/${resultData.USER_UID}" method="post" class="ps-2">
+                  <form action="/admin/admin_users_delete/1" method="post" class="ps-2">
                        <input type="hidden" name="USER_UID" value="${resultData.USER_UID}" />
                      <button
                         class="btn btn-outline-danger btn-sm"
@@ -124,7 +126,7 @@
             <nav aria-label="Page navigation">
               <ul class="pagination pagination-sm">
                 <li class="page-item">
-                  <a class="page-link" href="${_pagination.previousPage}" aria-label="Previous">
+                  <a class="page-link" href="/admin/admin_users/${_pagination.previousPage}" aria-label="Previous">
                     <span aria-hidden="true">&laquo;</span>
                     <span class="sr-only">이전</span>
                   </a>
@@ -135,7 +137,7 @@
                 </li>
                 </c:forEach>
                 <li class="page-item">
-                  <a class="page-link" href="${_pagination.nextPage}" aria-label="Next">
+                  <a class="page-link" href="/admin/admin_users/${_pagination.nextPage}" aria-label="Next">
                     <span class="sr-only">다음</span>
                     <span aria-hidden="true">&raquo;</span>
                   </a>

@@ -33,14 +33,29 @@
         VALUES (#{USER_UID}, #{PASSWORD}, #{NAME}, #{BIRTH}, #{GENDER}, #{PHONE}, #{AUTHORITY})
     </insert>
 
+    <!-- AdminUser.selectUserInfo -->
+    <select id="selectUserInfo" parameterType="Map" resultType="Map">
+        SELECT *
+        FROM USER
+        WHERE USER_UID = #{USER_UID}
+        AND PASSWORD = #{PASSWORD}
+        AND NAME = #{NAME}
+        AND BIRTH = #{BIRTH}
+        AND GENDER = #{GENDER}
+        AND PHONE = #{PHONE}
+        AND AUTHORITY = #{AUTHORITY}
+    </select>
+
     <!-- AdminUser.updateUser  -->
     <update id="updateUser" parameterType="Map">
-        UPDATE USER
-        SET PASSWORD = #{PASSWORD},
+        UPDATE USER 
+        SET USER_UID = #{USER_UID},
+            PASSWORD = #{PASSWORD},
             NAME = #{NAME},
             BIRTH = #{BIRTH},
             GENDER = #{GENDER},
-            PHONE = #{PHONE}
+            PHONE = #{PHONE},
+            AUTHORITY = #{AUTHORITY}
         WHERE USER_UID = #{USER_UID}
     </update>
 
