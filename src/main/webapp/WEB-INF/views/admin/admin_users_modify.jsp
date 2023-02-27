@@ -35,14 +35,6 @@
     <%@ include file="../etc/admin_nav.jsp" %>
       <main class="col-9 p-0 mb-5 ms-5">
         <form action="/admin/admin_users_update/1" method="post">
-          <input type="hidden" name="USER_UID" value="${resultMap.USER_UID}" />
-          <input type="hidden" name="PASSWORD" value="${resultMap.PASSWORD}" />
-          <input type="hidden" name="NAME" value="${resultMap.NAME}" />
-          <input type="hidden" name="BIRTH" value="${resultMap.BIRTH}" />
-          <input type="hidden" name="GENDER" value="${resultMap.GENDER}" />
-          <input type="hidden" name="PHONE" value="${resultMap.PHONE}" />
-          <input type="hidden" name="AUTHORITY" value="${resultMap.AUTHORITY}" />
-          
           <div class="mt-4 p-4 border bg-white">
             <div
               class="d-flex justify-content-between align-items-center input-group"
@@ -79,6 +71,7 @@
                       class="form-control"
                       name="USER_UID"
                       value="${resultMap.USER_UID}"
+                      readonly
                     />
                   </td>
                   <td>
@@ -99,7 +92,7 @@
                   </td>
                   <td>
                     <input
-                      type="text"
+                      type="date"
                       class="form-control"
                       name="BIRTH"
                       value="${resultMap.BIRTH}"

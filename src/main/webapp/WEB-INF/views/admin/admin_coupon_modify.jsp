@@ -32,11 +32,12 @@
     <div class="row g-0 vh-100">
     <%-- admin nav --%>
     <%@ include file="../etc/admin_nav.jsp" %>
+          <%-- <input type="hidden" name="COUPON_UID" value="${resultMap.COUPON_UID}" />
+          <input type="hidden" name="COUPON_DATE" value="${resultMap.COUPON_DATE}" />
+          <input type="hidden" name="NAME" value="${resultMap.NAME}" /> --%>
 
       <main class="col-9 p-0 mb-5 ms-5">
-        <form action="/" method="post">
-          <input type="hidden" name="notice_date" value="2023.02.05" />
-          <input type="hidden" name="notice_writer" value="관리자" />
+        <form action="/admin/admin_coupon_update/1" method="post">
           <div class="mt-4 p-4 border bg-white">
             <div>
               <label for="" class="form-label fw-bold pe-3 m-0"
@@ -50,45 +51,55 @@
               <thead class="">
                 <tr>
                   <th scope="" class="bg-secondary bg-opacity-25">작성일</th>
-                  <td scope="" name="notice_date">2023.02.05</td>
+                  <td scope="" name="COUPON_DATE">${resultMap.COUPON_DATE}</td>
 
                   <th scope="" class="bg-secondary bg-opacity-25">작성자</th>
-                  <td scope="" name="notice_writer">관리자</td>
+                  <td scope="" name="NAME">${resultMap.NAME}</td>
                 </tr>
                 <tr scope="row">
                   <th scope="" class="bg-secondary bg-opacity-25">쿠폰 이름</th>
                   <td scope="" colspan="3">
                     <input
                       type="text"
-                      name="notice_title"
-                      id="notice_title"
+                      name="COUPON_NAME"
                       class="form-control"
-                      value="할인쿠폰"
+                      value="${resultMap.COUPON_NAME}"
                     />
                   </td>
                 </tr>
                 <tr scope="row">
                   <th scope="" class="bg-secondary bg-opacity-25">쿠폰 기한</th>
-                  <td scope="" colspan="3">
-                    <input
-                      type="text"
-                      name="notice_title"
-                      id="notice_title"
+                  <td scope="" colspan="3" class="">
+                    <input style="width:15rem; height:3rem" class="col"
+                      type="date"
+                      name="COUPON_DATETIME1"
                       class="form-control"
-                      value="2023.01.05 ~ 2023.01.20"
+                      value="${resultMap.COUPON_DATETIME1}"
+                    />  ~
+                     <input style="width:15rem; height:3rem" class="col"
+                      type="date"
+                      name="COUPON_DATETIME2"
+                      class="form-control"
+                      value="${resultMap.COUPON_DATETIME2}"
                     />
                   </td>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th class="bg-secondary bg-opacity-25">파일첨부</th>
-                  <td colspan="3">
-                    <div class="">
-                      <input type="file" name="" id="" class="form-control" />
-                    </div>
-                  </td>
-                </tr>
+                <c:choose>
+                  <c:when test="${not empty resultMap.PHYSICALFILE_NAME}">
+                    <tr>
+                      <th class="bg-secondary bg-opacity-25">첨부한 파일</th>
+                      <td colspan="3">
+                        <div class="">
+                        <img src="/img/files/${resultMap.PHYSICALFILE_NAME}/${resultMap.ORIGINALFILE_NAME}">
+                        <input type="file" name="COUPON_FILE" value="${resultMap.COUPON_FILE}" class="form-control" />
+                       
+                        </div>
+                      </td>
+                    </tr>
+                  </c:when>
+                </c:choose>
               </tbody>
             </table>
             <div class="text-center">

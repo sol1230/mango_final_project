@@ -12,7 +12,7 @@
               >
             </li>
             <li class="d-flex align-items-center">
-              <a href="/admin/admin_users" class="text-decoration-none nav-link"
+              <a href="/admin/admin_users/1" class="text-decoration-none nav-link"
                 >회원 관리</a
               >
             </li>
@@ -39,7 +39,7 @@
             </li>
             <li class="d-flex align-items-center">
               <a
-                href="/admin/admin_stores"
+                href="/admin/admin_stores/1"
                 class="text-decoration-none nav-link"
                 >거래처 관리</a
               >
@@ -53,7 +53,7 @@
             </li>
             <li class="d-flex align-items-center">
               <a
-                href="/admin/admin_coupon"
+                href="/admin/admin_coupon/1"
                 class="text-decoration-none nav-link"
                 >쿠폰 관리</a
               >
