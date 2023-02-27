@@ -34,7 +34,7 @@
     <%-- select --%>
     <%@ include file="etc/nav_select.jsp" %>
 
-    <!-- 본 페이지 content -->
+      <%-- 본 페이지 content  --%>
     <div class="container pt-5 mb-5">
       <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
@@ -46,7 +46,7 @@
           <button data-bs-target="#myCarousel" data-bs-slide-to="1"></button>
           <button data-bs-target="#myCarousel" data-bs-slide-to="2"></button>
         </div>
-        <!-- carousel inner -->
+       <%-- carousel inner  --%>
         <div class="carousel-inner">
           <div class="carousel-item active">
             <a href="/wine/wine_info">

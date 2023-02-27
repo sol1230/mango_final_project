@@ -3,18 +3,10 @@
 
 <mapper namespace="userMapper">
 
-<resultMap id="userResult">
- <result column="user_uid" property="user_uid" />
- <result column="password" property="password"/>
- <result column="name" property="name"/>
- <result column="birth" property="birth"/>
- <result column="gender" property="gender"/>
- <result column="phone" property="phone"/>
- <result column="authority" property="authority"/>
-</resultMap>
-
 <!-- 유저 로그인-->
-<select id="userLogin" resultMap="userResult">
+<select id="userLogin"
+ parameterType="com.mango.mango_final_project.user.model.vo.User"
+ resultType="com.mango.mango_final_project.user.model.vo.User">
 select
     user_uid
   , password
@@ -23,9 +15,10 @@ select
   , gender
   , phone
   , authority
+  , CONCAT(address,' ',address_detail) as address
 from user
 where user_uid = #{user_uid}
-and password = #{password}
+<!--and password = #{password}-->
 </select>
 
 <!-- 회원가입 -->
@@ -39,6 +32,9 @@ insert into user
   , gender
   , phone
   , authority
+  , address
+  , address_detail
+  , post
 )
 values
 (
@@ -48,7 +44,10 @@ values
   , #{birth}
   , #{gender}
   , #{phone}
-  , #{authority}
+  , 'USER'
+  , #{address}
+  , #{addressDetail}
+  , #{post}
 )
 </insert>
 

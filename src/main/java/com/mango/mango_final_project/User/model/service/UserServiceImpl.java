@@ -1,14 +1,14 @@
-package com.mango.mango_final_project.User.Controller.model.service;
+package com.mango.mango_final_project.user.model.service;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.mango.mango_final_project.User.Controller.model.dao.UserDao;
-import com.mango.mango_final_project.User.Controller.model.vo.User;
+import com.mango.mango_final_project.user.model.dao.UserDao;
+import com.mango.mango_final_project.user.model.vo.User;
 
 @Service
-public class userServiceImpl implements userService {
+public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserDao uDao;

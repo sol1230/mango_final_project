@@ -35,13 +35,13 @@
     <%@ include file="../etc/nav_select.jsp" %>
 
     <%-- 본 페이지 --%>
-    <!-- 로그인한 회원만 보여지는 마이 페이지-->
+    <%-- 로그인한 회원만 보여지는 마이 페이지--%>
     <div class="row g-0 vh-auto">
     <%-- user_nav --%>
     <%@ include file="../etc/user_nav.jsp" %>
       <div class="container mb-5 pb-5" style="width: 55rem">
         <div class="fs-4 fw-bold text-center pt-5">
-          <로그인한 회원 id>님의 마이페이지
+          ${loginUser.user_uid}님의 마이페이지
         </div>
         <form action="">
           <div class="info_area">
@@ -97,28 +97,30 @@
             <table class="table boder-top">
                <tr>
               <th>아이디</th>
-              <td>Park</td>
+              <td>${loginUser.user_uid}</td>
             </tr>
             <tr>
               <th>이름</th>
-              <td>아무개</td>
-            </tr>
-            <tr>
-              <th>비밀번호</th>
-              <td>1234</td>
+              <td>${loginUser.name}</td>
             </tr>
             <tr>
               <th>생년월일</th>
-              <td>1995-05-21</td>
+              <td>${loginUser.birth}</td>
             </tr>
             <tr>
               <th>성별</th>
-              <td>남자</td>
+              <td>${loginUser.gender}</td>
             </tr>
             <tr>
               <th>휴대전화</th>
-              <td>010-0000-0000</td>
+              <td>${loginUser.phone}</td>
             </tr>
+			
+			    <tr>
+              <th>주소</th>
+              <td>${loginUser.address}</td>
+            </tr>
+                    
             </table>
           </div>
 
