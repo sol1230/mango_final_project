@@ -3,9 +3,9 @@
     "version": "2.2.11",
     "width": 2200,
     "height": 2200,
-    "scrollTop": -95.3333333333333,
-    "scrollLeft": -198,
-    "zoomLevel": 0.9,
+    "scrollTop": -708.2248263888888,
+    "scrollLeft": -1383.333333333334,
+    "zoomLevel": 0.8,
     "show": {
       "tableComment": true,
       "columnComment": true,
@@ -139,8 +139,8 @@
             "id": "8f5c6ede-23f7-45bb-9c26-bda98845fe86"
           },
           {
-            "name": "COUPON_DATETIME",
-            "comment": "쿠폰기한",
+            "name": "COUPON_DATETIME1",
+            "comment": "쿠폰기한1",
             "dataType": "VARCHAR(100)",
             "default": "",
             "option": {
@@ -154,12 +154,104 @@
               "pk": false,
               "fk": false,
               "pfk": false,
-              "widthName": 131.0478515625,
-              "widthComment": 60,
+              "widthName": 138.27783203125,
+              "widthComment": 61.22998046875,
               "widthDataType": 94.94873046875,
               "widthDefault": 60
             },
             "id": "17fdc95e-305e-4fcb-8739-dabf7ffce0cd"
+          },
+          {
+            "name": "COUPON_DATETIME2",
+            "comment": "쿠폰기한2",
+            "dataType": "VARCHAR(100)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 138.27783203125,
+              "widthComment": 61.22998046875,
+              "widthDataType": 94.94873046875,
+              "widthDefault": 60
+            },
+            "id": "68a7b05a-185f-41f4-8f20-26eab0c3a3ea"
+          },
+          {
+            "name": "ATTACHFILE_SEQ",
+            "comment": "첨부파일일련번호",
+            "dataType": "VARCHAR(100)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": false
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 114.20751953125,
+              "widthComment": 106,
+              "widthDataType": 94.94873046875,
+              "widthDefault": 60
+            },
+            "id": "fec277d9-7f8b-4510-a383-372ab0599b83"
+          },
+          {
+            "name": "ORIGINALFILE_NAME",
+            "comment": "원본파일명",
+            "dataType": "VARCHAR(100)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": false
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 136.3671875,
+              "widthComment": 67,
+              "widthDataType": 94.94873046875,
+              "widthDefault": 60
+            },
+            "id": "f3fad1a9-48a6-4020-bfc1-4552d5387fe7"
+          },
+          {
+            "name": "PHYSICALFILE_NAME",
+            "comment": "첨부파일명",
+            "dataType": "VARCHAR(100)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": false
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 138.54443359375,
+              "widthComment": 67,
+              "widthDataType": 94.94873046875,
+              "widthDefault": 60
+            },
+            "id": "ea7f701f-650a-4640-b691-6d5a208f4fad"
           },
           {
             "name": "USER_UID",
@@ -187,9 +279,9 @@
         ],
         "ui": {
           "active": false,
-          "left": 1514.0473,
-          "top": 772.6666,
-          "zIndex": 3,
+          "left": 1517.3806,
+          "top": 755.1667,
+          "zIndex": 53,
           "widthName": 60,
           "widthComment": 60
         },
@@ -366,7 +458,7 @@
           "active": false,
           "left": 809.5993,
           "top": 212.9042,
-          "zIndex": 10,
+          "zIndex": 9,
           "widthName": 60,
           "widthComment": 60
         },
@@ -697,7 +789,7 @@
           "active": false,
           "left": 1505.7753,
           "top": 1326.0254,
-          "zIndex": 9,
+          "zIndex": 8,
           "widthName": 60,
           "widthComment": 60
         },
@@ -1779,8 +1871,8 @@
           "columnIds": [
             "4a6f5aae-971d-489f-af2a-f58f19e204be"
           ],
-          "x": 1514.0473,
-          "y": 868.6666,
+          "x": 1517.3806,
+          "y": 892.1667,
           "direction": "left"
         },
         "constraintName": "fk_user_to_coupon",
