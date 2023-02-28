@@ -82,7 +82,7 @@
               name="birth"
               id="birth"
               class="form-control"
-              vlaue="${loginUser.birth}"
+              value="${loginUser.birth}"
               required
             />
           </div>
@@ -97,7 +97,7 @@
             <label for="" class="pb-1">휴대전화</label>
             <div class="row">
               <div class="col">
-                <select class="form-select" name="phone0" value="${loginUser.phone}"required>
+                <select class="form-select" name="phone0" required>
                   <option>선택</option>
                   <option value="010">010</option>
                   <option value="012">012</option>

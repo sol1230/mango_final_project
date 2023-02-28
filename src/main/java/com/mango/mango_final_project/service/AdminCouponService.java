@@ -12,7 +12,7 @@ public class AdminCouponService {
   @Autowired
   CommonDao commonDao;
 
-  // ADMIN COUPON
+  // LIST
   // admin coupon list
   public Object getCouponList(Object dataMap) {
     String sqlMapId = "AdminCoupon.adminCoupon";
@@ -27,50 +27,6 @@ public class AdminCouponService {
     return result;
   }
 
-  // insert coupon
-  public Object insertCoupon(Object dataMap) {
-    String sqlMapId = "AdminCoupon.insertCoupon";
-    Object result = commonDao.insert(sqlMapId, dataMap);
-    return result;
-  }
-
-  // update coupon
-  public Object updateCoupon(Object dataMap) {
-    String sqlMapId = "AdminCoupon.updateCoupon";
-    Object result = commonDao.update(sqlMapId, dataMap);
-    return result;
-  }
-
-  // delete coupon
-  public Object deleteCoupon(Object dataMap) {
-    String sqlMapId = "AdminCoupon.deleteCoupon";
-    Object result = commonDao.delete(sqlMapId, dataMap);
-    return result;
-  }
-
-  // 동작 후 list로 돌아가기
-
-  // insert and get coupon list
-  public Object insertCouponAndGetList(Object dataMap) {
-    Object result = this.insertCoupon(dataMap);
-    result = this.getCouponList(dataMap);
-    return result;
-  }
-
-  // update and get coupon list
-  public Object updateCouponAndGetList(Object dataMap) {
-    Object result = this.updateCoupon(dataMap);
-    result = this.getCouponList(dataMap);
-    return result;
-  }
-
-  // delete and get coupon list
-  public Object deleteCouponAndGetList(Object dataMap) {
-    Object result = this.deleteCoupon(dataMap);
-    result = this.getCouponList(dataMap);
-    return result;
-  }
-
   // pagination
   public Object couponWithPagination(Object dataMap) {
     Map<String, Object> result = new HashMap<String, Object>();
@@ -82,6 +38,10 @@ public class AdminCouponService {
         "pageBegin",
         paginations.getPageBegin()
       );
+    ((Map<String, Object>) dataMap).put(
+        "pageScale",
+        paginations.getPageScale()
+      );
     result.put("resultList", this.getCouponList(dataMap));
     return result;
   }
@@ -90,6 +50,72 @@ public class AdminCouponService {
   public Object getCouponTotal(Object dataMap) {
     String sqlMapId = "AdminCoupon.selectCouponTotal";
     Object result = commonDao.getOne(sqlMapId, dataMap);
+    return result;
+  }
+
+  // INSERT
+  // insert coupon
+  // public Object insertCoupon(Object dataMap) {
+  //   String sqlMapId = "AdminCoupon.insertCoupon";
+  //   Object result = commonDao.insert(sqlMapId, dataMap);
+  //   return result;
+  // }
+
+  // // insert and get coupon list
+  // public Object insertCouponAndGetList(Object dataMap) {
+  //   Object result = this.insertCoupon(dataMap);
+  //   result = this.couponWithPagination(dataMap);
+  //   return result;
+  // }
+
+  // insert coupon + file
+  public Object insertCouponWithFile(Object dataMap) {
+    String sqlMapId = "AdminCoupon.insertCouponWithFile";
+    Object result = commonDao.insert(sqlMapId, dataMap);
+    return result;
+  }
+
+  // insert file and get coupon list
+  public Object insertCouponWithFileAndGetList(Object dataMap) {
+    Object result = this.insertCouponWithFile(dataMap);
+    result = this.couponWithPagination(dataMap);
+    return result;
+  }
+
+  //UPDATE
+  // update page
+  public Object getCouponInfo(Object dataMap) {
+    String sqlMapId = "AdminCoupon.selectCouponCont";
+    Object result = commonDao.getOne(sqlMapId, dataMap);
+    return result;
+  }
+
+  // update coupon
+  public Object updateCoupon(Object dataMap) {
+    String sqlMapId = "AdminCoupon.updateCoupon";
+    Object result = commonDao.update(sqlMapId, dataMap);
+    return result;
+  }
+
+  // update and get coupon list
+  public Object updateCouponAndGetList(Object dataMap) {
+    Object result = this.updateCoupon(dataMap);
+    result = this.couponWithPagination(dataMap);
+    return result;
+  }
+
+  //DELETE
+  // delete coupon
+  public Object deleteCoupon(Object dataMap) {
+    String sqlMapId = "AdminCoupon.deleteCoupon";
+    Object result = commonDao.delete(sqlMapId, dataMap);
+    return result;
+  }
+
+  // delete and get coupon list
+  public Object deleteCouponAndGetList(Object dataMap) {
+    Object result = this.deleteCoupon(dataMap);
+    result = this.couponWithPagination(dataMap);
     return result;
   }
 }

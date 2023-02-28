@@ -21,16 +21,32 @@
         WHERE COUPON_UID = #{COUPON_UID}
     </select>
 
+    <!-- AdminCoupon.selectCouponCont -->
+    <select id="selectCouponCont" parameterType="Map" resultType="Map">
+        SELECT *
+        FROM COUPON
+        INNER JOIN USER
+        ON COUPON.USER_UID = USER.USER_UID
+        WHERE COUPON_UID = #{COUPON_UID}
+        AND COUPON_NAME = #{COUPON_NAME}
+        AND COUPON_DATE = #{COUPON_DATE}
+    </select>
+
+
     <!-- AdminCoupon.selectCouponTotal -->
     <select id="selectCouponTotal" parameterType="Map" resultType="int">
         SELECT count(*) as cnt
         FROM COUPON
     </select>
 
-    <!-- AdminCoupon.insertCoupon -->
-    <insert id="insertCoupon" parameterType="Map">
-        INSERT INTO COUPON (COUPON_FILE, COUPON_NAME, COUPON_DATE, COUPON_DATETIME, USER_UID)
-        VALUE (#{COUPON_FILE}, #{COUPON_NAME}, DATE(NOW()), #{COUPON_DATETIME}, #{USER_UID})
+    <!-- AdminCoupon.insertCouponWithFile -->
+    <insert id="insertCouponWithFile" parameterType="Map">
+        INSERT INTO COUPON (COUPON_FILE, ATTACHFILE_SEQ, ORIGINALFILE_NAME, PHYSICALFILE_NAME, COUPON_NAME, COUPON_DATE, COUPON_DATETIME1, COUPON_DATETIME2, USER_UID)
+        VALUE 
+        <foreach collection="attachfiles" item="attachfile"
+                open="(" close=")" separator="),(">
+                #{attachfiles.COUPON_FILE}, #{attachfiles.ATTACHFILE_SEQ}, #{attachfiles.ORIGINALFILE_NAME}, #{attachfiles.PHYSICALFILE_NAME}, #{attachfiles.COUPON_NAME}, DATE(NOW()), #{attachfiles.COUPON_DATETIME1}, #{attachfiles.COUPON_DATETIME2}, #{USER_UID}
+        </foreach>
     </insert>
 
     <!-- AdminCoupon.updateCoupon  -->
@@ -38,8 +54,8 @@
         UPDATE COUPON
         SET COUPON_FILE = #{COUPON_FILE},
             COUPON_NAME = #{COUPON_NAME},
-            COUPON_DATETIME = #{COUPON_DATETIME},
-            USER_UID = #{USER_UID}
+            COUPON_DATETIME1 = #{COUPON_DATETIME1},
+            COUPON_DATETIME2 = #{COUPON_DATETIME2}
         WHERE COUPON_UID = #{COUPON_UID}
     </update>
 

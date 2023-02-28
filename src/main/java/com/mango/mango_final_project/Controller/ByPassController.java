@@ -197,10 +197,7 @@ public class ByPassController {
     int i = 0;
   }
 
-  @RequestMapping(value = { "/user/myPage" })
-  public void myPage() {
-    int i = 0;
-  }
+  
 
   @RequestMapping(value = { "/user/user_coupon" })
   public void user_coupon() {

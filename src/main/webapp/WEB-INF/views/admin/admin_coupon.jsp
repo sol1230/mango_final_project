@@ -37,7 +37,6 @@
 
       <main class="col-9 p-0 mb-5 ms-5">
         <div class="mt-4 p-4 border bg-white">
-          <form action="">
             <div
               class="d-flex justify-content-between align-items-center input-group"
             >
@@ -48,13 +47,14 @@
                   >
                 </div>
               </div>
+              <form action="/admin/admin_coupon_insert" method="get">
               <div class="justify-content-right align-items-center pt-2">
-                <a href="/admin/admin_coupon_add" class="text-secondary">
+                <a href="/admin/admin_coupon_insert" class="text-secondary">
                   <span class="material-symbols-outlined fs-3"> add_box </span>
                 </a>
               </div>
+              </form>
             </div>
-          </form>
           <table
             class="mt-3 table table-hover text-center align-middle"
             style="font-size: small"
@@ -74,20 +74,26 @@
               <tr>
                 <th>${resultData.COUPON_UID}</th>
                 <td>${resultData.COUPON_FILE}
-                  <img src="../img/할인 쿠폰.PNG" alt="" style="width: 3rem" />
+                  <img src="/img/files/${resultData.PHYSICALFILE_NAME}/${resultData.ORIGINALFILE_NAME}" alt="${resultData.ORIGINALFILE_NAME}" style="width: 3rem" />
                 </td>
                 <td>${resultData.COUPON_NAME}</td>
                 <td>${resultData.COUPON_DATE}</td>
-                <td>${resultData.COUPON_DATETIME}</td>
+                <td>${resultData.COUPON_DATETIME1} ~ ${resultData.COUPON_DATETIME2}</td>
                  <td>
                   <div class="d-flex justify-content-center">
-                    <div>
-                      <form action="/admin_coupon_edit/${resultData.COUPON_UID}" method="post">
-                        <input type="hidden" name="COUPON_FILE" value="${resultData.COUPON_FILE}" />
+                  <div>
+                      <form action="/admin/admin_coupon_edit" method="post">
+                        <input type="hidden" name="COUPON_UID" value="${resultData.COUPON_UID}" />
+                        <input type="hidden" name="COUPON_DATE" value="${resultData.COUPON_DATE}" />
                         <input type="hidden" name="COUPON_NAME" value="${resultData.COUPON_NAME}" />
-                        <input type="hidden" name="COUPON_DATETIME" value="${resultData.COUPON_DATETIME}" />
+                        <input type="hidden" name="NAME" value="${resultData.USER_UID}" />
+                        <input type="hidden" name="COUPON_DATETIME1" value="${resultData.COUPON_DATETIME1}" />
+                        <input type="hidden" name="COUPON_DATETIME2" value="${resultData.COUPON_DATETIME2}" />
+                        <input type="hidden" name="COUPON_FILE" value="${resultData.COUPON_FILE}" />
+                        <input type="hidden" name="ATTACHFILE_SEQ" value="${resultData.ATTACHFILE_SEQ}" />
+                        <input type="hidden" name="ORIGINALFILE_NAME" value="${resultData.ORIGINALFILE_NAME}" />
+                        <input type="hidden" name="PHYSICALFILE_NAME" value="${resultData.PHYSICALFILE_NAME}" />
                         <button
-                          type="submit"
                           class="btn btn-sm btn-outline-secondary"
                         >
                           수정
@@ -95,7 +101,7 @@
                       </form>
                     </div>
                     <div>
-                      <form action="" class="ps-2">
+                      <form action="/admin/admin_coupon_delete/1" method="post" class="ps-2">
                         <input type="hidden" name="COUPON_UID" value="${resultData.COUPON_UID}" />
                       <button
                           class="btn btn-outline-danger btn-sm"
@@ -119,7 +125,7 @@
             <nav aria-label="Page navigation">
               <ul class="pagination pagination-sm">
                 <li class="page-item">
-                  <a class="page-link" href="${_pagination.previousPage}" aria-label="Previous">
+                  <a class="page-link" href="/admin/admin_coupon/${_pagination.previousPage}" aria-label="Previous">
                     <span aria-hidden="true">&laquo;</span>
                     <span class="sr-only">이전</span>
                   </a>
@@ -130,7 +136,7 @@
                 </li>
                 </c:forEach>
                 <li class="page-item">
-                  <a class="page-link" href="${_pagination.nextPage}" aria-label="Next">
+                  <a class="page-link" href="/admin/admin_coupon/${_pagination.nextPage}" aria-label="Next">
                     <span class="sr-only">다음</span>
                     <span aria-hidden="true">&raquo;</span>
                   </a>
