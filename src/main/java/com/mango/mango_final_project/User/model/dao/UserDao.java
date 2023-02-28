@@ -27,4 +27,5 @@ public class UserDao {
     public int idCheck(SqlSessionTemplate sqlSession, String checkId){
         return sqlSession.selectOne("userMapper.checkId", checkId);
     }
+    
 }
