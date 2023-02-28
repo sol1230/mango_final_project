@@ -3,8 +3,8 @@
     "version": "2.2.11",
     "width": 2000,
     "height": 2000,
-    "scrollTop": 0,
-    "scrollLeft": -0.9259258891329368,
+    "scrollTop": -3.9999999999999996,
+    "scrollLeft": -186.9259258891329,
     "zoomLevel": 1,
     "show": {
       "tableComment": true,
@@ -139,8 +139,8 @@
             "id": "93428ca1-7935-4a67-850c-984fbec89b79"
           },
           {
-            "name": "COUPON_DATATIME",
-            "comment": "쿠폰기한",
+            "name": "COUPON_DATATIME1",
+            "comment": "쿠폰기한1",
             "dataType": "VARCHAR(100)",
             "default": "",
             "option": {
@@ -154,19 +154,111 @@
               "pk": false,
               "fk": false,
               "pfk": false,
-              "widthName": 129.1181640625,
-              "widthComment": 60,
+              "widthName": 136.34814453125,
+              "widthComment": 61.22998046875,
               "widthDataType": 94.94873046875,
               "widthDefault": 60
             },
             "id": "297c4ad8-f6e0-437d-90f0-5db6bd19db6a"
+          },
+          {
+            "name": "COUPON_DATETIME2",
+            "comment": "쿠폰기한2",
+            "dataType": "VARCHAR(100)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 138.27783203125,
+              "widthComment": 61.22998046875,
+              "widthDataType": 94.94873046875,
+              "widthDefault": 60
+            },
+            "id": "1174e35f-717b-4e77-b524-37a7d95f1d73"
+          },
+          {
+            "name": "ATTACHFILE_SEQ",
+            "comment": "첨부파일일련번호",
+            "dataType": "VARCHAR(100)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": false
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 114.20751953125,
+              "widthComment": 106,
+              "widthDataType": 94.94873046875,
+              "widthDefault": 60
+            },
+            "id": "da8713ec-5949-4e14-b523-e39ced9618e5"
+          },
+          {
+            "name": "ORIGINALFILE_NAME",
+            "comment": "원본파일명",
+            "dataType": "VARCHAR(100)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": false
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 136.3671875,
+              "widthComment": 67,
+              "widthDataType": 94.94873046875,
+              "widthDefault": 60
+            },
+            "id": "7b872cde-eaa2-4761-8753-0634c3f33796"
+          },
+          {
+            "name": "PHYSICALFILE_NAME",
+            "comment": "첨부파일명",
+            "dataType": "VARCHAR(100)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": false
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 138.54443359375,
+              "widthComment": 67,
+              "widthDataType": 94.94873046875,
+              "widthDefault": 60
+            },
+            "id": "f5cc1bc7-278c-4c01-a7fd-3f35d7539bf6"
           }
         ],
         "ui": {
           "active": false,
           "left": 201.3889,
           "top": 100,
-          "zIndex": 1,
+          "zIndex": 18,
           "widthName": 60,
           "widthComment": 60
         },
