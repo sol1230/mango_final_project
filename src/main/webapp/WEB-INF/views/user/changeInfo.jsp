@@ -88,7 +88,7 @@
           </div>
           <div class="pt-3">
             <label for="" class="pb-1">성별</label>
-            <select class="form-select" name="gender" id="gender" required>
+            <select class="form-select" name="gender" id="gender" required readonly>
               <option value="men">남자</option>
               <option value="women">여자</option>
             </select>
