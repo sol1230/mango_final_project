@@ -6,7 +6,7 @@
     <select id="selectEventList" parameterType="Map" resultType="Map">
         SELECT *
         FROM EVENT
-        ORDER BY SUBSTRING(EVENT_DATETIME, 1, 10) DESC, SUBSTRING(EVENT_DATETIME, 14, 10) DESC
+        ORDER BY EVENT_START DESC, EVENT_END DESC
     </select>
 
     <!-- call Event.selectEventListSearchWithDate -->
@@ -15,13 +15,13 @@
         FROM EVENT
         <choose>
             <when test="selectKeyField == 'ongoing'">
-                WHERE SUBSTRING(EVENT_DATETIME, 14, 10) <![CDATA[ >= ]]> DATE_FORMAT(NOW(), '%Y-%m-%d')
+                WHERE EVENT_END <![CDATA[ >= ]]> DATE_FORMAT(NOW(), '%Y-%m-%d')
             </when>
             <when test="selectKeyField == 'done'">
-                WHERE SUBSTRING(EVENT_DATETIME, 14, 10) <![CDATA[ < ]]> DATE_FORMAT(NOW(), '%Y-%m-%d')
+                WHERE EVENT_END <![CDATA[ < ]]> DATE_FORMAT(NOW(), '%Y-%m-%d')
             </when>
         </choose>
-        ORDER BY SUBSTRING(EVENT_DATETIME, 1, 10) DESC, SUBSTRING(EVENT_DATETIME, 14, 10) DESC
+        ORDER BY EVENT_START DESC, EVENT_END
     </select>
 
     <!-- call Event.selectEventListWithUID -->

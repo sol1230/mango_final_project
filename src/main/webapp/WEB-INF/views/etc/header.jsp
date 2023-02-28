@@ -36,6 +36,7 @@
             type="search"
             placeholder="상품을 입력하세요."
             aria-label="Search"
+            value="${searchName}"
             required
           />
           <button

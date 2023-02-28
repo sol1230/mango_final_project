@@ -69,11 +69,12 @@ public class AdminEventController {
                 // 1. HashMap에 넣어주기
                 attachfile = new HashMap<>();
                 attachfile.put("EVENT_UID", params.get("EVENT_UID"));
-                attachfile.put("EVENT_DATETIME", params.get("EVENT_DATETIME"));
+                attachfile.put("EVENT_START", params.get("EVENT_START"));
+                attachfile.put("EVENT_END", params.get("EVENT_END"));
                 attachfile.put("EVENT_FILE", params.get("EVENT_FILE"));
-                attachfile.put("ATTACHFILE_SEQ", commonUtils.getUniqueSequence());
-                attachfile.put("ORIGINALFILE_NAME", originalFileName);
-                attachfile.put("PHYSICALFILE_NAME", physicalFileName);
+                attachfile.put("EVENT_ATTACHFILE_SEQ", commonUtils.getUniqueSequence());
+                attachfile.put("EVENT_ORIGINALFILE_NAME", originalFileName);
+                attachfile.put("EVENT_PHYSICALFILE_NAME", physicalFileName);
                 attachfile.put("EVENT_TITLE", params.get("EVENT_TITLE"));
                 attachfile.put("EVENT_DATE", params.get("EVENT_DATE"));
                 attachfile.put("EVENT_CONTENT", params.get("EVENT_CONTENT"));
@@ -90,7 +91,6 @@ public class AdminEventController {
             }
         }
         params.put("attachfiles", attachfiles);
-
         params.put("currentPage", Integer.parseInt(currentPage));
         Object resultMap = adminEventService.insertEventWithFileAndGetEventList(params);
         modelAndView.addObject("resultMap", resultMap);

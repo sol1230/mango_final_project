@@ -71,12 +71,23 @@
             <tbody>
               <c:forEach items="${resultMap.resultList}" var="resultData" varStatus="loop">
                 <tr>
-                  <th scope="">${resultData.EVENT_UID}</th>
+                  <th scope="">${loop.count}</th>
                   <td scope="">
-                    <img src="/img/files/${resultData.PHYSICALFILE_NAME}/${resultData.ORIGINALFILE_NAME}" style="width: 3rem" alt="${resultData.ORIGINALFILE_NAME}">
+                    <div style="width: 50px; height: 50px; overflow: hidden;" class="ms-4">
+                      <img src="/img/files/${resultData.EVENT_PHYSICALFILE_NAME}/${resultData.EVENT_ORIGINALFILE_NAME}" style="width: 50px; heigth: 50px; object-fit: cover;" alt="${resultData.EVENT_ORIGINALFILE_NAME}">
+                    </div>
                   </td>
                   <td>${resultData.EVENT_TITLE}</td>
-                  <td>${resultData.EVENT_DATETIME}</td>
+                    <%-- <c:choose>
+                      <c:when test="${resultData.EVENT_START eq ''} || ${resultData.EVENT_END eq ''}">
+                        <td>
+                          이벤트 기간이 없습니다.
+                        </td>
+                      </c:when>
+                    </c:choose> --%>
+                      <td>
+                        ${resultData.EVENT_START} ~ ${resultData.EVENT_END}
+                      </td>
                   <td>${resultData.EVENT_DATE}</td>
                   <td>
                     <div class="d-flex justify-content-center">
@@ -84,7 +95,8 @@
                         <form action="/admin/adminEventModify" method="post">
                           <input type="hidden" name="EVENT_UID" value="${resultData.EVENT_UID}" />
                           <input type="hidden" name="EVENT_TITLE" value="${resultData.EVENT_TITLE}" />
-                          <input type="hidden" name="EVENT_DATETIME" value="${resultData.EVENT_DATETIME}" />
+                          <input type="hidden" name="EVENT_START" value="${resultData.EVENT_START}" />
+                          <input type="hidden" name="EVENT_END" value="${resultData.EVENT_END}" />
                           <input type="hidden" name="EVENT_CONTENT" value="${resultData.EVENT_CONTENT}" />
                           <button
                             type="submit"
@@ -138,7 +150,6 @@
         </div>
       </main>
     </div>
-
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"

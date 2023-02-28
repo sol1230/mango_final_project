@@ -163,9 +163,9 @@ public class AdminBoardController {
             attachfile.put("NOTICE_TITLE", params.get("NOTICE_TITLE"));
             attachfile.put("NOTICE_CONTENT", params.get("NOTICE_CONTENT"));
             attachfile.put("NOTICE_FILE", params.get("NOTICE_FILE"));
-            attachfile.put("ATTACHFILE_SEQ", commonUtils.getUniqueSequence());
-            attachfile.put("ORIGINALFILE_NAME", originalFileName);
-            attachfile.put("PHYSICALFILE_NAME", physicalFileName);
+            attachfile.put("NOTICE_ATTACHFILE_SEQ", commonUtils.getUniqueSequence());
+            attachfile.put("NOTICE_ORIGINALFILE_NAME", originalFileName);
+            attachfile.put("NOTICE_PHYSICALFILE_NAME", physicalFileName);
             attachfile.put("USER_UID", params.get("USER_UID"));
             
             // 2. ArrayList로 묶기
