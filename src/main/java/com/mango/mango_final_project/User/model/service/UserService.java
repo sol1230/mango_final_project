@@ -1,8 +1,8 @@
-package com.mango.mango_final_project.User.Controller.model.service;
+package com.mango.mango_final_project.user.model.service;
 
-import com.mango.mango_final_project.User.Controller.model.vo.User;
+import com.mango.mango_final_project.user.model.vo.User;
 
-public interface userService {
+public interface UserService {
     
     // 로그인 서비스 (select)
 

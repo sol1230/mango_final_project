@@ -1,6 +1,19 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  	 <!-- sweetalert -->
+  	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
 <%-- header --%>
   <header
       class="d-flex justify-content-between align-items-center border-bottom"
@@ -19,7 +32,7 @@
         <form action="/search/searchWineList/1" method="get" class="d-flex">
           <input
             class="form-control me-2"
-            name="WINE_NAME"
+            name="WINESEARCH_NAME"
             type="search"
             placeholder="상품을 입력하세요."
             aria-label="Search"
@@ -58,11 +71,10 @@
 
           <c:otherwise>
           <a
-            href="user/myPage"
+            href="/user/myPage"
             class="nav-link link-dark"
-            data-bs-toggle="modal"
             ><i class="material-icons col-1 text-secondary fs-3" id="">
-              </i
+              person</i
             ></a
           >
           </c:otherwise>
@@ -84,33 +96,26 @@
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content text-center p-5">
           <div class="fs-4 fw-bold">로그인</div>
-          <form action="login.me" method="post">
             <div class="pt-3">
               <div class="">
                 <div class="">
                   <input
                     type="text"
-                    class="form-control"
-                    name="user_id"
+                    class="form-control" id="user_uid"
+                    name="user_uid"
                     placeholder="아이디"
                     required
                   />
                 </div>
                 <div class="pt-3">
-                  <input
-                    type="password"
-                    class="form-control"
-                    name="password"
-                    placeholder="비밀번호"
+                  <input type="password" id="password" class="form-control" name="password"
+                    placeholder="비밀번호" 
                     required
                   />
                 </div>
               </div>
               <div class="text-center pt-4">
-                <button type="submit" class="btn btn-danger form-control">
-                  확인
-                </button>
-          </form>
+                <button class="btn btn-danger form-control" onclick="check();">로그인</button>
               </div>
               <div class="pt-2 d-flex justify-content-between">
                 <div>
@@ -130,9 +135,54 @@
                   >
                 </div>
               </div>
+             </div>
             </div>
         </div>
       </div>
-    </div>
+      
+   <script>
+   
+	function check(){
+		$.ajax({
+				url:"/login",
+				type:"post",
+				data:{
+					user_uid:$("#user_uid").val(),
+					password:$("#password").val()
+				},
+				success:function(result){
+					
+					if(result == 'S'){
+						return new swal({
+							title:"로그인되었습니다.",
+							icon:"success",
+							closeOnClickOutside:false
+						})
+						.then((value) => {
+							if(value){
+								location.href="/index";
+							}
+						})
+					}else{
+						return new swal({
+							title:"로그인에 실패하였습니다.",
+							icon:"error",
+							closeOnClickOutside:false
+						})
+						.then((value) => {
+							if(value){
+								location.reload();
+							}
+						})
+					}
+				},error:function(){
+					cosole.log("열람 참조용 ajax통신 실패")
+				}
+			})
+	}
+   
+   </script>
+</body>
+</html>
 
    

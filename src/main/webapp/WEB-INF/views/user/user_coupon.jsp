@@ -34,7 +34,7 @@
 
     <%-- 본 페이지 --%>
 
-    <!-- 로그인한 회원만 보여지는 쿠폰함-->
+    <%-- 로그인한 회원만 보여지는 쿠폰함--%>
     <div class="row g-0 vh-auto">
     <%-- user_nav --%>
     <%@ include file="../etc/user_nav.jsp" %>
