@@ -30,8 +30,6 @@ public class WineDetailsSelectController {
         String[] WINE_VARIETY_LIST = request.getParameterValues("WINE_VARIETY");
         String[] WINE_FOOD_PAIRING_LIST = request.getParameterValues("WINE_FOOD_PAIRING");
 
-        String max = WINE_SCOPE_LIST[0];
-
         params.put("WINE_SCOPE_LIST", WINE_SCOPE_LIST);
         params.put("WINE_TYPE_LIST", WINE_TYPE_LIST);
         params.put("WINE_COUNTRY_LIST", WINE_COUNTRY_LIST);
