@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="WineDetailsSelect">
+    <!-- call WineDetailsSelect.selectWineDetails -->
+    <select id="selectWineDetails" parameterType="Map" resultType="Map">
+        SELECT *
+        FROM WINE
+        WHERE 1 = 1
+        <if test = "WINE_SCOPE_LIST != null">
+            AND WINE_SCOPE BETWEEN
+                <foreach collection="WINE_SCOPE_LIST" item="WINE_SCOPE" 
+                open="(" separator="AND" close=")">
+                    #{WINE_SCOPE}
+                </foreach>
+        </if>
+        <if test = "WINE_TYPE_LIST != null">
+            AND WINE_TYPE IN
+                <foreach collection="WINE_TYPE_LIST" item="WINE_TYPE" 
+                open="(" separator="," close=")">
+                    #{WINE_TYPE}
+                </foreach>
+        </if>
+        <if test = "WINE_COUNTRY_LIST != null">
+            AND WINE_COUNTRY IN
+                <foreach collection="WINE_COUNTRY_LIST" item="WINE_COUNTRY" 
+                open="(" separator="," close=")">
+                    #{WINE_COUNTRY}
+                </foreach>
+        </if>
+        <if test = "WINE_REGION_LIST != null">
+            AND WINE_REGION IN
+                <foreach collection="WINE_REGION_LIST" item="WINE_REGION" 
+                open="(" separator="," close=")">
+                    #{WINE_REGION}
+                </foreach>
+        </if>
+        <if test = "WINE_VARIETY_LIST != null">
+            AND WINE_VARIETY IN
+                <foreach collection="WINE_VARIETY_LIST" item="WINE_VARIETY" 
+                open="(" separator="," close=")">
+                    #{WINE_VARIETY}
+                </foreach>
+        </if>
+        <if test = "WINE_FOOD_PAIRING_LIST != null">
+            AND WINE_FOOD_PAIRING IN
+                <foreach collection="WINE_FOOD_PAIRING_LIST" item="WINE_FOOD_PAIRING" 
+                open="(" separator="," close=")">
+                    #{WINE_FOOD_PAIRING}
+                </foreach>
+        </if>
+        <if test="pageScale != null">
+            ORDER BY WINE_UID
+            LIMIT #{pageBegin}, #{pageScale}
+        </if>
+    </select>
+
+    <!-- call WineDetailsSelect.selectWineDetailsTotal -->
+    <select id="selectWineDetailsTotal" parameterType="Map" resultType="int">
+        SELECT count(*) as cnt
+        FROM WINE
+        WHERE 1 = 1
+        <if test = "WINE_SCOPE_LIST != null">
+            AND WINE_SCOPE BETWEEN
+                <foreach collection="WINE_SCOPE_LIST" item="WINE_SCOPE" 
+                open="(" separator="AND" close=")">
+                    #{WINE_SCOPE}
+                </foreach>
+        </if>
+        <if test = "WINE_TYPE_LIST != null">
+            AND WINE_TYPE IN
+                <foreach collection="WINE_TYPE_LIST" item="WINE_TYPE" 
+                open="(" separator="," close=")">
+                    #{WINE_TYPE}
+                </foreach>
+        </if>
+        <if test = "WINE_COUNTRY_LIST != null">
+            AND WINE_COUNTRY IN
+                <foreach collection="WINE_COUNTRY_LIST" item="WINE_COUNTRY" 
+                open="(" separator="," close=")">
+                    #{WINE_COUNTRY}
+                </foreach>
+        </if>
+        <if test = "WINE_REGION_LIST != null">
+            AND WINE_REGION IN
+                <foreach collection="WINE_REGION_LIST" item="WINE_REGION" 
+                open="(" separator="," close=")">
+                    #{WINE_REGION}
+                </foreach>
+        </if>
+        <if test = "WINE_VARIETY_LIST != null">
+            AND WINE_VARIETY IN
+                <foreach collection="WINE_VARIETY_LIST" item="WINE_VARIETY" 
+                open="(" separator="," close=")">
+                    #{WINE_VARIETY}
+                </foreach>
+        </if>
+        <if test = "WINE_FOOD_PAIRING_LIST != null">
+            AND WINE_FOOD_PAIRING IN
+                <foreach collection="WINE_FOOD_PAIRING_LIST" item="WINE_FOOD_PAIRING" 
+                open="(" separator="," close=")">
+                    #{WINE_FOOD_PAIRING}
+                </foreach>
+        </if>
+        <if test="pageScale != null">
+            ORDER BY WINE_UID
+            LIMIT #{pageBegin}, #{pageScale}
+        </if>
+    </select>
+    
+</mapper>
