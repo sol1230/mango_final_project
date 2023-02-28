@@ -19,7 +19,7 @@
         <form action="/search/searchWineList/1" method="get" class="d-flex">
           <input
             class="form-control me-2"
-            name="WINE_NAME"
+            name="WINESEARCH_NAME"
             type="search"
             placeholder="상품을 입력하세요."
             aria-label="Search"
