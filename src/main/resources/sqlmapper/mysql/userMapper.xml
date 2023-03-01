@@ -15,7 +15,9 @@ select
   , gender
   , phone
   , authority
-  , CONCAT(address,' ',address_detail) as address
+  , post
+  , address
+  , address_detail as addressDetail
 from user
 where user_uid = #{user_uid}
 <!--and password = #{password}-->
@@ -38,11 +40,18 @@ insert into user
 )
 values
 (
-    #{user_uid}
+    #{user_uid} 
   , #{password}
   , #{name}
   , #{birth}
-  , #{gender}
+  <choose>
+    <when test='"F".equals(gender)'>
+      , '여자'
+    </when>
+    <when test='"M".equals(gender)'>
+      , '남자'
+    </when>
+  </choose>
   , #{phone}
   , 'USER'
   , #{address}
@@ -55,12 +64,14 @@ values
 <update id="changeUserInfo">
 update
     user
-set password = #{password}
-  , name = #{name}
-  , birth = #{birth}
-  , gender = #{gender}
-  , phone = #{phone}
-  , authority = #{authority}
+set 
+  phone = #{phone}  
+   <if test="password != null and password != ''">
+    ,password = #{password}
+   </if>  
+  , address = #{address}
+  , address_detail = #{addressDetail}
+  , post = #{post}
   where user_uid = #{user_uid}
 </update>
 

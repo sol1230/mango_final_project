@@ -52,19 +52,33 @@ public class UserController {
     }
   }
 
-  @RequestMapping("updateUser")
-  public String updateUser(User user, Model model, HttpSession session) {
+  @ResponseBody
+  @RequestMapping("changeUser")
+  public String updateUser(User user, HttpSession session) {
+    User loginUser = uService.loginUser(user);    
+   
+    if (!bcryptPasswordEncoder.matches(user.getPassword(), loginUser.getPassword())){
+      return "F1";
+    }
+    
+
+    String phone = user.getPhone1() + "-" + user.getPhone2() + "-" + user.getPhone3();
+    user.setPhone(phone);
+    if(user.getPassword1() != null && user.getPassword1() != ""){
+      String encPwd = bcryptPasswordEncoder.encode(user.getPassword1());
+      user.setPassword(encPwd);
+    }else{
+      user.setPassword(null);
+    }
     int result = uService.updateUser(user);
 
-    if (result > 0) { // 수정 정송
-      session.setAttribute("loginUser", uService.loginUser(user));
-
-      session.setAttribute("alertMsg", "회원정보가 변경되었습니다.");
-
-      return "redirect:myPage";
+    if (result > 0) { // 수정성공
+      loginUser = uService.loginUser(user);   
+      session.setAttribute("loginUser", loginUser);
+      return "S";
     } else {
-      model.addAttribute("errorMsg", "회원정보 수정에 실패하였습니다.");
-      return "common/errorPage";
+      
+      return "F2";
     }
   }
 
