@@ -58,6 +58,11 @@
                 >쿠폰 관리</a
               >
             </li>
+            <li class="d-flex align-items-center" style="margin-top:100px">
+              <a href="/logout" class="text-decoration-none nav-link">
+              로그아웃
+              </a>
+            </li>
           </ul>
         </div>
       </nav>

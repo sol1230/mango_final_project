@@ -13,6 +13,7 @@
       integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
       crossorigin="anonymous"
     />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet" href="/css/font.css" />
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -34,11 +35,12 @@
     <!-- 본 페이지 content -->
     <div class="container" style="width: 40rem">
       <div class="fs-4 fw-bold text-center pt-5">회원가입</div>
-      <form action="/user/insertUser" method="post">
+      <form action="/user/insertUser" method="post" id="enrollForm">
         <div class="pt-3">
           <div class="">
-            <label for="" class="pb-1">아이디</label>
+            <label for="user_uid" class="pb-1">아이디</label>
             <input type="text" class="form-control" name="user_uid" required />
+            <div id="checkResult" style="font-size:0.8em; display:none"></div>
           </div>
           <div class="pt-3">
             <label for="" class="pb-1">비밀번호</label>
@@ -166,7 +168,10 @@
                 }
             }).open();
         }
+
+    	
     </script>
+
   </body>
 </html>
 

@@ -1,13 +1,15 @@
 package com.mango.mango_final_project.user.Controller;
 
-import com.mango.mango_final_project.user.model.service.UserService;
-import com.mango.mango_final_project.user.model.vo.User;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.mango.mango_final_project.user.model.service.UserService;
+import com.mango.mango_final_project.user.model.vo.User;
 
 @Controller
 @RequestMapping(value = "/user")
@@ -102,4 +104,14 @@ public class UserController {
   public String myPage() {
     return "/user/myPage";
   }
+
+  @ResponseBody
+	@RequestMapping("idCheck.me")
+	public String idCheck(String checkId) {
+		int count = uService.idCheck(checkId);
+		
+
+		return count > 0 ? "NNNNN" : "NNNNY";
+	}
+	
 }

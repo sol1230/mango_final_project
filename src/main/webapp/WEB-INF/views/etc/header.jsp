@@ -68,16 +68,27 @@
           >
           </c:when>
           
-          <%-- <!-- 로그인 후 --> --%>
+          <%-- 로그인 후 --%>
 
           <c:otherwise>
-          <a
-            href="/user/myPage"
-            class="nav-link link-dark"
-            ><i class="material-icons col-1 text-secondary fs-3" id="">
-              person</i
-            ></a
-          >
+            <c:if test="${loginUser.authority eq 'USER'}">
+            <a
+              href="/user/myPage"
+              class="nav-link link-dark"
+              ><i class="material-icons col-1 text-secondary fs-3" id="">
+                person</i
+              ></a
+            >
+            </c:if>
+            <c:if test="${loginUser.authority eq 'ADMIN'}">
+            <a
+              href="/admin/admin_users"
+              class="nav-link link-dark"
+              ><i class="material-icons col-1 text-secondary fs-3" id="">
+                person</i
+              ></a
+            >
+            </c:if>
           </c:otherwise>
           </c:choose>
           <a
