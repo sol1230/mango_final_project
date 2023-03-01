@@ -31,6 +31,7 @@ public class UserController {
     return "signup_N_login/signup_form";
   }
 
+  @ResponseBody
   @RequestMapping("insertUser")
   public String insertUser(User user, Model model, HttpSession session) {
     String phone =
@@ -44,11 +45,11 @@ public class UserController {
     int result = uService.insertUser(user);
 
     if (result > 0) { // 성공 > 메인페이지 url 재요청
-      session.setAttribute("alertMsg", "회원가입을 축하드립니다.");
-      return "redirect:/";
-    } else { // 실패 => 에러페이지 포워딩
-      model.addAttribute("errorMsg", "회원가입에 실패하였습니다.");
-      return "common/errorPage";
+      
+      return "S";
+    } else { 
+     
+      return "F";
     }
   }
 
