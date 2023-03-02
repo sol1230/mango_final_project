@@ -46,20 +46,6 @@ public class AdminUserService {
     return result;
   }
 
-  // user search
-  public Object getkeyword(Object dataMap) {
-    String sqlMapId = "AdminUser.serachKeyword";
-    Object result = commonDao.getOne(sqlMapId, dataMap);
-    return result;
-  }
-
-  // user search and get list
-  public Object searchAndGetList(Object dataMap) {
-    Object result = this.getkeyword(dataMap);
-    result = this.userWithPagination(dataMap);
-    return result;
-  }
-
   // insert user
   public Object insertUser(Object dataMap) {
     String sqlMapId = "AdminUser.insertUser";
@@ -106,6 +92,39 @@ public class AdminUserService {
   public Object deleteAndGetList(Object dataMap) {
     Object result = this.deleteUser(dataMap);
     result = this.userWithPagination(dataMap);
+    return result;
+  }
+
+  // user search
+  public Object getkeyword(Object dataMap) {
+    String sqlMapId = "AdminUser.serachKeyword";
+    Object result = commonDao.getList(sqlMapId, dataMap);
+    return result;
+  }
+
+  // user search and get list
+  public Object getSearchUserAndGetList(Object dataMap) {
+    Map<String, Object> result = new HashMap<String, Object>();
+    int totalCount = (int) this.getSerachTotal(dataMap);
+    int currentPage = (int) ((Map<String, Object>) dataMap).get("currentPage");
+    Paginations paginations = new Paginations(totalCount, currentPage);
+    result.put("paginations", paginations);
+    ((Map<String, Object>) dataMap).put(
+        "pageBegin",
+        paginations.getPageBegin()
+      );
+    ((Map<String, Object>) dataMap).put(
+        "pageScale",
+        paginations.getPageScale()
+      );
+    result.put("resultList", this.getkeyword(dataMap));
+    return result;
+  }
+
+  // 검색 유저의 갯수
+  public Object getSerachTotal(Object dataMap) {
+    String sqlMapId = "AdminUser.searchListCount";
+    Object result = commonDao.getOne(sqlMapId, dataMap);
     return result;
   }
 }

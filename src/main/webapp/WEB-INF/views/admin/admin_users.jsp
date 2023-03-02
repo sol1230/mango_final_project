@@ -1,4 +1,4 @@
-S<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
@@ -49,17 +49,22 @@ S<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
                  <form action="/admin/admin_users_search/1" method="get">
                   <div class="input-group">
                     <select class="form-select" name="keyType" id="">
-                      <option>선택</option>
-                      <option value="USER_UID">아이디</option>
-                      <option value="NAME">이름</option>
-                      <option value="BIRTH">생년월일</option>
-                      <option value="PHONE">전화번호</option>
+                      <option value="NONE">선택</option>
+                      <option value="USER_UID" <c:if test="${keyType == 'USER_UID'}">selected</c:if>>아이디</option>
+                      <option value="NAME" <c:if test="${keyType == 'NAME'}">selected</c:if>>이름</option>
+                      <option value="BIRTH" <c:if test="${keyType == 'BIRTH'}">selected</c:if>>생년월일</option>
+                      <option value="PHONE" <c:if test="${keyType == 'PHONE'}">selected</c:if>>전화번호</option>
                     </select>
-                    <input type="text" name="keyword" class="form-control w-50" />
+                    <input 
+                      type="search"
+                      aria-label="Search"
+                      name="SERCH_KEYWORD"
+                      value="${searchUser}" 
+                      placeholder="검색어를 입력하세요."
+                      class="form-control w-50" 
+                      />
                     <button class="btn btn-outline-secondary">검색</button>
                   </div>
-                    <input type="hidden" name="currentPage" value="1" />
-                    <input type="hidden" name="pageScale" value="10" />
                  </form>
                 </div>
               </div>
@@ -89,7 +94,7 @@ S<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
             <tbody>
         <c:forEach items="${resultMap.resultList}" var="resultData" varStatus="loop">
               <tr>
-                <td>1</td>
+                <td>${loop.count}</td>
                 <td>${resultData.USER_UID}</td>
                 <td>${resultData.NAME}</td>
                 <td>${resultData.BIRTH}</td>

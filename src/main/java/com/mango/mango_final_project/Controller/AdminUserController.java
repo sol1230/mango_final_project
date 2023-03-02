@@ -108,10 +108,10 @@ public class AdminUserController {
     return modelAndView;
   }
 
-  //user search
+  // //user search
   @RequestMapping(
     value = "/admin_users_search/{currentPage}",
-    method = RequestMethod.POST
+    method = RequestMethod.GET
   )
   public ModelAndView userSearch(
     @RequestParam Map<String, Object> params,
@@ -119,8 +119,10 @@ public class AdminUserController {
     ModelAndView modelAndView
   ) {
     params.put("currentPage", Integer.parseInt(currentPage));
-    Object resultMap = adminUserService.searchAndGetList(params);
+    Object resultMap = adminUserService.getSearchUserAndGetList(params);
+    Object searchUser = params.get("SERCH_KEYWORD");
     modelAndView.addObject("resultMap", resultMap);
+    modelAndView.addObject("searchUser", searchUser);
     modelAndView.setViewName("admin/admin_users_search");
     return modelAndView;
   }

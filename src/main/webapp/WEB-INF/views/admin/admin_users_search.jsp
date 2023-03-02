@@ -46,20 +46,25 @@
                   >
                 </div>
                 <div>
-                 <form action="/admin/admin_users_search" method="post">
+                <form action="/admin/admin_users_search/1" method="get">
                   <div class="input-group">
                     <select class="form-select" name="keyType" id="">
-                      <option>선택</option>
-                      <option value="USER_ID">아이디</option>
-                      <option value="NAME">이름</option>
-                      <option value="BIRTH_DATE">생년월일</option>
-                      <option value="PHONE">전화번호</option>
+                      <option value="NONE">선택</option>
+                      <option value="USER_UID" <c:if test="${keyType == 'USER_UID'}">selected</c:if>>아이디</option>
+                      <option value="NAME" <c:if test="${keyType == 'NAME'}">selected</c:if>>이름</option>
+                      <option value="BIRTH" <c:if test="${keyType == 'BIRTH'}">selected</c:if>>생년월일</option>
+                      <option value="PHONE" <c:if test="${keyType == 'PHONE'}">selected</c:if>>전화번호</option>
                     </select>
-                    <input type="text" name="keyword" class="form-control w-50" />
+                    <input 
+                      type="search"
+                      aria-label="Search"
+                      name="SERCH_KEYWORD"
+                      value="${searchUser}" 
+                      placeholder="검색어를 입력하세요."
+                      class="form-control w-50" 
+                      />
                     <button class="btn btn-outline-secondary">검색</button>
                   </div>
-                    <input type="hidden" name="currentPage" value="1" />
-                    <input type="hidden" name="pageScale" value="10" />
                  </form>
                 </div>
               </div>
@@ -87,9 +92,9 @@
               </tr>
             </thead>
             <tbody>
-        <c:forEach items="${resultMap.resultList}" var="resultData" varStatus="loop">
+              <c:forEach items="${resultMap.resultList}" var="resultData" varStatus="loop">
               <tr>
-                <td>1</td>
+                <td>${loop.count}</td>
                 <td>${resultData.USER_UID}</td>
                 <td>${resultData.NAME}</td>
                 <td>${resultData.BIRTH}</td>
@@ -130,18 +135,18 @@
             <nav aria-label="Page navigation">
               <ul class="pagination pagination-sm">
                 <li class="page-item">
-                  <a class="page-link" href="/admin/admin_users/${_pagination.previousPage}" aria-label="Previous">
+                  <a class="page-link" href="/admin/admin_users_search/${_pagination.previousPage}" aria-label="Previous">
                     <span aria-hidden="true">&laquo;</span>
                     <span class="sr-only">이전</span>
                   </a>
                 </li>
                 <c:forEach var="i" begin="${_pagination.blockStart}" end="${_pagination.blockEnd}" >
                 <li class="page-item">
-                  <a class="page-link" href="/admin/admin_users/${i}">${i}</a>
+                  <a class="page-link" href="/admin/admin_users_search/${i}">${i}</a>
                 </li>
                 </c:forEach>
                 <li class="page-item">
-                  <a class="page-link" href="/admin/admin_users/${_pagination.nextPage}" aria-label="Next">
+                  <a class="page-link" href="/admin/admin_users_search/${_pagination.nextPage}" aria-label="Next">
                     <span class="sr-only">다음</span>
                     <span aria-hidden="true">&raquo;</span>
                   </a>

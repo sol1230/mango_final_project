@@ -14,33 +14,6 @@
         </if>
     </select>
 
-    <!-- AdminUser.selectUserUID
-    <select id="selectUserUID" parameterType="Map" resultType="Map">
-        SELECT *
-        FROM USER
-        WHERE USER_UID = #{USER_UID}
-    </select> -->
-
-    <!-- AdminUser.serachKeyword -->
-    <select id="serachKeyword" parameterType="Map" resultType="Map">
-        SELECT *
-        FROM USER
-        <choose>
-        <when test="keyType !=null and keyType.equals('USER_ID')">
-            WHERE USER_UID LIKE CONCAT('%', #{USER_UID}, '%')
-        </when>
-        <when test="keyType !=null and keyType.equals('NAME')">
-            AND NAME LIKE CONCAT('%', #{NAME}, '%')
-        </when>
-        <when test="keyType !=null and keyType.equals('BIRTH_DATE')">
-            AND BIRTH_DATE LIKE CONCAT('%', #{BIRTH_DATE}, '%')
-        </when>
-        <when test="keyType !=null and keyType.equals('PHONE')">
-            AND PHONE LIKE CONCAT('%', #{PHONE}, '%')
-        </when>
-        </choose>
-    </select>
-
     <!-- AdminUser.selectUserTotal -->
     <select id="selectUserTotal" parameterType="Map" resultType="int">
         SELECT count(*) as cnt
@@ -50,7 +23,7 @@
     <!-- AdminUser.insertUser -->
     <insert id="insertUser" parameterType="Map">
         INSERT INTO USER (USER_UID, PASSWORD, NAME, BIRTH, GENDER, PHONE, AUTHORITY)
-        VALUES (#{USER_UID}, #{PASSWORD}, #{NAME}, #{BIRTH}, #{GENDER}, #{PHONE}, #{AUTHORITY})
+        VALUE (#{USER_UID}, #{PASSWORD}, #{NAME}, #{BIRTH}, #{GENDER}, #{PHONE}, #{AUTHORITY})
     </insert>
 
     <!-- AdminUser.selectUserInfo -->
@@ -83,5 +56,74 @@
         DELETE FROM USER
         WHERE USER_UID = #{USER_UID}
     </delete>
+
+<!-- search -->
+    <!-- AdminUser.serachKeyword -->
+        <select id="serachKeyword" parameterType="Map" resultType="Map">
+            <choose>
+                <when test="keyType == 'USER_UID'">
+                    SELECT *
+                    FROM USER
+                    WHERE REPLACE(USER_UID, '', '') LIKE CONCAT('%', #{SERCH_KEYWORD}, '%')
+                </when>
+                <when test="keyType == 'NAME'">
+                    SELECT *
+                    FROM USER
+                    WHERE REPLACE(NAME, '', '') LIKE CONCAT('%', #{SERCH_KEYWORD}, '%')
+                </when>
+                <when test="keyType == 'BIRTH'">
+                    SELECT *
+                    FROM USER                   
+                    WHERE REPLACE(BIRTH, '', '') LIKE CONCAT('%', #{SERCH_KEYWORD}, '%')
+                </when>
+                <when test="keyType == 'PHONE'">
+                    SELECT *
+                    FROM USER                    
+                    WHERE REPLACE(PHONE, '', '') LIKE CONCAT('%', #{SERCH_KEYWORD}, '%')
+                </when>
+                <otherwise >
+                    SELECT *
+                    FROM USER                    
+                    WHERE REPLACE(USER_UID, '', '') LIKE CONCAT('%', #{SERCH_KEYWORD}, '%')
+                    OR REPLACE(NAME, '', '') LIKE CONCAT('%', #{SERCH_KEYWORD}, '%')
+                    OR REPLACE(BIRTH, '', '') LIKE CONCAT('%', #{SERCH_KEYWORD}, '%')
+                    OR REPLACE(PHONE, '', '') LIKE CONCAT('%', #{SERCH_KEYWORD}, '%')
+                </otherwise>
+            </choose>
+        </select>
+
+    <!-- call AdminUser.searchListCount -->
+    <select id="searchListCount" parameterType="Map" resultType="int">
+         <choose>
+                <when test="keyType == 'USER_ID'">
+                    SELECT count(*) as cnt
+                    FROM USER                    
+                    WHERE REPLACE(USER_UID, '', '') LIKE CONCAT('%', #{SERCH_KEYWORD}, '%')
+                </when>
+                <when test="keyType == 'NAME'">
+                    SELECT count(*) as cnt
+                    FROM USER                    
+                    WHERE REPLACE(NAME, '', '') LIKE CONCAT('%', #{SERCH_KEYWORD}, '%')
+                </when>
+                <when test="keyType == 'BIRTH'">
+                    SELECT count(*) as cnt
+                    FROM USER                   
+                    WHERE REPLACE(BIRTH, '', '') LIKE CONCAT('%', #{SERCH_KEYWORD}, '%')
+                </when>
+                <when test="keyType == 'PHONE'">
+                    SELECT count(*) as cnt
+                    FROM USER                    
+                    WHERE REPLACE(PHONE, '', '') LIKE CONCAT('%', #{SERCH_KEYWORD}, '%')
+                </when>
+                <otherwise >
+                    SELECT count(*) as cnt
+                    FROM USER                    
+                    WHERE REPLACE(USER_UID, '', '') LIKE CONCAT('%', #{SERCH_KEYWORD}, '%')
+                    OR REPLACE(NAME, '', '') LIKE CONCAT('%', #{SERCH_KEYWORD}, '%')
+                    OR REPLACE(BIRTH, '', '') LIKE CONCAT('%', #{SERCH_KEYWORD}, '%')
+                    OR REPLACE(PHONE, '', '') LIKE CONCAT('%', #{SERCH_KEYWORD}, '%')
+                </otherwise>
+         </choose>
+    </select>
 
 </mapper>
