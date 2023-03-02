@@ -360,13 +360,59 @@
               "widthDefault": 60
             },
             "id": "cb539799-5478-4a68-b10c-82b28d0ef08c"
+          },
+          {
+            "name": "STORE_PRICE",
+            "comment": "판매가",
+            "dataType": "VARCHAR(100)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": false
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 93.5078125,
+              "widthComment": 60,
+              "widthDataType": 94.94873046875,
+              "widthDefault": 60
+            },
+            "id": "cb0fc8fd-59ca-468c-91f1-ea1914235b4f"
+          },
+          {
+            "name": "STORE_DELIVERY",
+            "comment": "배송비",
+            "dataType": "VARCHAR(100)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": false
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 117.8447265625,
+              "widthComment": 60,
+              "widthDataType": 94.94873046875,
+              "widthDefault": 60
+            },
+            "id": "db8f9c00-1c38-4a98-9017-00246f22e71a"
           }
         ],
         "ui": {
-          "active": false,
+          "active": true,
           "left": 809.5993,
           "top": 212.9042,
-          "zIndex": 10,
+          "zIndex": 13,
           "widthName": 60,
           "widthComment": 60
         },
@@ -697,7 +743,7 @@
           "active": false,
           "left": 1505.7753,
           "top": 1326.0254,
-          "zIndex": 9,
+          "zIndex": 8,
           "widthName": 60,
           "widthComment": 60
         },
@@ -1909,8 +1955,8 @@
           "columnIds": [
             "8df22663-a36d-4450-8492-ccd2ff0487fc"
           ],
-          "x": 1039.2421222656249,
-          "y": 425.4042,
+          "x": 1052.4960285156249,
+          "y": 466.4042,
           "direction": "bottom"
         },
         "constraintName": "fk_user_to_store",
@@ -1962,7 +2008,7 @@
             "cb539799-5478-4a68-b10c-82b28d0ef08c"
           ],
           "x": 809.5993,
-          "y": 319.1542,
+          "y": 339.6542,
           "direction": "left"
         },
         "constraintName": "fk_wine_to_store",
