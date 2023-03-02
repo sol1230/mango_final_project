@@ -185,7 +185,7 @@
             "id": "1174e35f-717b-4e77-b524-37a7d95f1d73"
           },
           {
-            "name": "ATTACHFILE_SEQ",
+            "name": "C_ATTACHFILE_SEQ",
             "comment": "첨부파일일련번호",
             "dataType": "VARCHAR(100)",
             "default": "",
@@ -200,7 +200,7 @@
               "pk": false,
               "fk": false,
               "pfk": false,
-              "widthName": 114.20751953125,
+              "widthName": 130.82568359375,
               "widthComment": 106,
               "widthDataType": 94.94873046875,
               "widthDefault": 60
@@ -208,7 +208,7 @@
             "id": "da8713ec-5949-4e14-b523-e39ced9618e5"
           },
           {
-            "name": "ORIGINALFILE_NAME",
+            "name": "C_ORIGINALFILE_NAME",
             "comment": "원본파일명",
             "dataType": "VARCHAR(100)",
             "default": "",
@@ -223,7 +223,7 @@
               "pk": false,
               "fk": false,
               "pfk": false,
-              "widthName": 136.3671875,
+              "widthName": 152.9853515625,
               "widthComment": 67,
               "widthDataType": 94.94873046875,
               "widthDefault": 60
@@ -231,7 +231,7 @@
             "id": "7b872cde-eaa2-4761-8753-0634c3f33796"
           },
           {
-            "name": "PHYSICALFILE_NAME",
+            "name": "C_PHYSICALFILE_NAME",
             "comment": "첨부파일명",
             "dataType": "VARCHAR(100)",
             "default": "",
@@ -246,7 +246,7 @@
               "pk": false,
               "fk": false,
               "pfk": false,
-              "widthName": 138.54443359375,
+              "widthName": 155.16259765625,
               "widthComment": 67,
               "widthDataType": 94.94873046875,
               "widthDefault": 60
@@ -258,7 +258,7 @@
           "active": false,
           "left": 201.3889,
           "top": 100,
-          "zIndex": 18,
+          "zIndex": 4,
           "widthName": 60,
           "widthComment": 60
         },
