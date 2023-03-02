@@ -103,7 +103,7 @@
                   <a href="#" class="text-decoration-none text-black">
                     <div class="pt-4">
                       <img
-                        src="../img/wine/${resultData.WINE_NAME_EN}.png"
+                        src="/img/wine/${resultData.WINE_NAME_EN}.png"
                         alt="wine1"
                         width="200"
                       />
@@ -148,7 +148,7 @@
                 <a href="#" class="text-decoration-none text-black">
                   <div class="pt-4">
                     <img
-                      src="../img/wine/${resultData.WINE_NAME_EN}.png"
+                      src="/img/wine/${resultData.WINE_NAME_EN}.png"
                       alt="wine2"
                       width="200"
                     />
@@ -190,7 +190,7 @@
                 <a href="#" class="text-decoration-none text-black">
                   <div class="pt-4">
                     <img
-                      src="../img/wine/${resultData.WINE_NAME_EN}.png"
+                      src="/img/wine/${resultData.WINE_NAME_EN}.png"
                       alt="wine2"
                       width="200"
                     />
@@ -235,7 +235,7 @@
                     >
                      <div class="pt-4">
                        <img
-                         src="../img/wine/${resultData.WINE_NAME_EN}.png"
+                         src="/img/wine/${resultData.WINE_NAME_EN}.png"
                           alt="wine2"
                          width="200"
                         />

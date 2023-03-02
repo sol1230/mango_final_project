@@ -1,4 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -35,24 +37,24 @@
     <%-- select --%>
     <%@ include file="../etc/nav_select.jsp" %>
 
-    <!-- 본 페이지 content -->
+    <%-- <!-- 본 페이지 content --> --%>
     <div class="container mb-5">
       <div
         class="d-flex justify-content-center mt-5 rounded-3 p-3"
         style="background-color: rgb(252, 249, 244); width: 100%"
       >
         <div class="" style="margin: auto; margin-left: 20%">
-          <img src="../img/wine/wine_canti.png" alt="canti" width="130" />
+          <img src="/img/wine/${resultMap.WINE_NAME_EN}.png" alt="canti" width="130" />
         </div>
         <div class="me-4">
           <div>
-            <span class="fs-5 fw-bold">칸티 모스카토 다스티</span>
+            <span class="fs-5 fw-bold">${resultMap.WINE_NAME}</span>
             <span class="btn">
               <i class="bi bi-bookmark-heart fs-4"></i>
             </span>
           </div>
           <p class="mb-3 ms-2" style="font-size: small">
-            Canti, Moscato d'Asti.
+            ${resultMap.WINE_NAME_EN}
           </p>
           <table style="font-size: smaller">
             <tbody>
@@ -66,7 +68,7 @@
               </tr>
               <tr>
                 <th><i class="bi bi-building"></i></th>
-                <td>칸티</td>
+                <td>${resultMap.WINE_COMPANY}</td>
               </tr>
               <tr>
                 <th>
@@ -76,7 +78,7 @@
                     width="20"
                   />
                 </th>
-                <td>모스카토 다스티</td>
+                <td></td>
               </tr>
               <tr>
                 <th>
@@ -86,7 +88,7 @@
                     width="20"
                   />
                 </th>
-                <td>이탈리아, piemonte</td>
+                <td>${resultMap.WINE_COUNTRY}, ${resultMap.WINE_REGION}</td>
               </tr>
               <tr>
                 <th>
@@ -96,7 +98,7 @@
                     width="20"
                   />
                 </th>
-                <td>모스카토 100%</td>
+                <td>${resultMap.WINE_VARIETY}</td>
               </tr>
               <tr>
                 <th>
@@ -106,7 +108,7 @@
                     width="20"
                   />
                 </th>
-                <td>5.5%</td>
+                <td>${resultMap.WINE_ALCOHOL_DEGREE}%</td>
               </tr>
             </tbody>
           </table>
@@ -117,7 +119,7 @@
                 alt="price"
                 width="20"
               />
-              <span>최저가</span><span>22,000&#8361;</span>
+              <span>최저가</span><span>${resultMap.WINE_PRICE}&#8361;</span>
               <span
                 ><button
                   class="btn btn-danger"
@@ -144,86 +146,28 @@
                   </tr>
                 </thead>
                 <tbody>
+                <c:forEach items="${resultMap}" var="resultData" varStatus="loop">
                   <tr>
-                    <td>
-                      <a href="#" class="text-decoration-none text-black"
-                        >신세계몰
-                        <img src="../img/ssg.png" alt="" width="60" />
-                      </a>
-                    </td>
-                    <td class="text-danger">최저</td>
-                    <td class="text-danger">22,000 &#8361;</td>
-                    <td>3,000 &#8361;</td>
-                    <td>
-                      <a
-                        href="https://www.ssg.com/item/itemView.ssg?itemId=1000227987454"
-                        target="_blank"
-                        class="text-decoration-none text-black"
-                      >
-                        사러가기
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <a href="#" class="text-decoration-none text-black"
-                        >옥션
-                        <img src="../img/옥션.png" alt="" width="60" />
-                      </a>
-                    </td>
-                    <td class="text-danger">최저</td>
-                    <td class="text-danger">22,000 &#8361;</td>
-                    <td>3,000 &#8361;</td>
-                    <td>
-                      <a
-                        href=""
-                        target="_blank"
-                        class="text-decoration-none text-black"
-                      >
-                        사러가기
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <a href="#" class="text-decoration-none text-black"
-                        >지마켓
-                        <img src="../img/지마켓.png" alt="" width="60" />
-                      </a>
-                    </td>
-                    <td></td>
-                    <td>22,000 &#8361;</td>
-                    <td>3,000 &#8361;</td>
-                    <td>
-                      <a
-                        href="#"
-                        target="_blank"
-                        class="text-decoration-none text-black"
-                      >
-                        사러가기
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <a href="#" class="text-decoration-none text-black"
-                        >11번가
-                        <img src="../img/11번가.png" alt="" width="30" />
-                      </a>
-                    </td>
-                    <td></td>
-                    <td>26,000 &#8361;</td>
-                    <td>2,500 &#8361;</td>
-                    <td>
-                      <a
-                        href="#"
-                        target="_blank"
-                        class="text-decoration-none text-black"
-                      >
-                        사러가기
-                      </a>
-                    </td>
-                  </tr>
+                      <td>
+                        <a href="#" class="text-decoration-none text-black"
+                          >${resultData.STORE_NAME}
+                          <img src="../img/${resultData.STORE_NAME}.png" alt="" width="60" />
+                        </a>
+                      </td>
+                      <td class="text-danger">최저</td>
+                      <td class="text-danger">${resultData.STORE_PRICE} &#8361;</td>
+                      <td>${resultData.STORE_DELIVERY} &#8361;</td>
+                      <td>
+                        <a
+                          href="${resultData.STORE_URL}"
+                          target="_blank"
+                          class="text-decoration-none text-black"
+                        >
+                          사러가기
+                        </a>
+                      </td>
+                    </tr>
+                  </c:forEach>
                 </tbody>
               </table>
             </div>
@@ -283,8 +227,7 @@
             <div class="">
               <img src="../img/pear.jpg" alt="pear" width="70px" />
 
-              <span>배</span><span>사과</span><span>복숭아</span
-              ><span>망고</span><span>메론</span>
+              <span>${resultMap.WINE_FOOD_PAIRING}</span>
             </div>
           </div>
         </div>
@@ -301,7 +244,7 @@
         <div class="mb-2">
           <span class="fw-bold">후기</span>
           <span class="text-center fs-5 fw-bold" style="color: rgb(196, 32, 3)">
-            4.0
+            ${resultMap.WINE_SCOPE}
           </span>
           <span class="text-center mb-3">
             <i class="bi bi-star-fill"></i>
@@ -355,7 +298,7 @@
       </div>
       <hr />
 
-      <!-- 상품문의 -->
+      <%-- <!-- 상품문의 --> --%>
       <div class="mt-5" style="width: 60%">
         <span class="fw-bold">상품 문의</span><span>(총 20건)</span>
         <span class="float-end">
