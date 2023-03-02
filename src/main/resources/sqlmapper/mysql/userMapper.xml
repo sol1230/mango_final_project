@@ -3,18 +3,10 @@
 
 <mapper namespace="userMapper">
 
-<resultMap id="userResult">
- <result column="user_uid" property="user_uid" />
- <result column="password" property="password"/>
- <result column="name" property="name"/>
- <result column="birth" property="birth"/>
- <result column="gender" property="gender"/>
- <result column="phone" property="phone"/>
- <result column="authority" property="authority"/>
-</resultMap>
-
 <!-- 유저 로그인-->
-<select id="userLogin" resultMap="userResult">
+<select id="userLogin"
+ parameterType="com.mango.mango_final_project.user.model.vo.User"
+ resultType="com.mango.mango_final_project.user.model.vo.User">
 select
     user_uid
   , password
@@ -23,9 +15,12 @@ select
   , gender
   , phone
   , authority
+  , post
+  , address
+  , address_detail as addressDetail
 from user
 where user_uid = #{user_uid}
-and password = #{password}
+<!--and password = #{password}-->
 </select>
 
 <!-- 회원가입 -->
@@ -39,16 +34,29 @@ insert into user
   , gender
   , phone
   , authority
+  , address
+  , address_detail
+  , post
 )
 values
 (
-    #{user_uid}
+    #{user_uid} 
   , #{password}
   , #{name}
   , #{birth}
-  , #{gender}
+  <choose>
+    <when test='"F".equals(gender)'>
+      , '여자'
+    </when>
+    <when test='"M".equals(gender)'>
+      , '남자'
+    </when>
+  </choose>
   , #{phone}
-  , #{authority}
+  , 'USER'
+  , #{address}
+  , #{addressDetail}
+  , #{post}
 )
 </insert>
 
@@ -56,12 +64,14 @@ values
 <update id="changeUserInfo">
 update
     user
-set password = #{password}
-  , name = #{name}
-  , birth = #{birth}
-  , gender = #{gender}
-  , phone = #{phone}
-  , authority = #{authority}
+set 
+  phone = #{phone}  
+   <if test="password != null and password != ''">
+    ,password = #{password}
+   </if>  
+  , address = #{address}
+  , address_detail = #{addressDetail}
+  , post = #{post}
   where user_uid = #{user_uid}
 </update>
 

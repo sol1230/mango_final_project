@@ -1,23 +1,23 @@
 -- 회원 목록 채우기
-INSERT INTO USER (USER_UID, PASSWORD, NAME, BIRTH, GENDER, PHONE, AUTHORITY)
-VALUES ('ADMIN', '1250', '관리자', '1990-12-27', '남자', '010-5657-2123', 'ADMIN'),
-('DOMI', '6588', '김도미', '1994-11-08', '여자', '010-5168-8781', 'USER'),
-('PARK', '2341', '박지유', '1991-04-13', '여자', '010-1542-6551', 'USER'),
-('Hiru', '2580', '한석현', '1996-06-15', '남자', '010-8465-4658', 'USER'),
-('somsom', '8538', '이혜솜', '1999-12-02', '여자', '010-4589-2165', 'USER'),
-('sky', '5252', '성하늘', '1988-09-21', '남자', '010-9878-7442', 'USER'),
-('alwls', '7733', '유미진', '1987-07-07', '여자', '010-6879-5438', 'USER'),
-('knog05', '0505', '백준혁', '1995-10-05', '남자', '010-8941-8235', 'USER'),
-('iiooii', '4523', '허성택', '1997-03-18', '남자', '010-9751-4411', 'USER'),
-('nnuunn', '3570', '김경태', '1993-08-11', '남자', '010-2562-3324', 'USER'),
-('gd99', '5299', '이유정', '1992-07-22', '여자', '010-7986-5464', 'USER'),
-('r8o8y', '8763', '강지한', '1998-12-16', '남자', '010-3645-1245', 'USER'),
-('omgomg', '2565', '박유미', '1986-11-28', '여자', '010-8224-0660', 'USER'),
-('kkkk', '4141', '이서진', '1985-02-25', '남자', '010-3368-9064', 'USER')
+INSERT INTO USER (USER_UID, PASSWORD, NAME, BIRTH, GENDER, PHONE, AUTHORITY, ADDRESS, ADDRESS_DETAIL, POST)
+VALUES ('ADMIN', '1250', '관리자', '1990-12-27', '남자', '010-5657-2123', 'ADMIN', NULL, NULL, NULL),
+('DOMI', '6588', '김도미', '1994-11-08', '여자', '010-5168-8781', 'USER', NULL, NULL, NULL),
+('PARK', '2341', '박지유', '1991-04-13', '여자', '010-1542-6551', 'USER', NULL, NULL, NULL),
+('Hiru', '2580', '한석현', '1996-06-15', '남자', '010-8465-4658', 'USER', NULL, NULL, NULL),
+('somsom', '8538', '이혜솜', '1999-12-02', '여자', '010-4589-2165', 'USER', NULL, NULL, NULL),
+('sky', '5252', '성하늘', '1988-09-21', '남자', '010-9878-7442', 'USER', NULL, NULL, NULL),
+('alwls', '7733', '유미진', '1987-07-07', '여자', '010-6879-5438', 'USER', NULL, NULL, NULL),
+('knog05', '0505', '백준혁', '1995-10-05', '남자', '010-8941-8235', 'USER', NULL, NULL, NULL),
+('iiooii', '4523', '허성택', '1997-03-18', '남자', '010-9751-4411', 'USER', NULL, NULL, NULL),
+('nnuunn', '3570', '김경태', '1993-08-11', '남자', '010-2562-3324', 'USER', NULL, NULL, NULL),
+('gd99', '5299', '이유정', '1992-07-22', '여자', '010-7986-5464', 'USER', NULL, NULL, NULL),
+('r8o8y', '8763', '강지한', '1998-12-16', '남자', '010-3645-1245', 'USER', NULL, NULL, NULL),
+('omgomg', '2565', '박유미', '1986-11-28', '여자', '010-8224-0660', 'USER', NULL, NULL, NULL),
+('kkkk', '4141', '이서진', '1985-02-25', '남자', '010-3368-9064', 'USER', NULL, NULL, NULL)
 ;
 -- 회원 목록 한명 추가
-INSERT INTO USER (USER_UID, PASSWORD, NAME, BIRTH, GENDER, PHONE, AUTHORITY)
-VALUE ('Hiru', '2580', '한석현', '2000-06-15', '남자', '010-8465-4658', 'ROLE_USER')
+INSERT INTO USER (USER_UID, PASSWORD, NAME, BIRTH, GENDER, PHONE, AUTHORITY, ADDRESS, ADDRESS_DETAIL, POST)
+VALUE ('Hiru', '2580', '한석현', '2000-06-15', '남자', '010-8465-4658', 'ROLE_USER', NULL, NULL, NULL)
 ;
 
 DELETE FROM USER WHERE USER_UID='hoho';
@@ -103,12 +103,12 @@ FROM QNA
 WHERE QNA_UID='Q03';
 
 -- 공지 목록 채우기
-INSERT INTO NOTICE (NOTICE_DATE, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_FILE, USER_UID) 
-VALUES ('2023-01-27', '회원가입 주의사항', '회원가입에 필요한 필수 동의서 체크를 해주셔야만 회원가입이 정상적으로 처리됩니다. 내용 확인하시어 이용에 불편함이 없으시길 바랍니다.', NULL, 'ADMIN'),
-('2023-01-28', '비밀번호 변경 안내', '비밀번호 변경은 마이페이지에서 회원 정보 수정을 통하여 변경하실 수 있습니다.', NULL, 'ADMIN'),
-('2023-01-29', '서버 점검 안내', '안녕하세요. 와인타임 서버 점검이 2023년 02월 12일 13:00에 진행 예정으로 이용하시는데 참고하시길 바랍니다.', NULL, 'ADMIN'),
-('2023-01-30', '비밀번호 설정', '회원가입 진행하실 때 비밀번호가 중복되는 숫자일 경우 보완에 취약하오니 주의하시어 작성 부탁드립니다.', NULL, 'ADMIN'),
-('2023-02-01', '위시리스트 관련 안내', '안녕하세요. 위시리스트 내역은 마이페이지에서 확인이 가능합니다. 감사합니다.', NULL, 'ADMIN')
+INSERT INTO NOTICE (NOTICE_DATE, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_FILE, NOTICE_ATTACHFILE_SEQ, NOTICE_ORIGINALFILE_NAME, NOTICE_PHYSICALFILE_NAME, USER_UID) 
+VALUES ('2023-01-27', '회원가입 주의사항', '회원가입에 필요한 필수 동의서 체크를 해주셔야만 회원가입이 정상적으로 처리됩니다. 내용 확인하시어 이용에 불편함이 없으시길 바랍니다.', NULL, NULL, NULL, NULL,'ADMIN'),
+('2023-01-28', '비밀번호 변경 안내', '비밀번호 변경은 마이페이지에서 회원 정보 수정을 통하여 변경하실 수 있습니다.', NULL, NULL, NULL, NULL,'ADMIN'),
+('2023-01-29', '서버 점검 안내', '안녕하세요. 와인타임 서버 점검이 2023년 02월 12일 13:00에 진행 예정으로 이용하시는데 참고하시길 바랍니다.', NULL, NULL, NULL, NULL,'ADMIN'),
+('2023-01-30', '비밀번호 설정', '회원가입 진행하실 때 비밀번호가 중복되는 숫자일 경우 보완에 취약하오니 주의하시어 작성 부탁드립니다.', NULL, NULL, NULL, NULL,'ADMIN'),
+('2023-02-01', '위시리스트 관련 안내', '안녕하세요. 위시리스트 내역은 마이페이지에서 확인이 가능합니다. 감사합니다.', NULL, NULL, NULL, NULL,'ADMIN')
 ;
 
 DELETE FROM NOTICE WHERE NOTICE_UID='N02';
@@ -122,12 +122,12 @@ FROM NOTICE
 WHERE NOTICE_UID='N02';
 
 -- 이벤트 목록 채우기
-INSERT INTO EVENT (EVENT_UID, EVENT_DATETIME, EVENT_FILE, EVENT_TITLE, EVENT_DATE, EVENT_CONTENT, USER_UID) 
-VALUES ('E01', '2023-02-21 ~ 2023-02-24', NULL, '레드와인 시음회', '2023-02-20','레드와인 시음회를 종로에서 진행합니다. 여러가지 레드와인을 테스트 해보실 수 있으니 많은 참여와 관심 부탁드립니다.', 'ADMIN'),
-('E02', '2023-02-25 ~ 2023-02-30', NULL, '와인 강의', '2023-02-21','세계적으로 유명한 백종원 셰프와 진행하는 와인 강의! 와인에 대한 전반적인 지식과 이야기를 들으실 수 있습니다.', 'ADMIN')
+INSERT INTO EVENT (EVENT_UID, EVENT_DATETIME, EVENT_FILE, EVENT_ATTACHFILE_SEQ, EVENT_ORIGINALFILE_NAME, EVENT_PHYSICALFILE_NAME, EVENT_TITLE, EVENT_DATE, EVENT_CONTENT, USER_UID) 
+VALUES ('E01', '2023-02-21 ~ 2023-02-24', NULL, NULL, NULL, NULL, '레드와인 시음회', '2023-02-20','레드와인 시음회를 종로에서 진행합니다. 여러가지 레드와인을 테스트 해보실 수 있으니 많은 참여와 관심 부탁드립니다.', 'ADMIN'),
+('E02', '2023-02-25 ~ 2023-02-30', NULL, NULL, NULL, NULL, '와인 강의', '2023-02-21','세계적으로 유명한 백종원 셰프와 진행하는 와인 강의! 와인에 대한 전반적인 지식과 이야기를 들으실 수 있습니다.', 'ADMIN')
 ;
-INSERT INTO EVENT (EVENT_UID, EVENT_DATETIME, EVENT_FILE, EVENT_TITLE, EVENT_DATE, EVENT_CONTENT, USER_UID) 
-VALUE ('E03', '2023-02-23 ~ 2023-02-27', NULL, '와인 페스티벌', '2023-02-21','전주에서 진행하는 와인페스티벌! 많은 참여 부탁드립니다.', 'ADMIN')
+INSERT INTO EVENT (EVENT_UID, EVENT_DATETIME, EVENT_FILE, EVENT_ATTACHFILE_SEQ, EVENT_ORIGINALFILE_NAME, EVENT_PHYSICALFILE_NAME, EVENT_TITLE, EVENT_DATE, EVENT_CONTENT, USER_UID) 
+VALUE ('E03', '2023-02-23 ~ 2023-02-27', NULL, NULL, NULL, NULL, '와인 페스티벌', '2023-02-21','전주에서 진행하는 와인페스티벌! 많은 참여 부탁드립니다.', 'ADMIN')
 ;
 
 DELETE FROM EVENT WHERE EVENT_UID='E02';
@@ -226,8 +226,8 @@ SELECT MAX(NOTICE_UID)
 FROM NOTICE N
 ;
 
-INSERT INTO NOTICE (NOTICE_DATE, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_FILE, USER_UID)
-VALUES (sysdate(), '날짜테스트', '테스트내용', NULL, 'ADMIN')
+INSERT INTO NOTICE (NOTICE_DATE, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_FILE, NOTICE_ATTACHFILE_SEQ, NOTICE_ORIGINALFILE_NAME, NOTICE_PHYSICALFILE_NAME, USER_UID)
+VALUES (sysdate(), '날짜테스트', '테스트내용', NULL, NULL, NULL, NULL, 'ADMIN')
 ;
 
 SELECT *
@@ -265,7 +265,7 @@ FROM EVENT
 
 SELECT * 
 FROM EVENT
-ORDER BY SUBSTRING(EVENT_DATETIME, 1, 10) DESC, SUBSTRING(EVENT_DATETIME, 14, 23) DESC
+ORDER BY EVENT_START DESC, EVENT_END DESC
 ;
 
 SELECT *
@@ -275,11 +275,11 @@ ORDER BY NOTICE_DATE DESC
 
 SELECT * 
 FROM EVENT
-WHERE SUBSTRING(EVENT_DATETIME, 14, 23) >= sysdate()
+WHERE EVENT_END >= sysdate()
 ;
 
 SELECT * 
 FROM EVENT
-WHERE SUBSTRING(EVENT_DATETIME, 14, 23) < sysdate()
-ORDER BY SUBSTRING(EVENT_DATETIME, 1, 10) DESC, SUBSTRING(EVENT_DATETIME, 14, 23) DESC
+WHERE EVENT_END < sysdate()
+ORDER BY EVENT_START DESC, EVENT_END DESC
 ;

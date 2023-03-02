@@ -107,4 +107,21 @@ public class AdminUserController {
     modelAndView.setViewName("admin/admin_users");
     return modelAndView;
   }
+
+  //user search
+  @RequestMapping(
+    value = "/admin_users_search/{currentPage}",
+    method = RequestMethod.POST
+  )
+  public ModelAndView userSearch(
+    @RequestParam Map<String, Object> params,
+    @PathVariable String currentPage,
+    ModelAndView modelAndView
+  ) {
+    params.put("currentPage", Integer.parseInt(currentPage));
+    Object resultMap = adminUserService.searchAndGetList(params);
+    modelAndView.addObject("resultMap", resultMap);
+    modelAndView.setViewName("admin/admin_users_search");
+    return modelAndView;
+  }
 }

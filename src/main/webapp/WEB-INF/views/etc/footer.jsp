@@ -62,6 +62,6 @@
         </div>
       </div>
       <div class="row">
-        <img src="../img/와인.png" alt="logo" height="150rem" />
+        <img src="/img/와인.png" alt="logo" height="150rem" />
       </div>
     </footer>

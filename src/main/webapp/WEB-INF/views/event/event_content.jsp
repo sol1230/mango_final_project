@@ -62,12 +62,12 @@
       </div>
       <hr />
         <div class="text-center mt-5">
-          <div class="">
+          <div class="ps-5 pe-5">
             ${resultMap.EVENT_CONTENT}
           </div>
-          <c:if test="${not empty resultMap.PHYSICALFILE_NAME}">
+          <c:if test="${not empty resultMap.EVENT_PHYSICALFILE_NAME}">
             <div class="mt-5 mb-5">
-              <img src="/img/files/${resultMap.PHYSICALFILE_NAME}/${resultMap.ORIGINALFILE_NAME}" alt="${resultMap.ORIGINALFILE_NAME}" style="width: 800px" />
+              <img src="/img/files/${resultMap.EVENT_PHYSICALFILE_NAME}/${resultMap.EVENT_ORIGINALFILE_NAME}" alt="${resultMap.EVENT_ORIGINALFILE_NAME}" style="width: 800px" />
             </div>
           </c:if>
         </div>

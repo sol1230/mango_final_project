@@ -33,7 +33,7 @@
       <%@ include file="../etc/admin_nav.jsp" %>
 
       <main class="col-9 p-0 mb-5 ms-5">
-        <form action="/admin/adminEventModify/1" method="post">
+        <form action="/admin/adminEventModify/1" method="post" id="eventModifyFrom">
           <input type="hidden" name="EVENT_UID" value="${resultMap.EVENT_UID}" />
           <input type="hidden" name="EVENT_DATE" value="${resultMap.EVENT_DATE}" />
           <input type="hidden" name="NAME" value="${resultMap.NAME}" />
@@ -69,13 +69,23 @@
                 </tr>
                 <tr scope="row" class="text-center">
                   <th scope="" class="bg-secondary bg-opacity-25">이벤트기간</th>
-                  <td scope="" colspan="3">
+                  <td scope="" colspan="1">
                     <input
-                      type="text"
-                      name="EVENT_DATETIME"
-                      id="EVENT_DATETIME"
+                      type="date"
+                      name="EVENT_START"
+                      id="EVENT_START"
                       class="form-control"
-                      value="${resultMap.EVENT_DATETIME}"
+                    />
+                  </td>
+                  <td>
+                    ~
+                  </td>
+                  <td scope="" colspan="1">
+                    <input
+                      type="date"
+                      name="EVENT_END"
+                      id="EVENT_END"
+                      class="form-control"
                     />
                   </td>
                 </tr>
@@ -102,12 +112,12 @@
                   </td>
                 </tr> --%>
                 <c:choose>
-                  <c:when test="${not empty resultMap.PHYSICALFILE_NAME}">
+                  <c:when test="${not empty resultMap.EVENT_PHYSICALFILE_NAME}">
                     <tr scope="row">
                       <th class="bg-secondary bg-opacity-25 text-center">첨부한파일</th>
                       <td colspan="3" class="">
-                        <img src="/img/files/${resultMap.PHYSICALFILE_NAME}/${resultMap.ORIGINALFILE_NAME}" class="w-25">
-                        <a href="/img/files/${resultMap.PHYSICALFILE_NAME}/${resultMap.ORIGINALFILE_NAME}">${resultMap.ORIGINALFILE_NAME}</a>
+                        <img src="/img/files/${resultMap.EVENT_PHYSICALFILE_NAME}/${resultMap.EVENT_ORIGINALFILE_NAME}" class="w-25">
+                        <a href="/img/files/${resultMap.EVENT_PHYSICALFILE_NAME}/${resultMap.EVENT_ORIGINALFILE_NAME}">${resultMap.EVENT_ORIGINALFILE_NAME}</a>
                       </td>
                     </tr>
                   </c:when>
@@ -123,7 +133,22 @@
         </form>
       </main>
     </div>
-
+    <script>
+      $(function () {
+        $("#eventModifyFrom").submit(function(){
+          var eventStart = $("#EVENT_START").val();
+          var eventEnd = $("#EVENT_END").val();
+          var startArray = eventStart.split('-');
+          var endArray = eventEnd.split('-');
+          var startDate = new Date(startArray[0], startArray[1], startArray[2]);
+          var endDate = new Date(endArray[0], endArray[1], endArray[2]);
+          if(startDate.getTime() > endDate.getTime()) {
+            alert("종료날짜보다 시작날짜가 작아야합니다.");
+            return false;
+          }
+        });
+      });
+    </script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"

@@ -35,9 +35,8 @@
     <%@ include file="../etc/admin_nav.jsp" %>
 
       <main class="col-9 p-0 mb-5 ms-5">
-        <form action="./admin_coupon.html" method="">
-          <input type="hidden" name="notice_date" value="2023.02.05" />
-          <input type="hidden" name="notice_writer" value="관리자" />
+        <form action="/admin/admin_coupon_insert_done/1" method="post" enctype="multipart/form-data">
+          <input type="hidden" name="USER_UID" value="ADMIN" />
           <div class="mt-4 p-4 border bg-white">
             <div>
               <label for="" class="form-label fw-bold pe-3 m-0"
@@ -51,18 +50,33 @@
               <thead class="">
                 <tr scope="row">
                   <th scope="" class="bg-secondary bg-opacity-25">작성일</th>
-                  <td scope="" colspan="" name="notice_date">2022.12.02
+                  <td scope="" colspan="" name="COUPON_DATE">  
+                    <input
+                      type="text"
+                      name="COUPON_DATE"
+                      id="COUPON_DATE"
+                      class="form-control"
+                      readonly
+                    />
                   </td>
                   <th scope="" class="bg-secondary bg-opacity-25">작성자</th>
-                  <td scope="" name="notice_writer">관리자</td>
+                  <td scope="" name="coupon_writer">
+                    <input
+                      type="text"
+                      name="USER_UID"
+                      id="user_uid"
+                      class="form-control"
+                      placeholder="작성자를 입력해 주세요."
+                    />
+                  </td>
                 </tr>
                 <tr scope="row">
                   <th scope="" class="bg-secondary bg-opacity-25">쿠폰 이름</th>
                   <td scope="" colspan="3">
                     <input
                       type="text"
-                      name="notice_title"
-                      id="notice_title"
+                      name="COUPON_NAME"
+                      id="coupon_name"
                       class="form-control"
                       placeholder="이름을 입력해 주세요."
                     />
@@ -71,12 +85,15 @@
                 <tr scope="row">
                   <th scope="" class="bg-secondary bg-opacity-25">쿠폰 기한</th>
                   <td scope="" colspan="3">
-                    <input
-                      type="text"
-                      name="notice_title"
-                      id="notice_title"
+                    <input style="width:15rem; height:3rem" class="col"
+                      type="date"
+                      name="COUPON_DATETIME1"
                       class="form-control"
-                      placeholder="기한을 입력해 주세요."
+                    />  ~
+                     <input style="width:15rem; height:3rem" class="col"
+                      type="date"
+                      name="COUPON_DATETIME2"
+                      class="form-control"
                     />
                   </td>
                 </tr>
@@ -86,7 +103,7 @@
                   <th class="bg-secondary bg-opacity-25">파일첨부</th>
                   <td colspan="3">
                     <div class="">
-                      <input type="file" name="" id="" class="form-control" />
+                      <input type="file" name="COUPON_FILE" class="form-control" />
                     </div>
                   </td>
                 </tr>

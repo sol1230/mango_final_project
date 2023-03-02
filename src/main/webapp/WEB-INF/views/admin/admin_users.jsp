@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+S<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
@@ -46,17 +46,21 @@
                   >
                 </div>
                 <div>
+                 <form action="/admin/admin_users_search/1" method="get">
                   <div class="input-group">
-                    <select class="form-select" name="keyField" id="">
+                    <select class="form-select" name="keyType" id="">
                       <option>선택</option>
-                      <option value="USER_ID">아이디</option>
+                      <option value="USER_UID">아이디</option>
                       <option value="NAME">이름</option>
-                      <option value="BIRTH_DATE">생년월일</option>
+                      <option value="BIRTH">생년월일</option>
                       <option value="PHONE">전화번호</option>
                     </select>
-                    <input type="text" class="form-control w-50" />
+                    <input type="text" name="keyword" class="form-control w-50" />
                     <button class="btn btn-outline-secondary">검색</button>
                   </div>
+                    <input type="hidden" name="currentPage" value="1" />
+                    <input type="hidden" name="pageScale" value="10" />
+                 </form>
                 </div>
               </div>
               <form action="/admin/admin_users_insert" method="get">

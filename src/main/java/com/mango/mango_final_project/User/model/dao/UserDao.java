@@ -1,9 +1,9 @@
-package com.mango.mango_final_project.User.Controller.model.dao;
+package com.mango.mango_final_project.user.model.dao;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.mango.mango_final_project.User.Controller.model.vo.User;
+import com.mango.mango_final_project.user.model.vo.User;
 
 @Repository
 public class UserDao {
@@ -27,4 +27,5 @@ public class UserDao {
     public int idCheck(SqlSessionTemplate sqlSession, String checkId){
         return sqlSession.selectOne("userMapper.checkId", checkId);
     }
+
 }

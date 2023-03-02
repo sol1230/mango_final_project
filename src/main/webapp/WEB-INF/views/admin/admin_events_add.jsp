@@ -34,7 +34,7 @@
     <%@ include file="../etc/admin_nav.jsp" %>
 
       <main class="col-9 p-0 mb-5 ms-5">
-        <form action="/admin/adminEventInsert/1" method="post" enctype = "multipart/form-data">
+        <form action="/admin/adminEventInsert/1" method="post" enctype = "multipart/form-data" id="eventAddFrom">
           <input type="hidden" name="USER_UID" value="ADMIN" />
           <div class="mt-4 p-4 border bg-white">
             <div>
@@ -47,10 +47,10 @@
               style="font-size: small"
             >
               <thead class=" align-middle">
-                <tr>
-                  <th scope="" class="bg-secondary bg-opacity-25">작성일</th>
-                  <td scope="" name="EVENT_DATE" class="w-50">
-                  <input type="date" class="form-control" name="EVENT_DATE" />
+                <tr scope="row">
+                  <th scope="" class="bg-secondary bg-opacity-25" >작성일</th>
+                  <td scope="" name="EVENT_DATE" class="w-35">
+                    <input type="date" class="form-control" name="EVENT_DATE" id="currentDate" />
                   </td>
 
                   <th scope="" class="bg-secondary bg-opacity-25">작성자</th>
@@ -70,13 +70,23 @@
                 </tr>
                 <tr scope="row">
                   <th scope="" class="bg-secondary bg-opacity-25">이벤트 기간</th>
-                  <td scope="" colspan="3">
+                  <td scope="" colspan="1">
                     <input
-                      type="text"
-                      name="EVENT_DATETIME"
-                      id="EVENT_DATETIME"
+                      type="date"
+                      name="EVENT_START"
+                      id="EVENT_START"
                       class="form-control"
-                      placeholder="이벤트 진행 기간을 입력해 주세요."
+                    />
+                  </td>
+                  <td>
+                    ~
+                  </td>
+                  <td scope="" colspan="1">
+                    <input
+                      type="date"
+                      name="EVENT_END"
+                      id="EVENT_END"
+                      class="form-control"
                     />
                   </td>
                 </tr>
@@ -113,7 +123,22 @@
         </form>
       </main>
     </div>
-
+    <script>
+      $(function () {
+        $("#eventAddFrom").submit(function(){
+          var eventStart = $("#EVENT_START").val();
+          var eventEnd = $("#EVENT_END").val();
+          var startArray = eventStart.split('-');
+          var endArray = eventEnd.split('-');
+          var startDate = new Date(startArray[0], startArray[1], startArray[2]);
+          var endDate = new Date(endArray[0], endArray[1], endArray[2]);
+          if(startDate.getTime() > endDate.getTime()) {
+            alert("종료날짜보다 시작날짜가 작아야합니다.");
+            return false;
+          }
+        });
+      });
+    </script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"

@@ -46,10 +46,17 @@ public class AdminUserService {
     return result;
   }
 
-  // user with UID
-  public Object getOne(Object dataMap) {
-    String sqlMapId = "AdminUser.selectUserUID";
+  // user search
+  public Object getkeyword(Object dataMap) {
+    String sqlMapId = "AdminUser.serachKeyword";
     Object result = commonDao.getOne(sqlMapId, dataMap);
+    return result;
+  }
+
+  // user search and get list
+  public Object searchAndGetList(Object dataMap) {
+    Object result = this.getkeyword(dataMap);
+    result = this.userWithPagination(dataMap);
     return result;
   }
 

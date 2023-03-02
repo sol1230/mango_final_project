@@ -7,7 +7,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Admin couoon</title>
+    <title>Admin users search</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -26,14 +26,13 @@
     <link rel="stylesheet" href="/css/admin.css" />
 
   </head>
-  <body class="bg-light h-100">
+  <body class="bg-light">
     <%-- header --%>
     <%@ include file="../etc/header.jsp" %>
 
     <!-- 본 페이지 content -->
     <div class="row g-0 vh-100">
-     <%-- admin nav --%>
-     <%@ include file="../etc/admin_nav.jsp" %>
+    <%@ include file="../etc/admin_nav.jsp" %>
 
       <main class="col-9 p-0 mb-5 ms-5">
         <div class="mt-4 p-4 border bg-white">
@@ -43,13 +42,30 @@
               <div class="d-flex align-items-center">
                 <div>
                   <label for="" class="form-label fw-bold pe-3 m-0"
-                    >쿠폰 관리</label
+                    >회원목록</label
                   >
                 </div>
+                <div>
+                 <form action="/admin/admin_users_search" method="post">
+                  <div class="input-group">
+                    <select class="form-select" name="keyType" id="">
+                      <option>선택</option>
+                      <option value="USER_ID">아이디</option>
+                      <option value="NAME">이름</option>
+                      <option value="BIRTH_DATE">생년월일</option>
+                      <option value="PHONE">전화번호</option>
+                    </select>
+                    <input type="text" name="keyword" class="form-control w-50" />
+                    <button class="btn btn-outline-secondary">검색</button>
+                  </div>
+                    <input type="hidden" name="currentPage" value="1" />
+                    <input type="hidden" name="pageScale" value="10" />
+                 </form>
+                </div>
               </div>
-              <form action="/admin/admin_coupon_insert" method="get">
+              <form action="/admin/admin_users_insert" method="get">
               <div class="justify-content-right align-items-center pt-2">
-                <a href="/admin/admin_coupon_insert" class="text-secondary">
+                <a href="/admin/admin_users_insert" class="text-secondary">
                   <span class="material-symbols-outlined fs-3"> add_box </span>
                 </a>
               </div>
@@ -61,57 +77,46 @@
           >
             <thead class="bg-secondary bg-opacity-25">
               <tr>
-                <th scope="">쿠폰 코드</th>
-                <th scope="">쿠폰 이미지</th>
-                <th scope="">쿠폰 이름</th>
-                <th scope="">작성일</th>
-                <th scope="">기한</th>
+                <th scope="">번호</th>
+                <th scope="">아이디</th>
+                <th scope="">이름</th>
+                <th scope="">생년월일</th>
+                <th scope="">성별</th>
+                <th scope="">휴대전화</th>
                 <th scope="">기능</th>
               </tr>
             </thead>
             <tbody>
         <c:forEach items="${resultMap.resultList}" var="resultData" varStatus="loop">
               <tr>
-                <th>${resultData.COUPON_UID}</th>
-                <td>${resultData.COUPON_FILE}
-                  <img src="/img/files/${resultData.PHYSICALFILE_NAME}/${resultData.ORIGINALFILE_NAME}" alt="${resultData.ORIGINALFILE_NAME}" style="width: 3rem" />
-                </td>
-                <td>${resultData.COUPON_NAME}</td>
-                <td>${resultData.COUPON_DATE}</td>
-                <td>${resultData.COUPON_DATETIME1} ~ ${resultData.COUPON_DATETIME2}</td>
-                 <td>
-                  <div class="d-flex justify-content-center">
-                  <div>
-                      <form action="/admin/admin_coupon_edit" method="post">
-                        <input type="hidden" name="COUPON_UID" value="${resultData.COUPON_UID}" />
-                        <input type="hidden" name="COUPON_DATE" value="${resultData.COUPON_DATE}" />
-                        <input type="hidden" name="COUPON_NAME" value="${resultData.COUPON_NAME}" />
-                        <input type="hidden" name="NAME" value="${resultData.USER_UID}" />
-                        <input type="hidden" name="COUPON_DATETIME1" value="${resultData.COUPON_DATETIME1}" />
-                        <input type="hidden" name="COUPON_DATETIME2" value="${resultData.COUPON_DATETIME2}" />
-                        <input type="hidden" name="COUPON_FILE" value="${resultData.COUPON_FILE}" />
-                        <input type="hidden" name="ATTACHFILE_SEQ" value="${resultData.ATTACHFILE_SEQ}" />
-                        <input type="hidden" name="ORIGINALFILE_NAME" value="${resultData.ORIGINALFILE_NAME}" />
-                        <input type="hidden" name="PHYSICALFILE_NAME" value="${resultData.PHYSICALFILE_NAME}" />
-                        <button
-                          class="btn btn-sm btn-outline-secondary"
-                        >
-                          수정
-                        </button>
-                      </form>
-                    </div>
-                    <div>
-                      <form action="/admin/admin_coupon_delete/1" method="post" class="ps-2">
-                        <input type="hidden" name="COUPON_UID" value="${resultData.COUPON_UID}" />
-                      <button
-                          class="btn btn-outline-danger btn-sm"
-                          onclick="if(!confirm('정말로 삭제하시겠습니까?')) return false"
-                        >
-                          삭제
-                        </button>
-                      </form>
-                    </div>
-                  </div>
+                <td>1</td>
+                <td>${resultData.USER_UID}</td>
+                <td>${resultData.NAME}</td>
+                <td>${resultData.BIRTH}</td>
+                <td>${resultData.GENDER}</td>
+                <td>${resultData.PHONE}</td>
+                <td class="d-flex justify-content-center">
+                  <form action="/admin/admin_users_edit" method="post">
+                    <input type="hidden" name="USER_UID" value="${resultData.USER_UID}" />
+                    <input type="hidden" name="PASSWORD" value="${resultData.PASSWORD}" />
+                    <input type="hidden" name="NAME" value="${resultData.NAME}" />
+                    <input type="hidden" name="BIRTH" value="${resultData.BIRTH}" />
+                    <input type="hidden" name="GENDER" value="${resultData.GENDER}" />
+                    <input type="hidden" name="PHONE" value="${resultData.PHONE}" />
+                    <input type="hidden" name="AUTHORITY" value="${resultData.AUTHORITY}" />
+                    <button class="btn btn-sm btn-outline-secondary">
+                      수정
+                    </button>
+                  </form>
+                  <form action="/admin/admin_users_delete/1" method="post" class="ps-2">
+                       <input type="hidden" name="USER_UID" value="${resultData.USER_UID}" />
+                     <button
+                        class="btn btn-outline-danger btn-sm"
+                        onclick="if(!confirm('정말로 삭제하시겠습니까?')) return false"
+                      >
+                        삭제
+                      </button>
+                  </form>
                 </td>
               </tr>
             </c:forEach>
@@ -120,23 +125,23 @@
           <%-- pagination --%>
           <c:set var="_pagination" value="${resultMap.paginations}" />
           ${paginations}
-          <span>총 쿠폰 갯수 : ${_pagination.totalCount}개</span>
+          <span>총 회원수 : ${_pagination.totalCount}명</span>
           <div class="pagination pagination-sm justify-content-center">
             <nav aria-label="Page navigation">
               <ul class="pagination pagination-sm">
                 <li class="page-item">
-                  <a class="page-link" href="/admin/admin_coupon/${_pagination.previousPage}" aria-label="Previous">
+                  <a class="page-link" href="/admin/admin_users/${_pagination.previousPage}" aria-label="Previous">
                     <span aria-hidden="true">&laquo;</span>
                     <span class="sr-only">이전</span>
                   </a>
                 </li>
                 <c:forEach var="i" begin="${_pagination.blockStart}" end="${_pagination.blockEnd}" >
                 <li class="page-item">
-                  <a class="page-link" href="/admin/admin_coupon/${i}">${i}</a>
+                  <a class="page-link" href="/admin/admin_users/${i}">${i}</a>
                 </li>
                 </c:forEach>
                 <li class="page-item">
-                  <a class="page-link" href="/admin/admin_coupon/${_pagination.nextPage}" aria-label="Next">
+                  <a class="page-link" href="/admin/admin_users/${_pagination.nextPage}" aria-label="Next">
                     <span class="sr-only">다음</span>
                     <span aria-hidden="true">&raquo;</span>
                   </a>
@@ -147,6 +152,7 @@
         </div>
       </main>
     </div>
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"

@@ -14,11 +14,31 @@
         </if>
     </select>
 
-    <!-- AdminUser.selectUserUID -->
+    <!-- AdminUser.selectUserUID
     <select id="selectUserUID" parameterType="Map" resultType="Map">
         SELECT *
         FROM USER
         WHERE USER_UID = #{USER_UID}
+    </select> -->
+
+    <!-- AdminUser.serachKeyword -->
+    <select id="serachKeyword" parameterType="Map" resultType="Map">
+        SELECT *
+        FROM USER
+        <choose>
+        <when test="keyType !=null and keyType.equals('USER_ID')">
+            WHERE USER_UID LIKE CONCAT('%', #{USER_UID}, '%')
+        </when>
+        <when test="keyType !=null and keyType.equals('NAME')">
+            AND NAME LIKE CONCAT('%', #{NAME}, '%')
+        </when>
+        <when test="keyType !=null and keyType.equals('BIRTH_DATE')">
+            AND BIRTH_DATE LIKE CONCAT('%', #{BIRTH_DATE}, '%')
+        </when>
+        <when test="keyType !=null and keyType.equals('PHONE')">
+            AND PHONE LIKE CONCAT('%', #{PHONE}, '%')
+        </when>
+        </choose>
     </select>
 
     <!-- AdminUser.selectUserTotal -->
@@ -49,8 +69,7 @@
     <!-- AdminUser.updateUser  -->
     <update id="updateUser" parameterType="Map">
         UPDATE USER 
-        SET USER_UID = #{USER_UID},
-            PASSWORD = #{PASSWORD},
+        SET PASSWORD = #{PASSWORD},
             NAME = #{NAME},
             BIRTH = #{BIRTH},
             GENDER = #{GENDER},

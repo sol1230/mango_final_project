@@ -15,6 +15,10 @@ public class Paginations {
   private int blockEnd; // 페이지 블록 내에서의 마지막 페이지 번호
   private int totalCount; // 페이지 블록 내에서의 마지막 페이지 번호
 
+  // 검색
+  private String keyword; // 검색어
+  private String keyType; // 검색 선택 타입 (이름, 아이디...)
+
   public Paginations(int totalCount, int currentPage) {
     // 넘어오는 값 : 전체 개수(totalCount), 현재 페이지 개수(currentPage)
     this.totalCount = totalCount;
@@ -166,5 +170,21 @@ public class Paginations {
 
   public void setBlockEnd(int blockEnd) {
     this.blockEnd = blockEnd;
+  }
+
+  public String getKeyword() {
+    return keyword;
+  }
+
+  public void setKeyword(String keyword) {
+    this.keyword = keyword;
+  }
+
+  public String getKeyType() {
+    return keyType;
+  }
+
+  public void setKeyType(String keyType) {
+    this.keyType = keyType;
   }
 }
