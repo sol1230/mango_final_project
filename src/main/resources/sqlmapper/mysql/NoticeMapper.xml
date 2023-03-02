@@ -3,6 +3,22 @@
 
 <mapper namespace="IndexNotice">
 
+<!-- INDEX -->
+    <!-- IndexNotice.wineList -->
+    <select id="wineList" parameterType="Map" resultType="Map">
+        SELECT *
+        FROM WINE 
+        WHERE WINE_SCOPE LIKE '4.%'
+        LIMIT 4
+    </select>
+
+        <!-- IndexNotice.wineTotal -->
+    <select id="wineTotal" 
+        parameterType="Map" resultType="int">
+        SELECT count(*) as cnt
+        FROM WINE
+    </select>
+
 <!-- NOTICE -->
     <!-- IndexNotice.selectNotice -->
     <select id="selectNotice" parameterType="Map" resultType="Map">
@@ -34,6 +50,17 @@
         FROM NOTICE
     </select>
 
-<!-- INDEX -->
+    <!-- IndexNotice.serachNotice -->
+    <select id="serachNotice" parameterType="Map" resultType="Map">
+        SELECT *
+        FROM NOTICE
+        WHERE REPLACE(NOTICE_TITLE, '', '') LIKE CONCAT('%', #{SEARCH_NOTICE}, '%')
+    </select>
 
+    <!-- IndexNotice.serachNoticeCount -->
+    <select id="serachNoticeCount" parameterType="Map" resultType="int">
+        SELECT count(*) as cnt
+        FROM NOTICE
+        WHERE REPLACE(NOTICE_CONTENT, '', '') LIKE CONCAT('%', #{SEARCH_NOTICE}, '%')
+    </select>
 </mapper>

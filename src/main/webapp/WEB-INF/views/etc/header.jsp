@@ -24,7 +24,7 @@
         </a>
         <div>
            <nav class="fw-bold nav">
-            <a href="/notice_N_qna/notice_questions" class="nav-link link-dark">FAQ</a>
+            <a href="/notice/notice_faq" class="nav-link link-dark">FAQ</a>
             <a href="/notice/notice/1" class="nav-link link-dark">공지</a>
             <a href="/event/event" class="nav-link link-dark">이벤트</a>
           </nav>
@@ -83,7 +83,7 @@
             </c:if>
             <c:if test="${loginUser.authority eq 'ADMIN'}">
             <a
-              href="/admin/admin_users"
+              href="/admin/admin_users/1"
               class="nav-link link-dark"
               ><i class="material-icons col-1 text-secondary fs-3" id="">
                 person</i

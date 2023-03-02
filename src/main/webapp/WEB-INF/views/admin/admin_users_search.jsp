@@ -62,6 +62,7 @@
                       value="${searchUser}" 
                       placeholder="검색어를 입력하세요."
                       class="form-control w-50" 
+                      required
                       />
                     <button class="btn btn-outline-secondary">검색</button>
                   </div>

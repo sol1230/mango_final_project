@@ -32,7 +32,7 @@
               </li>
               <li>
                 <a
-                  href="/notice_N_qna/notice_questions"
+                  href="/notice/notice_faq"
                   class="text-black text-decoration-none ps-2"
                   >고객센터</a
                 >

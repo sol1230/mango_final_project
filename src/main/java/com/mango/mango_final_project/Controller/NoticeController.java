@@ -11,14 +11,31 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping(value = "/notice")
 public class NoticeController {
   @Autowired
   NoticeService noticeService;
 
+  //index
+  @RequestMapping(value = "/index", method = RequestMethod.POST)
+  public ModelAndView index(
+    @RequestParam Map<String, Object> params,
+    @PathVariable String currentPage,
+    ModelAndView modelAndView
+  ) {
+    params.put("currentPage", Integer.parseInt(currentPage));
+    params.put("pageScale", 10);
+    Object resultMap = noticeService.bestWineList(params);
+    modelAndView.addObject("resultMap", resultMap);
+    modelAndView.setViewName("index");
+    return modelAndView;
+  }
+
   // NOTICE
   // notice list
-  @RequestMapping(value = "/notice/{currentPage}", method = RequestMethod.GET)
+  @RequestMapping(
+    value = "/notice/notice/{currentPage}",
+    method = RequestMethod.GET
+  )
   public ModelAndView noticeList(
     @RequestParam Map<String, Object> params,
     @PathVariable String currentPage,
@@ -34,7 +51,7 @@ public class NoticeController {
 
   // notice content
   @RequestMapping(
-    value = "/notice_content/{uniqueId}",
+    value = "/notice/notice_content/{uniqueId}",
     method = RequestMethod.GET
   )
   public ModelAndView noticeContent(
@@ -49,8 +66,27 @@ public class NoticeController {
     return modelAndView;
   }
 
+  // notice search
+  @RequestMapping(
+    value = "/notice/notice_search/{currentPage}",
+    method = RequestMethod.GET
+  )
+  public ModelAndView noticeSearch(
+    @RequestParam Map<String, Object> params,
+    @PathVariable String currentPage,
+    ModelAndView modelAndView
+  ) {
+    params.put("currentPage", Integer.parseInt(currentPage));
+    Object resultMap = noticeService.getSearchNoticeAndGetList(params);
+    Object searchNotice = params.get("SEARCH_NOTICE");
+    modelAndView.addObject("resultMap", resultMap);
+    modelAndView.addObject("searchNotice", searchNotice);
+    modelAndView.setViewName("notice_N_qna/notice_search");
+    return modelAndView;
+  }
+
   // notice faq
-  @RequestMapping(value = "/notice_faq", method = RequestMethod.GET)
+  @RequestMapping(value = "/notice/notice_faq", method = RequestMethod.GET)
   public ModelAndView noticefaq(
     @RequestParam Map<String, Object> params,
     ModelAndView modelAndView

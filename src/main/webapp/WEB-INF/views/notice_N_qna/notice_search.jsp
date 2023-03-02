@@ -40,7 +40,7 @@
         <thead>
           <tr>
             <th>번호</th>
-            <th>제목</th>
+            <th >제목</th>
             <th>작성일</th>
           </tr>
         </thead>
@@ -63,18 +63,19 @@
         </form>
         </tbody>
       </table>
+
       <form action="/notice/notice_search/1" method="get">
         <div class="input-group justify-content-center mt-5">
           <div class="">
             <input
+              class="form-control"
               type="search"
-              aria-label="Search"
               name="SEARCH_NOTICE"
               value="${searchNotice}"
               placeholder="검색어를 입력하세요."
-              style="width: 100%"
-              class="form-control"
+              aria-label="Search"
               required
+              style="width: 100%"
             />
           </div>
           <div class="ms-1">
@@ -90,18 +91,18 @@
         <nav aria-label="Page navigation">
           <ul class="pagination pagination-sm">
             <li class="page-item">
-              <a class="page-link" href="/notice/notice/${_pagination.previousPage}" aria-label="Previous">
+              <a class="page-link" href="/notice/notice_search/${_pagination.previousPage}" aria-label="Previous">
                 <span aria-hidden="true">&laquo;</span>
                 <span class="sr-only">이전</span>
               </a>
             </li>
             <c:forEach var="i" begin="${_pagination.blockStart}" end="${_pagination.blockEnd}" >
             <li class="page-item">
-              <a class="page-link" href="/notice/notice/${i}">${i}</a>
+              <a class="page-link" href="/notice/notice_search/${i}">${i}</a>
             </li>
             </c:forEach>
             <li class="page-item">
-              <a class="page-link" href="/notice/notice/${_pagination.nextPage}" aria-label="Next">
+              <a class="page-link" href="/notice/notice_search/${_pagination.nextPage}" aria-label="Next">
                 <span class="sr-only">다음</span>
                 <span aria-hidden="true">&raquo;</span>
               </a>

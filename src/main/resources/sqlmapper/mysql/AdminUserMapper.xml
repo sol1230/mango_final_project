@@ -58,8 +58,8 @@
     </delete>
 
 <!-- search -->
-    <!-- AdminUser.serachKeyword -->
-        <select id="serachKeyword" parameterType="Map" resultType="Map">
+    <!-- AdminUser.serachUser -->
+        <select id="serachUser" parameterType="Map" resultType="Map">
             <choose>
                 <when test="keyType == 'USER_UID'">
                     SELECT *

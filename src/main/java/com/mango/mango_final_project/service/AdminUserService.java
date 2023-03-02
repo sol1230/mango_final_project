@@ -97,8 +97,15 @@ public class AdminUserService {
 
   // user search
   public Object getkeyword(Object dataMap) {
-    String sqlMapId = "AdminUser.serachKeyword";
+    String sqlMapId = "AdminUser.serachUser";
     Object result = commonDao.getList(sqlMapId, dataMap);
+    return result;
+  }
+
+  // 검색 유저의 갯수
+  public Object getSerachTotal(Object dataMap) {
+    String sqlMapId = "AdminUser.searchListCount";
+    Object result = commonDao.getOne(sqlMapId, dataMap);
     return result;
   }
 
@@ -118,13 +125,6 @@ public class AdminUserService {
         paginations.getPageScale()
       );
     result.put("resultList", this.getkeyword(dataMap));
-    return result;
-  }
-
-  // 검색 유저의 갯수
-  public Object getSerachTotal(Object dataMap) {
-    String sqlMapId = "AdminUser.searchListCount";
-    Object result = commonDao.getOne(sqlMapId, dataMap);
     return result;
   }
 }

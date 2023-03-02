@@ -12,6 +12,38 @@ public class NoticeService {
   @Autowired
   CommonDao commonDao;
 
+  // INDEX
+  // wine list
+  public Object wineList(Object dataMap) {
+    String sqlMapId = "IndexNotice.wineList";
+    Object result = commonDao.getList(sqlMapId, dataMap);
+    return result;
+  }
+
+  public Object bestWineList(Object dataMap) {
+    Map<String, Object> result = new HashMap<String, Object>();
+    int totalCount = (int) this.wineTotal(dataMap);
+    int currentPage = (int) ((Map<String, Object>) dataMap).get("currentPage");
+    Paginations paginations = new Paginations(totalCount, currentPage);
+    result.put("paginations", paginations);
+    ((Map<String, Object>) dataMap).put(
+        "pageBegin",
+        paginations.getPageBegin()
+      );
+    ((Map<String, Object>) dataMap).put(
+        "pageScale",
+        paginations.getPageScale()
+      );
+    result.put("resultList", this.wineList(dataMap));
+    return result;
+  }
+
+  public Object wineTotal(Object dataMap) {
+    String sqlMapId = "WineList.wineTotal";
+    Object result = commonDao.getOne(sqlMapId, dataMap);
+    return result;
+  }
+
   // NOTICE
   // notice list
   public Object getNoticeList(Object dataMap) {
@@ -53,6 +85,39 @@ public class NoticeService {
   public Object getNoticeTotal(Object dataMap) {
     String sqlMapId = "IndexNotice.selectNoticeTotal";
     Object result = commonDao.getOne(sqlMapId, dataMap);
+    return result;
+  }
+
+  // notice search
+  public Object getNoticeSearch(Object dataMap) {
+    String sqlMapId = "IndexNotice.serachNotice";
+    Object result = commonDao.getList(sqlMapId, dataMap);
+    return result;
+  }
+
+  // 검색 공지의 갯수
+  public Object getSerachNoticeTotal(Object dataMap) {
+    String sqlMapId = "IndexNotice.serachNoticeCount";
+    Object result = commonDao.getOne(sqlMapId, dataMap);
+    return result;
+  }
+
+  // notice search and get list
+  public Object getSearchNoticeAndGetList(Object dataMap) {
+    Map<String, Object> result = new HashMap<String, Object>();
+    int totalCount = (int) this.getSerachNoticeTotal(dataMap);
+    int currentPage = (int) ((Map<String, Object>) dataMap).get("currentPage");
+    Paginations paginations = new Paginations(totalCount, currentPage);
+    result.put("paginations", paginations);
+    ((Map<String, Object>) dataMap).put(
+        "pageBegin",
+        paginations.getPageBegin()
+      );
+    ((Map<String, Object>) dataMap).put(
+        "pageScale",
+        paginations.getPageScale()
+      );
+    result.put("resultList", this.getNoticeSearch(dataMap));
     return result;
   }
 }
