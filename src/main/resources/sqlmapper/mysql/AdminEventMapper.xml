@@ -7,7 +7,7 @@
         SELECT *
         FROM EVENT
         <if test="pageScale != null">
-            ORDER BY EVENT_DATE
+            ORDER BY EVENT_UID
             LIMIT #{pageBegin}, #{pageScale}
         </if>
     </select>
@@ -21,15 +21,22 @@
     <!-- call AdminEvent.insertEventWithFile -->
     <insert id="insertEventWithFile" parameterType="Map">
         INSERT INTO EVENT
-        (EVENT_DATETIME, EVENT_FILE, ATTACHFILE_SEQ, ORIGINALFILE_NAME, PHYSICALFILE_NAME, EVENT_TITLE, EVENT_DATE, EVENT_CONTENT, USER_UID) 
+        (EVENT_START, EVENT_END, EVENT_FILE, EVENT_ATTACHFILE_SEQ, EVENT_ORIGINALFILE_NAME, EVENT_PHYSICALFILE_NAME, EVENT_TITLE, EVENT_DATE, EVENT_CONTENT, USER_UID) 
         VALUES
-        <!-- ('2023-02-21 ~ 2023-02-24', NULL, 'UUID', '이벤트.txt','파일들 폴더명','와인강의',sysdate(),'와인강의 진행합니다', '관리자')
-        ,('2023-02-22 ~ 2023-02-23', NULL, 'UUID', '이벤트.txt','파일들 폴더명','와인페스티벌',sysdate(),'와인페스티벌 진행예정', '관리자')     -->
-        <foreach collection="attachfiles" item="attachfile"
-                open="(" close=")" separator="),(">
-            #{attachfile.EVENT_DATETIME}, #{attachfile.EVENT_FILE}, #{attachfile.ATTACHFILE_SEQ}, #{attachfile.ORIGINALFILE_NAME}
-            ,#{attachfile.PHYSICALFILE_NAME},#{attachfile.EVENT_TITLE},#{attachfile.EVENT_DATE},#{attachfile.EVENT_CONTENT},#{USER_UID}
-        </foreach>
+        <!-- ('2023-02-21', '2023-02-24', NULL, 'UUID', '이벤트.txt','파일들 폴더명','와인강의',sysdate(),'와인강의 진행합니다', '관리자')
+        ,('2023-02-22', '2023-02-23', NULL, 'UUID', '이벤트.txt','파일들 폴더명','와인페스티벌',sysdate(),'와인페스티벌 진행예정', '관리자')     -->
+        <choose>
+            <when test="attachfiles != null and attachfiles.size != 0">
+                <foreach collection="attachfiles" item="attachfile"
+                        open="(" close=")" separator="),(">
+                    #{attachfile.EVENT_START}, #{attachfile.EVENT_END}, #{attachfile.EVENT_FILE}, #{attachfile.EVENT_ATTACHFILE_SEQ}, #{attachfile.EVENT_ORIGINALFILE_NAME}
+                    ,#{attachfile.EVENT_PHYSICALFILE_NAME},#{attachfile.EVENT_TITLE},#{attachfile.EVENT_DATE},#{attachfile.EVENT_CONTENT},#{USER_UID}
+                </foreach>
+            </when>
+            <otherwise>
+                (#{EVENT_START}, #{EVENT_END}, #{EVENT_FILE}, #{EVENT_ATTACHFILE_SEQ}, #{EVENT_ORIGINALFILE_NAME}, #{EVENT_PHYSICALFILE_NAME}, #{EVENT_TITLE},#{EVENT_DATE},#{EVENT_CONTENT},#{USER_UID})
+            </otherwise>
+        </choose>
     </insert>
 
     <!-- call AdminEvent.selectEventByUID -->
@@ -42,9 +49,9 @@
     <!-- call AdminEvent.insertEvent -->
     <insert id="insertEvent" parameterType="Map">
         INSERT INTO EVENT
-            (EVENT_DATETIME, EVENT_FILE, ATTACHFILE_SEQ, ORIGINALFILE_NAME, PHYSICALFILE_NAME, EVENT_TITLE, EVENT_DATE, EVENT_CONTENT, USER_UID) 
+            (EVENT_START, EVENT_END, EVENT_FILE, EVENT_ATTACHFILE_SEQ, EVENT_ORIGINALFILE_NAME, EVENT_PHYSICALFILE_NAME, EVENT_TITLE, EVENT_DATE, EVENT_CONTENT, USER_UID) 
         VALUES (
-            #{EVENT_DATETIME}, #{EVENT_FILE}, #{ATTACHFILE_SEQ}, #{ORIGINALFILE_NAME}, #{PHYSICALFILE_NAME}, #{EVENT_TITLE},#{EVENT_DATE},#{EVENT_CONTENT},#{USER_UID})
+            #{EVENT_START}, #{EVENT_END}, #{EVENT_FILE}, #{EVENT_ATTACHFILE_SEQ}, #{EVENT_ORIGINALFILE_NAME}, #{EVENT_PHYSICALFILE_NAME}, #{EVENT_TITLE},#{EVENT_DATE},#{EVENT_CONTENT},#{USER_UID})
     </insert>
 
     <!-- call AdminEvent.deleteEvent -->
@@ -64,7 +71,7 @@
     <!-- call AdminEvent.updateEvent -->
     <update id="updateEvent" parameterType="Map"> 
         UPDATE EVENT
-        SET EVENT_TITLE = #{EVENT_TITLE}, EVENT_CONTENT = #{EVENT_CONTENT}, EVENT_FILE = #{EVENT_FILE}
+        SET EVENT_TITLE = #{EVENT_TITLE}, EVENT_CONTENT = #{EVENT_CONTENT}, EVENT_FILE = #{EVENT_FILE}, EVENT_START = #{EVENT_START}, EVENT_END = #{EVENT_END}
         WHERE EVENT_UID = #{EVENT_UID}
     </update>
 

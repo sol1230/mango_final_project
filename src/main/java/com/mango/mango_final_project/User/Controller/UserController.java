@@ -1,13 +1,15 @@
 package com.mango.mango_final_project.user.Controller;
 
-import com.mango.mango_final_project.user.model.service.UserService;
-import com.mango.mango_final_project.user.model.vo.User;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.mango.mango_final_project.user.model.service.UserService;
+import com.mango.mango_final_project.user.model.vo.User;
 
 @Controller
 @RequestMapping(value = "/user")
@@ -29,6 +31,7 @@ public class UserController {
     return "signup_N_login/signup_form";
   }
 
+  @ResponseBody
   @RequestMapping("insertUser")
   public String insertUser(User user, Model model, HttpSession session) {
     String phone =
@@ -42,27 +45,41 @@ public class UserController {
     int result = uService.insertUser(user);
 
     if (result > 0) { // 성공 > 메인페이지 url 재요청
-      session.setAttribute("alertMsg", "회원가입을 축하드립니다.");
-      return "redirect:/";
-    } else { // 실패 => 에러페이지 포워딩
-      model.addAttribute("errorMsg", "회원가입에 실패하였습니다.");
-      return "common/errorPage";
+      
+      return "S";
+    } else { 
+     
+      return "F";
     }
   }
 
-  @RequestMapping("updateUser")
-  public String updateUser(User user, Model model, HttpSession session) {
+  @ResponseBody
+  @RequestMapping("changeUser")
+  public String updateUser(User user, HttpSession session) {
+    User loginUser = uService.loginUser(user);    
+   
+    if (!bcryptPasswordEncoder.matches(user.getPassword(), loginUser.getPassword())){
+      return "F1";
+    }
+    
+
+    String phone = user.getPhone1() + "-" + user.getPhone2() + "-" + user.getPhone3();
+    user.setPhone(phone);
+    if(user.getPassword1() != null && user.getPassword1() != ""){
+      String encPwd = bcryptPasswordEncoder.encode(user.getPassword1());
+      user.setPassword(encPwd);
+    }else{
+      user.setPassword(null);
+    }
     int result = uService.updateUser(user);
 
-    if (result > 0) { // 수정 정송
-      session.setAttribute("loginUser", uService.loginUser(user));
-
-      session.setAttribute("alertMsg", "회원정보가 변경되었습니다.");
-
-      return "redirect:myPage";
+    if (result > 0) { // 수정성공
+      loginUser = uService.loginUser(user);   
+      session.setAttribute("loginUser", loginUser);
+      return "S";
     } else {
-      model.addAttribute("errorMsg", "회원정보 수정에 실패하였습니다.");
-      return "common/errorPage";
+      
+      return "F2";
     }
   }
 
@@ -102,4 +119,14 @@ public class UserController {
   public String myPage() {
     return "/user/myPage";
   }
+
+  @ResponseBody
+	@RequestMapping("idCheck.me")
+	public String idCheck(String checkId) {
+		int count = uService.idCheck(checkId);
+		
+
+		return count > 0 ? "NNNNN" : "NNNNY";
+	}
+	
 }

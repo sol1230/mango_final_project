@@ -58,14 +58,20 @@
           <c:forEach items="${resultMap}" var="resultData" varStatus="loop">
             <%-- 진행중, 종료 표시... --%>
             <fmt:formatDate value="${now}" pattern="yyyy-MM-dd" var="todayDateForm" />
-            <fmt:parseDate value="${resultData.EVENT_DATETIME.substring(13,23)}" pattern="yyyy-MM-dd" var="EVENT_DATE_END"/>
+            <fmt:parseDate value="${resultData.EVENT_END}" pattern="yyyy-MM-dd" var="EVENT_DATE_END"/>
             <fmt:formatDate value="${EVENT_DATE_END}" pattern="yyyy-MM-dd" var="EVENT_DATE_END_FORM" />
             <tr>
               <td scope="">
                 <div class="d-flex align-items-center text-align-center">
                   <div style="width: 200px; height: 200px; overflow: hidden;" class="">
-                    <img src="/img/files/${resultData.PHYSICALFILE_NAME}/${resultData.ORIGINALFILE_NAME}" alt="${resultData.ORIGINALFILE_NAME}" 
-                    style="width: 200px; heigth: 200px; object-fit: cover;" class=""/>
+                    <a
+                      href="/event/eventContent/${resultData.EVENT_UID}"
+                      class="text-decoration-none fw-bold fs-6"
+                      style="color: darkslategrey"
+                      >
+                      <img src="/img/files/${resultData.EVENT_PHYSICALFILE_NAME}/${resultData.EVENT_ORIGINALFILE_NAME}" alt="${resultData.EVENT_ORIGINALFILE_NAME}" 
+                      style="width: 200px; heigth: 200px; object-fit: cover;" class=""/></a
+                    >
                   </div>
                   <div class="ms-4">
                     <a
@@ -89,7 +95,7 @@
                         종료</span
                       >
                     </c:if>
-                    <div class="mt-2">${resultData.EVENT_DATETIME}</div>
+                    <div class="mt-2">${resultData.EVENT_START} ~ ${resultData.EVENT_END}</div>
                   </div>
                 </div>
               </td>

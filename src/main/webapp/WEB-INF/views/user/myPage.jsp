@@ -118,7 +118,8 @@
 			
 			    <tr>
               <th>주소</th>
-              <td>${loginUser.address}</td>
+              <td id="address">              
+              </td>
             </tr>
                     
             </table>
@@ -152,5 +153,13 @@
       integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
       crossorigin="anonymous"
     ></script>
+    <script>
+    $(function(){
+       var address = "${loginUser.address}" + " " + "${loginUser.addressDetail}";
+      $("#address").text(address);
+
+    })
+    
+    </script>
   </body>
 </html>

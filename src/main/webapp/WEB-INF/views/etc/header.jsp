@@ -36,6 +36,7 @@
             type="search"
             placeholder="상품을 입력하세요."
             aria-label="Search"
+            value="${searchName}"
             required
           />
           <button
@@ -67,16 +68,27 @@
           >
           </c:when>
           
-          <%-- <!-- 로그인 후 --> --%>
+          <%-- 로그인 후 --%>
 
           <c:otherwise>
-          <a
-            href="/user/myPage"
-            class="nav-link link-dark"
-            ><i class="material-icons col-1 text-secondary fs-3" id="">
-              person</i
-            ></a
-          >
+            <c:if test="${loginUser.authority eq 'USER'}">
+            <a
+              href="/user/myPage"
+              class="nav-link link-dark"
+              ><i class="material-icons col-1 text-secondary fs-3" id="">
+                person</i
+              ></a
+            >
+            </c:if>
+            <c:if test="${loginUser.authority eq 'ADMIN'}">
+            <a
+              href="/admin/admin_users"
+              class="nav-link link-dark"
+              ><i class="material-icons col-1 text-secondary fs-3" id="">
+                person</i
+              ></a
+            >
+            </c:if>
           </c:otherwise>
           </c:choose>
           <a
@@ -101,16 +113,14 @@
                 <div class="">
                   <input
                     type="text"
-                    class="form-control" id="user_uid"
+                    class="form-control" id="loginId"
                     name="user_uid"
-                    placeholder="아이디"
-                    required
+                    placeholder="아이디"                    
                   />
                 </div>
                 <div class="pt-3">
-                  <input type="password" id="password" class="form-control" name="password"
-                    placeholder="비밀번호" 
-                    required
+                  <input type="password" id="loginPwd" class="form-control" name="password"
+                    placeholder="비밀번호"                    
                   />
                 </div>
               </div>
@@ -143,12 +153,21 @@
    <script>
    
 	function check(){
+      if($("#loginId").val() == "") {
+        alert("아이디를 입력해주세요.");
+        return false;
+      }
+   
+      if($("#loginPwd").val() == ""){
+          alert("비밀번호를 입력해주세요.");
+        return false;
+      }
 		$.ajax({
 				url:"/login",
 				type:"post",
 				data:{
-					user_uid:$("#user_uid").val(),
-					password:$("#password").val()
+					user_uid:$("#loginId").val(),
+					password:$("#loginPwd").val()
 				},
 				success:function(result){
 					
@@ -171,7 +190,7 @@
 						})
 						.then((value) => {
 							if(value){
-								location.reload();
+								return false;
 							}
 						})
 					}

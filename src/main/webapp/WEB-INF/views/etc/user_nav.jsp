@@ -32,10 +32,10 @@
                 >쿠폰</a
               >
             </li>
-                     <li class="d-flex align-items-bottom" style="margin-top:100px">
-              <a href="/logout" class="text-decoration-none nav-link"
-                >로그아웃</a
-              >
+            <li class="d-flex align-items-bottom" style="margin-top:100px">
+              <a href="/logout" class="text-decoration-none nav-link">
+              로그아웃
+              </a>
             </li>
           </ul>
         </div>
