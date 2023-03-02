@@ -8,7 +8,7 @@
       >
         <div class="mb-3">
           <div class="border-secondary border-opacity-25 pe-5 ps-5">
-            <form action="/wine/wineDetailsSelect/1" method="get">
+            <form action="/wine/wineDetailsSelect/1" method="get" id="detailsSelectForm">
 
               <ul class="list-unstyled">
                 <div class="fs-5 fw-bold mb-2 text-dark">가격</div>
@@ -19,21 +19,21 @@
                   <input
                     type="range"
                     list="trickmarks"
-                    class="form-range"
+                    class="form-range pe-3"
                     min="0"
-                    max="42"
-                    step="7"
+                    max="100000"
+                    step="20000"
                     name="WINE_PRICE"
                     id="WINE_PRICE"
                   />
-
-                  <span>&#8361; 0~</span>
-                  <span style="margin-left: 10%">30,000</span>
-                  <span style="margin-left: 10%">60,000</span>
-                  <span style="margin-left: 11%">90,000</span>
-                  <span style="margin-left: 10%">150,000</span>
-                  <span style="margin-left: 9%">200,000</span>
-                  <span style="margin-left: 6%">300,000~</span>
+                  <div class="d-flex justify-content-between">
+                    <div>&#8361; 0~</div>
+                    <div>20,000</div>
+                    <div>40,000</div>
+                    <div>60,000</div>
+                    <div>80,000</div>
+                    <div>100,000</div>
+                  </div>
                 </li>
               </ul>
             </div>
@@ -638,7 +638,7 @@
                 </li>
                 <div class="justify-content-between">
                   <div class="input-group justify-content-center mt-3">
-                    <button type="submit" class="btn btn-danger">적용하기</button>
+                    <button type="submit" class="btn btn-danger" id="searchWineDetailsButton">적용하기</button>
                   </div>
                 </div>
               </ul>
@@ -646,3 +646,18 @@
           </form>
         </div>
       </div>
+      <script>
+        $(function () {
+          $("#detailsSelectForm").submit(function() {
+            // WINE_SCOPE 배열로 만들어 max, min 추출
+            var wine_scope_value = [];
+            $('input:checkbox[name="WINE_SCOPE"]:checked').each(function(){
+                wine_scope_value.push($(this).val());
+            });
+            var wine_scope_max = Math.max.apply(null, wine_scope_value);
+            var wine_scope_min = Math.min.apply(null, wine_scope_value);
+            $("#detailsSelectForm").append("<input type='hidden' value="+ wine_scope_max +" name='WINE_SCOPE_MAX'>");
+            $("#detailsSelectForm").append("<input type='hidden' value="+ wine_scope_min +" name='WINE_SCOPE_MIN'>");
+          });
+        });
+      </script>

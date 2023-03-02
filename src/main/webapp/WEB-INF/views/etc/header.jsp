@@ -29,7 +29,7 @@
             <a href="/event/event" class="nav-link link-dark">이벤트</a>
           </nav>
         </div>
-        <form action="/search/searchWineList/1" method="get" class="d-flex">
+        <form action="/wine/wineDetailsSelect/1" method="get" class="d-flex">
           <input
             class="form-control me-2"
             name="WINESEARCH_NAME"
@@ -43,11 +43,12 @@
             class="btn btn-outline-danger"
             type="submit"
             style="width: 30%"
+            id="searchWineButton"
           >
             검색
           </button>
-        </form>
       </nav>
+      </form>
       <div class="">
         <nav class="fw-bold nav align-items-center pt-2">
           <a href="" class="nav-link link-dark"

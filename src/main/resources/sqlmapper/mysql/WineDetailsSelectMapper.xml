@@ -7,12 +7,19 @@
         SELECT *
         FROM WINE
         WHERE 1 = 1
-        <if test = "WINE_SCOPE_LIST != null">
-            AND WINE_SCOPE BETWEEN
-                <foreach collection="WINE_SCOPE_LIST" item="WINE_SCOPE" 
-                open="(" separator="AND" close=")">
-                    #{WINE_SCOPE}
-                </foreach>
+        <if test = "WINESEARCH_NAME != null">
+            AND REPLACE(WINE_NAME, ' ', '') LIKE CONCAT('%', REPLACE(#{WINESEARCH_NAME}, ' ', ''), '%')
+        </if>
+        <if test = "WINE_PRICE != null">
+            AND WINE_PRICE <![CDATA[ < ]]> #{WINE_PRICE}
+        </if>
+        <if test = "WINE_SCOPE_MAX != null || WINE_SCOPE_MIN != null">
+            <if test = "WINE_SCOPE_MAX == WINE_SCOPE_MIN">
+                 AND SUBSTRING(WINE_SCOPE, 1, 1) = #{WINE_SCOPE_MAX}
+            </if>
+            <if test = "WINE_SCOPE_MAX != WINE_SCOPE_MIN">
+                AND WINE_SCOPE BETWEEN #{WINE_SCOPE_MIN} AND #{WINE_SCOPE_MAX}
+            </if>
         </if>
         <if test = "WINE_TYPE_LIST != null">
             AND WINE_TYPE IN
@@ -60,12 +67,19 @@
         SELECT count(*) as cnt
         FROM WINE
         WHERE 1 = 1
-        <if test = "WINE_SCOPE_LIST != null">
-            AND WINE_SCOPE BETWEEN
-                <foreach collection="WINE_SCOPE_LIST" item="WINE_SCOPE" 
-                open="(" separator="AND" close=")">
-                    #{WINE_SCOPE}
-                </foreach>
+        <if test = "WINESEARCH_NAME != null">
+            AND REPLACE(WINE_NAME, ' ', '') LIKE CONCAT('%', REPLACE(#{WINESEARCH_NAME}, ' ', ''), '%')
+        </if>
+        <if test = "WINE_PRICE != null">
+            AND WINE_PRICE <![CDATA[ < ]]> #{WINE_PRICE}
+        </if>
+        <if test = "WINE_SCOPE_MAX != null || WINE_SCOPE_MIN != null">
+            <if test = "WINE_SCOPE_MAX == WINE_SCOPE_MIN">
+                 AND SUBSTRING(WINE_SCOPE, 1, 1) = #{WINE_SCOPE_MAX}
+            </if>
+            <if test = "WINE_SCOPE_MAX != WINE_SCOPE_MIN">
+                AND WINE_SCOPE BETWEEN #{WINE_SCOPE_MIN} AND #{WINE_SCOPE_MAX}
+            </if>
         </if>
         <if test = "WINE_TYPE_LIST != null">
             AND WINE_TYPE IN
