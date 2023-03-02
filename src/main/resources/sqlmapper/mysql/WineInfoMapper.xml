@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="WineInfo">
+
+    <!-- 와인 정보 -->
+    <select id="wineInfo" parameterType="Map" resultType="Map">
+        SELECT WINE.*, STORE.*, REVIEW.*, QNA.*
+        FROM WINE, STORE, REVIEW, QNA
+        WHERE WINE.WINE_UID = STORE.WINE_UID
+        AND STORE.WINE_UID = REVIEW.WINE_UID
+        AND REVIEW.WINE_UID = QNA.WINE_UID
+        AND WINE_NAME_EN = #{WINE_NAME_EN}
+    </select>
+
+    <!-- 와인 리뷰 총 갯수 -->
+    <select id="wineReviewTotal" 
+        parameterType="Map" resultType="int">
+        SELECT count(*) as cnt
+        FROM REVIEW
+    </select>
+
+
+</mapper>

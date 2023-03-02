@@ -160,13 +160,59 @@
               "widthDefault": 60
             },
             "id": "1eef0fba-9810-4cfd-b4c1-778f8b644b58"
+          },
+          {
+            "name": "STORE_PRICE",
+            "comment": "판매가",
+            "dataType": "VARCHAR(100)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": false
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 93.5078125,
+              "widthComment": 60,
+              "widthDataType": 94.94873046875,
+              "widthDefault": 60
+            },
+            "id": "b18da328-7926-4ebf-ade1-cc1aab372e75"
+          },
+          {
+            "name": "STORE_DELIVERY",
+            "comment": "배송비",
+            "dataType": "VARCHAR(100)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": false
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 117.8447265625,
+              "widthComment": 60,
+              "widthDataType": 94.94873046875,
+              "widthDefault": 60
+            },
+            "id": "281ce5ce-e664-460a-bf81-734f15f983fb"
           }
         ],
         "ui": {
-          "active": false,
+          "active": true,
           "left": 30.6668,
           "top": 189.9999,
-          "zIndex": 2,
+          "zIndex": 4,
           "widthName": 60,
           "widthComment": 60
         },

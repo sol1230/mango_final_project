@@ -27,6 +27,7 @@
 
   </head>
   <body>
+  
     <%-- header --%>
     <%@ include file="../etc/header.jsp" %>
     <%-- select --%>
@@ -75,7 +76,7 @@
           <c:set var="_pagination" value="${resultMap.paginations}" />
           <span>총 ${_pagination.totalCount}개 상품</span>
           <form action="/search/searchWineListWithOrder/1" method="get">
-          <input type="hidden" name="WINESEARCH_NAME" value="${searchName}">
+            <input type="hidden" name="WINESEARCH_NAME" value="${searchName}">
             <span class="float-end">
               <select
                 class="form-select"
@@ -280,16 +281,16 @@
         <nav aria-label="Page navigation example ">
           <ul class="pagination pagination-sm">
             <li class="page-item">
-              <a class="page-link" href="/search/searchWineList/${_pagination.previousPage}" aria-label="Previous">
+              <a class="page-link" href="/search/searchWineList/${_pagination.previousPage}?WINESEARCH_NAME=${searchName}" aria-label="Previous">
                 <span class="sr-only">이전</span>
               </a>
             </li>
             <%-- for(int i = 0; i > 9; i++){} --%>
             <c:forEach var="i" begin="${_pagination.blockStart}" end="${_pagination.blockEnd}">
-              <li class="page-item"><a class="page-link" href="/search/searchWineList/${i}">${i}</a></li>
+              <li class="page-item"><a class="page-link" href="/search/searchWineList/${i}?WINESEARCH_NAME=${searchName}">${i}</a></li>
             </c:forEach>
             <li class="page-item">
-              <a class="page-link" href="/search/searchWineList/${_pagination.nextPage}" aria-label="Next">
+              <a class="page-link" href="/search/searchWineList/${_pagination.nextPage}?WINESEARCH_NAME=${searchName}" aria-label="Next">
                 <span class="sr-only">다음</span>
               </a>
             </li>
@@ -300,7 +301,8 @@
 
     <%-- footer --%>
     <%@ include file="../etc/footer.jsp" %>
-    
+
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"

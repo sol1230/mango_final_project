@@ -23,14 +23,12 @@ public class WineDetailsSelectController {
     // Event 수정 화면 출력
     @RequestMapping(value = "/wine/wineDetailsSelect/{currentPage}", method = RequestMethod.GET)
     public ModelAndView wineDetailsSelect(HttpServletRequest request, @PathVariable String currentPage, @RequestParam Map<String, Object> params, ModelAndView modelAndView) {
-        String[] WINE_SCOPE_LIST = request.getParameterValues("WINE_SCOPE");
         String[] WINE_TYPE_LIST = request.getParameterValues("WINE_TYPE");
         String[] WINE_COUNTRY_LIST = request.getParameterValues("WINE_COUNTRY");
         String[] WINE_REGION_LIST = request.getParameterValues("WINE_REGION");
         String[] WINE_VARIETY_LIST = request.getParameterValues("WINE_VARIETY");
         String[] WINE_FOOD_PAIRING_LIST = request.getParameterValues("WINE_FOOD_PAIRING");
 
-        params.put("WINE_SCOPE_LIST", WINE_SCOPE_LIST);
         params.put("WINE_TYPE_LIST", WINE_TYPE_LIST);
         params.put("WINE_COUNTRY_LIST", WINE_COUNTRY_LIST);
         params.put("WINE_REGION_LIST", WINE_REGION_LIST);
@@ -43,7 +41,11 @@ public class WineDetailsSelectController {
         //     System.out.println(WINE_SCOPE_LIST[i]);
         // }
         Object resultMap = wineDetailsSelectService.getWinDetailsSelectWithPagination(params);
+        Object searchName = params.get("WINESEARCH_NAME");
+        Object searchNameStatus = params.get("selectKeyField");  // select option 상태
         modelAndView.addObject("resultMap", resultMap);
+        modelAndView.addObject("searchName", searchName);
+        modelAndView.addObject("searchNameStatus", searchNameStatus);
         modelAndView.setViewName("wine/wine_details_select");
         return modelAndView;
     }
