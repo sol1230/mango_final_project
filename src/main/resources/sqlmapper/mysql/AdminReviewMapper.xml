@@ -19,7 +19,7 @@
         FROM REVIEW INNER JOIN WINE
         ON REVIEW.WINE_UID = WINE.WINE_UID
         <if test="selectKeyField != '' and selectKeyWord != null" >
-            WHERE ${selectKeyField} = #{selectKeyWord}
+            WHERE REPLACE(${selectKeyField}, ' ', '') LIKE CONCAT('%', REPLACE(#{selectKeyWord}, ' ', ''), '%')
         </if>
     </select>
 

@@ -44,7 +44,11 @@ public class AdminBoardController {
   public ModelAndView adminQnaSearch(@RequestParam Map<String, Object> params, @PathVariable String currentPage, ModelAndView modelAndView) {
     params.put("currentPage", Integer.parseInt(currentPage));
     Object resultMap = adminBoardService.getSearchListQna(params);
+    Object searchQnaStatus = params.get("selectKeyField");
+    Object searchQna = params.get("selectKeyWord");
     modelAndView.addObject("resultMap", resultMap);
+    modelAndView.addObject("searchQnaStatus", searchQnaStatus);
+    modelAndView.addObject("searchQna", searchQna);
     modelAndView.setViewName("admin/admin_qna");
     return modelAndView;
   }

@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -36,7 +37,7 @@
 
       <main class="col-9 p-0 mb-5 ms-5">
         <div class="mt-4 p-4 border bg-white">
-          <form action="/admin/adminReviewSearch" method="post">
+          <form action="/admin/adminReviewSearch" method="get">
             <div
               class="d-flex justify-content-between align-items-center input-group"
             >
@@ -50,11 +51,11 @@
                   <div class="input-group">
                     <select class="form-select" name="selectKeyField" id="" required="required">
                       <option value="">선택</option>
-                      <option value="WINE_NAME">상품명</option>
-                      <option value="USER_UID">작성자</option>
-                      <option value="REVIEW_SCOPE">평점</option>
+                      <option value="WINE_NAME" <c:if test="${searchReviewStatus eq 'WINE_NAME'}">selected</c:if>>상품명</option>
+                      <option value="USER_UID" <c:if test="${searchReviewStatus eq 'USER_UID'}">selected</c:if>>작성자</option>
+                      <option value="REVIEW_SCOPE" <c:if test="${searchReviewStatus eq 'REVIEW_SCOPE'}">selected</c:if>>평점</option>
                     </select>
-                    <input type="text" name="selectKeyWord" class="form-control w-50" required/>
+                    <input type="text" name="selectKeyWord" value="${searchReview}" class="form-control w-50" required/>
                     <button type="submit" class="btn btn-outline-secondary">검색</button>
                   </div>
                 </div>
@@ -64,7 +65,7 @@
           <table
             class="mt-3 mb-1 table table-hover align-middle"
             style="font-size: small"
-          >
+          > 
             <thead class="bg-secondary bg-opacity-25 text-center">
               <tr>
                 <th scope="">번호</th>
@@ -77,9 +78,14 @@
               </tr>
             </thead>
             <tbody>
+              <c:if test="${fn:length(resultMap.resultList) == 0}">
+                <tr class="text-center pt-2">
+                  <td colspan="7" >검색 결과가 없습니다.</td>
+                </tr>
+              </c:if>
               <c:forEach items="${resultMap.resultList}" var="resultData" varStatus="loop">
                 <tr class="text-center">
-                  <td scope="">${resultData.REVIEW_UID}</td>
+                  <td scope="">${loop.count}</td>
                   <td scope="">${resultData.WINE_NAME}</td>
                   <td scope="" class=""><a href="#reviewCont${loop.count}" class="text-decoration-none text-black" data-bs-toggle="collapse">
                   ${resultData.REVIEW_TITLE}</a></td>

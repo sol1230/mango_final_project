@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -46,11 +47,11 @@
                   <div class="input-group">
                     <select class="form-select" name="selectKeyField" id="" required="required">
                       <option value="">선택</option>
-                      <option value="QNA_TITLE">제목</option>
-                      <option value="USER_UID">작성자</option>
-                      <option value="ANSWER_STATUS">답변상태</option>
+                      <option value="QNA_TITLE" <c:if test="${searchQnaStatus eq 'QNA_TITLE'}">selected</c:if>>제목</option>
+                      <option value="USER_UID" <c:if test="${searchQnaStatus eq 'USER_UID'}">selected</c:if>>작성자</option>
+                      <option value="ANSWER_STATUS" <c:if test="${searchQnaStatus eq 'ANSWER_STATUS'}">selected</c:if>>답변상태</option>
                     </select>
-                    <input type="text" name="selectKeyWord" class="form-control w-50" required/>
+                    <input type="text" name="selectKeyWord" value="${searchQna}" class="form-control w-50" required/>
                     <button type="submit" class="btn btn-outline-secondary">검색</button>
                   </div>
                 </div>
@@ -72,6 +73,11 @@
               </tr>
             </thead>
             <tbody>
+              <c:if test="${fn:length(resultMap.resultList) == 0}">
+                <tr class="text-center pt-2">
+                  <td colspan="7" >검색 결과가 없습니다.</td>
+                </tr>
+              </c:if>
               <c:forEach items="${resultMap.resultList}" var="resultData" varStatus="loop">
                 <tr class=" text-center">
                   <th scope="">${loop.count}</th>
