@@ -29,10 +29,14 @@ public class AdminReviewController {
     }
 
     // admin 리뷰 검색
-    @RequestMapping(value = "/admin/adminReviewSearch", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/adminReviewSearch", method = RequestMethod.GET)
     public ModelAndView adminReviewSearch(@RequestParam Map<String, Object> params, ModelAndView modelAndView) {
         Object resultMap = adminReviewService.getReviewSearchList(params);
+        Object searchReviewStatus = params.get("selectKeyField");
+        Object searchReview = params.get("selectKeyWord");
         modelAndView.addObject("resultMap", resultMap);
+        modelAndView.addObject("searchReview", searchReview);
+        modelAndView.addObject("searchReviewStatus", searchReviewStatus);
         modelAndView.setViewName("admin/admin_reviews");
         return modelAndView;
     }

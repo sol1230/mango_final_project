@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <jsp:useBean id="now" class="java.util.Date" />
 
 <!DOCTYPE html>
@@ -54,6 +55,11 @@
           </form>
         </div>
         <hr class="mb-1"/>
+        <c:if test="${fn:length(resultMap) == 0}">
+          <div class="text-center mt-4 pt-5 pb-5">
+            검색 결과가 없습니다.
+          </div>
+        </c:if>
         <table class="table table-hover">
           <c:forEach items="${resultMap}" var="resultData" varStatus="loop">
             <%-- 진행중, 종료 표시... --%>
