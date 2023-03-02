@@ -46,13 +46,13 @@
                   >
                 </div>
                 <div>
-                 <form action="/admin/admin_users_search/1" method="post">
+                 <form action="/admin/admin_users_search/1" method="get">
                   <div class="input-group">
                     <select class="form-select" name="keyType" id="">
                       <option>선택</option>
-                      <option value="USER_ID">아이디</option>
+                      <option value="USER_UID">아이디</option>
                       <option value="NAME">이름</option>
-                      <option value="BIRTH_DATE">생년월일</option>
+                      <option value="BIRTH">생년월일</option>
                       <option value="PHONE">전화번호</option>
                     </select>
                     <input type="text" name="keyword" class="form-control w-50" />
