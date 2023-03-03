@@ -71,7 +71,7 @@ public class AdminCouponController {
     @PathVariable String currentPage,
     ModelAndView modelAndView
   ) {
-    Iterator<String> fileNames = multipartHttpServletRequest.getFileNames(); // 파일 이름들 가져옴
+    Iterator<String> fileNames = multipartHttpServletRequest.getFileNames();
     String absolutePath = commonUtils.getRelativeToAbsolutePath(
       "src/main/resources/static/files/"
     );
@@ -81,31 +81,30 @@ public class AdminCouponController {
     String physicalFileName = commonUtils.getUniqueSequence();
     String storePath = absolutePath + physicalFileName + File.separator;
     File newPath = new File(storePath);
-    newPath.mkdir(); // create directory
+    newPath.mkdir();
     while (fileNames.hasNext()) {
       String fileName = fileNames.next();
       MultipartFile multipartFile = multipartHttpServletRequest.getFile(
         fileName
       );
-      String originalFilename = multipartFile.getOriginalFilename();
+      String originalFileName = multipartFile.getOriginalFilename();
 
-      if (originalFilename != null && multipartFile.getSize() > 0) { // 방어
-        String storePathFileName = storePath + originalFilename; // 저장할 path 이름
+      if (originalFileName != null && multipartFile.getSize() > 0) {
+        String storePathFileName = storePath + originalFileName;
         try {
-          multipartFile.transferTo(new File(storePathFileName)); // relativePath 경로
+          multipartFile.transferTo(new File(storePathFileName));
 
-          // add SOURCE_UNIQUE_SEQ, ORGINALFILE_NAME, PHYSICALFILE_NAME in HashMap
           attachfile = new HashMap<>();
           attachfile.put("COUPON_UID", params.get("COUPON_UID"));
           attachfile.put("COUPON_FILE", params.get("COUPON_FILE"));
-          attachfile.put("ATTACHFILE_SEQ", commonUtils.getUniqueSequence());
-          attachfile.put("ORGINALFILE_NAME", originalFilename);
-          attachfile.put("PHYSICALFILE_NAME", physicalFileName);
-          attachfile.put("USER_UID", params.get("USER_UID"));
           attachfile.put("COUPON_NAME", params.get("COUPON_NAME"));
           attachfile.put("COUPON_DATE", params.get("COUPON_DATE"));
           attachfile.put("COUPON_DATETIME1", params.get("COUPON_DATETIME1"));
           attachfile.put("COUPON_DATETIME2", params.get("COUPON_DATETIME2"));
+          attachfile.put("USER_UID", params.get("USER_UID"));
+          attachfile.put("C_ATTACHFILE_SEQ", commonUtils.getUniqueSequence());
+          attachfile.put("C_ORIGINALFILE_NAME", originalFileName);
+          attachfile.put("C_PHYSICALFILE_NAME", physicalFileName);
 
           attachfiles.add(attachfile);
         } catch (IllegalStateException e) {
@@ -115,8 +114,8 @@ public class AdminCouponController {
         }
       }
     }
-    params.put("attachfiles", attachfiles);
 
+    params.put("attachfiles", attachfiles);
     params.put("currentPage", Integer.parseInt(currentPage));
     Object resultMap = adminCouponService.insertCouponWithFileAndGetList(
       params

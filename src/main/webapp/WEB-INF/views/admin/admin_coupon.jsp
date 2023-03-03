@@ -74,7 +74,7 @@
               <tr>
                 <th>${resultData.COUPON_UID}</th>
                 <td>${resultData.COUPON_FILE}
-                  <img src="/img/files/${resultData.PHYSICALFILE_NAME}/${resultData.ORIGINALFILE_NAME}" alt="${resultData.ORIGINALFILE_NAME}" style="width: 3rem" />
+                  <img src="/files/${resultData.C_PHYSICALFILE_NAME}/${resultData.C_ORIGINALFILE_NAME}" alt="${resultData.ORIGINALFILE_NAME}" style="width: 3rem" />
                 </td>
                 <td>${resultData.COUPON_NAME}</td>
                 <td>${resultData.COUPON_DATE}</td>
@@ -86,14 +86,14 @@
                         <input type="hidden" name="COUPON_UID" value="${resultData.COUPON_UID}" />
                         <input type="hidden" name="COUPON_DATE" value="${resultData.COUPON_DATE}" />
                         <input type="hidden" name="COUPON_NAME" value="${resultData.COUPON_NAME}" />
-                        <input type="hidden" name="NAME" value="${resultData.USER_UID}" />
                         <input type="hidden" name="COUPON_DATETIME1" value="${resultData.COUPON_DATETIME1}" />
                         <input type="hidden" name="COUPON_DATETIME2" value="${resultData.COUPON_DATETIME2}" />
                         <input type="hidden" name="COUPON_FILE" value="${resultData.COUPON_FILE}" />
-                        <input type="hidden" name="ATTACHFILE_SEQ" value="${resultData.ATTACHFILE_SEQ}" />
-                        <input type="hidden" name="ORIGINALFILE_NAME" value="${resultData.ORIGINALFILE_NAME}" />
-                        <input type="hidden" name="PHYSICALFILE_NAME" value="${resultData.PHYSICALFILE_NAME}" />
+                        <input type="hidden" name="C_ATTACHFILE_SEQ" value="${resultData.C_ATTACHFILE_SEQ}" />
+                        <input type="hidden" name="C_ORIGINALFILE_NAME" value="${resultData.C_ORIGINALFILE_NAME}" />
+                        <input type="hidden" name="C_PHYSICALFILE_NAME" value="${resultData.C_PHYSICALFILE_NAME}" />
                         <button
+                          type="submit"
                           class="btn btn-sm btn-outline-secondary"
                         >
                           수정

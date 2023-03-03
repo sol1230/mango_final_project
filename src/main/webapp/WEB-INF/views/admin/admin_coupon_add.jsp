@@ -47,27 +47,14 @@
               class="mt-3 table border text-center align-middle"
               style="font-size: small"
             >
-              <thead class="">
+              <thead class="align-middle">
                 <tr scope="row">
                   <th scope="" class="bg-secondary bg-opacity-25">작성일</th>
-                  <td scope="" colspan="" name="COUPON_DATE">  
-                    <input
-                      type="text"
-                      name="COUPON_DATE"
-                      id="COUPON_DATE"
-                      class="form-control"
-                      readonly
-                    />
+                  <td scope="" colspan="" name="COUPON_DATE"> 자동입력
                   </td>
                   <th scope="" class="bg-secondary bg-opacity-25">작성자</th>
-                  <td scope="" name="coupon_writer">
-                    <input
-                      type="text"
-                      name="USER_UID"
-                      id="user_uid"
-                      class="form-control"
-                      placeholder="작성자를 입력해 주세요."
-                    />
+                  <td scope="" name="NAME">
+                    관리자
                   </td>
                 </tr>
                 <tr scope="row">
@@ -76,23 +63,30 @@
                     <input
                       type="text"
                       name="COUPON_NAME"
-                      id="coupon_name"
+                      id="COUPON_NAME"
                       class="form-control"
                       placeholder="이름을 입력해 주세요."
                     />
                   </td>
                 </tr>
-                <tr scope="row">
+               <tr scope="row">
                   <th scope="" class="bg-secondary bg-opacity-25">쿠폰 기한</th>
-                  <td scope="" colspan="3">
-                    <input style="width:15rem; height:3rem" class="col"
+                  <td scope="" colspan="1">
+                    <input
                       type="date"
                       name="COUPON_DATETIME1"
+                      id="COUPON_DATETIME1"
                       class="form-control"
-                    />  ~
-                     <input style="width:15rem; height:3rem" class="col"
+                    />
+                  </td>
+                  <td>
+                    ~
+                  </td>
+                  <td scope="" colspan="1">
+                    <input
                       type="date"
                       name="COUPON_DATETIME2"
+                      id="COUPON_DATETIME2"
                       class="form-control"
                     />
                   </td>

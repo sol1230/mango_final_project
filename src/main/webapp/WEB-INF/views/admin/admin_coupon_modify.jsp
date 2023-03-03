@@ -32,10 +32,6 @@
     <div class="row g-0 vh-100">
     <%-- admin nav --%>
     <%@ include file="../etc/admin_nav.jsp" %>
-          <%-- <input type="hidden" name="COUPON_UID" value="${resultMap.COUPON_UID}" />
-          <input type="hidden" name="COUPON_DATE" value="${resultMap.COUPON_DATE}" />
-          <input type="hidden" name="NAME" value="${resultMap.NAME}" /> --%>
-
       <main class="col-9 p-0 mb-5 ms-5">
         <form action="/admin/admin_coupon_update/1" method="post">
           <div class="mt-4 p-4 border bg-white">
@@ -48,17 +44,17 @@
               class="mt-3 table border text-center align-middle"
               style="font-size: small"
             >
-              <thead class="">
+              <thead class="align-middle">
                 <tr>
                   <th scope="" class="bg-secondary bg-opacity-25">작성일</th>
-                  <td scope="" name="COUPON_DATE">${resultMap.COUPON_DATE}</td>
+                  <td scope="" >${resultMap.COUPON_DATE}</td>
 
                   <th scope="" class="bg-secondary bg-opacity-25">작성자</th>
-                  <td scope="" name="NAME">${resultMap.NAME}</td>
+                  <td scope="" >${resultMap.NAME}</td>
                 </tr>
                 <tr scope="row">
                   <th scope="" class="bg-secondary bg-opacity-25">쿠폰 이름</th>
-                  <td scope="" colspan="3">
+                  <td scope="" colspan="">
                     <input
                       type="text"
                       name="COUPON_NAME"
@@ -66,17 +62,22 @@
                       value="${resultMap.COUPON_NAME}"
                     />
                   </td>
+                  <th scope="" class="bg-secondary bg-opacity-25">쿠폰 코드</th>
+                  <td scope="" colspan="">${resultMap.COUPON_UID}</td>
                 </tr>
                 <tr scope="row">
                   <th scope="" class="bg-secondary bg-opacity-25">쿠폰 기한</th>
-                  <td scope="" colspan="3" class="">
-                    <input style="width:15rem; height:3rem" class="col"
+                  <td scope="" colspan="1" class="">
+                    <input
                       type="date"
                       name="COUPON_DATETIME1"
                       class="form-control"
                       value="${resultMap.COUPON_DATETIME1}"
-                    />  ~
-                     <input style="width:15rem; height:3rem" class="col"
+                    />
+                  </td>
+                  <td> ~ </td>
+                  <td>
+                     <input
                       type="date"
                       name="COUPON_DATETIME2"
                       class="form-control"
@@ -87,15 +88,12 @@
               </thead>
               <tbody>
                 <c:choose>
-                  <c:when test="${not empty resultMap.PHYSICALFILE_NAME}">
-                    <tr>
+                  <c:when test="${not empty resultMap.C_PHYSICALFILE_NAME}">
+                    <tr scope=row>
                       <th class="bg-secondary bg-opacity-25">첨부한 파일</th>
                       <td colspan="3">
-                        <div class="">
-                        <img src="/img/files/${resultMap.PHYSICALFILE_NAME}/${resultMap.ORIGINALFILE_NAME}">
+                        <img src="/files/${resultMap.C_PHYSICALFILE_NAME}/${resultMap.C_ORIGINALFILE_NAME}">
                         <input type="file" name="COUPON_FILE" value="${resultMap.COUPON_FILE}" class="form-control" />
-                       
-                        </div>
                       </td>
                     </tr>
                   </c:when>
@@ -111,6 +109,7 @@
         </form>
       </main>
     </div>
+
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"

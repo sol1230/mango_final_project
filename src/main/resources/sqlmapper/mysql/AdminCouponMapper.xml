@@ -14,12 +14,30 @@
         </if>
     </select>
 
-    <!-- AdminCoupon.selectCouponUID -->
-    <select id="selectCouponUID" parameterType="Map" resultType="Map">
-        SELECT *
+    <!-- AdminCoupon.selectCouponTotal -->
+    <select id="selectCouponTotal" parameterType="Map" resultType="int">
+        SELECT count(*) as cnt
         FROM COUPON
-        WHERE COUPON_UID = #{COUPON_UID}
     </select>
+
+    <!-- AdminCoupon.insertCouponWithFile -->
+    <insert id="insertCouponWithFile" parameterType="Map">
+        INSERT INTO COUPON (COUPON_FILE, C_ATTACHFILE_SEQ, C_ORIGINALFILE_NAME, C_PHYSICALFILE_NAME, COUPON_NAME, COUPON_DATE, COUPON_DATETIME1, COUPON_DATETIME2, USER_UID)
+        VALUE
+        <choose>
+            <when test="attachfiles != null and attachfiles.size != 0">
+                <foreach collection="attachfiles" item="attachfile"
+                        open="(" close=")" separator="),(">
+                        #{attachfile.COUPON_FILE}, #{attachfile.C_ATTACHFILE_SEQ}, #{attachfile.C_ORIGINALFILE_NAME}, 
+                        #{attachfile.C_PHYSICALFILE_NAME}, #{attachfile.COUPON_NAME}, DATE(NOW()), 
+                        #{attachfile.COUPON_DATETIME1}, #{attachfile.COUPON_DATETIME2}, #{USER_UID}
+                </foreach>
+            </when>
+            <otherwise>
+            (#{COUPON_FILE}, #{C_ATTACHFILE_SEQ}, #{C_ORIGINALFILE_NAME}, #{C_PHYSICALFILE_NAME}, #{COUPON_NAME}, #{}, DATE(NOW()), #{COUPON_DATETIME1}, #{COUPON_DATETIME2})
+            </otherwise>
+        </choose>
+    </insert>
 
     <!-- AdminCoupon.selectCouponCont -->
     <select id="selectCouponCont" parameterType="Map" resultType="Map">
@@ -30,24 +48,9 @@
         WHERE COUPON_UID = #{COUPON_UID}
         AND COUPON_NAME = #{COUPON_NAME}
         AND COUPON_DATE = #{COUPON_DATE}
+        AND COUPON_DATETIME1 = #{COUPON_DATETIME1}
+        AND COUPON_DATETIME2 = #{COUPON_DATETIME2}
     </select>
-
-
-    <!-- AdminCoupon.selectCouponTotal -->
-    <select id="selectCouponTotal" parameterType="Map" resultType="int">
-        SELECT count(*) as cnt
-        FROM COUPON
-    </select>
-
-    <!-- AdminCoupon.insertCouponWithFile -->
-    <insert id="insertCouponWithFile" parameterType="Map">
-        INSERT INTO COUPON (COUPON_FILE, ATTACHFILE_SEQ, ORIGINALFILE_NAME, PHYSICALFILE_NAME, COUPON_NAME, COUPON_DATE, COUPON_DATETIME1, COUPON_DATETIME2, USER_UID)
-        VALUE 
-        <foreach collection="attachfiles" item="attachfile"
-                open="(" close=")" separator="),(">
-                #{attachfiles.COUPON_FILE}, #{attachfiles.ATTACHFILE_SEQ}, #{attachfiles.ORIGINALFILE_NAME}, #{attachfiles.PHYSICALFILE_NAME}, #{attachfiles.COUPON_NAME}, DATE(NOW()), #{attachfiles.COUPON_DATETIME1}, #{attachfiles.COUPON_DATETIME2}, #{USER_UID}
-        </foreach>
-    </insert>
 
     <!-- AdminCoupon.updateCoupon  -->
     <update id="updateCoupon" parameterType="Map">
@@ -55,7 +58,10 @@
         SET COUPON_FILE = #{COUPON_FILE},
             COUPON_NAME = #{COUPON_NAME},
             COUPON_DATETIME1 = #{COUPON_DATETIME1},
-            COUPON_DATETIME2 = #{COUPON_DATETIME2}
+            COUPON_DATETIME2 = #{COUPON_DATETIME2},
+            C_ATTACHFILE_SEQ = #{C_ATTACHFILE_SEQ},
+            C_ORIGINALFILE_NAME = #{C_ORIGINALFILE_NAME},
+            C_PHYSICALFILE_NAME = #{C_PHYSICALFILE_NAME}
         WHERE COUPON_UID = #{COUPON_UID}
     </update>
 

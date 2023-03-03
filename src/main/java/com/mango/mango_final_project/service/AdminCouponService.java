@@ -12,18 +12,10 @@ public class AdminCouponService {
   @Autowired
   CommonDao commonDao;
 
-  // LIST
   // admin coupon list
   public Object getCouponList(Object dataMap) {
     String sqlMapId = "AdminCoupon.adminCoupon";
     Object result = commonDao.getList(sqlMapId, dataMap);
-    return result;
-  }
-
-  // coupon with UID
-  public Object getCouponUID(Object dataMap) {
-    String sqlMapId = "AdminCoupon.selectCouponUID";
-    Object result = commonDao.getOne(sqlMapId, dataMap);
     return result;
   }
 
@@ -52,21 +44,6 @@ public class AdminCouponService {
     Object result = commonDao.getOne(sqlMapId, dataMap);
     return result;
   }
-
-  // INSERT
-  // insert coupon
-  // public Object insertCoupon(Object dataMap) {
-  //   String sqlMapId = "AdminCoupon.insertCoupon";
-  //   Object result = commonDao.insert(sqlMapId, dataMap);
-  //   return result;
-  // }
-
-  // // insert and get coupon list
-  // public Object insertCouponAndGetList(Object dataMap) {
-  //   Object result = this.insertCoupon(dataMap);
-  //   result = this.couponWithPagination(dataMap);
-  //   return result;
-  // }
 
   // insert coupon + file
   public Object insertCouponWithFile(Object dataMap) {
