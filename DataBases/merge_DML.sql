@@ -31,44 +31,44 @@ FROM USER;
 
 -- 와인 목록 채우기
 -- 레드와인
-INSERT INTO WINE (WINE_NAME, WINE_NAME_EN, WINE_SCOPE, WINE_COMPANY, WINE_VARIETY, WINE_COUNTRY, WINE_REGION, WINE_TYPE, WINE_ALCOHOL_DEGREE, WINE_PRICE, WINE_IMAGE, WINE_FILE, WINE_INFO, WINE_FOOD_PAIRING)
-VALUES ('14핸즈 카베르네 소비뇽', '14HANDS CABERNET SAUVIGNON', '3.7', '포틴핸즈', '카베르네 소비뇽', '미국', '워싱턴', '레드', '13.5', '27000', '이미지', '파일', '바디감 무거움, 산도 높음, 당도 중간, 타닌 약함', '치즈'),
-('14핸즈 메를로', '14HANDS MERLOT', '3.7', '포틴핸즈', '메를로', '미국', '워싱턴', '레드', '14.5', '27000', '이미지', '파일', '바디감 무거움, 산도 낮음, 당도 중간, 타닌 약함', '소, 치즈'),
-('SET)페데럴리스트 진판델 원통 패키지', 'SET)THE FEDERALIST ZINFANDEL', '3.8', '텔라토', '진판델', '미국', '워싱턴', '레드', '14.5', '50000', '이미지', '파일', '바디감 무거움, 산도 낮음, 당도 중간, 타닌 약함', '소, 양'),
-('마틴 레이 소노마 나파 카운티 카베르네 소비뇽', 'MARTIN RAY SOMONA NAPA COUNTY CABERNET SAUVIGNON', '3.8', '마틴 레이', '카베르네 소비뇽', '미국', '캘리포니아', '레드', '14.4', '52000', '이미지', '파일', '바디감 무거움, 산도 낮음, 당도 중간, 타닌 약함', '소, 돼지'),
-('도멘 디지오아 로이예 싸비니 르 본', 'DOMAINE DIGIOIA ROYER SAVIGNY LES BEAUNE', '4.0', '도멘', '피노누아', '프랑스', '부르고뉴', '레드', '15.0', '85000', '이미지', '파일', '바디감 무거움, 산도 낮음, 당도 낮음, 타닌 중간', '소')
+INSERT INTO WINE (WINE_NAME, WINE_NAME_EN, WINE_SCOPE, WINE_COMPANY, WINE_VARIETY, WINE_COUNTRY, WINE_REGION, WINE_TYPE, WINE_ALCOHOL_DEGREE, WINE_PRICE, WINE_IMAGE, WINE_FILE, WINE_BODY, WINE_ACIDITY, WINE_SUGAR, WINE_TANNIN, WINE_FOOD_PAIRING)
+VALUES ('14핸즈 카베르네 소비뇽', '14HANDS CABERNET SAUVIGNON', '3.7', '포틴핸즈', '카베르네 소비뇽', '미국', '워싱턴', '레드', '13.5', '27000', '이미지', '파일', '무거움', '높음', '중간', '약함', '치즈'),
+('14핸즈 메를로', '14HANDS MERLOT', '3.7', '포틴핸즈', '메를로', '미국', '워싱턴', '레드', '14.5', '27000', '이미지', '파일', '무거움', '낮음', '중간', '약함', '소, 치즈'),
+('SET)페데럴리스트 진판델 원통 패키지', 'SET)THE FEDERALIST ZINFANDEL', '3.8', '텔라토', '진판델', '미국', '워싱턴', '레드', '14.5', '50000', '이미지', '파일', '무거움', '낮음', '중간', '약함', '소, 양'),
+('마틴 레이 소노마 나파 카운티 카베르네 소비뇽', 'MARTIN RAY SOMONA NAPA COUNTY CABERNET SAUVIGNON', '3.8', '마틴 레이', '카베르네 소비뇽', '미국', '캘리포니아', '레드', '14.4', '52000', '이미지', '파일', '무거움', '낮음', '중간', '약함', '소, 돼지'),
+('도멘 디지오아 로이예 싸비니 르 본', 'DOMAINE DIGIOIA ROYER SAVIGNY LES BEAUNE', '4.0', '도멘', '피노누아', '프랑스', '부르고뉴', '레드', '15.0', '85000', '이미지', '파일', '무거움', '낮음', '낮음', '중간', '소')
 ;
 
 -- 화이트 와인
-INSERT INTO WINE (WINE_NAME, WINE_NAME_EN, WINE_SCOPE, WINE_COMPANY, WINE_VARIETY, WINE_COUNTRY, WINE_REGION, WINE_TYPE, WINE_ALCOHOL_DEGREE, WINE_PRICE, WINE_IMAGE, WINE_FILE, WINE_INFO, WINE_FOOD_PAIRING)
-VALUES ('베니카 트레 비니스', 'VENICA TRE VIGNIS', '3.9', '베니카', '기타', '이탈리아', '콜리오', '화이트', '13.5', '55000', '이미지', '파일', '바디감 무거움, 산도 낮음, 당도 중간, 타닌 약함', '닭'),
-('14핸즈 소비뇽블랑', '14Hands Sauvignon Blanc', '3.6', '포틴핸즈', '소비뇽블랑', '미국', '워싱턴', '화이트', '13.0', '27000', '이미지', '파일', '바디감 가벼움, 산도 높음, 당도 높음, 타닌 높음', '치즈'),
-('14핸즈 샤르도네', '14Hands Chardonnay', '3.6', '포틴핸즈', '샤르도네', '미국', '워싱턴', '화이트', '13.5', '27000', '이미지', '파일', '바디감 무거움, 산도 중간, 당도 낮음, 타닌 중간', '돼지'),
-('SET)페데럴리스트 샤르도네 원통 패키지', 'SET)THE FEDERALIST CHARDONNAY', '3.7', '텔라토', '샤르도네', '미국', '워싱턴', '화이트', '14.5', '50000', '이미지', '파일', '바디감 중간, 산도 높음, 당도 중간, 타닌 높음', '돼지'),
-('파토리아 르 푸필레 포지오 아르젠타토', 'FATTORIA LE PUPILLE POGGIO ARGENTATO', '3.7', '파토리아', '소비뇽블랑', '이탈리아', '마렘마', '화이트', '15.0', '40000', '이미지', '파일', '바디감 중간, 산도 중간, 당도 낮음, 타닌 중간', '치즈')
+INSERT INTO WINE (WINE_NAME, WINE_NAME_EN, WINE_SCOPE, WINE_COMPANY, WINE_VARIETY, WINE_COUNTRY, WINE_REGION, WINE_TYPE, WINE_ALCOHOL_DEGREE, WINE_PRICE, WINE_IMAGE, WINE_FILE, WINE_BODY, WINE_ACIDITY, WINE_SUGAR, WINE_TANNIN, WINE_FOOD_PAIRING)
+VALUES ('베니카 트레 비니스', 'VENICA TRE VIGNIS', '3.9', '베니카', '기타', '이탈리아', '콜리오', '화이트', '13.5', '55000', '이미지', '파일', '무거움', '낮음', '중간', '약함', '닭'),
+('14핸즈 소비뇽블랑', '14Hands Sauvignon Blanc', '3.6', '포틴핸즈', '소비뇽블랑', '미국', '워싱턴', '화이트', '13.0', '27000', '이미지', '파일', '가벼움', '높음', '높음', '높음', '치즈'),
+('14핸즈 샤르도네', '14Hands Chardonnay', '3.6', '포틴핸즈', '샤르도네', '미국', '워싱턴', '화이트', '13.5', '27000', '이미지', '파일', '무거움', '중간', '낮음', '중간', '돼지'),
+('SET)페데럴리스트 샤르도네 원통 패키지', 'SET)THE FEDERALIST CHARDONNAY', '3.7', '텔라토', '샤르도네', '미국', '워싱턴', '화이트', '14.5', '50000', '이미지', '파일', '중간', '높음', '중간', '높음', '돼지'),
+('파토리아 르 푸필레 포지오 아르젠타토', 'FATTORIA LE PUPILLE POGGIO ARGENTATO', '3.7', '파토리아', '소비뇽블랑', '이탈리아', '마렘마', '화이트', '15.0', '40000', '이미지', '파일', '중간', '중간', '낮음', '중간', '치즈')
 ;
 
 -- 로제 와인
-INSERT INTO WINE (WINE_NAME, WINE_NAME_EN, WINE_SCOPE, WINE_COMPANY, WINE_VARIETY, WINE_COUNTRY, WINE_REGION, WINE_TYPE, WINE_ALCOHOL_DEGREE, WINE_PRICE, WINE_IMAGE, WINE_FILE, WINE_INFO, WINE_FOOD_PAIRING)
-VALUES ('메종 넘버나인 로제', 'MAISON NUMBER NINE ROSE', '4.1', '메종', '기타', '프랑스', '프로방스', '로제', '12.5', '69000', '이미지', '파일', '바디감 중간, 산도 중간, 당도 높음, 타닌 약함', '치즈'),
-('웨일본 베이 소비뇽 로제', 'WHALEBONE BAY SAUVIGNON ROSE', '4.1', '웨일본', '피노누아', '뉴질랜드', '남섬', '로제', '12.5', '45000', '이미지', '파일', '바디감 중간, 산도 중간, 당도 중간, 타닌 중간', '돼지'),
-('스칼라브로네 볼게리 로제', 'SCALABRONE BOLGHERI ROSE', '3.9', '스칼라브로네', '카베르네 소비뇽', '이탈리아', '볼게리', '로제', '12.0', '34000', '이미지', '파일', '바디감 중간, 산도 높음, 당도 높음, 타닌 약함', '닭'),
-('라 샤펠 고르돈느 로제', 'LA CHAPELLE GORDONNE ROSE', '4.0', '라 샤펠', '쉬라즈', '프랑스', '프로방스', '로제', '13.5', '55000', '이미지', '파일', '바디감 중간, 산도 중간, 당도 낮음, 타닌 약함', '돼지'),
-('엠 로제', 'M ROSE', '4.0', '엠', '모스카토', '이탈리아', '볼게리', '로제', '9.0', '12900', '이미지', '파일', '바디감 가벼움, 산도 낮음, 당도 중간, 타닌 중간', '치즈')
+INSERT INTO WINE (WINE_NAME, WINE_NAME_EN, WINE_SCOPE, WINE_COMPANY, WINE_VARIETY, WINE_COUNTRY, WINE_REGION, WINE_TYPE, WINE_ALCOHOL_DEGREE, WINE_PRICE, WINE_IMAGE, WINE_FILE, WINE_BODY, WINE_ACIDITY, WINE_SUGAR, WINE_TANNIN, WINE_FOOD_PAIRING)
+VALUES ('메종 넘버나인 로제', 'MAISON NUMBER NINE ROSE', '4.1', '메종', '기타', '프랑스', '프로방스', '로제', '12.5', '69000', '이미지', '파일', '중간', '중간', '높음', '약함', '치즈'),
+('웨일본 베이 소비뇽 로제', 'WHALEBONE BAY SAUVIGNON ROSE', '4.1', '웨일본', '피노누아', '뉴질랜드', '남섬', '로제', '12.5', '45000', '이미지', '파일', '중간', '중간', '중간', '중간', '돼지'),
+('스칼라브로네 볼게리 로제', 'SCALABRONE BOLGHERI ROSE', '3.9', '스칼라브로네', '카베르네 소비뇽', '이탈리아', '볼게리', '로제', '12.0', '34000', '이미지', '파일', '중간', '높음', '높음', '약함', '닭'),
+('라 샤펠 고르돈느 로제', 'LA CHAPELLE GORDONNE ROSE', '4.0', '라 샤펠', '쉬라즈', '프랑스', '프로방스', '로제', '13.5', '55000', '이미지', '파일', '중간', '중간', '낮음', '약함', '돼지'),
+('엠 로제', 'M ROSE', '4.0', '엠', '모스카토', '이탈리아', '볼게리', '로제', '9.0', '12900', '이미지', '파일', '가벼움', '낮음', '중간', '중간', '치즈')
 ;
 
 -- 스파클링 와인
-INSERT INTO WINE (WINE_NAME, WINE_NAME_EN, WINE_SCOPE, WINE_COMPANY, WINE_VARIETY, WINE_COUNTRY, WINE_REGION, WINE_TYPE, WINE_ALCOHOL_DEGREE, WINE_PRICE, WINE_IMAGE, WINE_FILE, WINE_INFO, WINE_FOOD_PAIRING)
-VALUES ('쥬세페 베르디 람브루스코 미디엄 드라이', 'CECI GIUSEPPE VERDI LAMBRUSCO MEDIUM DRY', '3.7', '쎄씨', '기타', '이탈리아', '북부 이탈리아', '스파클링', '11.0', '13900', '이미지', '파일', '바디감 중간, 산도 중간, 당도 중간, 타닌 약함', '돼지'),
-('쥬세페 베르디 말바시아 프리잔테 돌체', 'CECI GIUSEPPE VERDI MALVASIA FRIZZANTE DOLCE', '3.6', '쎄씨', '기타', '이탈리아', '북부 이탈리아', '스파클링', '11.0', '13900', '이미지', '파일', '바디감 중간, 산도 중간, 당도 높음, 타닌 약함', '돼지'),
-('시모네 페브르 크레망 드 부르고뉴 브뤼', 'SIMONNET FEBVRE CREMANT DE BOURGOGNE BRUT', '3.7', '시모네', '샤르도네', '프랑스', '부르고뉴', '스파클링', '12.0', '36000', '이미지', '파일', '바디감 중간, 산도 중간, 당도 중간, 타닌 중간', '소'),
-('디아블로 데블스 브뤼_New Label', 'DIABLO DEVIL`S BRUT_New Label', '3.6', '디아블로', '샤르도네', '칠레', '칠레', '스파클링', '10.0', '38000', '이미지', '파일', '바디감 낮음, 산도 중간, 당도 높음, 타닌 약함', '치즈'),
-('엠피리카 이불리언트 스파클링', 'EMPIRICA EBULLIENT SPARKLING', '3.6', '카스텔리', '리슬링', '호주', '마운트 바커', '스파클링', '12.0', '35000', '이미지', '파일', '바디감 중간, 산도 중간, 당도 중간, 타닌 약함', '치즈, 돼지')
+INSERT INTO WINE (WINE_NAME, WINE_NAME_EN, WINE_SCOPE, WINE_COMPANY, WINE_VARIETY, WINE_COUNTRY, WINE_REGION, WINE_TYPE, WINE_ALCOHOL_DEGREE, WINE_PRICE, WINE_IMAGE, WINE_FILE, WINE_BODY, WINE_ACIDITY, WINE_SUGAR, WINE_TANNIN, WINE_FOOD_PAIRING)
+VALUES ('쥬세페 베르디 람브루스코 미디엄 드라이', 'CECI GIUSEPPE VERDI LAMBRUSCO MEDIUM DRY', '3.7', '쎄씨', '기타', '이탈리아', '북부 이탈리아', '스파클링', '11.0', '13900', '이미지', '파일', '바디감 중간', '산도 중간', '당도 중간', '타닌 약함', '돼지'),
+('쥬세페 베르디 말바시아 프리잔테 돌체', 'CECI GIUSEPPE VERDI MALVASIA FRIZZANTE DOLCE', '3.6', '쎄씨', '기타', '이탈리아', '북부 이탈리아', '스파클링', '11.0', '13900', '이미지', '파일', '중간', '중간', '높음', '약함', '돼지'),
+('시모네 페브르 크레망 드 부르고뉴 브뤼', 'SIMONNET FEBVRE CREMANT DE BOURGOGNE BRUT', '3.7', '시모네', '샤르도네', '프랑스', '부르고뉴', '스파클링', '12.0', '36000', '이미지', '파일', '중간', '중간', '중간', '중간', '소'),
+('디아블로 데블스 브뤼_New Label', 'DIABLO DEVIL`S BRUT_New Label', '3.6', '디아블로', '샤르도네', '칠레', '칠레', '스파클링', '10.0', '38000', '이미지', '파일', '낮음', '중간', '높음', '약함', '치즈'),
+('엠피리카 이불리언트 스파클링', 'EMPIRICA EBULLIENT SPARKLING', '3.6', '카스텔리', '리슬링', '호주', '마운트 바커', '스파클링', '12.0', '35000', '이미지', '파일', '중간', '중간', '중간', '약함', '치즈, 돼지')
 ;
 
 -- 와인 목록 한개 추가
-INSERT INTO WINE (WINE_NAME, WINE_NAME_EN, WINE_SCOPE, WINE_COMPANY, WINE_VARIETY, WINE_COUNTRY, WINE_REGION, WINE_TYPE, WINE_ALCOHOL_DEGREE, WINE_PRICE, WINE_IMAGE, WINE_FILE, WINE_INFO, WINE_FOOD_PAIRING)
-VALUE ('도제화이트스파클링', 'DOZE WHITE SPARKLING', '4.6', '도제', '모스카토100', '이탈리아', '피몬테', '화이트', '5.5', '26000', '이미지', '파일', '바디감 낮음, 산도 높음', '돼지, 닭')
+INSERT INTO WINE (WINE_NAME, WINE_NAME_EN, WINE_SCOPE, WINE_COMPANY, WINE_VARIETY, WINE_COUNTRY, WINE_REGION, WINE_TYPE, WINE_ALCOHOL_DEGREE, WINE_PRICE, WINE_IMAGE, WINE_FILE, WINE_BODY, WINE_ACIDITY, WINE_SUGAR, WINE_TANNIN, WINE_FOOD_PAIRING)
+VALUE ('쥬세페 베르디 람브루스코 미디엄 드라이', 'CECI GIUSEPPE VERDI LAMBRUSCO MEDIUM DRY', '3.7', '쎄씨', '기타', '이탈리아', '북부 이탈리아', '스파클링', '11.0', '13900', '이미지', '파일', '바디감 중간', '산도 중간', '당도 중간', '타닌 약함', '돼지')
 ;
 
 DELETE FROM WINE WHERE WINE_UID='ROSE01';
