@@ -283,3 +283,57 @@ FROM EVENT
 WHERE EVENT_END < sysdate()
 ORDER BY EVENT_START DESC, EVENT_END DESC
 ;
+
+
+-- 스토어 테이블 채우기
+INSERT INTO STORE(STORE_NAME, STORE_NO, STORE_CEO, STORE_URL, USER_UID, WINE_UID, STORE_PRICE, STORE_DELIVERY)
+VALUES ('신세계몰', '870-88-01143', '강희석', 'https://www.ssg.com/', 'ADMIN', 1, '27000', '3000'),
+('신세계몰', '870-88-01143', '강희석', 'https://www.ssg.com/', 'ADMIN', 2, '28000', '3000'),
+('신세계몰', '870-88-01143', '강희석', 'https://www.ssg.com/', 'ADMIN', 3, '50000', '3000'),
+('신세계몰', '870-88-01143', '강희석', 'https://www.ssg.com/', 'ADMIN', 4, '52000', '3000'),
+('신세계몰', '870-88-01143', '강희석', 'https://www.ssg.com/', 'ADMIN', 5, '85000', '3000'),
+('신세계몰', '870-88-01143', '강희석', 'https://www.ssg.com/', 'ADMIN', 6, '56000', '3000'),
+('신세계몰', '870-88-01143', '강희석', 'https://www.ssg.com/', 'ADMIN', 7, '27000', '3000'),
+('신세계몰', '870-88-01143', '강희석', 'https://www.ssg.com/', 'ADMIN', 8, '27000', '3000'),
+('신세계몰', '870-88-01143', '강희석', 'https://www.ssg.com/', 'ADMIN', 9, '50000', '3000'),
+('신세계몰', '870-88-01143', '강희석', 'https://www.ssg.com/', 'ADMIN', 10, '41000', '3000')
+;
+
+INSERT INTO STORE(STORE_NAME, STORE_NO, STORE_CEO, STORE_URL, USER_UID, WINE_UID, STORE_PRICE, STORE_DELIVERY)
+VALUES ('옥션', '220-81-83676', '전항일', 'http://www.auction.co.kr/', 'ADMIN', 1, '28000', '2500'),
+('옥션', '220-81-83676', '전항일', 'http://www.auction.co.kr/', 'ADMIN', 2, '28000', '2500'),
+('옥션', '220-81-83676', '전항일', 'http://www.auction.co.kr/', 'ADMIN', 3, '50000', '2500'),
+('옥션', '220-81-83676', '전항일', 'http://www.auction.co.kr/', 'ADMIN', 4, '52000', '2500'),
+('옥션', '220-81-83676', '전항일', 'http://www.auction.co.kr/', 'ADMIN', 5, '85000', '2500'),
+('옥션', '220-81-83676', '전항일', 'http://www.auction.co.kr/', 'ADMIN', 6, '56000', '2500'),
+('옥션', '220-81-83676', '전항일', 'http://www.auction.co.kr/', 'ADMIN', 7, '27000', '2500'),
+('옥션', '220-81-83676', '전항일', 'http://www.auction.co.kr/', 'ADMIN', 8, '27000', '2500'),
+('옥션', '220-81-83676', '전항일', 'http://www.auction.co.kr/', 'ADMIN', 9, '50000', '2500'),
+('옥션', '220-81-83676', '전항일', 'http://www.auction.co.kr/', 'ADMIN', 10, '40000', '2500')
+;
+
+INSERT INTO STORE(STORE_NAME, STORE_NO, STORE_CEO, STORE_URL, USER_UID, WINE_UID, STORE_PRICE, STORE_DELIVERY)
+VALUES ('지마켓', '220-81-83676', '전항일', 'https://www.gmarket.co.kr/', 'ADMIN', 1, '28000', '2500'),
+('지마켓', '220-81-83676', '전항일', 'http://www.gmarket.co.kr/', 'ADMIN', 2, '28000', '2500'),
+('지마켓', '220-81-83676', '전항일', 'http://www.gmarket.co.kr/', 'ADMIN', 3, '50000', '2500'),
+('지마켓', '220-81-83676', '전항일', 'http://www.gmarket.co.kr/', 'ADMIN', 4, '52000', '2500'),
+('지마켓', '220-81-83676', '전항일', 'http://www.gmarket.co.kr/', 'ADMIN', 5, '86000', '2500'),
+('지마켓', '220-81-83676', '전항일', 'http://www.gmarket.co.kr/', 'ADMIN', 6, '55000', '2500'),
+('지마켓', '220-81-83676', '전항일', 'http://www.gmarket.co.kr/', 'ADMIN', 7, '27000', '2500'),
+('지마켓', '220-81-83676', '전항일', 'http://www.gmarket.co.kr/', 'ADMIN', 8, '27000', '2500'),
+('지마켓', '220-81-83676', '전항일', 'http://www.gmarket.co.kr/', 'ADMIN', 9, '51000', '2500'),
+('지마켓', '220-81-83676', '전항일', 'http://www.gmarket.co.kr/', 'ADMIN', 10, '40000', '2500')
+;
+
+INSERT INTO STORE(STORE_NAME, STORE_NO, STORE_CEO, STORE_URL, USER_UID, WINE_UID, STORE_PRICE, STORE_DELIVERY)
+VALUES ('11번가', '815-81-01244', '하형일', 'https://www.11st.co.kr/main', 'ADMIN', 1, '29000', '2000'),
+('11번가', '815-81-01244', '하형일', 'http://www.11st.co.kr/main', 'ADMIN', 2, '29000', '2000'),
+('11번가', '815-81-01244', '하형일', 'http://www.11st.co.kr/main', 'ADMIN', 3, '50000', '2000'),
+('11번가', '815-81-01244', '하형일', 'http://www.11st.co.kr/main', 'ADMIN', 4, '52000', '2000'),
+('11번가', '815-81-01244', '하형일', 'http://www.11st.co.kr/main', 'ADMIN', 5, '85000', '2000'),
+('11번가', '815-81-01244', '하형일', 'http://www.11st.co.kr/main', 'ADMIN', 6, '55000', '2000'),
+('11번가', '815-81-01244', '하형일', 'http://www.11st.co.kr/main', 'ADMIN', 7, '27500', '2000'),
+('11번가', '815-81-01244', '하형일', 'http://www.11st.co.kr/main', 'ADMIN', 8, '27500', '2000'),
+('11번가', '815-81-01244', '하형일', 'http://www.11st.co.kr/main', 'ADMIN', 9, '50000', '2000'),
+('11번가', '815-81-01244', '하형일', 'http://www.11st.co.kr/main', 'ADMIN', 10, '40000', '2000')
+;
