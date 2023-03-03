@@ -30,11 +30,11 @@
                 <foreach collection="attachfiles" item="attachfile"
                         open="(" close=")" separator="),(">
                     #{attachfile.EVENT_START}, #{attachfile.EVENT_END}, #{attachfile.EVENT_FILE}, #{attachfile.EVENT_ATTACHFILE_SEQ}, #{attachfile.EVENT_ORIGINALFILE_NAME}
-                    ,#{attachfile.EVENT_PHYSICALFILE_NAME},#{attachfile.EVENT_TITLE},#{attachfile.EVENT_DATE},#{attachfile.EVENT_CONTENT},#{USER_UID}
+                    ,#{attachfile.EVENT_PHYSICALFILE_NAME},#{attachfile.EVENT_TITLE},DATE(NOW()),#{attachfile.EVENT_CONTENT},#{USER_UID}
                 </foreach>
             </when>
             <otherwise>
-                (#{EVENT_START}, #{EVENT_END}, #{EVENT_FILE}, #{EVENT_ATTACHFILE_SEQ}, #{EVENT_ORIGINALFILE_NAME}, #{EVENT_PHYSICALFILE_NAME}, #{EVENT_TITLE},#{EVENT_DATE},#{EVENT_CONTENT},#{USER_UID})
+                (#{EVENT_START}, #{EVENT_END}, #{EVENT_FILE}, #{EVENT_ATTACHFILE_SEQ}, #{EVENT_ORIGINALFILE_NAME}, #{EVENT_PHYSICALFILE_NAME}, #{EVENT_TITLE},DATE(NOW()),#{EVENT_CONTENT},#{USER_UID})
             </otherwise>
         </choose>
     </insert>
@@ -51,7 +51,7 @@
         INSERT INTO EVENT
             (EVENT_START, EVENT_END, EVENT_FILE, EVENT_ATTACHFILE_SEQ, EVENT_ORIGINALFILE_NAME, EVENT_PHYSICALFILE_NAME, EVENT_TITLE, EVENT_DATE, EVENT_CONTENT, USER_UID) 
         VALUES (
-            #{EVENT_START}, #{EVENT_END}, #{EVENT_FILE}, #{EVENT_ATTACHFILE_SEQ}, #{EVENT_ORIGINALFILE_NAME}, #{EVENT_PHYSICALFILE_NAME}, #{EVENT_TITLE},#{EVENT_DATE},#{EVENT_CONTENT},#{USER_UID})
+            #{EVENT_START}, #{EVENT_END}, #{EVENT_FILE}, #{EVENT_ATTACHFILE_SEQ}, #{EVENT_ORIGINALFILE_NAME}, #{EVENT_PHYSICALFILE_NAME}, #{EVENT_TITLE},DATE(NOW()),#{EVENT_CONTENT},#{USER_UID})
     </insert>
 
     <!-- call AdminEvent.deleteEvent -->

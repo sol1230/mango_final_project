@@ -140,7 +140,7 @@ public class AdminBoardController {
   public ModelAndView adminNoticeInsert(MultipartHttpServletRequest multipartHttpServletRequest, @RequestParam Map<String, Object> params, @PathVariable String currentPage, ModelAndView modelAndView) {
             
     Iterator<String> fileNames = multipartHttpServletRequest.getFileNames(); // 파일 이름들 가져옴
-    String absolutePath = commonUtils.getRelativeToAbsolutePath("src/main/resources/static/img/files/") ;
+    String absolutePath = commonUtils.getRelativeToAbsolutePath("src/main/resources/static/files/") ;
     
     Map attachfile = null;
     List attachfiles = new ArrayList();
@@ -163,7 +163,6 @@ public class AdminBoardController {
                 // 이걸 모아서 뭉치로 묶어 params로 넣어야 한다. 3가지를 list로 넣고 각각을 map으로
             // 1. HashMap에 넣어주기
             attachfile = new HashMap<>();
-            attachfile.put("NOTICE_DATE", params.get("NOTICE_DATE"));
             attachfile.put("NOTICE_TITLE", params.get("NOTICE_TITLE"));
             attachfile.put("NOTICE_CONTENT", params.get("NOTICE_CONTENT"));
             attachfile.put("NOTICE_FILE", params.get("NOTICE_FILE"));

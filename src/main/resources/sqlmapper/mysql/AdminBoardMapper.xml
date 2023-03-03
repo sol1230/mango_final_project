@@ -102,11 +102,19 @@
         VALUES
         <!-- ('2023-02-21', '서버점검안내', '서버점검이 2023년...', NULL,'UUID','공지.txt','파일들 폴더명', '관리자')
         ,('2023-02-23', '비밀번호변경', '마이페이지에서...', NULL,'UUID','공지.txt','파일들 폴더명', '관리자')     -->
-        <foreach collection="attachfiles" item="attachfile"
-                open="(" close=")" separator="),(">
-            #{attachfile.NOTICE_DATE}, #{attachfile.NOTICE_TITLE}, #{attachfile.NOTICE_CONTENT}, #{attachfile.NOTICE_FILE}, #{attachfile.NOTICE_ATTACHFILE_SEQ}
-            ,#{attachfile.NOTICE_ORIGINALFILE_NAME},#{attachfile.NOTICE_PHYSICALFILE_NAME},#{USER_UID}
-        </foreach>
+        <choose>
+            <when test="attachfiles != null and attachfiles.size != 0">
+                <foreach collection="attachfiles" item="attachfile"
+                        open="(" close=")" separator="),(">
+                    DATE(NOW()), #{attachfile.NOTICE_TITLE}, #{attachfile.NOTICE_CONTENT}, #{attachfile.NOTICE_FILE}, #{attachfile.NOTICE_ATTACHFILE_SEQ}
+                    ,#{attachfile.NOTICE_ORIGINALFILE_NAME},#{attachfile.NOTICE_PHYSICALFILE_NAME},#{USER_UID}
+                </foreach>
+            </when>
+            <otherwise>
+                    (DATE(NOW()), #{NOTICE_TITLE}, #{NOTICE_CONTENT}, #{NOTICE_FILE}, #{NOTICE_ATTACHFILE_SEQ}
+                    ,#{NOTICE_ORIGINALFILE_NAME},#{NOTICE_PHYSICALFILE_NAME},#{USER_UID})
+            </otherwise>
+        </choose>
     </insert>
 
 </mapper>

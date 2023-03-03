@@ -96,8 +96,8 @@
                     <tr scope="row">
                       <th class="bg-secondary bg-opacity-25 text-center">첨부한파일</th>
                       <td colspan="3" class="">
-                        <img src="/img/files/${resultMap.NOTICE_PHYSICALFILE_NAME}/${resultMap.NOTICE_ORIGINALFILE_NAME}" class="w-25">
-                        <a href="/img/files/${resultMap.NOTICE_PHYSICALFILE_NAME}/${resultMap.NOTICE_ORIGINALFILE_NAME}">${resultMap.NOTICE_ORIGINALFILE_NAME}</a>
+                        <img src="/files/${resultMap.NOTICE_PHYSICALFILE_NAME}/${resultMap.NOTICE_ORIGINALFILE_NAME}" class="w-25">
+                        <a href="/files/${resultMap.NOTICE_PHYSICALFILE_NAME}/${resultMap.NOTICE_ORIGINALFILE_NAME}">${resultMap.NOTICE_ORIGINALFILE_NAME}</a>
                       </td>
                     </tr>
                   </c:when>

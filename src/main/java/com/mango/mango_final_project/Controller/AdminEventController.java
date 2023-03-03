@@ -76,7 +76,6 @@ public class AdminEventController {
                 attachfile.put("EVENT_ORIGINALFILE_NAME", originalFileName);
                 attachfile.put("EVENT_PHYSICALFILE_NAME", physicalFileName);
                 attachfile.put("EVENT_TITLE", params.get("EVENT_TITLE"));
-                attachfile.put("EVENT_DATE", params.get("EVENT_DATE"));
                 attachfile.put("EVENT_CONTENT", params.get("EVENT_CONTENT"));
                 attachfile.put("USER_UID", params.get("USER_UID"));
                 
