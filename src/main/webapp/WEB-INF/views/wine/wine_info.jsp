@@ -44,7 +44,7 @@
         style="background-color: rgb(252, 249, 244); width: 100%"
       >
         <div class="" style="margin: auto; margin-left: 20%">
-          <img src="/img/wine/${resultMap.WINE_NAME_EN}.png" alt="canti" width="130" />
+          <img src="/img/wine/${resultMap.WINE_NAME_EN}.png" alt="canti" width="300" />
         </div>
         <div class="me-4">
           <div>
@@ -78,7 +78,7 @@
                     width="20"
                   />
                 </th>
-                <td></td>
+                <td>${resultMap.WINE_NAME}</td>
               </tr>
               <tr>
                 <th>
@@ -146,7 +146,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                <c:forEach items="${resultMap}" var="resultData" varStatus="loop">
+                <c:forEach items="${resultStoreList}" var="resultData" varStatus="loop">
                   <tr>
                       <td>
                         <a href="#" class="text-decoration-none text-black"
@@ -179,35 +179,108 @@
           <table>
             <tr>
               <th>바디</th>
+              <c:choose>
+                <c:when test="${(resultMap.WINE_BODY).equals('가벼움')}">
+                  <td>
+                    <span class="label" style="background: #dfb8b8">가벼움</span>
+                  </td>
+                  <td><span>중간</span></td>
+                  <td><span>무거움</span></td>
+                </c:when>
+                <c:when test="${(resultMap.WINE_BODY).equals('중간')}">
+                  <td>
+                    <span>가벼움</span>
+                  </td>
+                  <td><span class="label" style="background: #dfb8b8">중간</span></td>
+                  <td><span>무거움</span></td>
+                </c:when>
+                <c:otherwise>
+                  <td>
+                    <span>가벼움</span>
+                  </td>
+                  <td><span>중간</span></td>
+                  <td><span class="label" style="background: #dfb8b8">무거움</span></td>
+                </c:otherwise>
+              </c:choose>
               <td>
-                <span class="label" style="background: #dfb8b8">가벼움</span>
-              </td>
-              <td><span>중간</span></td>
-              <td><span>무거움</span></td>
             </tr>
             <tr>
               <th>산도</th>
-              <td>
-                <span class="label" style="background: #dfb8b8">낮음</span>
-              </td>
-              <td>중간</td>
-              <td>높음</td>
+              <c:choose>
+                <c:when test="${(resultMap.WINE_ACIDITY).equals('낮음')}">
+                  <td>
+                    <span class="label" style="background: #dfb8b8">낮음</span>
+                  </td>
+                  <td><span>중간</span></td>
+                  <td><span>높음</span></td>
+                </c:when>
+                <c:when test="${(resultMap.WINE_ACIDITY).equals('중간')}">
+                  <td>
+                    <span>낮음</span>
+                  </td>
+                  <td><span class="label" style="background: #dfb8b8">중간</span></td>
+                  <td><span>높음</span></td>
+                </c:when>
+                <c:otherwise>
+                  <td>
+                    <span>낮음</span>
+                  </td>
+                  <td><span>중간</span></td>
+                  <td><span class="label" style="background: #dfb8b8">높음</span></td>
+                </c:otherwise>
+              </c:choose>
             </tr>
             <tr>
               <th>당도</th>
-              <td>낮음</td>
-              <td>중간</td>
-              <td>
-                <span class="label" style="background: #dfb8b8">높음</span>
-              </td>
+              <c:choose>
+                <c:when test="${(resultMap.WINE_SUGAR).equals('낮음')}">
+                  <td>
+                    <span class="label" style="background: #dfb8b8">낮음</span>
+                  </td>
+                  <td><span>중간</span></td>
+                  <td><span>높음</span></td>
+                </c:when>
+                <c:when test="${(resultMap.WINE_SUGAR).equals('중간')}">
+                  <td>
+                    <span>낮음</span>
+                  </td>
+                  <td><span class="label" style="background: #dfb8b8">중간</span></td>
+                  <td><span>높음</span></td>
+                </c:when>
+                <c:otherwise>
+                  <td>
+                    <span>낮음</span>
+                  </td>
+                  <td><span>중간</span></td>
+                  <td><span class="label" style="background: #dfb8b8">높음</span></td>
+                </c:otherwise>
+              </c:choose>
             </tr>
             <tr>
               <th>타닌</th>
-              <td>
-                <span class="label" style="background: #dfb8b8">약함</span>
-              </td>
-              <td>중간</td>
-              <td>강함</td>
+              <c:choose>
+                <c:when test="${(resultMap.WINE_TANNIN).equals('약함')}">
+                  <td>
+                    <span class="label" style="background: #dfb8b8">약함</span>
+                  </td>
+                  <td><span>중간</span></td>
+                  <td><span>강함</span></td>
+                </c:when>
+                <c:when test="${(resultMap.WINE_TANNIN).equals('중간')}">
+                  <td>
+                    <span>약함</span>
+                  </td>
+                  <td><span class="label" style="background: #dfb8b8">중간</span></td>
+                  <td><span>강함</span></td>
+                </c:when>
+                <c:otherwise>
+                  <td>
+                    <span>약함</span>
+                  </td>
+                  <td><span>중간</span></td>
+                  <td><span class="label" style="background: #dfb8b8">강함</span></td>
+                </c:otherwise>
+              </c:choose>
             </tr>
             <tr>
               <th>알코올</th>
@@ -225,7 +298,7 @@
           <div class="m-3 fw-bold">추천 음식</div>
           <div class="ms-2">
             <div class="">
-              <img src="../img/pear.jpg" alt="pear" width="70px" />
+              <img src="/img/${resultMap.WINE_FOOD_PAIRING}.jpg" alt="${resultMap.WINE_FOOD_PAIRING}" width="70px" />
 
               <span>${resultMap.WINE_FOOD_PAIRING}</span>
             </div>
@@ -235,7 +308,7 @@
         <div class="mt-5 ms-5">
           <div class="fw-bold">상세정보</div>
           <div class="text-center">
-            <img src="../img/wine/wine_canti_info.jpg" alt="" width="70%" />
+            <img src="/img/wine/wine_canti_info.jpg" alt="" width="70%" />
           </div>
         </div>
       </div>
@@ -256,44 +329,24 @@
 
         <%-- 내가 쓴 리뷰 수정, 삭제 가능하게.. --%>
         <ul class="list-unstyled">
-          <li class="text-decoration-none">
-            <div class="card p-3" style="width: 80%, height 20%">
-              <div class="fw-bold">
-                Brian
-                <span class="ms-3">
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i
-                  ><i class="bi bi-star"></i>
-                </span>
+          <c:forEach items="${resultReviewList}" var="resultData" varStatus="loop">
+            <li class="text-decoration-none">
+              <div class="card p-3" style="width: 80%, height 20%">
+                <div class="fw-bold">
+                  ${resultData.USER_UID}
+                  <span class="ms-3">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i
+                    ><i class="bi bi-star"></i>
+                  </span>
+                </div>
+                <div class="mt-2">
+                  ${resultData.REVIEW_CONTENT}
+                </div>
               </div>
-              <div class="mt-2">
-                First time one of the most famous Italian Frizzante, Moscato
-                D’Asti! Eye: pale golden color with light smooth bubble Nose:
-                delicate floral aromas of apple blossom, jasmine with some
-                citrus.
-              </div>
-            </div>
-          </li>
-          <li class="text-decoration-none">
-            <div class="card p-3 mt-3" style="width: 80%, height 20%">
-              <div class="fw-bold">
-                Brian
-                <span class="ms-3">
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i
-                  ><i class="bi bi-star"></i>
-                </span>
-              </div>
-              <div class="mt-2">
-                First time one of the most famous Italian Frizzante, Moscato
-                D’Asti! Eye: pale golden color with light smooth bubble Nose:
-                delicate floral aromas of apple blossom, jasmine with some
-                citrus.
-              </div>
-            </div>
-          </li>
+            </li>
+          </c:forEach>
         </ul>
       </div>
       <hr />
@@ -321,29 +374,15 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>20</td>
-              <td>답변완료</td>
-              <td><a href="#"> 탄닌 관련 문의</a></td>
-              <td>sso***</td>
-              <td>2023.02.15</td>
-            </tr>
-            <tr>
-              <td>19</td>
-              <td>답변완료</td>
-              <td><a href="#"> 탄닌 관련 문의</a></td>
-
-              <td>sso***</td>
-              <td>2023.02.15</td>
-            </tr>
-            <tr>
-              <td>18</td>
-              <td>답변완료</td>
-              <td><a href="#"> 탄닌 관련 문의</a></td>
-
-              <td>sso***</td>
-              <td>2023.02.15</td>
-            </tr>
+            <c:forEach items="${resultQNAList}" var="resultData" varStatus="loop">
+              <tr>
+                <td>${resultData.QNA_NO}</td>
+                <td>${resultData.ANSWER.STATUS}</td>
+                <td><a href="#"> 탄닌 관련 문의</a></td>
+                <td>${resultData.USER_UID}</td>
+                <td>${resultData.QNA_ANSWER_DATE}</td>
+              </tr>
+            </c:forEach>
           </tbody>
         </table>
         <div class="pagination pagination-sm justify-content-center mt-4">
@@ -433,7 +472,7 @@
                   <a href="#" class="text-decoration-none text-black">
                     <div class="pt-4">
                       <img
-                        src="../img/wine/wine_escudo_rojo.png"
+                        src="/img/wine/wine_escudo_rojo.png"
                         alt="wine1"
                         width="200"
                       />
@@ -476,7 +515,7 @@
                   <a href="#" class="text-decoration-none text-black">
                     <div class="pt-4">
                       <img
-                        src="../img/wine/spain_cune_rioja_organic_red.png"
+                        src="/img/wine/spain_cune_rioja_organic_red.png"
                         alt="wine1"
                         width="200"
                       />
@@ -519,7 +558,7 @@
                   <a href="#" class="text-decoration-none text-black">
                     <div class="pt-4">
                       <img
-                        src="../img/wine/france_NVIVO X SJP ROSE.png"
+                        src="/img/wine/france_NVIVO X SJP ROSE.png"
                         alt="wine2"
                         width="200"
                       />
@@ -561,7 +600,7 @@
                   <a href="#" class="text-decoration-none text-black">
                     <div class="pt-4">
                       <img
-                        src="../img/wine/spain_cune_verdejo.png"
+                        src="/img/wine/spain_cune_verdejo.png"
                         alt="wine2"
                         width="200"
                       />

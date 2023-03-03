@@ -146,7 +146,7 @@
                 class=""
                 style="background-color: #fffbb0; width: 230px; height: 250px"
               >
-                <a href="#" class="text-decoration-none text-black">
+                <a href="/wine/wine_info/${resultData.WINE_NAME_EN}" class="text-decoration-none text-black">
                   <div class="pt-4">
                     <img
                       src="/img/wine/${resultData.WINE_NAME_EN}.png"
@@ -188,7 +188,7 @@
                 class=""
                 style="background-color: #ffe2e2; width: 230px; height: 250px"
               >
-                <a href="#" class="text-decoration-none text-black">
+                <a href="/wine/wine_info/${resultData.WINE_NAME_EN}" class="text-decoration-none text-black">
                   <div class="pt-4">
                     <img
                       src="/img/wine/${resultData.WINE_NAME_EN}.png"
@@ -231,7 +231,7 @@
                     style="background-color: #d7f6f8; width: 230px; height: 250px"
                   >
                    <a
-                     href="/wine/wine_info"
+                     href="/wine/wine_info/${resultData.WINE_NAME_EN}"
                      class="text-decoration-none text-black"
                     >
                      <div class="pt-4">
