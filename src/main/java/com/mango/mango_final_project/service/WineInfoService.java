@@ -16,13 +16,28 @@ public class WineInfoService {
 
   public Object wineInfoList(Object dataMap){
     String sqlMapId = "WineInfo.wineInfo";
+    Object result = commonDao.getOne(sqlMapId, dataMap);
+    return result;
+  }
+  public Object wineStoreInfoList(Object dataMap){
+    String sqlMapId = "WineInfo.wineStoreInfo";
+    Object result = commonDao.getList(sqlMapId, dataMap);
+    return result;
+  }
+  public Object wineReviewInfoList(Object dataMap){
+    String sqlMapId = "WineInfo.wineReviewInfo";
+    Object result = commonDao.getList(sqlMapId, dataMap);
+    return result;
+  }
+  public Object wineQNAInfoList(Object dataMap){
+    String sqlMapId = "WineInfo.wineQNAInfo";
     Object result = commonDao.getList(sqlMapId, dataMap);
     return result;
   }
 
-  public Object wineReviewWithPagination(Object dataMap){
+  public Object wineInfoWithPagination(Object dataMap){
     Map<String, Object> result = new HashMap<String, Object>();
-    int totalCount = (int) this.wineReviewTotal(dataMap);
+    int totalCount = (int) this.wineInfoTotal(dataMap);
     int currentPage = (int) ((Map<String, Object>) dataMap).get("currentPage");
     Paginations paginations = new Paginations(totalCount, currentPage);
     result.put("paginations", paginations);
@@ -30,8 +45,8 @@ public class WineInfoService {
     result.put("resultList", this.wineInfoList(dataMap));
     return result;
   }
-  public Object wineReviewTotal(Object dataMap){
-  String sqlMapId = "WineInfo.wineReviewTotal";
+  public Object wineInfoTotal(Object dataMap){
+  String sqlMapId = "WineInfo.wineInfoTotal";
   Object result = commonDao.getOne(sqlMapId, dataMap);
   return result;
   }

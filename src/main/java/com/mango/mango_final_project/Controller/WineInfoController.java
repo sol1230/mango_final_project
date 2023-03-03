@@ -1,5 +1,6 @@
 package com.mango.mango_final_project.Controller;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,13 @@ public class WineInfoController {
     , @PathVariable String wineName, ModelAndView modelAndView) {
         params.put("WINE_NAME_EN", wineName);
         Object resultMap = wineInfoService.wineInfoList(params);
+        Object resultStoreList = wineInfoService.wineStoreInfoList(params);
+        Object resultReviewList = wineInfoService.wineReviewInfoList(params);
+        Object resultQNAList = wineInfoService.wineQNAInfoList(params);
         modelAndView.addObject("resultMap", resultMap);
+        modelAndView.addObject("resultStoreList", resultStoreList);
+        modelAndView.addObject("resultReviewList", resultReviewList);
+        modelAndView.addObject("resultQNAList", resultQNAList);
         modelAndView.setViewName("wine/wine_info");
         return modelAndView;
     }

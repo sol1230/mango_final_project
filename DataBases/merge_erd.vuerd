@@ -3,8 +3,8 @@
     "version": "2.2.11",
     "width": 2200,
     "height": 2200,
-    "scrollTop": -183.33333333333331,
-    "scrollLeft": -175.33333333333331,
+    "scrollTop": -622.3333333333333,
+    "scrollLeft": 0,
     "zoomLevel": 0.8,
     "show": {
       "tableComment": true,
@@ -281,7 +281,7 @@
           "active": false,
           "left": 1477.454,
           "top": 619.1923,
-          "zIndex": 40,
+          "zIndex": 9,
           "widthName": 60,
           "widthComment": 60
         },
@@ -501,7 +501,6 @@
           }
         ],
         "ui": {
-
           "active": false,
           "left": 577.5993,
           "top": 454.9042,
@@ -774,7 +773,7 @@
           "active": false,
           "left": 1608.5158,
           "top": 921.1976,
-          "zIndex": 39,
+          "zIndex": 8,
           "widthName": 60,
           "widthComment": 60
         },
@@ -997,7 +996,7 @@
           "active": false,
           "left": 1467.5533,
           "top": 1238.9142,
-          "zIndex": 9,
+          "zIndex": 7,
           "widthName": 60,
           "widthComment": 60
         },
@@ -1978,8 +1977,8 @@
           },
           {
             "id": "e966f0f7-ddb9-4a04-ac03-563d5ce42c24",
-            "name": "WINE_INFO",
-            "comment": "와인상세정보",
+            "name": "WINE_BODY",
+            "comment": "와인바디감",
             "dataType": "VARCHAR(100)",
             "default": "",
             "option": {
@@ -1993,11 +1992,80 @@
               "pk": false,
               "fk": false,
               "pfk": false,
-              "widthName": 74.2236328125,
-              "widthComment": 80,
+              "widthName": 80.0126953125,
+              "widthComment": 67,
               "widthDataType": 94.94873046875,
               "widthDefault": 60
             }
+          },
+          {
+            "name": "WINE_ACIDITY",
+            "comment": "와인산도",
+            "dataType": "VARCHAR(100)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 94.45361328125,
+              "widthComment": 60,
+              "widthDataType": 94.94873046875,
+              "widthDefault": 60
+            },
+            "id": "ac04cfb0-ee00-4f57-9f64-80ba7ffcde5b"
+          },
+          {
+            "name": "WINE_SUGAR",
+            "comment": "와인당도",
+            "dataType": "VARCHAR(100)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 89.40087890625,
+              "widthComment": 60,
+              "widthDataType": 94.94873046875,
+              "widthDefault": 60
+            },
+            "id": "6ee88311-e139-4078-a6b2-35a65e93487c"
+          },
+          {
+            "name": "WINE_TANNIN",
+            "comment": "와인타닌",
+            "dataType": "VARCHAR(100)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 90.59423828125,
+              "widthComment": 60,
+              "widthDataType": 94.94873046875,
+              "widthDefault": 60
+            },
+            "id": "ddd9c627-4db6-4d7b-b3e9-bca17db6c1e9"
           },
           {
             "id": "3dbb0f16-4bad-42b3-9f17-d5e676e35766",
@@ -2024,10 +2092,10 @@
           }
         ],
         "ui": {
-          "active": false,
+          "active": true,
           "left": 49.2001,
           "top": 780.1999,
-          "zIndex": 1,
+          "zIndex": 50,
           "widthName": 60,
           "widthComment": 60
         },
@@ -2166,7 +2234,7 @@
             "32a6d0f4-2dd3-4134-b5f5-71613035071c"
           ],
           "x": 571.58144765625,
-          "y": 1062.5749,
+          "y": 1108.6999,
           "direction": "right"
         },
         "end": {
@@ -2278,11 +2346,9 @@
           "columnIds": [
             "8df22663-a36d-4450-8492-ccd2ff0487fc"
           ],
-
-          "x": 1036.8849445312499,
-          "y": 561.1542,
+          "x": 1063.3927570312499,
+          "y": 581.6542,
           "direction": "right"
-
         },
         "constraintName": "fk_user_to_store",
         "visible": true,
@@ -2298,7 +2364,7 @@
             "32a6d0f4-2dd3-4134-b5f5-71613035071c"
           ],
           "x": 310.390773828125,
-          "y": 1156.6999,
+          "y": 1218.1999,
           "direction": "bottom"
         },
         "end": {
@@ -2332,9 +2398,8 @@
           "columnIds": [
             "cb539799-5478-4a68-b10c-82b28d0ef08c"
           ],
-
           "x": 577.5993,
-          "y": 561.1542,
+          "y": 581.6542,
           "direction": "left"
         },
         "constraintName": "fk_wine_to_store",
@@ -2377,7 +2442,7 @@
             "32a6d0f4-2dd3-4134-b5f5-71613035071c"
           ],
           "x": 571.58144765625,
-          "y": 874.3249,
+          "y": 889.6999,
           "direction": "right"
         },
         "end": {
