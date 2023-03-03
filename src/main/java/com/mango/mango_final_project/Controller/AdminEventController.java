@@ -45,7 +45,7 @@ public class AdminEventController {
     public ModelAndView adminEventInsert(MultipartHttpServletRequest multipartHttpServletRequest, @RequestParam Map<String, Object> params, @PathVariable String currentPage, ModelAndView modelAndView) {
         
         Iterator<String> fileNames = multipartHttpServletRequest.getFileNames(); // 파일 이름들 가져옴
-        String absolutePath = commonUtils.getRelativeToAbsolutePath("src/main/resources/static/img/files/") ;
+        String absolutePath = commonUtils.getRelativeToAbsolutePath("src/main/resources/static/files/") ;
         
         Map attachfile = null;
         List attachfiles = new ArrayList();

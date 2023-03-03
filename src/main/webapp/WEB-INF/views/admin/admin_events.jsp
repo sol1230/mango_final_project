@@ -74,7 +74,7 @@
                   <th scope="">${loop.count}</th>
                   <td scope="">
                     <div style="width: 50px; height: 50px; overflow: hidden;" class="ms-4">
-                      <img src="/img/files/${resultData.EVENT_PHYSICALFILE_NAME}/${resultData.EVENT_ORIGINALFILE_NAME}" style="width: 50px; heigth: 50px; object-fit: cover;" alt="${resultData.EVENT_ORIGINALFILE_NAME}">
+                      <img src="/files/${resultData.EVENT_PHYSICALFILE_NAME}/${resultData.EVENT_ORIGINALFILE_NAME}" style="width: 50px; heigth: 50px; object-fit: cover;" alt="${resultData.EVENT_ORIGINALFILE_NAME}">
                     </div>
                   </td>
                   <td>${resultData.EVENT_TITLE}</td>

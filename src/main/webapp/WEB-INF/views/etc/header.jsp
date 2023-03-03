@@ -29,26 +29,26 @@
             <a href="/event/event" class="nav-link link-dark">이벤트</a>
           </nav>
         </div>
-        <form action="/wine/wineDetailsSelect/1" method="get" class="d-flex">
-          <input
-            class="form-control me-2"
-            name="WINESEARCH_NAME"
-            type="search"
-            placeholder="상품을 입력하세요."
-            aria-label="Search"
-            value="${searchName}"
-            required
-          />
-          <button
-            class="btn btn-outline-danger"
-            type="submit"
-            style="width: 30%"
-            id="searchWineButton"
-          >
-            검색
-          </button>
+          <div class="d-flex">
+            <input
+              class="form-control me-2"
+              name="WINESEARCH_NAME"
+              type="search"
+              id='WINESEARCH_NAME'
+              placeholder="상품을 입력하세요."
+              aria-label="Search"
+              value="${searchName}"
+            />
+            <button
+              class="btn btn-outline-danger"
+              type="submit"
+              style="width: 30%"
+              id="headerFormButton"
+            >
+              검색
+            </button>
+          </div>
       </nav>
-      </form>
       <div class="">
         <nav class="fw-bold nav align-items-center pt-2">
           <a href="" class="nav-link link-dark"
@@ -101,7 +101,7 @@
           >
         </nav>
       </div>
-    </header>
+  </header>
     
     <%-- <!-- 로그인 modal --> --%>
 
@@ -200,7 +200,15 @@
 				}
 			})
 	}
-   
+				let headerFormButton = document.querySelector('#headerFormButton');
+        var searchValue = document.getElementById("WINESEARCH_NAME");
+        console.log(searchValue);
+        if(searchValue != null){
+          headerFormButton.addEventListener("click", function (event) {
+            var url = "/wine/wineDetailsSelect/1?WINESEARCH_NAME="+searchValue.value;
+            location.href = url;
+          });
+        }
    </script>
 </body>
 </html>

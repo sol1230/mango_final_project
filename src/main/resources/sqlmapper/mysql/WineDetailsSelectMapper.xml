@@ -5,21 +5,17 @@
     <!-- call WineDetailsSelect.selectWineDetails -->
     <select id="selectWineDetails" parameterType="Map" resultType="Map">
         SELECT *
-        FROM WINE
+        FROM WINE LEFT JOIN WISHLIST
+        ON WINE.WINE_UID = WISHLIST.WINE_UID
         WHERE 1 = 1
-        <if test = "WINESEARCH_NAME != null">
+        <if test = "WINESEARCH_NAME != null and WINESEARCH_NAME != ''">
             AND REPLACE(WINE_NAME, ' ', '') LIKE CONCAT('%', REPLACE(#{WINESEARCH_NAME}, ' ', ''), '%')
         </if>
         <if test = "WINE_PRICE != null">
-            AND WINE_PRICE <![CDATA[ < ]]> #{WINE_PRICE}
+            AND WINE_PRICE <![CDATA[ <= ]]> #{WINE_PRICE}
         </if>
-        <if test = "WINE_SCOPE_MAX != null || WINE_SCOPE_MIN != null">
-            <if test = "WINE_SCOPE_MAX == WINE_SCOPE_MIN">
-                 AND SUBSTRING(WINE_SCOPE, 1, 1) = #{WINE_SCOPE_MAX}
-            </if>
-            <if test = "WINE_SCOPE_MAX != WINE_SCOPE_MIN">
-                AND WINE_SCOPE BETWEEN #{WINE_SCOPE_MIN} AND #{WINE_SCOPE_MAX}
-            </if>
+        <if test = "WINE_SCOPE_MAX != null and WINE_SCOPE_MIN != null">
+            AND WINE_SCOPE BETWEEN #{WINE_SCOPE_MIN} AND #{WINE_SCOPE_MAX}
         </if>
         <if test = "WINE_TYPE_LIST != null">
             AND WINE_TYPE IN
@@ -56,9 +52,30 @@
                     #{WINE_FOOD_PAIRING}
                 </foreach>
         </if>
+        GROUP BY 1
         <if test="pageScale != null">
-            ORDER BY WINE_UID
-            LIMIT #{pageBegin}, #{pageScale}
+            <choose>
+                <when test="selectKeyField == 'latest'">
+                    ORDER BY WINE.WINE_UID DESC
+                    LIMIT #{pageBegin}, #{pageScale}
+                </when>
+                <when test="selectKeyField == 'rowPrice'">
+                    ORDER BY WINE.WINE_PRICE
+                    LIMIT #{pageBegin}, #{pageScale}
+                </when>
+                <when test="selectKeyField == 'highPrice'">
+                    ORDER BY WINE.WINE_PRICE DESC
+                    LIMIT #{pageBegin}, #{pageScale}
+                </when>
+                <when test="selectKeyField == 'popular'">
+                    ORDER BY COUNT(WISHLIST.WINE_UID) DESC
+                    LIMIT #{pageBegin}, #{pageScale}
+                </when>
+                <otherwise>
+                    ORDER BY WINE.WINE_UID
+                    LIMIT #{pageBegin}, #{pageScale}
+                </otherwise>
+            </choose>
         </if>
     </select>
 
@@ -66,20 +83,15 @@
     <select id="selectWineDetailsTotal" parameterType="Map" resultType="int">
         SELECT count(*) as cnt
         FROM WINE
-        WHERE 1 = 1
-        <if test = "WINESEARCH_NAME != null">
+        WHERE 1=1
+        <if test = "WINESEARCH_NAME != null and WINESEARCH_NAME != ''">
             AND REPLACE(WINE_NAME, ' ', '') LIKE CONCAT('%', REPLACE(#{WINESEARCH_NAME}, ' ', ''), '%')
         </if>
         <if test = "WINE_PRICE != null">
-            AND WINE_PRICE <![CDATA[ < ]]> #{WINE_PRICE}
+            AND WINE_PRICE <![CDATA[ <= ]]> #{WINE_PRICE}
         </if>
-        <if test = "WINE_SCOPE_MAX != null || WINE_SCOPE_MIN != null">
-            <if test = "WINE_SCOPE_MAX == WINE_SCOPE_MIN">
-                 AND SUBSTRING(WINE_SCOPE, 1, 1) = #{WINE_SCOPE_MAX}
-            </if>
-            <if test = "WINE_SCOPE_MAX != WINE_SCOPE_MIN">
-                AND WINE_SCOPE BETWEEN #{WINE_SCOPE_MIN} AND #{WINE_SCOPE_MAX}
-            </if>
+        <if test = "WINE_SCOPE_MAX != null and WINE_SCOPE_MIN != null">
+            AND WINE_SCOPE BETWEEN #{WINE_SCOPE_MIN} AND #{WINE_SCOPE_MAX}
         </if>
         <if test = "WINE_TYPE_LIST != null">
             AND WINE_TYPE IN
@@ -115,10 +127,6 @@
                 open="(" separator="," close=")">
                     #{WINE_FOOD_PAIRING}
                 </foreach>
-        </if>
-        <if test="pageScale != null">
-            ORDER BY WINE_UID
-            LIMIT #{pageBegin}, #{pageScale}
         </if>
     </select>
     

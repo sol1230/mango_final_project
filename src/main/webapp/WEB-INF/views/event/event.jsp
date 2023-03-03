@@ -75,7 +75,7 @@
                       class="text-decoration-none fw-bold fs-6"
                       style="color: darkslategrey"
                       >
-                      <img src="/img/files/${resultData.EVENT_PHYSICALFILE_NAME}/${resultData.EVENT_ORIGINALFILE_NAME}" alt="${resultData.EVENT_ORIGINALFILE_NAME}" 
+                      <img src="/files/${resultData.EVENT_PHYSICALFILE_NAME}/${resultData.EVENT_ORIGINALFILE_NAME}" alt="${resultData.EVENT_ORIGINALFILE_NAME}" 
                       style="width: 200px; heigth: 200px; object-fit: cover;" class=""/></a
                     >
                   </div>

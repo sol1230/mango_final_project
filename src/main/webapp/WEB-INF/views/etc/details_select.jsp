@@ -8,8 +8,7 @@
       >
         <div class="mb-3">
           <div class="border-secondary border-opacity-25 pe-5 ps-5">
-            <form action="/wine/wineDetailsSelect/1" method="get" id="detailsSelectForm">
-
+            <form action="/wine/wineDetailsSelect/1" method="get" id="detailSelectFrom" name="detailSelectFrom">
               <ul class="list-unstyled">
                 <div class="fs-5 fw-bold mb-2 text-dark">가격</div>
                 <li
@@ -223,7 +222,7 @@
                     <input
                       type="checkbox"
                       name="WINE_COUNTRY"
-                      value="6"
+                      value="미국"
                       id="WINE_COUNTRY6"
                       class="form-check-input"
                     />
@@ -569,7 +568,7 @@
                     <input
                       type="checkbox"
                       name="WINE_FOOD_PAIRING"
-                      value="소고기"
+                      value="소"
                       id="WINE_FOOD_PAIRING1"
                       class="form-check-input"
                     />
@@ -583,7 +582,7 @@
                     <input
                       type="checkbox"
                       name="WINE_FOOD_PAIRING"
-                      value="양고기"
+                      value="양"
                       id="WINE_FOOD_PAIRING2"
                       class="form-check-input"
                     />
@@ -597,7 +596,7 @@
                     <input
                       type="checkbox"
                       name="WINE_FOOD_PAIRING"
-                      value="돼지고기"
+                      value="돼지"
                       id="WINE_FOOD_PAIRING3"
                       class="form-check-input"
                     />
@@ -611,7 +610,7 @@
                     <input
                       type="checkbox"
                       name="WINE_FOOD_PAIRING"
-                      value="닭고기"
+                      value="닭"
                       id="WINE_FOOD_PAIRING4"
                       class="form-check-input"
                     />
@@ -638,7 +637,7 @@
                 </li>
                 <div class="justify-content-between">
                   <div class="input-group justify-content-center mt-3">
-                    <button type="submit" class="btn btn-danger" id="searchWineDetailsButton">적용하기</button>
+                    <button type="submit" class="btn btn-danger" id="detailSelectFromButton">적용하기</button>
                   </div>
                 </div>
               </ul>
@@ -648,7 +647,7 @@
       </div>
       <script>
         $(function () {
-          $("#detailsSelectForm").submit(function() {
+          $("#detailSelectFromButton").click(function() {
             // WINE_SCOPE 배열로 만들어 max, min 추출
             var wine_scope_value = [];
             $('input:checkbox[name="WINE_SCOPE"]:checked').each(function(){
@@ -656,8 +655,35 @@
             });
             var wine_scope_max = Math.max.apply(null, wine_scope_value);
             var wine_scope_min = Math.min.apply(null, wine_scope_value);
-            $("#detailsSelectForm").append("<input type='hidden' value="+ wine_scope_max +" name='WINE_SCOPE_MAX'>");
-            $("#detailsSelectForm").append("<input type='hidden' value="+ wine_scope_min +" name='WINE_SCOPE_MIN'>");
+            if(wine_scope_value.length != 0){
+              if(wine_scope_max == wine_scope_min) {
+                wine_scope_max = wine_scope_min + 0.9
+              } else {
+                wine_scope_max = wine_scope_max + 0.9
+              }
+              $("#wineDetailsSelect").append("<input type='hidden' value="+ wine_scope_max +" name='WINE_SCOPE_MAX'>");
+              $("#wineDetailsSelect").append("<input type='hidden' value="+ wine_scope_min +" name='WINE_SCOPE_MIN'>");
+            }
           });
         });
+
+        <c:forEach items="${params.WINE_SCOP_LIST}" var="wineScope" varStatus="loop">
+          $("input:checkbox[name='WINE_SCOP_LIST']:checkbox[value='${wineScope}']").prop('checked', true);
+        </c:forEach>
+        <c:forEach items="${params.WINE_TYPE_LIST}" var="wineType" varStatus="loop">
+          $("input:checkbox[name='WINE_TYPE']:checkbox[value='${wineType}']").prop('checked', true);
+        </c:forEach>
+        <c:forEach items="${params.WINE_COUNTRY_LIST}" var="wineCountry" varStatus="loop">
+          $("input:checkbox[name='WINE_COUNTRY']:checkbox[value='${wineCountry}']").prop('checked', true);
+        </c:forEach>
+        <c:forEach items="${params.WINE_REGION_LIST}" var="wineRegion" varStatus="loop">
+          $("input:checkbox[name='WINE_REGION']:checkbox[value='${wineRegion}']").prop('checked', true);
+        </c:forEach>
+        <c:forEach items="${params.WINE_VARIETY_LIST}" var="wineVariety" varStatus="loop">
+          $("input:checkbox[name='WINE_VARIETY']:checkbox[value='${wineVariety}']").prop('checked', true);
+        </c:forEach>
+        <c:forEach items="${params.WINE_FOOD_PAIRING_LIST}" var="wineFoodPairing" varStatus="loop">
+          $("input:checkbox[name='WINE_FOOD_PAIRING']:checkbox[value='${wineFoodPairing}']").prop('checked', true);
+        </c:forEach>
+        
       </script>

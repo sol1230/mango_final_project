@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="/css/wine.css" />
   </head>
   <body>
-  <form action="/wine/wineDetailsSelect/1" method="get" id="wineDetailsSelect">
+  <form action="/wine/wineDetailsSelect/1" method="get" id="wineDetailsSelect" name="wineDetailsSelect">
     <%-- header --%>
     <%@ include file="../etc/header.jsp" %>
     <%-- select --%>
@@ -77,21 +77,19 @@
           <span class="float-end">
             <select
               class="form-select"
-              name="select"
+              name="selectKeyField"
               id=""
               style="color: #e06767"
+              onchange="this.form.submit()"
             >
-              <option value="0">선택하기</option>
-              <a href="#"><option value="1">최신순</option></a>
-              <a href="#"><option value="2">낮은 가격순</option></a>
-              <a href="#"><option value="3">높은 가격순</option></a>
-              <a href="#"><option value="4">인기순</option></a>
+              <option>선택하기</option>
+              <option value="latest" <c:if test = "${searchWineOrder eq 'latest'}">selected</c:if>>최신순</option>
+              <option value="rowPrice" <c:if test = "${searchWineOrder eq 'rowPrice'}">selected</c:if>>낮은 가격순</option>
+              <option value="highPrice" <c:if test = "${searchWineOrder eq 'highPrice'}">selected</c:if>>높은 가격순</option>
+              <option value="popular" <c:if test = "${searchWineOrder eq 'popular'}">selected</c:if>>인기순</option>
             </select>
           </span>
         </div>
-        </form>
-
-
         <ul class="row">
           <c:forEach items="${resultMap.resultList}" var="resultData" varStatus="loop">
           <c:choose>
@@ -294,19 +292,22 @@
         </nav>
       </div>
     </div>
+    </form>
 
     <%-- footer --%>
     <%@ include file="../etc/footer.jsp" %>
 
     <script>
-			
-				let submitButton = document.querySelector('#searchWineButton');
-				submitButton.addEventListener("click", function (event) {
-			
-					let form = document.querySelector("#wineDetailsSelect");
+
+				let detailSelectFromButton = document.querySelector('#detailSelectFromButton');
+				detailSelectFromButton.addEventListener("click", function (event) {
+          let form = document.querySelector("#wineDetailsSelect");
 					form.submit();
 				});
-			</script>
+
+    </script>
+    
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
