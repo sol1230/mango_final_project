@@ -346,8 +346,8 @@
             "id": "e02cae1f-b63f-4ec3-a5f6-c29a7200fa34"
           },
           {
-            "name": "WINE_INFO",
-            "comment": "와인상세정보",
+            "name": "WINE_BODY",
+            "comment": "와인바디감",
             "dataType": "VARCHAR(100)",
             "default": "",
             "option": {
@@ -361,12 +361,81 @@
               "pk": false,
               "fk": false,
               "pfk": false,
-              "widthName": 74.2236328125,
-              "widthComment": 80,
+              "widthName": 80.0126953125,
+              "widthComment": 67,
               "widthDataType": 94.94873046875,
               "widthDefault": 60
             },
             "id": "dbefb50a-e6ee-418e-ac51-e1c086d44844"
+          },
+          {
+            "name": "WINE_ACIDITY",
+            "comment": "와인산도",
+            "dataType": "VARCHAR(100)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 94.45361328125,
+              "widthComment": 60,
+              "widthDataType": 94.94873046875,
+              "widthDefault": 60
+            },
+            "id": "27e633fe-07e7-47bd-9314-c6625be040c8"
+          },
+          {
+            "name": "WINE_SUGAR",
+            "comment": "와인당도",
+            "dataType": "VARCHAR(100)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 89.40087890625,
+              "widthComment": 60,
+              "widthDataType": 94.94873046875,
+              "widthDefault": 60
+            },
+            "id": "abc25dbe-3502-4048-bcd7-c57ec53a882d"
+          },
+          {
+            "name": "WINE_TANNIN",
+            "comment": "와인타닌",
+            "dataType": "VARCHAR(100)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 90.59423828125,
+              "widthComment": 60,
+              "widthDataType": 94.94873046875,
+              "widthDefault": 60
+            },
+            "id": "26e7f196-b8a3-4007-8049-842d0be34a1e"
           },
           {
             "name": "WINE_FOOD_PAIRING",
@@ -393,10 +462,10 @@
           }
         ],
         "ui": {
-          "active": false,
-          "left": 33.3336,
-          "top": 54.6668,
-          "zIndex": 12,
+          "active": true,
+          "left": 40.3336,
+          "top": 104.6668,
+          "zIndex": 87,
           "widthName": 60,
           "widthComment": 60
         },
