@@ -45,7 +45,7 @@ public class AdminEventController {
     public ModelAndView adminEventInsert(MultipartHttpServletRequest multipartHttpServletRequest, @RequestParam Map<String, Object> params, @PathVariable String currentPage, ModelAndView modelAndView) {
         
         Iterator<String> fileNames = multipartHttpServletRequest.getFileNames(); // 파일 이름들 가져옴
-        String absolutePath = commonUtils.getRelativeToAbsolutePath("src/main/resources/static/img/files/") ;
+        String absolutePath = commonUtils.getRelativeToAbsolutePath("src/main/resources/static/files/") ;
         
         Map attachfile = null;
         List attachfiles = new ArrayList();
@@ -76,7 +76,6 @@ public class AdminEventController {
                 attachfile.put("EVENT_ORIGINALFILE_NAME", originalFileName);
                 attachfile.put("EVENT_PHYSICALFILE_NAME", physicalFileName);
                 attachfile.put("EVENT_TITLE", params.get("EVENT_TITLE"));
-                attachfile.put("EVENT_DATE", params.get("EVENT_DATE"));
                 attachfile.put("EVENT_CONTENT", params.get("EVENT_CONTENT"));
                 attachfile.put("USER_UID", params.get("USER_UID"));
                 
@@ -119,7 +118,54 @@ public class AdminEventController {
 
     // Event 수정 업데이트 + 페이지네이션
     @RequestMapping(value = "/admin/adminEventModify/{currentPage}", method = RequestMethod.POST)
-    public ModelAndView adminEventUpdate(@RequestParam Map<String, Object> params, @PathVariable String currentPage, ModelAndView modelAndView) {
+    public ModelAndView adminEventUpdate(MultipartHttpServletRequest multipartHttpServletRequest, @RequestParam Map<String, Object> params, @PathVariable String currentPage, ModelAndView modelAndView) {
+                
+        Iterator<String> fileNames = multipartHttpServletRequest.getFileNames(); // 파일 이름들 가져옴
+        String absolutePath = commonUtils.getRelativeToAbsolutePath("src/main/resources/static/files/") ;
+        
+        Map attachfile = null;
+        List attachfiles = new ArrayList();
+        String physicalFileName = commonUtils.getUniqueSequence(); // 공통으로 사용하는 거라 while문 밖으로 빼주기
+        String storePath = absolutePath + physicalFileName + File.separator;
+        File newPath = new File(storePath); // 파일 클래스의 mkdir 기능 사용하기 위해
+        newPath.mkdir();    // create directory
+        while(fileNames.hasNext()){ //hasNext --> 다음 값이 있느냐
+            String fileName = fileNames.next();
+            MultipartFile multipartFile =  multipartHttpServletRequest.getFile(fileName); 
+            String originalFileName = multipartFile.getOriginalFilename(); 
+            
+            if(originalFileName != null && multipartFile.getSize() > 0) { // 방어처리
+
+                String storePathFileName = storePath + originalFileName; // 저장할 path 이름
+                try {
+                    multipartFile.transferTo(new File(storePathFileName)); // relativePath 경로 설정
+                    
+                    // SOURCE_UNIQUE_SEQ, ORGINALFILE_NAME, PHYSICALFILE_NAME 이 3가지를 중점적으로 넣어야 한다
+                    // 이걸 모아서 뭉치로 묶어 params로 넣어야 한다. 3가지를 list로 넣고 각각을 map으로
+                // 1. HashMap에 넣어주기
+                attachfile = new HashMap<>();
+                attachfile.put("EVENT_UID", params.get("EVENT_UID"));
+                attachfile.put("EVENT_START", params.get("EVENT_START"));
+                attachfile.put("EVENT_END", params.get("EVENT_END"));
+                attachfile.put("EVENT_FILE", params.get("EVENT_FILE"));
+                attachfile.put("EVENT_ATTACHFILE_SEQ", commonUtils.getUniqueSequence());
+                attachfile.put("EVENT_ORIGINALFILE_NAME", originalFileName);
+                attachfile.put("EVENT_PHYSICALFILE_NAME", physicalFileName);
+                attachfile.put("EVENT_TITLE", params.get("EVENT_TITLE"));
+                attachfile.put("EVENT_CONTENT", params.get("EVENT_CONTENT"));
+                attachfile.put("USER_UID", params.get("USER_UID"));
+                
+                // 2. ArrayList로 묶기
+                attachfiles.add(attachfile);
+                
+                } catch (IllegalStateException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        params.put("attachfiles", attachfiles);
         params.put("currentPage", Integer.parseInt(currentPage));
         Object resultMap = adminEventService.updateEventAndGetEventList(params);
         modelAndView.addObject("resultMap", resultMap);

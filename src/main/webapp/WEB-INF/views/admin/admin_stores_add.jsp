@@ -67,12 +67,12 @@
               </thead>
               <tbody>
                 <tr>
-                  <td><input type="text" class="form-control" name="STORE_NAME" value="${resultData.STORE_NAME}"/></td>
-                  <td><input type="text" class="form-control" name="STORE_NO" value="${resultData.STORE_NO}" /></td>
-                  <td><input type="text" class="form-control" name="STORE_CEO" value="${resultData.STORE_CEO}"/></td>
-                  <td><input type="text" class="form-control" name="USER_UID" value="${resultData.USER_UID}"/></td>
-                  <td><input type="text" class="form-control" name="WINE_UID" value="${resultData.WINE_UID}"/></td>
-                  <td><input type="text" class="form-control" name="STORE_URL" value="${resultData.STORE_URL}"/></td>
+                  <td><input type="text" class="form-control" name="STORE_NAME" /></td>
+                  <td><input type="text" class="form-control" name="STORE_NO"  /></td>
+                  <td><input type="text" class="form-control" name="STORE_CEO" /></td>
+                  <td><input type="text" class="form-control" name="USER_UID" /></td>
+                  <td><input type="text" class="form-control" name="WINE_UID" /></td>
+                  <td><input type="text" class="form-control" name="STORE_URL"/></td>
                 </tr>
               </tbody>
             </table>
