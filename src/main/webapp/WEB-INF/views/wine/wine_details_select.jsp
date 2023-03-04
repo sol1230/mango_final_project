@@ -90,21 +90,21 @@
             </select>
           </span>
         </div>
-        <ul class="row">
+        <ul class="row ps-3">
           <c:forEach items="${resultMap.resultList}" var="resultData" varStatus="loop">
           <c:choose>
             <c:when test="${resultData.WINE_TYPE eq '레드'}">
-              <li class="col" style="list-style: none">
-              <div class="item" style="text-align: center; width: 230px">
+              <li class="col-2 ms-3 me-3" style="list-style: none">
+              <div class="item me-0" style="text-align: center; width: 230px">
                 <div
                   class=""
                   style="background-color: #e8daea; width: 230px; height: 250px"
                 >
-                  <a href="#" class="text-decoration-none text-black">
+                  <a href="/wine/wine_info/${resultData.WINE_NAME_EN}" class="text-decoration-none text-black">
                     <div class="pt-4">
                       <img
                         src="/img/wine/${resultData.WINE_NAME_EN}.png"
-                        alt="wine1"
+                        alt="wine${loop.count}"
                         width="200"
                       />
                     </div>
@@ -123,7 +123,7 @@
                     <span
                       class="badge badge-pill"
                       style="background-color: #dc0000"
-                      >${resultData.WINE_TYPE}와인</span
+                      >${resultData.WINE_TYPE}</span
                     >
                     <span
                       class="badge badge-pill"

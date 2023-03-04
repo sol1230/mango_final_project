@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
       <!-- collapse 버튼 클릭하면 나오는 검색 필터 -->
       <div
         class="collapse text-secondary shadow-sm pt-4 pb-2"
@@ -24,7 +24,8 @@
                     step="20000"
                     name="WINE_PRICE"
                     id="WINE_PRICE"
-                    value="0"
+                    <c:if test="${params.WINE_PRICE ne null}">value="${params.WINE_PRICE}"</c:if>
+                    <c:if test="${params.WINE_PRICE eq null}">value="0"</c:if>
                   />
                   <div class="d-flex justify-content-between">
                     <div>&#8361; 0~</div>
@@ -681,11 +682,6 @@
             }
           });
         });
-
-        // 선택한 필터 값들 고정(초기값은 0으로)
-        if(${params.WINE_PRICE} != null){
-          $("#WINE_PRICE").attr("value", '${params.WINE_PRICE}');
-        }
         
         <c:forEach items="${params.WINE_SCOPE_LIST}" var="wineScope" varStatus="loop">
           $("input:checkbox[name='WINE_SCOPE']:checkbox[value='${wineScope}']").prop('checked', true);
