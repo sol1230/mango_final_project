@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -275,16 +275,16 @@
         <nav aria-label="Page navigation example ">
           <ul class="pagination pagination-sm">
             <li class="page-item">
-              <a class="page-link" href="/wine/wineDetailsSelect/${_pagination.previousPage}" aria-label="Previous">
+              <a class="page-link" href="javascript:void(0)" onclick="form_page(${_pagination.previousPage})" aria-label="Previous">
                 <span class="sr-only">이전</span>
               </a>
             </li>
             <%-- for(int i = 0; i > 9; i++){} --%>
             <c:forEach var="i" begin="${_pagination.blockStart}" end="${_pagination.blockEnd}">
-              <li class="page-item"><a class="page-link" href="/wine/wineDetailsSelect/${i}">${i}</a></li>
+              <li class="page-item"><a class="page-link" href="javascript:void(0)" id="currentPage" onclick="form_page(${i})">${i}</a></li>
             </c:forEach>
             <li class="page-item">
-              <a class="page-link" href="/wine/wineDetailsSelect/${_pagination.nextPage}" aria-label="Next">
+              <a class="page-link" href="javascript:void(0)" onclick="form_page(${_pagination.nextPage})" aria-label="Next">
                 <span class="sr-only">다음</span>
               </a>
             </li>
@@ -305,6 +305,10 @@
 					form.submit();
 				});
 
+        function form_page(pageNo) {
+          $("#wineDetailsSelect").attr("action", "/wine/wineDetailsSelect/"+pageNo);
+          $("#wineDetailsSelect").submit();
+        }
     </script>
     
 

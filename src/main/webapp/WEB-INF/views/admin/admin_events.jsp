@@ -55,10 +55,10 @@
             </div>
           </form>
           <table
-            class="mt-3 mb-1 table table-hover text-center align-middle"
+            class="mt-3 mb-1 table table-hover align-middle"
             style="font-size: small"
           >
-            <thead class="bg-secondary bg-opacity-25">
+            <thead class="bg-secondary bg-opacity-25 text-center">
               <tr>
                 <th scope="">번호</th>
                 <th scope="">이벤트이미지</th>
@@ -70,14 +70,17 @@
             </thead>
             <tbody>
               <c:forEach items="${resultMap.resultList}" var="resultData" varStatus="loop">
-                <tr>
+                <tr class="text-center">
                   <th scope="">${loop.count}</th>
                   <td scope="">
                     <div style="width: 50px; height: 50px; overflow: hidden;" class="ms-4">
                       <img src="/files/${resultData.EVENT_PHYSICALFILE_NAME}/${resultData.EVENT_ORIGINALFILE_NAME}" style="width: 50px; heigth: 50px; object-fit: cover;" alt="${resultData.EVENT_ORIGINALFILE_NAME}">
                     </div>
                   </td>
-                  <td>${resultData.EVENT_TITLE}</td>
+                  <td>
+                    <a href="#eventCont${loop.count}" class="text-decoration-none text-black" data-bs-toggle="collapse">
+                    ${resultData.EVENT_TITLE}</a>
+                    </td>
                     <%-- <c:choose>
                       <c:when test="${resultData.EVENT_START eq ''} || ${resultData.EVENT_END eq ''}">
                         <td>
@@ -118,6 +121,16 @@
                           </button>
                         </form>
                       </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr class="collapse" id="eventCont${loop.count}">
+                  <td  class="bg-light p-4" colspan="6">
+                    <%-- 공지 내용 --%>
+                    <div>
+                      <span>
+                        ${resultData.EVENT_CONTENT}
+                      </span>
                     </div>
                   </td>
                 </tr>

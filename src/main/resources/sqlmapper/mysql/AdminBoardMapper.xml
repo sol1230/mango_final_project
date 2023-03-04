@@ -86,8 +86,20 @@
     <!-- call AdminBoard.updateNotice -->
     <update id="updateNotice" parameterType="Map"> 
         UPDATE NOTICE
-        SET NOTICE_TITLE = #{NOTICE_TITLE}, NOTICE_CONTENT = #{NOTICE_CONTENT}
-        WHERE NOTICE_UID = #{NOTICE_UID}
+        SET
+        <choose>
+            <when test="attachfiles != null and attachfiles.size != 0">
+                <foreach collection="attachfiles" item="attachfile">
+                    NOTICE_TITLE = #{attachfile.NOTICE_TITLE}, NOTICE_CONTENT = #{attachfile.NOTICE_CONTENT}, NOTICE_ATTACHFILE_SEQ = #{attachfile.NOTICE_ATTACHFILE_SEQ},
+                    NOTICE_ORIGINALFILE_NAME = #{attachfile.NOTICE_ORIGINALFILE_NAME}, NOTICE_PHYSICALFILE_NAME = #{attachfile.NOTICE_PHYSICALFILE_NAME}
+                    WHERE NOTICE_UID = #{NOTICE_UID}
+                </foreach> 
+            </when>
+            <otherwise>
+                    NOTICE_TITLE = #{NOTICE_TITLE}, NOTICE_CONTENT = #{NOTICE_CONTENT}
+                    WHERE NOTICE_UID = #{NOTICE_UID}
+            </otherwise>
+        </choose>
     </update>
 
     <!-- call AdminBoard.deleteNotice -->

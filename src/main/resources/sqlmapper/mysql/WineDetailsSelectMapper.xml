@@ -11,7 +11,7 @@
         <if test = "WINESEARCH_NAME != null and WINESEARCH_NAME != ''">
             AND REPLACE(WINE_NAME, ' ', '') LIKE CONCAT('%', REPLACE(#{WINESEARCH_NAME}, ' ', ''), '%')
         </if>
-        <if test = "WINE_PRICE != null">
+        <if test = "WINE_PRICE != null and WINE_PRICE != 0">
             AND WINE_PRICE <![CDATA[ <= ]]> #{WINE_PRICE}
         </if>
         <if test = "WINE_SCOPE_MAX != null and WINE_SCOPE_MIN != null">
@@ -87,7 +87,7 @@
         <if test = "WINESEARCH_NAME != null and WINESEARCH_NAME != ''">
             AND REPLACE(WINE_NAME, ' ', '') LIKE CONCAT('%', REPLACE(#{WINESEARCH_NAME}, ' ', ''), '%')
         </if>
-        <if test = "WINE_PRICE != null">
+        <if test = "WINE_PRICE != null and WINE_PRICE != 0">
             AND WINE_PRICE <![CDATA[ <= ]]> #{WINE_PRICE}
         </if>
         <if test = "WINE_SCOPE_MAX != null and WINE_SCOPE_MIN != null">

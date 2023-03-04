@@ -33,7 +33,7 @@
       <%@ include file="../etc/admin_nav.jsp" %>
 
       <main class="col-9 p-0 mb-5 ms-5">
-        <form action="/admin/adminEventModify/1" method="post" id="eventModifyFrom">
+        <form action="/admin/adminEventModify/1" method="post" id="eventModifyFrom" enctype="multipart/form-data">
           <input type="hidden" name="EVENT_UID" value="${resultMap.EVENT_UID}" />
           <input type="hidden" name="EVENT_DATE" value="${resultMap.EVENT_DATE}" />
           <input type="hidden" name="NAME" value="${resultMap.NAME}" />
@@ -75,6 +75,7 @@
                       name="EVENT_START"
                       id="EVENT_START"
                       class="form-control"
+                      value="${resultMap.EVENT_START}"
                     />
                   </td>
                   <td>
@@ -86,6 +87,7 @@
                       name="EVENT_END"
                       id="EVENT_END"
                       class="form-control"
+                      value="${resultMap.EVENT_END}"
                     />
                   </td>
                 </tr>
@@ -103,14 +105,14 @@
                     >${resultMap.EVENT_CONTENT}</textarea>
                   </td>
                 </tr>
-                <%-- <tr scope="row" class="text-center">
+                <tr scope="row" class="text-center">
                   <th class="bg-secondary bg-opacity-25">파일첨부</th>
                   <td colspan="3">
                     <div class="">
                       <input type="file" name="EVENT_FILE" id="" class="form-control" />
                     </div>
                   </td>
-                </tr> --%>
+                </tr>
                 <c:choose>
                   <c:when test="${not empty resultMap.EVENT_PHYSICALFILE_NAME}">
                     <tr scope="row">

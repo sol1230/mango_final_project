@@ -24,6 +24,7 @@
                     step="20000"
                     name="WINE_PRICE"
                     id="WINE_PRICE"
+                    value="0"
                   />
                   <div class="d-flex justify-content-between">
                     <div>&#8361; 0~</div>
@@ -624,12 +625,26 @@
                     <input
                       type="checkbox"
                       name="WINE_FOOD_PAIRING"
-                      value="치즈"
+                      value="버섯"
                       id="WINE_FOOD_PAIRING5"
                       class="form-check-input"
                     />
                     <label
                       for="WINE_FOOD_PAIRING5"
+                      class="form-check-label text-decoration-none text-secondary"
+                      >버섯</label
+                    >
+                  </span>
+                  <span class="form-check form-check-inline">
+                    <input
+                      type="checkbox"
+                      name="WINE_FOOD_PAIRING"
+                      value="치즈"
+                      id="WINE_FOOD_PAIRING6"
+                      class="form-check-input"
+                    />
+                    <label
+                      for="WINE_FOOD_PAIRING6"
                       class="form-check-label text-decoration-none text-secondary"
                       >치즈</label
                     >
@@ -667,8 +682,13 @@
           });
         });
 
-        <c:forEach items="${params.WINE_SCOP_LIST}" var="wineScope" varStatus="loop">
-          $("input:checkbox[name='WINE_SCOP_LIST']:checkbox[value='${wineScope}']").prop('checked', true);
+        // 선택한 필터 값들 고정(초기값은 0으로)
+        if(${params.WINE_PRICE} != null){
+          $("#WINE_PRICE").attr("value", '${params.WINE_PRICE}');
+        }
+        
+        <c:forEach items="${params.WINE_SCOPE_LIST}" var="wineScope" varStatus="loop">
+          $("input:checkbox[name='WINE_SCOPE']:checkbox[value='${wineScope}']").prop('checked', true);
         </c:forEach>
         <c:forEach items="${params.WINE_TYPE_LIST}" var="wineType" varStatus="loop">
           $("input:checkbox[name='WINE_TYPE']:checkbox[value='${wineType}']").prop('checked', true);

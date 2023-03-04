@@ -71,8 +71,20 @@
     <!-- call AdminEvent.updateEvent -->
     <update id="updateEvent" parameterType="Map"> 
         UPDATE EVENT
-        SET EVENT_TITLE = #{EVENT_TITLE}, EVENT_CONTENT = #{EVENT_CONTENT}, EVENT_FILE = #{EVENT_FILE}, EVENT_START = #{EVENT_START}, EVENT_END = #{EVENT_END}
-        WHERE EVENT_UID = #{EVENT_UID}
+        SET 
+        <choose>
+            <when test="attachfiles != null and attachfiles.size != 0">
+                <foreach collection="attachfiles" item="attachfile">
+                    EVENT_TITLE = #{attachfile.EVENT_TITLE}, EVENT_CONTENT = #{attachfile.EVENT_CONTENT}, EVENT_FILE = #{attachfile.EVENT_FILE}, EVENT_START = #{attachfile.EVENT_START}, EVENT_END = #{attachfile.EVENT_END},
+                    EVENT_ATTACHFILE_SEQ = #{attachfile.EVENT_ATTACHFILE_SEQ}, EVENT_ORIGINALFILE_NAME = #{attachfile.EVENT_ORIGINALFILE_NAME}, EVENT_PHYSICALFILE_NAME =#{attachfile.EVENT_PHYSICALFILE_NAME}
+                    WHERE EVENT_UID = #{EVENT_UID}
+                </foreach>
+            </when>
+            <otherwise>
+                EVENT_TITLE = #{EVENT_TITLE}, EVENT_CONTENT = #{EVENT_CONTENT}, EVENT_FILE = #{EVENT_FILE}, EVENT_START = #{EVENT_START}, EVENT_END = #{EVENT_END}
+                WHERE EVENT_UID = #{EVENT_UID}
+            </otherwise>
+        </choose>
     </update>
 
 </mapper>

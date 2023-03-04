@@ -35,7 +35,7 @@
     <%@ include file="../etc/admin_nav.jsp" %>
 
       <main class="col-9 p-0 mb-5 ms-5">
-        <form action="/admin/adminNoticeUpate/1" method="post">
+        <form action="/admin/adminNoticeUpate/1" method="post" enctype="multipart/form-data">
           <input type="hidden" name="NOTICE_UID" value="${resultMap.NOTICE_UID}" />
           <input type="hidden" name="NOTICE_DATE" value="${resultMap.NOTICE_DATE}" />
           <input type="hidden" name="NAME" value="${resultMap.NAME}" />
@@ -83,14 +83,14 @@
                     >${resultMap.NOTICE_CONTENT}</textarea>
                   </td>
                 </tr>
-                <%-- <tr scope="row" class="text-center">
+                <tr scope="row" class="text-center">
                   <th class="bg-secondary bg-opacity-25">파일첨부</th>
                   <td colspan="3">
                     <div class="">
-                      <input type="file" name="" id="" class="form-control" />
+                      <input type="file" name="NOTICE_FILE" id="" class="form-control" />
                     </div>
                   </td>
-                </tr> --%>
+                </tr>
                 <c:choose>
                   <c:when test="${not empty resultMap.NOTICE_PHYSICALFILE_NAME}">
                     <tr scope="row">
