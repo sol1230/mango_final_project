@@ -276,6 +276,7 @@
           <ul class="pagination pagination-sm">
             <li class="page-item">
               <a class="page-link" href="javascript:void(0)" onclick="form_page(${_pagination.previousPage})" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
                 <span class="sr-only">이전</span>
               </a>
             </li>
@@ -286,6 +287,7 @@
             <li class="page-item">
               <a class="page-link" href="javascript:void(0)" onclick="form_page(${_pagination.nextPage})" aria-label="Next">
                 <span class="sr-only">다음</span>
+                <span aria-hidden="true">&raquo;</span>
               </a>
             </li>
           </ul>
