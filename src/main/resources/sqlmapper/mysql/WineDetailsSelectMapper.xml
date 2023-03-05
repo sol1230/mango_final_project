@@ -52,7 +52,7 @@
                     #{WINE_FOOD_PAIRING}
                 </foreach>
         </if>
-        GROUP BY 1
+        GROUP BY 1, WINE.WINE_UID
         <if test="pageScale != null">
             <choose>
                 <when test="selectKeyField == 'latest'">
