@@ -118,7 +118,7 @@
           {
             "name": "WINE_SCOPE",
             "comment": "와인별점",
-            "dataType": "VARCHAR(100)",
+            "dataType": "FLOAT",
             "default": "",
             "option": {
               "autoIncrement": false,
@@ -133,7 +133,7 @@
               "pfk": false,
               "widthName": 88.68359375,
               "widthComment": 60,
-              "widthDataType": 94.94873046875,
+              "widthDataType": 60,
               "widthDefault": 60
             },
             "id": "c388aca6-7740-40ab-b13b-49011f9be0f4"
@@ -465,7 +465,7 @@
           "active": true,
           "left": 40.3336,
           "top": 104.6668,
-          "zIndex": 8,
+          "zIndex": 4,
           "widthName": 60,
           "widthComment": 60
         },

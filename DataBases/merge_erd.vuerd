@@ -504,7 +504,7 @@
           "active": false,
           "left": 582.0437,
           "top": 420.2374,
-          "zIndex": 9,
+          "zIndex": 8,
           "widthName": 60,
           "widthComment": 60
         },
@@ -1749,7 +1749,7 @@
             "id": "98c0bd15-5891-402d-8d51-c45f16e0bde5",
             "name": "WINE_SCOPE",
             "comment": "와인별점",
-            "dataType": "VARCHAR(100)",
+            "dataType": "FLOAT",
             "default": "",
             "option": {
               "autoIncrement": false,
@@ -1764,7 +1764,7 @@
               "pfk": false,
               "widthName": 88.68359375,
               "widthComment": 60,
-              "widthDataType": 94.94873046875,
+              "widthDataType": 60,
               "widthDefault": 60
             }
           },
@@ -2092,10 +2092,10 @@
           }
         ],
         "ui": {
-          "active": false,
+          "active": true,
           "left": 50.2001,
           "top": 780.1999,
-          "zIndex": 20,
+          "zIndex": 11,
           "widthName": 60,
           "widthComment": 60
         },
@@ -2157,7 +2157,7 @@
           "active": false,
           "left": 612.8385,
           "top": 710.3428,
-          "zIndex": 8,
+          "zIndex": 7,
           "widthName": 63.39453125,
           "widthComment": 67
         },
