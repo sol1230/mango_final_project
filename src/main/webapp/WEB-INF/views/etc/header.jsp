@@ -196,7 +196,7 @@
 						})
 					}
 				},error:function(){
-					cosole.log("열람 참조용 ajax통신 실패")
+					
 				}
 			})
 	}

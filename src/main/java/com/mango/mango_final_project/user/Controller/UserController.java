@@ -84,36 +84,26 @@ public class UserController {
     }
   }
 
+  @ResponseBody
   @RequestMapping("delete")
-  public String deleteUser(
-    String password,
-    String user_uid,
-    HttpSession session,
-    Model model
-  ) {
+  public String deleteUser(User user,HttpSession session) {
     String encPwd = ((User) session.getAttribute("loginUser")).getPassword();
 
-    if (bcryptPasswordEncoder.matches(password, encPwd)) {
-      int result = uService.deleteUser(user_uid);
+    if (bcryptPasswordEncoder.matches(user.getPassword(), encPwd)) {
+      int result = uService.deleteUser(user.getUser_uid());
 
-      if (result > 0) {
-        session.removeAttribute("loginUser");
-        session.setAttribute(
-          "alretMsg",
-          "탈퇴 처리 되었습니다. 이용해주셔서 감사합니다."
-        );
-        return "redirect:/";
-      } else {
-        model.addAttribute("errorMsg", "탈퇴 처리에 실패하였습니다.");
-        return "common/errorPage";
-      }
-    } else {
-      session.setAttribute(
-        "alertMsg",
-        "비밀번호가 맞지 않습니다. 다시 입력해주세요."
-      );
-      return "redirect:myPage";
-    }
+      if(result > 0) {
+				session.removeAttribute("loginUser");
+				
+				return "S";
+			} else { 
+				
+				return "F1";
+			}
+		}else { // 비밀번호가 다른 경우 => 사용자에게 알리고 마이페이지 
+			
+			return "F2";
+		}
   }
 
   @RequestMapping("myPage")
@@ -140,6 +130,39 @@ public class UserController {
 	User res =  uService.findIdCheck(user);
 	
     return res;    
+  }
+
+  @ResponseBody
+  @RequestMapping("findPwdCheck")
+  public User findUserPwd(User user, HttpSession session){
+
+    String phone = user.getPhone1() + "-" + user.getPhone2() + "-" + user.getPhone3();
+    user.setPhone(phone);
+
+    User res = uService.findUserPwd(user);
+
+    if(res != null){
+      session.setAttribute("pwd", res);
+    }
+
+    return res;
+  }
+
+  @ResponseBody
+  @RequestMapping("changePwd")
+  public String changePwd(User user, HttpSession session) {   
+    String encPwd = bcryptPasswordEncoder.encode(user.getPassword());
+      user.setPassword(encPwd);
+      
+    int result = uService.changePwd(user);
+
+    if (result > 0) { // 수정성공
+
+      return "S";
+    } else {
+      
+      return "F2";
+    }
   }
 	
 }

@@ -1,3 +1,4 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -46,8 +47,8 @@
             <input
               type="password"
               class="form-control"
-              name="password1"
-              id="password1"
+              name="password"
+              id="password"
               placeholder="비밀번호"
               required
             />
@@ -57,8 +58,8 @@
             <input
               type="password"
               class="form-control"
-              name="password2"
-              id="password2"
+              name="password1"
+              id="password1"
               placeholder="비밀번호 재입력"
               required
             />
@@ -66,14 +67,13 @@
         </div>
       </div>
       <div class="text-center">
-        <button class="btn btn-danger mt-3 form-control" style="width: 20rem">
-          <a
-            href="#passwordModify"
-            class="text-decoration-none text-white"
-            data-bs-toggle="modal"
-            >비밀번호 변경</a
-          >
-        </button>
+        
+          <button
+           onclick="changeCheck();"
+            class="btn btn-danger mt-3 form-control" style="width: 20rem"
+            >비밀번호 변경</button>
+          
+        
       </div>
     </div>
 
@@ -99,5 +99,57 @@
       integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
       crossorigin="anonymous"
     ></script>
+
+    <script>
+    function changeCheck(){
+
+      if($("#password").val() != $("#password1").val()){
+          alert("변경 비밀번호와 비밀번호 확인이 다릅니다.");
+        return false;
+      }    
+    $.ajax({
+				url:"/user/changePwd",
+				type:"post",
+				data:{
+					user_uid:"${pwd.user_uid}",
+          password:$("#password").val(),
+					password1:$("#password1").val()
+				},
+				success:function(result){
+					
+					if(result == 'S'){
+						return new swal({
+							title:"비밀번호가 변경되었습니다.",
+							icon:"success",
+							closeOnClickOutside:false
+						})
+						.then((value) => {
+							if(value){
+								location.href="/index";
+							}
+						})
+					}else {
+            return new swal({
+							title:"변경에 실패하였습니다.",
+							icon:"error",
+							closeOnClickOutside:false
+						})
+						.then((value) => {
+							if(value){
+								return false;
+							}
+						})
+          }
+				},error:function(){
+					new swal({
+							title:"변경에 실패하였습니다.",
+							icon:"error",
+							closeOnClickOutside:false
+						})
+				}
+			})
+    
+	}
+    </script>
   </body>
 </html>

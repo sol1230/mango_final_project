@@ -34,4 +34,12 @@ public class UserDao {
         return sqlSession.selectOne("userMapper.findIdCheck", user);
     }
 
+    public User findUserPwd(SqlSessionTemplate sqlSession, User user){
+        return sqlSession.selectOne("userMapper.findUserPwd", user);
+    }
+
+    public int changePwd(SqlSessionTemplate sqlSession, User user){
+        return sqlSession.update("userMapper.changePwd", user);
+    }
+
 }

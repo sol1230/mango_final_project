@@ -23,4 +23,10 @@ public interface UserService {
     // 아이디 찾기 서비스 (select)
     User findIdCheck(User user);
 
+    // 비밀번호 찾기 서비스 (select)
+    User findUserPwd(User user);
+
+     // 비밀번호 변경 서비스 (update)
+     int changePwd(User user);
+
 }
