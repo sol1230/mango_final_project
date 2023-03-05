@@ -134,7 +134,8 @@
                   <ul class="pagination pagination-sm">
                     <li class="page-item">
                       <a class="page-link" href="/admin/adminReview/${_pagination.previousPage}" aria-label="Previous">
-                        <span class="sr-only">Pre</span>
+                        <span aria-hidden="true">&laquo;</span>
+                        <span class="sr-only">이전</span>
                       </a>
                     </li>
                     <%-- for(int i = 0; i > 9; i++){} --%>
@@ -143,7 +144,8 @@
                     </c:forEach>
                     <li class="page-item">
                       <a class="page-link" href="/admin/adminReview/${_pagination.nextPage}" aria-label="Next">
-                        <span class="sr-only">Next</span>
+                        <span class="sr-only">다음</span>
+                        <span aria-hidden="true">&raquo;</span>
                       </a>
                     </li>
                   </ul>

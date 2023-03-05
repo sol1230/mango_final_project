@@ -282,8 +282,8 @@
       <ul class="pagination pagination-sm justify-content-center mt-5">
         <li class="page-item">
           <a class="page-link" href="#" aria-label="Previous">
-            <span aria-hidden="true">&laquo;</span>
-            <span class="sr-only"></span>
+              <span aria-hidden="true">&laquo;</span>
+              <span class="sr-only">이전</span>
           </a>
         </li>
 	      <%-- for(int i=0; i > 9; i++ {}) --%>
@@ -292,8 +292,8 @@
         </c:forEach>
 	      <li class="page-item">
           <a class="page-link" href="#" aria-label="Next">
-            <span aria-hidden="true">&raquo;</span>
-            <span class="sr-only"></span>
+              <span class="sr-only">다음</span>
+              <span aria-hidden="true">&raquo;</span>
           </a>
         </li>
       </ul>

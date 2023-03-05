@@ -101,6 +101,27 @@ where name = #{name}
 	and phone = #{phone}
 </select>
 
+<!-- 유저 비밀번호 찾기-->
+<select id="findUserPwd"
+ parameterType="com.mango.mango_final_project.user.model.vo.User"
+ resultType="com.mango.mango_final_project.user.model.vo.User">
+select
+    user_uid
+from user
+where 
+ user_uid = #{user_uid}
+and name = #{name}
+and phone = #{phone}
+</select>
+
+<!-- 비밀번호 찾기 후 수정-->
+<update id="changePwd">
+update
+    user
+set 
+  password = #{password}    
+  where user_uid = #{user_uid}
+</update>
 
 
 </mapper>

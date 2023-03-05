@@ -50,6 +50,18 @@ public class UserServiceImpl implements UserService {
         User findIdCheck = uDao.findIdCheck(sqlSession, user);
         return findIdCheck;
     }
+
+    @Override
+    public User findUserPwd(User user) {
+        User findUserPwd = uDao.findUserPwd(sqlSession, user);
+        return findUserPwd;
+    }
+
+    @Override
+    public int changePwd(User user) {
+        int changePwd = uDao.changePwd(sqlSession, user);
+        return changePwd;
+    }
     
 
 }

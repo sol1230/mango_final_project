@@ -151,17 +151,14 @@
           <button type="button" class="btn btn-secondary btn-lg w-25 text-decoration-none text-white" style="margin-right: 10px" onclick="changeCheck();">
           수정하기
           </button>
-          <button type="button"
-          onclick="bye();"
-            class="btn btn-danger btn-lg w-25 text-decoration-none text-white"
-            style="margin-left: 10px"
-            id="bye"
-            >          
+          <button type="button" class="btn btn-danger btn-lg w-25 text-decoration-none text-white" style="margin-left: 10px" onclick="bye();">
             탈퇴하기
           </button>
         </div>
       </form>
     </div>
+    
+
     
     <%-- footer --%>
     <%@ include file="../etc/footer.jsp" %>
@@ -180,18 +177,48 @@
     
     });
 
-  function bye() {
-    Swal.fire({
-      title:'정말 탈퇴하시겠습니까? ',
-      text: '탈퇴하시면 다시 복구할 수 없습니다.',
-      icon:'warning',
-      showCancelButton:true,
-      confirmButtonColor:'#3085d6',
-      confirmButtonText:'탈퇴',
-      cancleButtonText:'취소'
-    }).then((result)=>{
-      
-    })
+function bye() {
+ $.ajax({
+  url:"/user/delete",
+  type:"post",
+  data:{
+    password:$("#password").val(),
+    user_uid:"${loginUser.user_uid}"
+   },
+  success:function(result){
+    if(result == 'S'){
+						return new swal({
+							title:"탈퇴가 완료되었습니다.",
+							icon:"success",
+							closeOnClickOutside:false
+						})
+						.then((value) => {
+							if(value){
+								location.href="/index";
+							}
+						})
+					}else if(result == 'F2'){
+						return new swal({
+							title:"현재 비밀번호가 틀렸습니다.",
+							icon:"error",
+							closeOnClickOutside:false
+						})
+						.then((value) => {
+							if(value){
+								return false;
+							}
+						})
+  
+ 
+          }
+  },error:function(){
+					new swal({
+							title:"탈퇴에 실패하였습니다.",
+							icon:"error",
+							closeOnClickOutside:false
+						})
+				}
+  })
   }
 
   function changeCheck(){
