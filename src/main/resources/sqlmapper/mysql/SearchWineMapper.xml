@@ -39,7 +39,7 @@
             </when>
             <when test="selectKeyField == 'popular'">
                 SELECT *, COUNT(WISHLIST.WINE_UID)
-                FROM WINE INNER JOIN WISHLIST
+                FROM WINE LEFT JOIN WISHLIST
                 ON WINE.WINE_UID = WISHLIST.WINE_UID
                 WHERE REPLACE(WINE_NAME, ' ', '') LIKE CONCAT('%', REPLACE(#{WINESEARCH_NAME}, ' ', ''), '%')
                 GROUP BY 1

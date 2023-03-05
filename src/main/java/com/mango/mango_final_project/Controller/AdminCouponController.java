@@ -1,4 +1,4 @@
-package com.mango.mango_final_project.controller;
+package com.mango.mango_final_project.Controller;
 
 import com.mango.mango_final_project.service.AdminCouponService;
 import com.mango.mango_final_project.utils.CommonUtils;

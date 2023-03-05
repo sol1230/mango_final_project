@@ -90,11 +90,11 @@
             </select>
           </span>
         </div>
-        <ul class="row ps-3">
+        <ul class="row">
           <c:forEach items="${resultMap.resultList}" var="resultData" varStatus="loop">
           <c:choose>
             <c:when test="${resultData.WINE_TYPE eq '레드'}">
-              <li class="col-2 ms-3 me-3" style="list-style: none">
+              <li class="col" style="list-style: none">
               <div class="item me-0" style="text-align: center; width: 230px">
                 <div
                   class=""

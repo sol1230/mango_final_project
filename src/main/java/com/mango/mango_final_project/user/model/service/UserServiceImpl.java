@@ -3,10 +3,12 @@ package com.mango.mango_final_project.user.model.service;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.mango.mango_final_project.user.model.dao.UserDao;
 import com.mango.mango_final_project.user.model.vo.User;
 
+@Transactional
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -41,6 +43,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public int idCheck(String checkId) {
         return uDao.idCheck(sqlSession, checkId);
+    }
+    
+    @Override
+    public User findIdCheck(User user) {
+        User findIdCheck = uDao.findIdCheck(sqlSession, user);
+        return findIdCheck;
     }
     
 

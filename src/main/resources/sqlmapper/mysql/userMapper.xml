@@ -89,6 +89,18 @@ from user
 where user_uid = #{checkId}
 </select>
 
+<!-- 유저 ID 찾기-->
+<select id="findIdCheck"
+ parameterType="com.mango.mango_final_project.user.model.vo.User"
+ resultType="com.mango.mango_final_project.user.model.vo.User">
+select
+    user_uid,
+    name
+from user
+where name = #{name}
+	and phone = #{phone}
+</select>
+
 
 
 </mapper>
