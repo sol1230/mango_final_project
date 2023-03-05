@@ -279,7 +279,7 @@
           {
             "name": "WINE_PRICE",
             "comment": "와인가격",
-            "dataType": "VARCHAR(100)",
+            "dataType": "INT",
             "default": "",
             "option": {
               "autoIncrement": false,
@@ -294,7 +294,7 @@
               "pfk": false,
               "widthName": 82.90087890625,
               "widthComment": 60,
-              "widthDataType": 94.94873046875,
+              "widthDataType": 60,
               "widthDefault": 60
             },
             "id": "7a95e1ed-859b-4601-a1eb-d9cb78b18802"
@@ -462,10 +462,10 @@
           }
         ],
         "ui": {
-          "active": true,
+          "active": false,
           "left": 40.3336,
           "top": 104.6668,
-          "zIndex": 87,
+          "zIndex": 6,
           "widthName": 60,
           "widthComment": 60
         },

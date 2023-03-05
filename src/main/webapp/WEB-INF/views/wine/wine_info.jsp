@@ -146,26 +146,50 @@
                   </tr>
                 </thead>
                 <tbody>
-                <c:forEach items="${resultStoreList}" var="resultData" varStatus="loop">
-                  <tr>
-                      <td>
-                        <a href="#" class="text-decoration-none text-black"
-                          >${resultData.STORE_NAME}
-                          <img src="../img/${resultData.STORE_NAME}.png" alt="" width="60" />
-                        </a>
-                      </td>
-                      <td class="text-danger">최저</td>
-                      <td class="text-danger">${resultData.STORE_PRICE} &#8361;</td>
-                      <td>${resultData.STORE_DELIVERY} &#8361;</td>
-                      <td>
-                        <a
-                          href="${resultData.STORE_URL}"
-                          target="_blank"
-                          class="text-decoration-none text-black"
-                        >
-                          사러가기
-                        </a>
-                      </td>
+                  <c:forEach items="${resultStoreList}" var="resultData" varStatus="loop">
+                    <tr>
+                      <c:choose>
+                        <c:when test="${(resultData.STORE_PRICE == resultMap.WINE_PRICE)}">
+                          <td>
+                            <a href="#" class="text-decoration-none text-black"
+                              >${resultData.STORE_NAME}
+                              <img src="/img/${resultData.STORE_NAME}.png" alt="" width="60" />
+                            </a>
+                          </td>
+                          <td class="text-danger">최저</td>
+                          <td class="text-danger">${resultData.STORE_PRICE} &#8361;</td>
+                          <td>${resultData.STORE_DELIVERY} &#8361;</td>
+                          <td>
+                            <a
+                              href="${resultData.STORE_URL}"
+                              target="_blank"
+                              class="text-decoration-none text-black"
+                            >
+                              사러가기
+                            </a>
+                          </td>
+                        </c:when>
+                        <c:otherwise>
+                          <td>
+                            <a href="#" class="text-decoration-none text-black"
+                              >${resultData.STORE_NAME}
+                              <img src="/img/${resultData.STORE_NAME}.png" alt="" width="60" />
+                            </a>
+                          </td>
+                          <td class=""></td>
+                          <td class="">${resultData.STORE_PRICE} &#8361;</td>
+                          <td>${resultData.STORE_DELIVERY} &#8361;</td>
+                          <td>
+                            <a
+                              href="${resultData.STORE_URL}"
+                              target="_blank"
+                              class="text-decoration-none text-black"
+                            >
+                              사러가기
+                            </a>
+                          </td>
+                        </c:otherwise>
+                      </c:choose>
                     </tr>
                   </c:forEach>
                 </tbody>

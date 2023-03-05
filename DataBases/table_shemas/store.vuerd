@@ -164,7 +164,7 @@
           {
             "name": "STORE_PRICE",
             "comment": "판매가",
-            "dataType": "VARCHAR(100)",
+            "dataType": "INT",
             "default": "",
             "option": {
               "autoIncrement": false,
@@ -179,7 +179,7 @@
               "pfk": false,
               "widthName": 93.5078125,
               "widthComment": 60,
-              "widthDataType": 94.94873046875,
+              "widthDataType": 60,
               "widthDefault": 60
             },
             "id": "b18da328-7926-4ebf-ade1-cc1aab372e75"
@@ -187,7 +187,7 @@
           {
             "name": "STORE_DELIVERY",
             "comment": "배송비",
-            "dataType": "VARCHAR(100)",
+            "dataType": "INT",
             "default": "",
             "option": {
               "autoIncrement": false,
@@ -202,17 +202,17 @@
               "pfk": false,
               "widthName": 117.8447265625,
               "widthComment": 60,
-              "widthDataType": 94.94873046875,
+              "widthDataType": 60,
               "widthDefault": 60
             },
             "id": "281ce5ce-e664-460a-bf81-734f15f983fb"
           }
         ],
         "ui": {
-          "active": true,
+          "active": false,
           "left": 30.6668,
           "top": 189.9999,
-          "zIndex": 4,
+          "zIndex": 14,
           "widthName": 60,
           "widthComment": 60
         },
