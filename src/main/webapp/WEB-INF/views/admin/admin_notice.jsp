@@ -61,7 +61,6 @@
                 <th scope="">제목</th>
                 <th scope="">작성자</th>
                 <th scope="">작성일</th>
-                <th scope="">조회수</th>
                 <th scope="">기능</th>
               </tr>
             </thead>
@@ -76,7 +75,6 @@
                   </td>
                   <td>${resultData.NAME}</td>
                   <td>${resultData.NOTICE_DATE}</td>
-                  <td>15</td>
                   <td>
                     <div class="d-flex justify-content-center">
                       <div>

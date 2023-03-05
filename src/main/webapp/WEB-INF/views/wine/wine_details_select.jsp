@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="/css/wine.css" />
   </head>
   <body>
-  <form action="/wine/wineDetailsSelect/1" method="get" id="wineDetailsSelect">
+  <form action="/wine/wineDetailsSelect/1" method="get" id="wineDetailsSelect" name="wineDetailsSelect">
     <%-- header --%>
     <%@ include file="../etc/header.jsp" %>
     <%-- select --%>
@@ -77,36 +77,34 @@
           <span class="float-end">
             <select
               class="form-select"
-              name="select"
+              name="selectKeyField"
               id=""
               style="color: #e06767"
+              onchange="this.form.submit()"
             >
-              <option value="0">선택하기</option>
-              <a href="#"><option value="1">최신순</option></a>
-              <a href="#"><option value="2">낮은 가격순</option></a>
-              <a href="#"><option value="3">높은 가격순</option></a>
-              <a href="#"><option value="4">인기순</option></a>
+              <option>선택하기</option>
+              <option value="latest" <c:if test = "${searchWineOrder eq 'latest'}">selected</c:if>>최신순</option>
+              <option value="rowPrice" <c:if test = "${searchWineOrder eq 'rowPrice'}">selected</c:if>>낮은 가격순</option>
+              <option value="highPrice" <c:if test = "${searchWineOrder eq 'highPrice'}">selected</c:if>>높은 가격순</option>
+              <option value="popular" <c:if test = "${searchWineOrder eq 'popular'}">selected</c:if>>인기순</option>
             </select>
           </span>
         </div>
-        </form>
-
-
-        <ul class="row">
+        <ul class="row ps-3">
           <c:forEach items="${resultMap.resultList}" var="resultData" varStatus="loop">
           <c:choose>
             <c:when test="${resultData.WINE_TYPE eq '레드'}">
-              <li class="col" style="list-style: none">
-              <div class="item" style="text-align: center; width: 230px">
+              <li class="col-2 ms-3 me-3" style="list-style: none">
+              <div class="item me-0" style="text-align: center; width: 230px">
                 <div
                   class=""
                   style="background-color: #e8daea; width: 230px; height: 250px"
                 >
-                  <a href="#" class="text-decoration-none text-black">
+                  <a href="/wine/wine_info/${resultData.WINE_NAME_EN}" class="text-decoration-none text-black">
                     <div class="pt-4">
                       <img
                         src="/img/wine/${resultData.WINE_NAME_EN}.png"
-                        alt="wine1"
+                        alt="wine${loop.count}"
                         width="200"
                       />
                     </div>
@@ -125,7 +123,7 @@
                     <span
                       class="badge badge-pill"
                       style="background-color: #dc0000"
-                      >${resultData.WINE_TYPE}와인</span
+                      >${resultData.WINE_TYPE}</span
                     >
                     <span
                       class="badge badge-pill"
@@ -277,16 +275,16 @@
         <nav aria-label="Page navigation example ">
           <ul class="pagination pagination-sm">
             <li class="page-item">
-              <a class="page-link" href="/wine/wineDetailsSelect/${_pagination.previousPage}" aria-label="Previous">
+              <a class="page-link" href="javascript:void(0)" onclick="form_page(${_pagination.previousPage})" aria-label="Previous">
                 <span class="sr-only">이전</span>
               </a>
             </li>
             <%-- for(int i = 0; i > 9; i++){} --%>
             <c:forEach var="i" begin="${_pagination.blockStart}" end="${_pagination.blockEnd}">
-              <li class="page-item"><a class="page-link" href="/wine/wineDetailsSelect/${i}">${i}</a></li>
+              <li class="page-item"><a class="page-link" href="javascript:void(0)" id="currentPage" onclick="form_page(${i})">${i}</a></li>
             </c:forEach>
             <li class="page-item">
-              <a class="page-link" href="/wine/wineDetailsSelect/${_pagination.nextPage}" aria-label="Next">
+              <a class="page-link" href="javascript:void(0)" onclick="form_page(${_pagination.nextPage})" aria-label="Next">
                 <span class="sr-only">다음</span>
               </a>
             </li>
@@ -294,19 +292,26 @@
         </nav>
       </div>
     </div>
+    </form>
 
     <%-- footer --%>
     <%@ include file="../etc/footer.jsp" %>
 
     <script>
-			
-				let submitButton = document.querySelector('#searchWineButton');
-				submitButton.addEventListener("click", function (event) {
-			
-					let form = document.querySelector("#wineDetailsSelect");
+
+				let detailSelectFromButton = document.querySelector('#detailSelectFromButton');
+				detailSelectFromButton.addEventListener("click", function (event) {
+          let form = document.querySelector("#wineDetailsSelect");
 					form.submit();
 				});
-			</script>
+
+        function form_page(pageNo) {
+          $("#wineDetailsSelect").attr("action", "/wine/wineDetailsSelect/"+pageNo);
+          $("#wineDetailsSelect").submit();
+        }
+    </script>
+    
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"

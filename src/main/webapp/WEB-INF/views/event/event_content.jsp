@@ -67,7 +67,7 @@
           </div>
           <c:if test="${not empty resultMap.EVENT_PHYSICALFILE_NAME}">
             <div class="mt-5 mb-5">
-              <img src="/img/files/${resultMap.EVENT_PHYSICALFILE_NAME}/${resultMap.EVENT_ORIGINALFILE_NAME}" alt="${resultMap.EVENT_ORIGINALFILE_NAME}" style="width: 800px" />
+              <img src="/files/${resultMap.EVENT_PHYSICALFILE_NAME}/${resultMap.EVENT_ORIGINALFILE_NAME}" alt="${resultMap.EVENT_ORIGINALFILE_NAME}" style="width: 800px" />
             </div>
           </c:if>
         </div>

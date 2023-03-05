@@ -117,30 +117,10 @@ public class AdminBoardController {
 
   // 공지 수정 업데이트 + 페이지네이션
   @RequestMapping(value = "/admin/adminNoticeUpate/{currentPage}", method = RequestMethod.POST)
-  public ModelAndView adminNoticeUpdate(@RequestParam Map<String, Object> params, @PathVariable String currentPage, ModelAndView modelAndView) {
-    params.put("currentPage", Integer.parseInt(currentPage));
-    Object resultMap = adminBoardService.updateNoticeAndGetNoticeList(params);
-    modelAndView.addObject("resultMap", resultMap);
-    modelAndView.setViewName("admin/admin_notice");
-    return modelAndView;
-  }
-
-  // 공지 삭제 + 페이지네이션
-  @RequestMapping(value = "/admin/adminNoticeDelete/{currentPage}", method = RequestMethod.POST)
-  public ModelAndView adminNoticeDelete(@RequestParam Map<String, Object> params, @PathVariable String currentPage, ModelAndView modelAndView) {
-    params.put("currentPage", Integer.parseInt(currentPage));
-    Object resultMap = adminBoardService.deleteNoticeAndGetNoticeList(params);
-    modelAndView.addObject("resultMap", resultMap);
-    modelAndView.setViewName("admin/admin_notice");
-    return modelAndView;
-  }
-
-  // 공지 추가 + 페이지네이션
-  @RequestMapping(value = "/admin/adminNoticeInsert/{currentPage}", method = RequestMethod.POST)
-  public ModelAndView adminNoticeInsert(MultipartHttpServletRequest multipartHttpServletRequest, @RequestParam Map<String, Object> params, @PathVariable String currentPage, ModelAndView modelAndView) {
-            
+  public ModelAndView adminNoticeUpdate(MultipartHttpServletRequest multipartHttpServletRequest, @RequestParam Map<String, Object> params, @PathVariable String currentPage, ModelAndView modelAndView) {
+                
     Iterator<String> fileNames = multipartHttpServletRequest.getFileNames(); // 파일 이름들 가져옴
-    String absolutePath = commonUtils.getRelativeToAbsolutePath("src/main/resources/static/img/files/") ;
+    String absolutePath = commonUtils.getRelativeToAbsolutePath("src/main/resources/static/files/") ;
     
     Map attachfile = null;
     List attachfiles = new ArrayList();
@@ -163,7 +143,71 @@ public class AdminBoardController {
                 // 이걸 모아서 뭉치로 묶어 params로 넣어야 한다. 3가지를 list로 넣고 각각을 map으로
             // 1. HashMap에 넣어주기
             attachfile = new HashMap<>();
-            attachfile.put("NOTICE_DATE", params.get("NOTICE_DATE"));
+            attachfile.put("NOTICE_TITLE", params.get("NOTICE_TITLE"));
+            attachfile.put("NOTICE_CONTENT", params.get("NOTICE_CONTENT"));
+            attachfile.put("NOTICE_FILE", params.get("NOTICE_FILE"));
+            attachfile.put("NOTICE_ATTACHFILE_SEQ", commonUtils.getUniqueSequence());
+            attachfile.put("NOTICE_ORIGINALFILE_NAME", originalFileName);
+            attachfile.put("NOTICE_PHYSICALFILE_NAME", physicalFileName);
+            attachfile.put("USER_UID", params.get("USER_UID"));
+            
+            // 2. ArrayList로 묶기
+            attachfiles.add(attachfile);
+            
+            } catch (IllegalStateException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    params.put("attachfiles", attachfiles);
+    
+    params.put("currentPage", Integer.parseInt(currentPage));
+    Object resultMap = adminBoardService.updateNoticeAndGetNoticeList(params);
+    modelAndView.addObject("resultMap", resultMap);
+    modelAndView.setViewName("admin/admin_notice");
+    return modelAndView;
+  }
+
+  // 공지 삭제 + 페이지네이션
+  @RequestMapping(value = "/admin/adminNoticeDelete/{currentPage}", method = RequestMethod.POST)
+  public ModelAndView adminNoticeDelete(@RequestParam Map<String, Object> params, @PathVariable String currentPage, ModelAndView modelAndView) {
+    params.put("currentPage", Integer.parseInt(currentPage));
+    Object resultMap = adminBoardService.deleteNoticeAndGetNoticeList(params);
+    modelAndView.addObject("resultMap", resultMap);
+    modelAndView.setViewName("admin/admin_notice");
+    return modelAndView;
+  }
+
+  // 공지 추가 + 페이지네이션
+  @RequestMapping(value = "/admin/adminNoticeInsert/{currentPage}", method = RequestMethod.POST)
+  public ModelAndView adminNoticeInsert(MultipartHttpServletRequest multipartHttpServletRequest, @RequestParam Map<String, Object> params, @PathVariable String currentPage, ModelAndView modelAndView) {
+            
+    Iterator<String> fileNames = multipartHttpServletRequest.getFileNames(); // 파일 이름들 가져옴
+    String absolutePath = commonUtils.getRelativeToAbsolutePath("src/main/resources/static/files/") ;
+    
+    Map attachfile = null;
+    List attachfiles = new ArrayList();
+    String physicalFileName = commonUtils.getUniqueSequence(); // 공통으로 사용하는 거라 while문 밖으로 빼주기
+    String storePath = absolutePath + physicalFileName + File.separator;
+    File newPath = new File(storePath); // 파일 클래스의 mkdir 기능 사용하기 위해
+    newPath.mkdir();    // create directory
+    while(fileNames.hasNext()){ //hasNext --> 다음 값이 있느냐
+        String fileName = fileNames.next();
+        MultipartFile multipartFile =  multipartHttpServletRequest.getFile(fileName); 
+        String originalFileName = multipartFile.getOriginalFilename(); 
+        
+        if(originalFileName != null && multipartFile.getSize() > 0) { // 방어처리
+
+            String storePathFileName = storePath + originalFileName; // 저장할 path 이름
+            try {
+                multipartFile.transferTo(new File(storePathFileName)); // relativePath 경로 설정
+                
+                // SOURCE_UNIQUE_SEQ, ORGINALFILE_NAME, PHYSICALFILE_NAME 이 3가지를 중점적으로 넣어야 한다
+                // 이걸 모아서 뭉치로 묶어 params로 넣어야 한다. 3가지를 list로 넣고 각각을 map으로
+            // 1. HashMap에 넣어주기
+            attachfile = new HashMap<>();
             attachfile.put("NOTICE_TITLE", params.get("NOTICE_TITLE"));
             attachfile.put("NOTICE_CONTENT", params.get("NOTICE_CONTENT"));
             attachfile.put("NOTICE_FILE", params.get("NOTICE_FILE"));

@@ -1,5 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<jsp:useBean id="now" class="java.util.Date" />
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -34,7 +36,7 @@
     
     <%-- admin nav --%>
     <%@ include file="../etc/admin_nav.jsp" %>
-
+    <fmt:formatDate value="${now}" pattern="yyyy-MM-dd" var="todayDateForm" />
       <main class="col-9 p-0 mb-5 ms-5">
         <form action="/admin/adminNoticeInsert/1" method="post" enctype = "multipart/form-data">
           <input type="hidden" name="USER_UID" value="ADMIN" />
@@ -52,7 +54,7 @@
                 <tr>
                   <th scope="" class="bg-secondary bg-opacity-25">작성일</th>
                   <td scope="" name="NOTICE_DATE" class="w-50">
-                  <input type="date" class="form-control" name="NOTICE_DATE" />
+                  ${todayDateForm}
                   </td>
 
                   <th scope="" class="bg-secondary bg-opacity-25">작성자</th>

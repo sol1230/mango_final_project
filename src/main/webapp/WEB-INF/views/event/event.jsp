@@ -69,15 +69,20 @@
             <tr>
               <td scope="">
                 <div class="d-flex align-items-center text-align-center">
-                  <div style="width: 200px; height: 200px; overflow: hidden;" class="">
+                  <div style="width: 200px; height: 200px; overflow: hidden;" class="d-flex align-items-center text-align-center">
                     <a
                       href="/event/eventContent/${resultData.EVENT_UID}"
-                      class="text-decoration-none fw-bold fs-6"
+                      class="text-decoration-none fw-bold fs-6 align-middle"
                       style="color: darkslategrey"
                       >
-                      <img src="/img/files/${resultData.EVENT_PHYSICALFILE_NAME}/${resultData.EVENT_ORIGINALFILE_NAME}" alt="${resultData.EVENT_ORIGINALFILE_NAME}" 
-                      style="width: 200px; heigth: 200px; object-fit: cover;" class=""/></a
-                    >
+                      <c:if test="${resultData.EVENT_PHYSICALFILE_NAME eq null}">
+                        <div class="p-5 text-center fw-normal">이미지없음</div>
+                      </c:if>
+                      <c:if test="${resultData.EVENT_PHYSICALFILE_NAME ne null}">
+                        <img src="/files/${resultData.EVENT_PHYSICALFILE_NAME}/${resultData.EVENT_ORIGINALFILE_NAME}" alt="${resultData.EVENT_ORIGINALFILE_NAME}" 
+                        style="width: 100%; heigth: 100%; object-fit: cover;" class=""/>
+                      </c:if>
+                    </a>
                   </div>
                   <div class="ms-4">
                     <a

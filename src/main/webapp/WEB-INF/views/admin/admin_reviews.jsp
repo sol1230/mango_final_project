@@ -86,9 +86,12 @@
               <c:forEach items="${resultMap.resultList}" var="resultData" varStatus="loop">
                 <tr class="text-center">
                   <td scope="">${loop.count}</td>
-                  <td scope="">${resultData.WINE_NAME}</td>
+                  <td scope=""><a href="#reviewCont${loop.count}" class="text-decoration-none text-black" data-bs-toggle="collapse">
+                    ${resultData.WINE_NAME}</a>
+                  </td>
                   <td scope="" class=""><a href="#reviewCont${loop.count}" class="text-decoration-none text-black" data-bs-toggle="collapse">
-                  ${resultData.REVIEW_TITLE}</a></td>
+                    ${resultData.REVIEW_TITLE}</a>
+                  </td>
                   <td>${resultData.USER_UID}</td>
                   <td>${resultData.REVIEW_SCOPE}</td>
                   <td>${resultData.REVIEW_DATE}</td>

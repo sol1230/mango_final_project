@@ -20,15 +20,17 @@ public class WineDetailsSelectController {
     @Autowired
     WineDetailsSelectService wineDetailsSelectService;
 
-    // Event 수정 화면 출력
+    // 상품 검색, 와인 detail, 검색 order
     @RequestMapping(value = "/wine/wineDetailsSelect/{currentPage}", method = RequestMethod.GET)
     public ModelAndView wineDetailsSelect(HttpServletRequest request, @PathVariable String currentPage, @RequestParam Map<String, Object> params, ModelAndView modelAndView) {
+        String[] WINE_SCOPE_LIST = request.getParameterValues("WINE_SCOPE");
         String[] WINE_TYPE_LIST = request.getParameterValues("WINE_TYPE");
         String[] WINE_COUNTRY_LIST = request.getParameterValues("WINE_COUNTRY");
         String[] WINE_REGION_LIST = request.getParameterValues("WINE_REGION");
         String[] WINE_VARIETY_LIST = request.getParameterValues("WINE_VARIETY");
         String[] WINE_FOOD_PAIRING_LIST = request.getParameterValues("WINE_FOOD_PAIRING");
 
+        params.put("WINE_SCOPE_LIST", WINE_SCOPE_LIST);
         params.put("WINE_TYPE_LIST", WINE_TYPE_LIST);
         params.put("WINE_COUNTRY_LIST", WINE_COUNTRY_LIST);
         params.put("WINE_REGION_LIST", WINE_REGION_LIST);
@@ -42,10 +44,17 @@ public class WineDetailsSelectController {
         // }
         Object resultMap = wineDetailsSelectService.getWinDetailsSelectWithPagination(params);
         Object searchName = params.get("WINESEARCH_NAME");
-        Object searchNameStatus = params.get("selectKeyField");  // select option 상태
+        Object searchWineOrder = params.get("selectKeyField");  // select option 상태
         modelAndView.addObject("resultMap", resultMap);
         modelAndView.addObject("searchName", searchName);
-        modelAndView.addObject("searchNameStatus", searchNameStatus);
+        modelAndView.addObject("searchWineOrder", searchWineOrder);
+        // checkbox checked를 위해 체크한 값 보내기
+        modelAndView.addObject("params", params);
+        // modelAndView.addObject("wineTypeList", WINE_TYPE_LIST);
+        // modelAndView.addObject("wineCountryList", WINE_COUNTRY_LIST);
+        // modelAndView.addObject("wineRegionList", WINE_REGION_LIST);
+        // modelAndView.addObject("wineVarietyList", WINE_VARIETY_LIST);
+        // modelAndView.addObject("wineFoodPairingList", WINE_FOOD_PAIRING_LIST);
         modelAndView.setViewName("wine/wine_details_select");
         return modelAndView;
     }
