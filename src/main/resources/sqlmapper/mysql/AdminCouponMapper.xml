@@ -34,7 +34,7 @@
                 </foreach>
             </when>
             <otherwise>
-            (#{COUPON_FILE}, #{C_ATTACHFILE_SEQ}, #{C_ORIGINALFILE_NAME}, #{C_PHYSICALFILE_NAME}, #{COUPON_NAME}, #{}, DATE(NOW()), #{COUPON_DATETIME1}, #{COUPON_DATETIME2})
+            (#{COUPON_FILE}, #{C_ATTACHFILE_SEQ}, #{C_ORIGINALFILE_NAME}, #{C_PHYSICALFILE_NAME}, #{COUPON_NAME}, DATE(NOW()), #{COUPON_DATETIME1}, #{COUPON_DATETIME2} #{USER_UID})
             </otherwise>
         </choose>
     </insert>
@@ -46,22 +46,19 @@
         INNER JOIN USER
         ON COUPON.USER_UID = USER.USER_UID
         WHERE COUPON_UID = #{COUPON_UID}
-        AND COUPON_NAME = #{COUPON_NAME}
-        AND COUPON_DATE = #{COUPON_DATE}
-        AND COUPON_DATETIME1 = #{COUPON_DATETIME1}
-        AND COUPON_DATETIME2 = #{COUPON_DATETIME2}
     </select>
 
     <!-- AdminCoupon.updateCoupon  -->
     <update id="updateCoupon" parameterType="Map">
         UPDATE COUPON
         SET COUPON_FILE = #{COUPON_FILE},
-            COUPON_NAME = #{COUPON_NAME},
             COUPON_DATETIME1 = #{COUPON_DATETIME1},
             COUPON_DATETIME2 = #{COUPON_DATETIME2},
+            COUPON_NAME = #{COUPON_NAME},
+            C_PHYSICALFILE_NAME = #{C_PHYSICALFILE_NAME},
             C_ATTACHFILE_SEQ = #{C_ATTACHFILE_SEQ},
             C_ORIGINALFILE_NAME = #{C_ORIGINALFILE_NAME},
-            C_PHYSICALFILE_NAME = #{C_PHYSICALFILE_NAME}
+            COUPON_UID = #{COUPON_UID}
         WHERE COUPON_UID = #{COUPON_UID}
     </update>
 

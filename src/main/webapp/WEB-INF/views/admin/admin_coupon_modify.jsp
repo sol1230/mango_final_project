@@ -33,7 +33,10 @@
     <%-- admin nav --%>
     <%@ include file="../etc/admin_nav.jsp" %>
       <main class="col-9 p-0 mb-5 ms-5">
-        <form action="/admin/admin_coupon_update/1" method="post">
+        <form action="/admin/admin_coupon_update/1" method="post" enctype="multipart/form-data">
+          <input type="hidden" name="COUPON_UID" value="${resultMap.COUPON_UID}" />
+          <input type="hidden" name="COUPON_DATE" value="${resultMap.COUPON_DATE}" />
+          <input type="hidden" name="NAME" value="${resultMap.NAME}" />
           <div class="mt-4 p-4 border bg-white">
             <div>
               <label for="" class="form-label fw-bold pe-3 m-0"
@@ -54,7 +57,7 @@
                 </tr>
                 <tr scope="row">
                   <th scope="" class="bg-secondary bg-opacity-25">쿠폰 이름</th>
-                  <td scope="" colspan="">
+                  <td scope="" colspan="3">
                     <input
                       type="text"
                       name="COUPON_NAME"
@@ -62,8 +65,6 @@
                       value="${resultMap.COUPON_NAME}"
                     />
                   </td>
-                  <th scope="" class="bg-secondary bg-opacity-25">쿠폰 코드</th>
-                  <td scope="" colspan="">${resultMap.COUPON_UID}</td>
                 </tr>
                 <tr scope="row">
                   <th scope="" class="bg-secondary bg-opacity-25">쿠폰 기한</th>
@@ -87,17 +88,17 @@
                 </tr>
               </thead>
               <tbody>
-                <c:choose>
-                  <c:when test="${not empty resultMap.C_PHYSICALFILE_NAME}">
+                <%-- <c:choose> --%>
+                  <%-- <c:when test="${not empty resultMap.C_PHYSICALFILE_NAME}"> --%>
                     <tr scope=row>
                       <th class="bg-secondary bg-opacity-25">첨부한 파일</th>
                       <td colspan="3">
-                        <img src="/files/${resultMap.C_PHYSICALFILE_NAME}/${resultMap.C_ORIGINALFILE_NAME}">
+                        <img src="/files/${resultMap.C_PHYSICALFILE_NAME}/${resultMap.C_ORIGINALFILE_NAME}" class="w-25">
                         <input type="file" name="COUPON_FILE" value="${resultMap.COUPON_FILE}" class="form-control" />
                       </td>
                     </tr>
-                  </c:when>
-                </c:choose>
+                  <%-- </c:when> --%>
+                <%-- </c:choose> --%>
               </tbody>
             </table>
             <div class="text-center">
