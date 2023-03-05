@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.mango.mango_final_project.user.model.service.UserService;
 import com.mango.mango_final_project.user.model.vo.User;
 
+
 @Controller
 @RequestMapping(value = "/user")
 public class UserController {
@@ -128,5 +129,17 @@ public class UserController {
 
 		return count > 0 ? "NNNNN" : "NNNNY";
 	}
+  
+  @ResponseBody
+  @RequestMapping("findIdCheck")
+  public User findIdCheck(User user) {
+	  
+	String phone = user.getPhone1() + "-" + user.getPhone2() + "-" + user.getPhone3();
+	user.setPhone(phone);
+	
+	User res =  uService.findIdCheck(user);
+	
+    return res;    
+  }
 	
 }

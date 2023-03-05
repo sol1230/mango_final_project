@@ -53,7 +53,7 @@
         </nav>
       </div>
       <div>
-        <form action="/index" id="changeForm">
+        <form id="changeForm">
           <div class="pt-3">
             <div class="pt-3">
               <label for="" class="pb-1">이름</label>
@@ -69,21 +69,12 @@
               <label for="" class="pb-1">휴대전화</label>
               <div class="row">
                 <div class="col">
-                  <select class="form-select" name="phone0" required>
+                  <select class="form-select" name="phone1" id ="phone1" required>
                     <option>선택</option>
                     <option value="010">010</option>
                     <option value="012">012</option>
                     <option value="013">013</option>
                   </select>
-                </div>
-                <div class="col">
-                  <input
-                    type="text"
-                    name="phone1"
-                    id="phone1"
-                    class="form-control rounded mb-2"
-                    required
-                  />
                 </div>
                 <div class="col">
                   <input
@@ -94,16 +85,24 @@
                     required
                   />
                 </div>
+                <div class="col">
+                  <input
+                    type="text"
+                    name="phone3"
+                    id="phone3"
+                    class="form-control rounded mb-2"
+                    required
+                  />
+                </div>
               </div>
             </div>
           </div>
           <div class="mt-5 mb-5 text-center">
-            <a
-              href="/signup_N_login/login_find"
+            <button type="button" onclick="check();"
               class="btn btn-danger btn-lg w-25 text-decoration-none text-white"
             >
               확인
-            </a>
+            </button>
           </div>
         </form>
       </div>
@@ -112,10 +111,56 @@
     <%-- footer --%>
     <%@ include file="../etc/footer.jsp" %>
 
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-      crossorigin="anonymous"
-    ></script>
+    <script>
+    	function check(){
+    		$.ajax({
+				url:"/user/findIdCheck",
+				type:"post",
+				data:{
+					name:$("#name").val(),
+					phone1:$("#phone1").val(),
+					phone2:$("#phone2").val(),
+					phone3:$("#phone3").val()
+				},
+				success:function(result){
+					if(!result){
+						return new swal({
+							title:"일치하는 회원 정보가 없습니다.",
+							icon:"error",
+							closeOnClickOutside:false
+						})
+						.then((value) => {
+							if(value){
+								return false;
+							}
+						})
+						
+					}else{
+						return new Swal({
+							  icon: 'success',
+							  title: result.name+' 님의 아이디는 '+result.user_uid+' 입니다',
+							  footer: '<a href="/signup_N_login/login_find_password">비밀번호를 찾으시겠습니까?</a>'
+							})
+						.then((value) => {
+							if(value){
+								return false;
+							}
+						})
+					}
+				},error:function(){
+					return new swal({
+						title:"실패",
+						icon:"error",
+						closeOnClickOutside:false
+					})
+					.then((value) => {
+						if(value){
+							return false;
+						}
+					})
+				}
+			})
+    	}
+    </script>
   </body>
 </html>
