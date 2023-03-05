@@ -256,7 +256,7 @@
           {
             "name": "WINE_ALCOHOL_DEGREE",
             "comment": "와인도수",
-            "dataType": "VARCHAR(100)",
+            "dataType": "FLOAT",
             "default": "",
             "option": {
               "autoIncrement": false,
@@ -271,7 +271,7 @@
               "pfk": false,
               "widthName": 167.4326171875,
               "widthComment": 60,
-              "widthDataType": 94.94873046875,
+              "widthDataType": 60,
               "widthDefault": 60
             },
             "id": "c8102c85-9f1f-4a15-a416-4dc4dca5d0b5"
@@ -462,10 +462,10 @@
           }
         ],
         "ui": {
-          "active": false,
+          "active": true,
           "left": 40.3336,
           "top": 104.6668,
-          "zIndex": 6,
+          "zIndex": 8,
           "widthName": 60,
           "widthComment": 60
         },

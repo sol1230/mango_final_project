@@ -308,13 +308,41 @@
             </tr>
             <tr>
               <th>알코올</th>
-              <td>
-                <span class="label" style="background: #dfb8b8"
-                  >낮음(~11%)</span
-                >
-              </td>
-              <td>중간(12~13%)</td>
-              <td>높음(14%~)</td>
+              <c:choose>
+                <c:when test="${resultMap.WINE_ALCOHOL_DEGREE <= 11.0}">
+                  <td>
+                    <span class="label" style="background: #dfb8b8"
+                      >낮음(~11%)</span
+                    >
+                  </td>
+                  <td>중간(12~13%)</td>
+                  <td>높음(14%~)</td>
+                </c:when>
+                <c:when test="${resultMap.WINE_ALCOHOL_DEGREE >= 12.0 && resultMap.WINE_ALCOHOL_DEGREE <= 13.0}">
+                  <td>
+                    낮음(~11%)
+                  </td>
+                  <td>
+                    <span class="label" style="background: #dfb8b8"
+                      >중간(12~13%)</span
+                    >
+                  </td>
+                  <td>높음(14%~)</td>
+                </c:when>
+                <c:otherwise>
+                  <td>
+                    낮음(~11%)
+                  </td>
+                  <td>
+                    중간(12~13%)
+                  </td>
+                  <td>
+                    <span class="label" style="background: #dfb8b8"
+                      >높음(14%~)</span
+                    >
+                  </td>
+                </c:otherwise>
+              </c:choose>
             </tr>
           </table>
         </div>

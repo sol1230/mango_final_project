@@ -3,9 +3,9 @@
     "version": "2.2.11",
     "width": 2200,
     "height": 2200,
-    "scrollTop": -395.2000000000003,
-    "scrollLeft": -100.39999999999999,
-    "zoomLevel": 0.9,
+    "scrollTop": -739.2000000000003,
+    "scrollLeft": 0,
+    "zoomLevel": 1,
     "show": {
       "tableComment": true,
       "columnComment": true,
@@ -504,7 +504,7 @@
           "active": false,
           "left": 582.0437,
           "top": 420.2374,
-          "zIndex": 14,
+          "zIndex": 9,
           "widthName": 60,
           "widthComment": 60
         },
@@ -1887,7 +1887,7 @@
             "id": "28c8f0cd-89d2-41ea-837a-2efa672909ec",
             "name": "WINE_ALCOHOL_DEGREE",
             "comment": "와인도수",
-            "dataType": "VARCHAR(100)",
+            "dataType": "FLOAT",
             "default": "",
             "option": {
               "autoIncrement": false,
@@ -1902,7 +1902,7 @@
               "pfk": false,
               "widthName": 167.4326171875,
               "widthComment": 60,
-              "widthDataType": 94.94873046875,
+              "widthDataType": 60,
               "widthDefault": 60
             }
           },
@@ -2093,9 +2093,9 @@
         ],
         "ui": {
           "active": false,
-          "left": 49.2001,
+          "left": 50.2001,
           "top": 780.1999,
-          "zIndex": 7,
+          "zIndex": 20,
           "widthName": 60,
           "widthComment": 60
         },
@@ -2157,7 +2157,7 @@
           "active": false,
           "left": 612.8385,
           "top": 710.3428,
-          "zIndex": 9,
+          "zIndex": 8,
           "widthName": 63.39453125,
           "widthComment": 67
         },
@@ -2233,7 +2233,7 @@
           "columnIds": [
             "32a6d0f4-2dd3-4134-b5f5-71613035071c"
           ],
-          "x": 571.58144765625,
+          "x": 572.58144765625,
           "y": 1108.6999,
           "direction": "right"
         },
@@ -2363,7 +2363,7 @@
           "columnIds": [
             "32a6d0f4-2dd3-4134-b5f5-71613035071c"
           ],
-          "x": 310.390773828125,
+          "x": 311.390773828125,
           "y": 1218.1999,
           "direction": "bottom"
         },
@@ -2389,7 +2389,7 @@
           "columnIds": [
             "32a6d0f4-2dd3-4134-b5f5-71613035071c"
           ],
-          "x": 310.390773828125,
+          "x": 311.390773828125,
           "y": 780.1999,
           "direction": "top"
         },
@@ -2441,7 +2441,7 @@
           "columnIds": [
             "32a6d0f4-2dd3-4134-b5f5-71613035071c"
           ],
-          "x": 571.58144765625,
+          "x": 572.58144765625,
           "y": 889.6999,
           "direction": "right"
         },
