@@ -1,4 +1,4 @@
-package com.mango.mango_final_project.Controller;
+package com.mango.mango_final_project.controller;
 
 import javax.servlet.http.HttpSession;
 

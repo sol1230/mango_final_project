@@ -82,6 +82,7 @@
                     name="phone2"
                     id="phone2"
                     class="form-control rounded mb-2"
+                    maxlength="4"
                     required
                   />
                 </div>
@@ -91,6 +92,7 @@
                     name="phone3"
                     id="phone3"
                     class="form-control rounded mb-2"
+                    maxlength="4"
                     required
                   />
                 </div>

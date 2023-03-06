@@ -35,11 +35,11 @@
     <!-- 본 페이지 content -->
     <div class="container" style="width: 40rem">
       <div class="fs-4 fw-bold text-center pt-5">회원가입</div>
-      <form>
+      <form id="enrollForm">
         <div class="pt-3">
           <div class="">
             <label for="user_uid" class="pb-1">아이디</label>
-            <input type="text" class="form-control" name="user_uid" id="user_uid" required />
+            <input type="text" class="form-control" name="user_uid" id="user_uid" required placeholder="4글자 이상 입력해주세요." />
             <div id="checkResult" style="font-size:0.8em; display:none"></div>
           </div>
           <div class="pt-3">
@@ -218,6 +218,46 @@ function insert(){
 				}
 			})
 	}
+
+  $(function(){
+    		// 아이디 입력하는 input 요소 객체 변수에 담아두기
+    		const $idInput = $("#enrollForm input[name=user_uid]");
+    		
+    		$idInput.keyup(function(){
+    			// console.log($idInput.val());
+    			// 최소 네글자 이상으로 입력이 됐을 때만 ajax 요청해서 중복체크
+    			if($idInput.val().length >= 4){
+    				
+    				$.ajax({
+    					url:"/user/idCheck",
+    					data:{checkId:$idInput.val()},
+    					success:function(result){
+    						
+    						if(result == "NNNNN"){ // 사용 불가능
+    							// => 빨간색 메세지 (사용 불가능) 출력
+    							$("#checkResult").show();
+    							$("#checkResult").css("color", "red").text("중복된 아이디가 존재합니다. 다시 입력해주세요.");
+    							// => 버튼 비활성화
+    							$("#enrollForm :submit").attr("disabled", true)
+    						}else { // 사용가능
+    							// => 초록색 메세지 (사용가능)
+    							$("#checkResult").show();
+    							$("#checkResult").css("color", "green").text("사용 가능한 아이디 입니다.");
+    							// => 버튼 활성화
+    							$("#enrollForm :submit").removeAttr("disabled");
+    						}
+    						
+    					}, error:function(){
+    						console.log("아이디 중복체크용 ajax 통신 실패");
+    					}
+    				});
+    				
+    			}else{ // 5글자 미만일 경우 => 버튼 비활성화, 메세지 숨기기
+    				$("#checkResult").hide();
+    				$("#enrollForm :submit").attr("disabled", true)
+    			}
+    		})
+    	})
     	
     </script>
 

@@ -112,7 +112,7 @@ public class UserController {
   }
 
   @ResponseBody
-	@RequestMapping("idCheck.me")
+	@RequestMapping("idCheck")
 	public String idCheck(String checkId) {
 		int count = uService.idCheck(checkId);
 		
