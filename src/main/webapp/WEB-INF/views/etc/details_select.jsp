@@ -662,26 +662,28 @@
         </div>
       </div>
       <script>
-        $(function () {
-          $("#detailSelectFromButton").click(function() {
-            // WINE_SCOPE 배열로 만들어 max, min 추출
-            var wine_scope_value = [];
-            $('input:checkbox[name="WINE_SCOPE"]:checked').each(function(){
-                wine_scope_value.push($(this).val());
-            });
-            var wine_scope_max = Math.max.apply(null, wine_scope_value);
-            var wine_scope_min = Math.min.apply(null, wine_scope_value);
-            if(wine_scope_value.length != 0){
-              if(wine_scope_max == wine_scope_min) {
-                wine_scope_max = wine_scope_min + 0.9
-              } else {
-                wine_scope_max = wine_scope_max + 0.9
-              }
-              $("#wineDetailsSelect").append("<input type='hidden' value="+ wine_scope_max +" name='WINE_SCOPE_MAX'>");
-              $("#wineDetailsSelect").append("<input type='hidden' value="+ wine_scope_min +" name='WINE_SCOPE_MIN'>");
-            }
-          });
-        });
+        // $(function () {
+        //   $("#detailSelectFromButton").click(function() {
+        //     // WINE_SCOPE 배열로 만들어 max, min 추출
+        //     var wine_scope_value = [];
+        //     $('input:checkbox[name="WINE_SCOPE"]:checked').each(function(){
+        //         wine_scope_value.push($(this).val());
+        //     });
+        //     var wine_scope_max = Math.max.apply(null, wine_scope_value);
+        //     var wine_scope_min = Math.min.apply(null, wine_scope_value);
+        //     if(wine_scope_value.length != 0){
+        //       if(wine_scope_max == wine_scope_min) {
+        //         wine_scope_max = wine_scope_min + 1
+        //       } else {
+        //         wine_scope_max = wine_scope_max + 1
+        //       }
+        //       $("#wineDetailsSelect").append("<input type='hidden' value="+ wine_scope_max +" name='WINE_SCOPE_MAX'>");
+        //       $("#wineDetailsSelect").append("<input type='hidden' value="+ wine_scope_min +" name='WINE_SCOPE_MIN'>");
+        //       $("#detailSelectFrom").append("<input type='hidden' value="+ wine_scope_max +" name='WINE_SCOPE_MAX'>");
+        //       $("#detailSelectFrom").append("<input type='hidden' value="+ wine_scope_min +" name='WINE_SCOPE_MIN'>");
+        //     }
+        //   });
+        // });
         
         <c:forEach items="${params.WINE_SCOPE_LIST}" var="wineScope" varStatus="loop">
           $("input:checkbox[name='WINE_SCOPE']:checkbox[value='${wineScope}']").prop('checked', true);

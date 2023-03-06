@@ -15,7 +15,7 @@
             AND WINE_PRICE <![CDATA[ <= ]]> #{WINE_PRICE}
         </if>
         <if test = "WINE_SCOPE_MAX != null and WINE_SCOPE_MIN != null">
-            AND WINE_SCOPE BETWEEN #{WINE_SCOPE_MIN} AND #{WINE_SCOPE_MAX}
+            AND (WINE_SCOPE <![CDATA[ >= ]]> #{WINE_SCOPE_MIN} AND WINE_SCOPE <![CDATA[ < ]]> #{WINE_SCOPE_MAX})
         </if>
         <if test = "WINE_TYPE_LIST != null">
             AND WINE_TYPE IN
@@ -91,7 +91,7 @@
             AND WINE_PRICE <![CDATA[ <= ]]> #{WINE_PRICE}
         </if>
         <if test = "WINE_SCOPE_MAX != null and WINE_SCOPE_MIN != null">
-            AND WINE_SCOPE BETWEEN #{WINE_SCOPE_MIN} AND #{WINE_SCOPE_MAX}
+            AND (WINE_SCOPE <![CDATA[ >= ]]> #{WINE_SCOPE_MIN} AND WINE_SCOPE <![CDATA[ < ]]> #{WINE_SCOPE_MAX})
         </if>
         <if test = "WINE_TYPE_LIST != null">
             AND WINE_TYPE IN
