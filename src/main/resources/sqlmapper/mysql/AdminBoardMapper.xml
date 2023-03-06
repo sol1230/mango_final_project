@@ -33,11 +33,11 @@
         UPDATE QNA
         SET 
         <choose>
-            <when test="QNA_ANSWER != ''">
+            <when test="QNA_ANSWER != null and QNA_ANSWER != ''">
                 QNA_ANSWER = #{QNA_ANSWER}, ANSWER_STATUS = '답변완료'
             </when>
             <otherwise>
-                ANSWER_STATUS = '답변완료'
+                QNA_ANSWER = #{QNA_ANSWER}
             </otherwise>
         </choose>
         WHERE USER_UID = #{USER_UID} AND QNA_TITLE = #{QNA_TITLE} AND QNA_CONTENT = #{QNA_CONTENT}

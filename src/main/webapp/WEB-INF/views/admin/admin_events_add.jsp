@@ -67,6 +67,7 @@
                       id="EVENT_TITLE"
                       class="form-control"
                       placeholder="제목을 입력해 주세요."
+                      required
                     />
                   </td>
                 </tr>
@@ -78,6 +79,7 @@
                       name="EVENT_START"
                       id="EVENT_START"
                       class="form-control"
+                      required
                     />
                   </td>
                   <td>
@@ -89,6 +91,7 @@
                       name="EVENT_END"
                       id="EVENT_END"
                       class="form-control"
+                      required
                     />
                   </td>
                 </tr>
@@ -103,6 +106,7 @@
                       id="EVENT_CONTENT"
                       cols="30"
                       rows="10"
+                      required
                     ></textarea>
                   </td>
                 </tr>

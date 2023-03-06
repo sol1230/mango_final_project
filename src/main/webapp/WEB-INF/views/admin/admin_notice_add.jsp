@@ -69,6 +69,7 @@
                       id="NOTICE_TITLE"
                       class="form-control"
                       placeholder="제목을 입력해 주세요."
+                      required
                     />
                   </td>
                 </tr>
@@ -83,6 +84,7 @@
                       id="NOTICE_CONTENT"
                       cols="30"
                       rows="10"
+                      required
                     ></textarea>
                   </td>
                 </tr>
