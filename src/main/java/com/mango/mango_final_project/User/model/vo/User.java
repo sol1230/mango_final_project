@@ -28,6 +28,14 @@ public class User {
     private String post;
     private String address;
     private String addressDetail;
-
+    
+    private String number;
+    private String review_uid;
+    private String review_title;
+    private String review_scope;
+    private String review_date;
+    private String review_content;
+    private String wine_uid;
+    private String wine_name;
 
 }

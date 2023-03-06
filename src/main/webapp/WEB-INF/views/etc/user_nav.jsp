@@ -22,7 +22,7 @@
             </li>
             <li class="d-flex align-items-center">
               <a
-                href="/user/user_review_modify"
+                href="/user/myReview"
                 class="text-decoration-none nav-link"
                 >내가 쓴 리뷰</a
               >

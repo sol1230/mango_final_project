@@ -123,5 +123,20 @@ set
   where user_uid = #{user_uid}
 </update>
 
+<!-- 리뷰 갖고오기 -->
+<select id="selectReview"
+ parameterType="com.mango.mango_final_project.user.model.vo.User"
+ resultType="com.mango.mango_final_project.user.model.vo.User">
+select
+  @ROWNUM := @ROWNUM + 1 AS NUMBER,
+  A.*,
+  B.WINE_NAME
+from review A
+left outer join wine B
+ on A.wine_uid = B.wine_uid
+where user_uid = #{user_uid}
+  and (@ROWNUM:=0) =0
+</select>
+
 
 </mapper>

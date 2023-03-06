@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+import java.util.ArrayList;
 
 import com.mango.mango_final_project.user.model.service.UserService;
 import com.mango.mango_final_project.user.model.vo.User;
@@ -163,6 +165,18 @@ public class UserController {
       
       return "F2";
     }
+  }
+
+  @RequestMapping("myReview")
+  public ModelAndView myReview(ModelAndView mv, HttpSession session){
+    User user = new User();
+    user.setUser_uid(((User) session.getAttribute("loginUser")).getUser_uid());
+    ArrayList<User> list = uService.selectReview(user);
+
+    mv.addObject("list", list)
+    .setViewName("user/user_review_modify");
+    
+    return mv;
   }
 	
 }

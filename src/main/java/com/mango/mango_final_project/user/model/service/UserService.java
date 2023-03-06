@@ -1,5 +1,7 @@
 package com.mango.mango_final_project.user.model.service;
 
+import java.util.ArrayList;
+
 import com.mango.mango_final_project.user.model.vo.User;
 
 public interface UserService {
@@ -29,4 +31,6 @@ public interface UserService {
      // 비밀번호 변경 서비스 (update)
      int changePwd(User user);
 
+     // 리뷰 서비스 (select)
+     ArrayList<User> selectReview(User user);
 }

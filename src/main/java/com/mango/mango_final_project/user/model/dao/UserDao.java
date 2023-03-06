@@ -3,6 +3,7 @@ package com.mango.mango_final_project.user.model.dao;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import java.util.ArrayList;
 
 import com.mango.mango_final_project.user.model.vo.User;
 
@@ -40,6 +41,10 @@ public class UserDao {
 
     public int changePwd(SqlSessionTemplate sqlSession, User user){
         return sqlSession.update("userMapper.changePwd", user);
+    }
+
+    public ArrayList<User> selectReview(SqlSessionTemplate sqlSession, User user){
+        return (ArrayList)sqlSession.selectList("userMapper.selectReview", user);
     }
 
 }

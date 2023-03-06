@@ -1,5 +1,7 @@
 package com.mango.mango_final_project.user.model.service;
 
+import java.util.ArrayList;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -61,6 +63,12 @@ public class UserServiceImpl implements UserService {
     public int changePwd(User user) {
         int changePwd = uDao.changePwd(sqlSession, user);
         return changePwd;
+    }
+
+    @Override
+    public ArrayList<User> selectReview(User user) {
+        ArrayList<User> selectReview = uDao.selectReview(sqlSession, user);
+        return selectReview;
     }
     
 
