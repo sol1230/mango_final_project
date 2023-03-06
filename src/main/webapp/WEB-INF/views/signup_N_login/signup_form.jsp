@@ -39,7 +39,7 @@
         <div class="pt-3">
           <div class="">
             <label for="user_uid" class="pb-1">아이디</label>
-            <input type="text" class="form-control" name="user_uid" id="user_uid" required placeholder="4글자 이상 입력해주세요." />
+            <input type="text" class="form-control" name="user_uid" id="user_uid"  placeholder="4글자 이상 입력해주세요." required />
             <div id="checkResult" style="font-size:0.8em; display:none"></div>
           </div>
           <div class="pt-3">
@@ -225,8 +225,8 @@ function insert(){
     		
     		$idInput.keyup(function(){
     			// console.log($idInput.val());
-    			// 최소 네글자 이상으로 입력이 됐을 때만 ajax 요청해서 중복체크
-    			if($idInput.val().length >= 4){
+    			// 최소 다섯글자 이상으로 입력이 됐을 때만 ajax 요청해서 중복체크
+    			if($idInput.val().length >= 5){
     				
     				$.ajax({
     					url:"/user/idCheck",
@@ -252,7 +252,7 @@ function insert(){
     					}
     				});
     				
-    			}else{ // 5글자 미만일 경우 => 버튼 비활성화, 메세지 숨기기
+    			}else{ // 4글자 미만일 경우 => 버튼 비활성화, 메세지 숨기기
     				$("#checkResult").hide();
     				$("#enrollForm :submit").attr("disabled", true)
     			}
