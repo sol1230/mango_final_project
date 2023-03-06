@@ -1,4 +1,4 @@
-package com.mango.mango_final_project.controller;
+package com.mango.mango_final_project.Controller;
 
 import java.util.ArrayList;
 import java.util.Map;
