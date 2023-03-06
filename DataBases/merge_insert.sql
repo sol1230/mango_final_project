@@ -146,3 +146,9 @@ VALUES ('좋아용', '4.5', '2023-02-11', '맛있어요 굳굳','sky', '6'),
 ('쏘쏘', '4.0', '2023-02-15', '나쁘지 않아여', 'Hiru', '5'),
 ('괜찮아요!', '4.5', '2023-02-15', '기대 안했는데 맛있어요!!', 'alwls', '3')
 ;
+
+INSERT INTO COUPON (COUPON_FILE, C_ATTACHFILE_SEQ, C_ORIGINALFILE_NAME, C_PHYSICALFILE_NAME, COUPON_NAME, COUPON_DATE, COUPON_DATETIME1, COUPON_DATETIME2, USER_UID)
+VALUES (NULL, NULL, NULL, NULL, '배송쿠폰', DATE(NOW()), '2023.03.02', '2023.03.08', 'ADMIN'),
+		(NULL, NULL, NULL, NULL, '할인쿠폰', DATE(NOW()), '2023.03.04', '2023.03.10', 'ADMIN'),
+        (NULL, NULL, NULL, NULL, '봄 맞이 배송 할인쿠폰', DATE(NOW()), '2023.03.10', '2023.04.10', 'ADMIN')
+;
