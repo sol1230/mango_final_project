@@ -39,7 +39,7 @@
         <div class="pt-3">
           <div class="">
             <label for="user_uid" class="pb-1">아이디</label>
-            <input type="text" class="form-control" name="user_uid" id="user_uid"  placeholder="4글자 이상 입력해주세요." required />
+            <input type="text" class="form-control" name="user_uid" id="user_uid"  placeholder="다섯 글자 이상 입력해주세요." required />
             <div id="checkResult" style="font-size:0.8em; display:none"></div>
           </div>
           <div class="pt-3">
