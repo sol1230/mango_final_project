@@ -484,10 +484,58 @@
                 <div class="fw-bold">
                   ${resultData.USER_UID}
                   <span class="ms-3">
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i
-                    ><i class="bi bi-star"></i>
+                    <c:choose>
+                    <c:when test="${resultData.REVIEW_SCOPE lt 1.0}">
+                      <i class="bi bi-star-half"></i><i class="bi bi-star"></i
+                      ><i class="bi bi-star"></i><i class="bi bi-star"></i
+                      ><i class="bi bi-star"></i>
+                    </c:when>
+                    <c:when test="${resultData.REVIEW_SCOPE eq 1.0}">
+                      <i class="bi bi-star-fill"></i><i class="bi bi-star"></i
+                      ><i class="bi bi-star"></i><i class="bi bi-star"></i
+                      ><i class="bi bi-star"></i>
+                    </c:when>
+                    <c:when test="${resultData.REVIEW_SCOPE gt 1.0 && resultData.REVIEW_SCOPE lt 2.0}">
+                      <i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i
+                      ><i class="bi bi-star"></i><i class="bi bi-star"></i
+                      ><i class="bi bi-star"></i>
+                    </c:when>
+                    <c:when test="${resultData.REVIEW_SCOPE eq 2.0}">
+                      <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i
+                      ><i class="bi bi-star"></i><i class="bi bi-star"></i
+                      ><i class="bi bi-star"></i>
+                    </c:when>
+                    <c:when test="${resultData.REVIEW_SCOPE gt 2.0 && resultData.REVIEW_SCOPE lt 3.0}">
+                      <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i
+                      ><i class="bi bi-star-half"></i><i class="bi bi-star"></i
+                      ><i class="bi bi-star"></i>
+                    </c:when>
+                    <c:when test="${resultData.REVIEW_SCOPE eq 3.0}">
+                      <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i
+                      ><i class="bi bi-star-fill"></i><i class="bi bi-star"></i
+                      ><i class="bi bi-star"></i>
+                    </c:when>
+                    <c:when test="${resultData.REVIEW_SCOPE gt 3.0 && resultData.REVIEW_SCOPE lt 4.0}">
+                      <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i
+                      ><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i
+                      ><i class="bi bi-star"></i>
+                    </c:when>
+                    <c:when test="${resultData.REVIEW_SCOPE eq 4.0}">
+                      <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i
+                      ><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i
+                      ><i class="bi bi-star"></i>
+                    </c:when>
+                    <c:when test="${resultData.REVIEW_SCOPE gt 4.0 && resultData.REVIEW_SCOPE lt 5.0}">
+                      <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i
+                      ><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i
+                      ><i class="bi bi-star-half"></i>
+                    </c:when>
+                    <c:otherwise>
+                      <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i
+                      ><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i
+                      ><i class="bi bi-star-fill"></i>
+                    </c:otherwise>
+                  </c:choose>
                   </span>
                 </div>
                 <div class="mt-2">
