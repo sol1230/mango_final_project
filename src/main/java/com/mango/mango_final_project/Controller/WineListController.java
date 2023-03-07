@@ -33,7 +33,6 @@ public class WineListController {
     public ModelAndView wineList(@RequestParam Map<String, Object> params
             , @PathVariable String currentPage, ModelAndView modelAndView) {
         params.put("currentPage", Integer.parseInt(currentPage));
-        params.put("pageScale", 10);
         Object resultMap = wineService.wineListWithPagination(params);
         modelAndView.addObject("resultMap", resultMap);
         modelAndView.setViewName("wine/wine_list");

@@ -33,6 +33,7 @@ public class WineListService {
     Paginations paginations = new Paginations(totalCount, currentPage);
     result.put("paginations", paginations);
     ((Map<String, Object>) dataMap).put("pageBegin", paginations.getPageBegin());
+    ((Map<String, Object>) dataMap).put("pageScale", paginations.getPageScale());
     result.put("resultList", this.wineList(dataMap));
     return result;
   }

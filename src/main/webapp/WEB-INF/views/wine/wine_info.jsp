@@ -526,10 +526,10 @@
             <c:forEach items="${resultQNAList}" var="resultData" varStatus="loop">
               <tr>
                 <td>${resultData.QNA_NO}</td>
-                <td>${resultData.ANSWER.STATUS}</td>
+                <td>${resultData.ANSWER_STATUS}</td>
                 <td><a href="#"> 탄닌 관련 문의</a></td>
                 <td>${resultData.USER_UID}</td>
-                <td>${resultData.QNA_ANSWER_DATE}</td>
+                <td>${resultData.QNA_DATE}</td>
               </tr>
             </c:forEach>
           </tbody>
