@@ -34,7 +34,7 @@
                 </foreach>
             </when>
             <otherwise>
-            (#{COUPON_FILE}, #{C_ATTACHFILE_SEQ}, #{C_ORIGINALFILE_NAME}, #{C_PHYSICALFILE_NAME}, #{COUPON_NAME}, DATE(NOW()), #{COUPON_DATETIME1}, #{COUPON_DATETIME2} #{USER_UID})
+            (#{COUPON_FILE}, #{C_ATTACHFILE_SEQ}, #{C_ORIGINALFILE_NAME}, #{C_PHYSICALFILE_NAME}, #{COUPON_NAME}, DATE(NOW()), #{COUPON_DATETIME1}, #{COUPON_DATETIME2}, #{USER_UID})
             </otherwise>
         </choose>
     </insert>
