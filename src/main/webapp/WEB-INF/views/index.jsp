@@ -99,9 +99,9 @@
         <div class="card me-4">
           <img src="../img/디아블로 카베르네 소비뇽 할로윈.PNG" alt="" />
           <div class="card-body border-0">
-            <h5 class="card-title">디아블로 카베르네 소비뇽 할로윈</h5>
+            <h5 class="card-title">디아블로 카베르네 소비뇽</h5>
             <p style="font-size: small">
-              Diablo Cabernet Sauvignon Halloween Limited Edition
+              Diablo Cabernet Sauvignon
             </p>
             <span
               class="badge badge-pill"
@@ -119,7 +119,7 @@
               >카베르네 소비뇽</span
             >
             <div>
-              <a href="#" class="btn btn-outline-danger mt-3">더보기</a>
+              <a href="/wine/wine_info/Casillero%20del%20Diablo%20Cabernet%20Sauvignon" class="btn btn-outline-danger mt-3">더보기</a>
             </div>
           </div>
         </div>
@@ -143,7 +143,7 @@
             >
             <br />
             <div>
-              <a href="#" class="btn btn-outline-danger mt-3">더보기</a>
+              <a href="/wine/wine_info/CECI%20GIUSEPPE%20VERDI%20LAMBRUSCO%20MEDIUM%20DRY" class="btn btn-outline-danger mt-3">더보기</a>
             </div>
           </div>
         </div>
@@ -165,7 +165,7 @@
             >
             <br />
             <div>
-              <a href="#" class="btn btn-outline-danger mt-3">더보기</a>
+              <a href="/wine/wine_info/Lindeman%20Porphyry%20Blanc" class="btn btn-outline-danger mt-3">더보기</a>
             </div>
           </div>
         </div>
@@ -191,7 +191,7 @@
               >샤르도네</span
             >
             <div>
-              <a href="#" class="btn btn-outline-danger mt-3">더보기</a>
+              <a href="/wine/wine_info/Tenshen%20Chardonnay" class="btn btn-outline-danger mt-3">더보기</a>
             </div>
           </div>
         </div>
