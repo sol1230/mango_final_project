@@ -74,29 +74,27 @@
           <nav aria-label="Page navigation example">
             <c:set var="_pagination" value="${resultMap.paginations}" />
           <span>총 ${resultMap.paginations.totalCount}개 상품</span>
-          <form action="/wine/wineSelect/1" method="get">
           <span class="float-end">
             <select
               class="form-select"
-              name="select"
+              name="selectKeyField"
               id=""
               style="color: #e06767"
               onchange="this.form.submit()"
             >
               <option value="0">선택하기</option>
-              <option value="latest" <c:if test = "${selectName eq 'latest'}">selected</c:if>>최신순</option>
-              <option value="rowPrice" <c:if test = "${selectName eq 'rowPrice'}">selected</c:if>>낮은 가격순</option>
-              <option value="highPrice" <c:if test = "${selectName eq 'highPrice'}">selected</c:if>>높은 가격순</option>
-              <option value="popular" <c:if test = "${selectName eq 'popular'}">selected</c:if>>인기순</option>
+              <option value="latest" <c:if test = "${searchWineOrder eq 'latest'}">selected</c:if>>최신순</option>
+              <option value="rowPrice" <c:if test = "${searchWineOrder eq 'rowPrice'}">selected</c:if>>낮은 가격순</option>
+              <option value="highPrice" <c:if test = "${searchWineOrder eq 'highPrice'}">selected</c:if>>높은 가격순</option>
+              <option value="popular" <c:if test = "${searchWineOrder eq 'popular'}">selected</c:if>>인기순</option>
             </select>
           </span>
-          </form>
         </div>
-        <ul class="row">
+        <ul class="row row-cols-5 ps-2">
           <c:forEach items="${resultMap.resultList}" var="resultData" varStatus="loop">
           <c:choose>
             <c:when test="${resultData.WINE_TYPE eq '레드'}">
-              <li class="col-3" style="list-style: none">
+              <li class="col" style="list-style: none">
               <div class="item me-0" style="text-align: center; width: 230px">
                 <div
                   class=""
@@ -141,7 +139,7 @@
             </li>
             </c:when>
             <c:when test="${resultData.WINE_TYPE eq '화이트'}">
-              <li class="col-3" style="list-style: none">
+              <li class="col" style="list-style: none">
             <div class="item" style="text-align: center; width: 230px">
               <div
                 class=""
@@ -183,7 +181,7 @@
           </li>
             </c:when>
             <c:when test="${resultData.WINE_TYPE eq '로제'}">
-              <li class="col-3" style="list-style: none">
+              <li class="col" style="list-style: none">
             <div class="item" style="text-align: center; width: 230px">
               <div
                 class=""
@@ -225,7 +223,7 @@
           </li>
             </c:when>
             <c:otherwise>
-              <li class="col-3" style="list-style: none">
+              <li class="col" style="list-style: none">
                  <div class="item" style="text-align: center; width: 230px">
                  <div
                    class=""
