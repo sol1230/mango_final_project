@@ -69,10 +69,10 @@
           >
           </c:when>
           
-          <%-- 로그인 후 --%>
+       
 
           <c:otherwise>
-            <c:if test="${loginUser.authority eq 'USER'}">
+            <c:if test="${loginUser.AUTHORITY eq 'USER'}">
             <a
               href="/user/myPage"
               class="nav-link link-dark"
@@ -81,7 +81,7 @@
               ></a
             >
             </c:if>
-            <c:if test="${loginUser.authority eq 'ADMIN'}">
+            <c:if test="${loginUser.AUTHORITY eq 'ADMIN'}">
             <a
               href="/admin/admin_users/1"
               class="nav-link link-dark"
@@ -167,8 +167,8 @@
 				url:"/login",
 				type:"post",
 				data:{
-					user_uid:$("#loginId").val(),
-					password:$("#loginPwd").val()
+					USER_UID:$("#loginId").val(),
+					PASSWORD:$("#loginPwd").val()
 				},
 				success:function(result){
 					
