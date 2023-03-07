@@ -127,11 +127,11 @@
 				url:"/user/findPwdCheck",
 				type:"post",
 				data:{
-          user_uid:$("#user_uid").val(),
-					name:$("#name").val(),
-					phone1:$("#phone1").val(),
-					phone2:$("#phone2").val(),
-					phone3:$("#phone3").val()
+          USER_UID:$("#user_uid").val(),
+					NAME:$("#name").val(),
+					PHONE1:$("#phone1").val(),
+					PHONE2:$("#phone2").val(),
+					PHONE3:$("#phone3").val()
 				},
 				success:function(result){
 					if(!result){

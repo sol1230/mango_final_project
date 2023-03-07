@@ -284,7 +284,7 @@
       </div> --%>
       <ul class="pagination pagination-sm justify-content-center mt-5">
         <li class="page-item">
-          <a class="page-link" href="#" aria-label="Previous">
+          <a class="page-link" href="/wine/${_pagination.previousPage}" aria-label="Previous">
               <span aria-hidden="true">&laquo;</span>
               <span class="sr-only">이전</span>
           </a>
@@ -294,7 +294,7 @@
     	    <li class="page-item"><a class="page-link" href="/wine/${i}">${i}</a></li>
         </c:forEach>
 	      <li class="page-item">
-          <a class="page-link" href="#" aria-label="Next">
+          <a class="page-link" href="/wine/${_pagination.nextPage}" aria-label="Next">
               <span class="sr-only">다음</span>
               <span aria-hidden="true">&raquo;</span>
           </a>

@@ -111,9 +111,9 @@
 				url:"/user/changePwd",
 				type:"post",
 				data:{
-					user_uid:"${pwd.user_uid}",
-          password:$("#password").val(),
-					password1:$("#password1").val()
+					USER_UID:"${pwd.USER_UID}",
+          PASSWORD:$("#password").val(),
+					PASSWORD1:$("#password1").val()
 				},
 				success:function(result){
 					

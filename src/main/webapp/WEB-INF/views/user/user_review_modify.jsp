@@ -64,10 +64,10 @@
             <tbody>
             <c:forEach var="r" items="${list}">
               <tr>
-                <td>${r.number}</td>
-                <td>${r.review_date}</td>
-                <td>${r.wine_name}</td>
-                <td>${r.review_content}</td>
+                <td>${r.NUMBER}</td>
+                <td>${r.REVIEW_DATE}</td>
+                <td>${r.WINE_NAME}</td>
+                <td>${r.REVIEW_CONTENT}</td>
                 <td>
                   <div>
                     <form action="" method="post">

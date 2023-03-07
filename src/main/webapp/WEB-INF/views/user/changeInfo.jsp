@@ -182,8 +182,8 @@ function bye() {
   url:"/user/delete",
   type:"post",
   data:{
-    password:$("#password").val(),
-    user_uid:"${loginUser.USER_UID}"
+    PASSWORD:$("#password").val(),
+    USER_UID:"${loginUser.USER_UID}"
    },
   success:function(result){
     if(result == 'S'){
