@@ -94,8 +94,8 @@ WHERE USER_UID = #{CHECKID}
  parameterType="com.mango.mango_final_project.user.model.vo.User"
  resultType="com.mango.mango_final_project.user.model.vo.User">
 SELECT
-    USER_UID,
     NAME
+, USER_UID
 FROM USER
 WHERE NAME = #{NAME}
 	AND PHONE = #{PHONE}
