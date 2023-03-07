@@ -62,6 +62,7 @@
                   <th scope="">생년월일</th>
                   <th scope="">성별</th>
                   <th scope="">휴대전화</th>
+                  <th scope="">주소</th>
                   <th scope="">권한</th>
                 </tr>
               </thead>
@@ -73,6 +74,18 @@
                   <td><input type="text" class="form-control" name="BIRTH" value="${resultData.BIRTH}" /></td>
                   <td><input type="text" class="form-control" name="GENDER" value="${resultData.GENDER}" /></td>
                   <td><input type="text" class="form-control" name="PHONE" value="${resultData.PHONE}"/></td>
+                  <td><input type="text" class="form-control" name="ADDRESS" value="${resultData.ADDRESS}"/>
+                              <div class="row">
+            	<div class="col">
+            		<input type="text" id="postcode" name="post" placeholder="우편번호" class="form-control">
+            	</div>
+            	<div class="col">
+            		<button type="button" onclick="daumPostcode();"class="btn btn-sm btn-outline-primary" style="margin-top: 2px;">우편번호 찾기</button>
+            	</div>     
+            </div>
+            <input type="text" id="address" name="address" placeholder="주소" class="form-control">
+            <input type="text" id="detailAddress" name="addressDetail" placeholder="상세주소" class="form-control">
+          </div></td>
                   <td><input type="text" class="form-control" name="AUTHORITY" value="${resultData.AUTHORITY}"/></td>
                 </tr>
               </tbody>
@@ -87,5 +100,45 @@
       integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
       crossorigin="anonymous"
     ></script>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script> 
+
+    <script>
+        function daumPostcode() {
+            new daum.Postcode({
+                oncomplete: function(data) {
+
+                    var addr = ''; 
+                    var extraAddr = ''; 
+
+                    if (data.userSelectedType === 'R') { 
+                        addr = data.roadAddress;
+                    } else { 
+                        addr = data.jibunAddress;
+                    }
+
+                    if(data.userSelectedType === 'R'){
+                        if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                            extraAddr += data.bname;
+                        }
+                        if(data.buildingName !== '' && data.apartment === 'Y'){
+                            extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                        }
+                        if(extraAddr !== ''){
+                            extraAddr = ' (' + extraAddr + ')';
+                        }
+                        document.getElementById("detailAddress").value = extraAddr;
+                    
+                    } else {
+                        document.getElementById("detailAddress").value = '';
+                    }
+
+                    document.getElementById('postcode').value = data.zonecode;
+                    document.getElementById("address").value = addr;
+                    document.getElementById("detailAddress").focus();
+                }
+            }).open();
+        }
+    </script>
+
   </body>
 </html>
