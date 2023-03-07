@@ -67,11 +67,11 @@
               </thead>
               <tbody>
                 <tr>
-                  <td><input type="text" class="form-control" name="STORE_NAME" /></td>
-                  <td><input type="text" class="form-control" name="STORE_NO"  /></td>
-                  <td><input type="text" class="form-control" name="STORE_CEO" /></td>
-                  <td><input type="text" class="form-control" name="USER_UID" /></td>
-                  <td><input type="text" class="form-control" name="WINE_UID" /></td>
+                  <td><input type="text" class="form-control" name="STORE_NAME" required/></td>
+                  <td><input type="text" class="form-control" name="STORE_NO"  required/></td>
+                  <td><input type="text" class="form-control" name="STORE_CEO" required/></td>
+                  <td><input type="text" class="form-control" name="USER_UID" required/></td>
+                  <td><input type="text" class="form-control" name="WINE_UID" required/></td>
                   <td><input type="text" class="form-control" name="STORE_URL"/></td>
                 </tr>
               </tbody>
