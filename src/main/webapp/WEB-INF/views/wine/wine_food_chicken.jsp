@@ -73,20 +73,23 @@
           <nav aria-label="Page navigation example">
             <c:set var="_pagination" value="${resultMap.paginations}" />
           <span>총 ${resultMap.paginations.totalCount}개 상품</span>
+          <form action="/wine/wine_chicken/select/1" method="get">
           <span class="float-end">
             <select
               class="form-select"
               name="select"
               id=""
               style="color: #e06767"
+              onchange="this.form.submit()"
             >
               <option value="0">선택하기</option>
-              <a href="#"><option value="1">최신순</option></a>
-              <a href="#"><option value="2">낮은 가격순</option></a>
-              <a href="#"><option value="3">높은 가격순</option></a>
-              <a href="#"><option value="4">인기순</option></a>
+              <option value="latest" <c:if test = "${selectName eq 'latest'}">selected</c:if>>최신순</option>
+              <option value="rowPrice" <c:if test = "${selectName eq 'rowPrice'}">selected</c:if>>낮은 가격순</option>
+              <option value="highPrice" <c:if test = "${selectName eq 'highPrice'}">selected</c:if>>높은 가격순</option>
+              <option value="popular" <c:if test = "${selectName eq 'popular'}">selected</c:if>>인기순</option>
             </select>
           </span>
+          </form>
         </div>
 
         <ul class="row">

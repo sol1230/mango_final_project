@@ -39,6 +39,18 @@ public class WineListController {
         modelAndView.setViewName("wine/wine_list");
         return modelAndView;
     }
+    @RequestMapping(value = { "/wine/wineSelect/{currentPage}" }, method = RequestMethod.GET)
+    public ModelAndView wineSelectList(@RequestParam Map<String, Object> params
+            , @PathVariable String currentPage, ModelAndView modelAndView) {
+        params.put("currentPage", Integer.parseInt(currentPage));
+        params.put("pageScale", 10);
+        Object resultMap = wineService.wineSelectListWithPagination(params);
+        Object selectName = params.get("select");
+        modelAndView.addObject("resultMap", resultMap);
+        modelAndView.addObject("selectName", selectName);
+        modelAndView.setViewName("wine/wine_list");
+        return modelAndView;
+    }
     
     
 }

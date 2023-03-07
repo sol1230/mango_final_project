@@ -74,21 +74,23 @@
           <nav aria-label="Page navigation example">
             <c:set var="_pagination" value="${resultMap.paginations}" />
           <span>총 ${resultMap.paginations.totalCount}개 상품</span>
+          <form action="/wine/wineSelect/1" method="get">
           <span class="float-end">
             <select
               class="form-select"
-              name="selectKeyField"
+              name="select"
               id=""
               style="color: #e06767"
               onchange="this.form.submit()"
             >
-              <option>선택하기</option>
-              <option value="latest" <c:if test = "${searchWineOrder eq 'latest'}">selected</c:if>>최신순</option>
-              <option value="rowPrice" <c:if test = "${searchWineOrder eq 'rowPrice'}">selected</c:if>>낮은 가격순</option>
-              <option value="highPrice" <c:if test = "${searchWineOrder eq 'highPrice'}">selected</c:if>>높은 가격순</option>
-              <option value="popular" <c:if test = "${searchWineOrder eq 'popular'}">selected</c:if>>인기순</option>
+              <option value="0">선택하기</option>
+              <option value="latest" <c:if test = "${selectName eq 'latest'}">selected</c:if>>최신순</option>
+              <option value="rowPrice" <c:if test = "${selectName eq 'rowPrice'}">selected</c:if>>낮은 가격순</option>
+              <option value="highPrice" <c:if test = "${selectName eq 'highPrice'}">selected</c:if>>높은 가격순</option>
+              <option value="popular" <c:if test = "${selectName eq 'popular'}">selected</c:if>>인기순</option>
             </select>
           </span>
+          </form>
         </div>
         <ul class="row">
           <c:forEach items="${resultMap.resultList}" var="resultData" varStatus="loop">

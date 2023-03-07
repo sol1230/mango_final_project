@@ -10,6 +10,51 @@
         WHERE WINE_PRICE <= 30000
         ]]>
     </select>
+
+    <select id="winePrice3SelectList" parameterType="Map" resultType="Map">
+        <choose>
+            <when test="select == 'latest'">
+                SELECT * 
+                FROM WINE
+                <![CDATA[
+                WHERE WINE_PRICE <= 30000
+                ]]>
+                ORDER BY WINE_UID DESC
+            </when>
+            <when test="select == 'rowPrice'">
+                SELECT * 
+                FROM WINE
+                <![CDATA[
+                WHERE WINE_PRICE <= 30000
+                ]]>
+                ORDER BY WINE_PRICE
+            </when>
+            <when test="select == 'highPrice'">
+                SELECT * 
+                FROM WINE
+                <![CDATA[
+                WHERE WINE_PRICE <= 30000
+                ]]>
+                ORDER BY WINE_PRICE DESC
+            </when>
+            <when test="select == 'popular'">
+                SELECT *, COUNT(WISHLIST.WINE_UID)
+                FROM WINE LEFT JOIN WISHLIST
+                ON WINE.WINE_UID = WISHLIST.WINE_UID
+                <![CDATA[
+                WHERE WINE_PRICE <= 30000
+                ]]>
+                ORDER BY COUNT(WISHLIST.WINE_UID) DESC
+            </when>
+            <otherwise>
+                SELECT * 
+                FROM WINE
+                <![CDATA[
+                WHERE WINE_PRICE <= 30000
+                ]]>
+            </otherwise>
+        </choose>
+    </select>
     <!-- 3만원 이하 와인 총 갯수 -->
     <select id="winePrice3Total" 
         parameterType="Map" resultType="int">
@@ -26,6 +71,41 @@
         FROM WINE
         WHERE WINE_PRICE BETWEEN 30000 AND 60000
     </select>
+
+    <select id="winePrice3_6SelectList" parameterType="Map" resultType="Map">
+        <choose>
+            <when test="select == 'latest'">
+                SELECT * 
+                FROM WINE
+                WHERE WINE_PRICE BETWEEN 30000 AND 60000
+                ORDER BY WINE_UID DESC
+            </when>
+            <when test="select == 'rowPrice'">
+                SELECT * 
+                FROM WINE
+                WHERE WINE_PRICE BETWEEN 30000 AND 60000
+                ORDER BY WINE_PRICE
+            </when>
+            <when test="select == 'highPrice'">
+                SELECT * 
+                FROM WINE
+                WHERE WINE_PRICE BETWEEN 30000 AND 60000
+                ORDER BY WINE_PRICE DESC
+            </when>
+            <when test="select == 'popular'">
+                SELECT *, COUNT(WISHLIST.WINE_UID)
+                FROM WINE LEFT JOIN WISHLIST
+                ON WINE.WINE_UID = WISHLIST.WINE_UID
+                WHERE WINE_PRICE BETWEEN 30000 AND 60000
+                ORDER BY COUNT(WISHLIST.WINE_UID) DESC
+            </when>
+            <otherwise>
+                SELECT * 
+                FROM WINE
+                WHERE WINE_PRICE BETWEEN 30000 AND 60000
+            </otherwise>
+        </choose>
+    </select>
     <!-- 3만원 ~ 6만원 와인 총 갯수 -->
     <select id="winePrice3_6Total" 
         parameterType="Map" resultType="int">
@@ -39,6 +119,41 @@
         SELECT *
         FROM WINE
         WHERE WINE_PRICE BETWEEN 60000 AND 90000
+    </select>
+
+    <select id="winePrice6_9SelectList" parameterType="Map" resultType="Map">
+        <choose>
+            <when test="select == 'latest'">
+                SELECT * 
+                FROM WINE
+                WHERE WINE_PRICE BETWEEN 60000 AND 90000
+                ORDER BY WINE_UID DESC
+            </when>
+            <when test="select == 'rowPrice'">
+                SELECT * 
+                FROM WINE
+                WHERE WINE_PRICE BETWEEN 60000 AND 90000
+                ORDER BY WINE_PRICE
+            </when>
+            <when test="select == 'highPrice'">
+                SELECT * 
+                FROM WINE
+                WHERE WINE_PRICE BETWEEN 60000 AND 90000
+                ORDER BY WINE_PRICE DESC
+            </when>
+            <when test="select == 'popular'">
+                SELECT *, COUNT(WISHLIST.WINE_UID)
+                FROM WINE LEFT JOIN WISHLIST
+                ON WINE.WINE_UID = WISHLIST.WINE_UID
+                WHERE WINE_PRICE BETWEEN 60000 AND 90000
+                ORDER BY COUNT(WISHLIST.WINE_UID) DESC
+            </when>
+            <otherwise>
+                SELECT * 
+                FROM WINE
+                WHERE WINE_PRICE BETWEEN 60000 AND 90000
+            </otherwise>
+        </choose>
     </select>
     <!-- 6만원 ~ 9만원 와인 총 갯수 -->
     <select id="winePrice6_9Total" 
@@ -54,6 +169,41 @@
         FROM WINE
         WHERE WINE_PRICE BETWEEN 90000 AND 150000
     </select>
+
+    <select id="winePrice9_15SelectList" parameterType="Map" resultType="Map">
+        <choose>
+            <when test="select == 'latest'">
+                SELECT * 
+                FROM WINE
+                WHERE WINE_PRICE BETWEEN 90000 AND 150000
+                ORDER BY WINE_UID DESC
+            </when>
+            <when test="select == 'rowPrice'">
+                SELECT * 
+                FROM WINE
+                WHERE WINE_PRICE BETWEEN 90000 AND 150000
+                ORDER BY WINE_PRICE
+            </when>
+            <when test="select == 'highPrice'">
+                SELECT * 
+                FROM WINE
+                WHERE WINE_PRICE BETWEEN 90000 AND 150000
+                ORDER BY WINE_PRICE DESC
+            </when>
+            <when test="select == 'popular'">
+                SELECT *, COUNT(WISHLIST.WINE_UID)
+                FROM WINE LEFT JOIN WISHLIST
+                ON WINE.WINE_UID = WISHLIST.WINE_UID
+                WHERE WINE_PRICE BETWEEN 90000 AND 150000
+                ORDER BY COUNT(WISHLIST.WINE_UID) DESC
+            </when>
+            <otherwise>
+                SELECT * 
+                FROM WINE
+                WHERE WINE_PRICE BETWEEN 90000 AND 150000
+            </otherwise>
+        </choose>
+    </select>
     <!-- 9만원 ~ 15만원 와인 총 갯수 -->
     <select id="winePrice9_15Total" 
         parameterType="Map" resultType="int">
@@ -67,6 +217,41 @@
         SELECT *
         FROM WINE
         WHERE WINE_PRICE BETWEEN 150000 AND 200000
+    </select>
+
+    <select id="winePrice15_20SelectList" parameterType="Map" resultType="Map">
+        <choose>
+            <when test="select == 'latest'">
+                SELECT * 
+                FROM WINE
+                WHERE WINE_PRICE BETWEEN 150000 AND 200000
+                ORDER BY WINE_UID DESC
+            </when>
+            <when test="select == 'rowPrice'">
+                SELECT * 
+                FROM WINE
+                WHERE WINE_PRICE BETWEEN 150000 AND 200000
+                ORDER BY WINE_PRICE
+            </when>
+            <when test="select == 'highPrice'">
+                SELECT * 
+                FROM WINE
+                WHERE WINE_PRICE BETWEEN 150000 AND 200000
+                ORDER BY WINE_PRICE DESC
+            </when>
+            <when test="select == 'popular'">
+                SELECT *, COUNT(WISHLIST.WINE_UID)
+                FROM WINE LEFT JOIN WISHLIST
+                ON WINE.WINE_UID = WISHLIST.WINE_UID
+                WHERE WINE_PRICE BETWEEN 150000 AND 200000
+                ORDER BY COUNT(WISHLIST.WINE_UID) DESC
+            </when>
+            <otherwise>
+                SELECT * 
+                FROM WINE
+                WHERE WINE_PRICE BETWEEN 150000 AND 200000
+            </otherwise>
+        </choose>
     </select>
     <!-- 15만원 ~ 20만원 와인 총 갯수 -->
     <select id="winePrice15_20Total" 
@@ -83,6 +268,51 @@
         <![CDATA[
         WHERE WINE_PRICE >= 200000
         ]]>
+    </select>
+
+    <select id="winePrice20SelectList" parameterType="Map" resultType="Map">
+        <choose>
+            <when test="select == 'latest'">
+                SELECT * 
+                FROM WINE
+                <![CDATA[
+                WHERE WINE_PRICE >= 200000
+                ]]>
+                ORDER BY WINE_UID DESC
+            </when>
+            <when test="select == 'rowPrice'">
+                SELECT * 
+                FROM WINE
+                <![CDATA[
+                WHERE WINE_PRICE >= 200000
+                ]]>
+                ORDER BY WINE_PRICE
+            </when>
+            <when test="select == 'highPrice'">
+                SELECT * 
+                FROM WINE
+                <![CDATA[
+                WHERE WINE_PRICE >= 200000
+                ]]>
+                ORDER BY WINE_PRICE DESC
+            </when>
+            <when test="select == 'popular'">
+                SELECT *, COUNT(WISHLIST.WINE_UID)
+                FROM WINE LEFT JOIN WISHLIST
+                ON WINE.WINE_UID = WISHLIST.WINE_UID
+                <![CDATA[
+                WHERE WINE_PRICE >= 200000
+                ]]>
+                ORDER BY COUNT(WISHLIST.WINE_UID) DESC
+            </when>
+            <otherwise>
+                SELECT * 
+                FROM WINE
+                <![CDATA[
+                WHERE WINE_PRICE >= 200000
+                ]]>
+            </otherwise>
+        </choose>
     </select>
     <!-- 20만원 이상 와인 총 갯수 -->
     <select id="winePrice20Total" 

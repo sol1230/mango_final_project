@@ -33,6 +33,18 @@ public class WineTypeController {
         modelAndView.setViewName("wine/wine_red");
         return modelAndView;
     }
+    @RequestMapping(value = "/wine/wine_red/select/{currentPage}", method = RequestMethod.GET)
+    public ModelAndView redWineSelect(@RequestParam Map<String, Object> params
+    , @PathVariable String currentPage, ModelAndView modelAndView) {
+        params.put("currentPage", Integer.parseInt(currentPage));
+        params.put("pageScale", 10);
+        Object resultMap = wineTypeService.redwineSelectListWithPagination(params);
+        Object selectName = params.get("select");
+        modelAndView.addObject("resultMap",resultMap);
+        modelAndView.addObject("selectName",selectName);
+        modelAndView.setViewName("wine/wine_red");
+        return modelAndView;
+    }
     // 화이트 와인 목록
     @RequestMapping(value = "/wine/wine_white/{currentPage}", method = RequestMethod.GET)
     public ModelAndView whiteWine(@RequestParam Map<String, Object> params
@@ -41,6 +53,18 @@ public class WineTypeController {
         params.put("pageScale", 10);
         Object resultMap = wineTypeService.whitewineListWithPagination(params);
         modelAndView.addObject("resultMap",resultMap);
+        modelAndView.setViewName("wine/wine_white");
+        return modelAndView;
+    }
+    @RequestMapping(value = "/wine/wine_white/select/{currentPage}", method = RequestMethod.GET)
+    public ModelAndView whiteWineSelect(@RequestParam Map<String, Object> params
+    , @PathVariable String currentPage, ModelAndView modelAndView) {
+        params.put("currentPage", Integer.parseInt(currentPage));
+        params.put("pageScale", 10);
+        Object resultMap = wineTypeService.whitewineSelectListWithPagination(params);
+        Object selectName = params.get("select");
+        modelAndView.addObject("resultMap",resultMap);
+        modelAndView.addObject("selectName",selectName);
         modelAndView.setViewName("wine/wine_white");
         return modelAndView;
     }
@@ -55,6 +79,18 @@ public class WineTypeController {
         modelAndView.setViewName("wine/wine_rose");
         return modelAndView;
     }
+    @RequestMapping(value = "/wine/wine_rose/select/{currentPage}", method = RequestMethod.GET)
+    public ModelAndView roseWineSelect(@RequestParam Map<String, Object> params
+    , @PathVariable String currentPage, ModelAndView modelAndView) {
+        params.put("currentPage", Integer.parseInt(currentPage));
+        params.put("pageScale", 10);
+        Object resultMap = wineTypeService.rosewineSelectListWithPagination(params);
+        Object selectName = params.get("select");
+        modelAndView.addObject("resultMap",resultMap);
+        modelAndView.addObject("selectName",selectName);
+        modelAndView.setViewName("wine/wine_rose");
+        return modelAndView;
+    }
     // 스파클링 와인 목록
     @RequestMapping(value = "/wine/wine_sparkling/{currentPage}", method = RequestMethod.GET)
     public ModelAndView sparklingWine(@RequestParam Map<String, Object> params
@@ -63,6 +99,18 @@ public class WineTypeController {
         params.put("pageScale", 10);
         Object resultMap = wineTypeService.sparklingwineListWithPagination(params);
         modelAndView.addObject("resultMap",resultMap);
+        modelAndView.setViewName("wine/wine_sparkling");
+        return modelAndView;
+    }
+    @RequestMapping(value = "/wine/wine_sparkling/select/{currentPage}", method = RequestMethod.GET)
+    public ModelAndView sparklingWineSelect(@RequestParam Map<String, Object> params
+    , @PathVariable String currentPage, ModelAndView modelAndView) {
+        params.put("currentPage", Integer.parseInt(currentPage));
+        params.put("pageScale", 10);
+        Object resultMap = wineTypeService.sparklingwineSelectListWithPagination(params);
+        Object selectName = params.get("select");
+        modelAndView.addObject("resultMap",resultMap);
+        modelAndView.addObject("selectName",selectName);
         modelAndView.setViewName("wine/wine_sparkling");
         return modelAndView;
     }

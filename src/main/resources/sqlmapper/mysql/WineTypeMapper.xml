@@ -8,6 +8,41 @@
         FROM WINE
         WHERE WINE_TYPE LIKE '레드%'
     </select>
+
+    <select id="redwineSelectList" parameterType="Map" resultType="Map">
+        <choose>
+            <when test="select == 'latest'">
+                SELECT * 
+                FROM WINE
+                WHERE WINE_TYPE LIKE '레드%'
+                ORDER BY WINE_UID DESC
+            </when>
+            <when test="select == 'rowPrice'">
+                SELECT * 
+                FROM WINE
+                WHERE WINE_TYPE LIKE '레드%'
+                ORDER BY WINE_PRICE
+            </when>
+            <when test="select == 'highPrice'">
+                SELECT * 
+                FROM WINE
+                WHERE WINE_TYPE LIKE '레드%'
+                ORDER BY WINE_PRICE DESC
+            </when>
+            <when test="select == 'popular'">
+                SELECT *, COUNT(WISHLIST.WINE_UID)
+                FROM WINE LEFT JOIN WISHLIST
+                ON WINE.WINE_UID = WISHLIST.WINE_UID
+                WHERE WINE_TYPE LIKE '레드%'
+                ORDER BY COUNT(WISHLIST.WINE_UID) DESC
+            </when>
+            <otherwise>
+                SELECT * 
+                FROM WINE
+                WHERE WINE_TYPE LIKE '레드%'
+            </otherwise>
+        </choose>
+    </select>
     <!-- 레드 와인 총 갯수 -->
     <select id="redwineTotal" 
         parameterType="Map" resultType="int">
@@ -22,7 +57,42 @@
         FROM WINE
         WHERE WINE_TYPE LIKE '화이트%'
     </select>
-    <!-- 레드 와인 총 갯수 -->
+
+    <select id="whitewineSelectList" parameterType="Map" resultType="Map">
+        <choose>
+            <when test="select == 'latest'">
+                SELECT * 
+                FROM WINE
+                WHERE WINE_TYPE LIKE '화이트%'
+                ORDER BY WINE_UID DESC
+            </when>
+            <when test="select == 'rowPrice'">
+                SELECT * 
+                FROM WINE
+                WHERE WINE_TYPE LIKE '화이트%'
+                ORDER BY WINE_PRICE
+            </when>
+            <when test="select == 'highPrice'">
+                SELECT * 
+                FROM WINE
+                WHERE WINE_TYPE LIKE '화이트%'
+                ORDER BY WINE_PRICE DESC
+            </when>
+            <when test="select == 'popular'">
+                SELECT *, COUNT(WISHLIST.WINE_UID)
+                FROM WINE LEFT JOIN WISHLIST
+                ON WINE.WINE_UID = WISHLIST.WINE_UID
+                WHERE WINE_TYPE LIKE '화이트%'
+                ORDER BY COUNT(WISHLIST.WINE_UID) DESC
+            </when>
+            <otherwise>
+                SELECT * 
+                FROM WINE
+                WHERE WINE_TYPE LIKE '화이트%'
+            </otherwise>
+        </choose>
+    </select>
+    <!-- 화이트 와인 총 갯수 -->
     <select id="whitewineTotal" 
         parameterType="Map" resultType="int">
         SELECT count(*) as cnt
@@ -36,7 +106,42 @@
         FROM WINE
         WHERE WINE_TYPE LIKE '로제%'
     </select>
-    <!-- 레드 와인 총 갯수 -->
+
+    <select id="rosewineSelectList" parameterType="Map" resultType="Map">
+        <choose>
+            <when test="select == 'latest'">
+                SELECT * 
+                FROM WINE
+                WHERE WINE_TYPE LIKE '로제%'
+                ORDER BY WINE_UID DESC
+            </when>
+            <when test="select == 'rowPrice'">
+                SELECT * 
+                FROM WINE
+                WHERE WINE_TYPE LIKE '로제%'
+                ORDER BY WINE_PRICE
+            </when>
+            <when test="select == 'highPrice'">
+                SELECT * 
+                FROM WINE
+                WHERE WINE_TYPE LIKE '로제%'
+                ORDER BY WINE_PRICE DESC
+            </when>
+            <when test="select == 'popular'">
+                SELECT *, COUNT(WISHLIST.WINE_UID)
+                FROM WINE LEFT JOIN WISHLIST
+                ON WINE.WINE_UID = WISHLIST.WINE_UID
+                WHERE WINE_TYPE LIKE '로제%'
+                ORDER BY COUNT(WISHLIST.WINE_UID) DESC
+            </when>
+            <otherwise>
+                SELECT * 
+                FROM WINE
+                WHERE WINE_TYPE LIKE '로제%'
+            </otherwise>
+        </choose>
+    </select>
+    <!-- 로제 와인 총 갯수 -->
     <select id="rosewineTotal" 
         parameterType="Map" resultType="int">
         SELECT count(*) as cnt
@@ -50,7 +155,42 @@
         FROM WINE
         WHERE WINE_TYPE LIKE '스파클링%'
     </select>
-    <!-- 레드 와인 총 갯수 -->
+
+    <select id="sparklingwineSelectList" parameterType="Map" resultType="Map">
+        <choose>
+            <when test="select == 'latest'">
+                SELECT * 
+                FROM WINE
+                WHERE WINE_TYPE LIKE '스파클링%'
+                ORDER BY WINE_UID DESC
+            </when>
+            <when test="select == 'rowPrice'">
+                SELECT * 
+                FROM WINE
+                WHERE WINE_TYPE LIKE '스파클링%'
+                ORDER BY WINE_PRICE
+            </when>
+            <when test="select == 'highPrice'">
+                SELECT * 
+                FROM WINE
+                WHERE WINE_TYPE LIKE '스파클링%'
+                ORDER BY WINE_PRICE DESC
+            </when>
+            <when test="select == 'popular'">
+                SELECT *, COUNT(WISHLIST.WINE_UID)
+                FROM WINE LEFT JOIN WISHLIST
+                ON WINE.WINE_UID = WISHLIST.WINE_UID
+                WHERE WINE_TYPE LIKE '스파클링%'
+                ORDER BY COUNT(WISHLIST.WINE_UID) DESC
+            </when>
+            <otherwise>
+                SELECT * 
+                FROM WINE
+                WHERE WINE_TYPE LIKE '스파클링%'
+            </otherwise>
+        </choose>
+    </select>
+    <!-- 스파클링 와인 총 갯수 -->
     <select id="sparklingwineTotal" 
         parameterType="Map" resultType="int">
         SELECT count(*) as cnt
