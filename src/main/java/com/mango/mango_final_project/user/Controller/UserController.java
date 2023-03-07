@@ -38,12 +38,12 @@ public class UserController {
   @RequestMapping("insertUser")
   public String insertUser(User user, Model model, HttpSession session) {
     String phone =
-      user.getPhone1() + "-" + user.getPhone2() + "-" + user.getPhone3();
-    user.setPhone(phone);
+      user.getPHONE1() + "-" + user.getPHONE2() + "-" + user.getPHONE3();
+    user.setPHONE(phone);
 
-    String encPwd = bcryptPasswordEncoder.encode(user.getPassword());
+    String encPwd = bcryptPasswordEncoder.encode(user.getPASSWORD());
 
-    user.setPassword(encPwd);
+    user.setPASSWORD(encPwd);
 
     int result = uService.insertUser(user);
 
@@ -61,18 +61,18 @@ public class UserController {
   public String updateUser(User user, HttpSession session) {
     User loginUser = uService.loginUser(user);    
    
-    if (!bcryptPasswordEncoder.matches(user.getPassword(), loginUser.getPassword())){
+    if (!bcryptPasswordEncoder.matches(user.getPASSWORD(), loginUser.getPASSWORD())){
       return "F1";
     }
     
 
-    String phone = user.getPhone1() + "-" + user.getPhone2() + "-" + user.getPhone3();
-    user.setPhone(phone);
-    if(user.getPassword1() != null && user.getPassword1() != ""){
-      String encPwd = bcryptPasswordEncoder.encode(user.getPassword1());
-      user.setPassword(encPwd);
+    String phone = user.getPHONE1() + "-" + user.getPHONE2() + "-" + user.getPHONE3();
+    user.setPHONE(phone);
+    if(user.getPASSWORD1() != null && user.getPASSWORD1() != ""){
+      String encPwd = bcryptPasswordEncoder.encode(user.getPASSWORD1());
+      user.setPASSWORD(encPwd);
     }else{
-      user.setPassword(null);
+      user.setPASSWORD(null);
     }
     int result = uService.updateUser(user);
 
@@ -89,10 +89,10 @@ public class UserController {
   @ResponseBody
   @RequestMapping("delete")
   public String deleteUser(User user,HttpSession session) {
-    String encPwd = ((User) session.getAttribute("loginUser")).getPassword();
+    String encPwd = ((User) session.getAttribute("loginUser")).getPASSWORD();
 
-    if (bcryptPasswordEncoder.matches(user.getPassword(), encPwd)) {
-      int result = uService.deleteUser(user.getUser_uid());
+    if (bcryptPasswordEncoder.matches(user.getPASSWORD(), encPwd)) {
+      int result = uService.deleteUser(user.getUSER_UID());
 
       if(result > 0) {
 				session.removeAttribute("loginUser");
@@ -126,8 +126,8 @@ public class UserController {
   @RequestMapping("findIdCheck")
   public User findIdCheck(User user) {
 	  
-	String phone = user.getPhone1() + "-" + user.getPhone2() + "-" + user.getPhone3();
-	user.setPhone(phone);
+	String phone = user.getPHONE1() + "-" + user.getPHONE2() + "-" + user.getPHONE3();
+	user.setPHONE(phone);
 	
 	User res =  uService.findIdCheck(user);
 	
@@ -138,8 +138,8 @@ public class UserController {
   @RequestMapping("findPwdCheck")
   public User findUserPwd(User user, HttpSession session){
 
-    String phone = user.getPhone1() + "-" + user.getPhone2() + "-" + user.getPhone3();
-    user.setPhone(phone);
+    String phone = user.getPHONE1() + "-" + user.getPHONE2() + "-" + user.getPHONE3();
+    user.setPHONE(phone);
 
     User res = uService.findUserPwd(user);
 
@@ -153,8 +153,8 @@ public class UserController {
   @ResponseBody
   @RequestMapping("changePwd")
   public String changePwd(User user, HttpSession session) {   
-    String encPwd = bcryptPasswordEncoder.encode(user.getPassword());
-      user.setPassword(encPwd);
+    String encPwd = bcryptPasswordEncoder.encode(user.getPASSWORD());
+      user.setPASSWORD(encPwd);
       
     int result = uService.changePwd(user);
 
@@ -170,7 +170,7 @@ public class UserController {
   @RequestMapping("myReview")
   public ModelAndView myReview(ModelAndView mv, HttpSession session){
     User user = new User();
-    user.setUser_uid(((User) session.getAttribute("loginUser")).getUser_uid());
+    user.setUSER_UID(((User) session.getAttribute("loginUser")).getUSER_UID());
     ArrayList<User> list = uService.selectReview(user);
 
     mv.addObject("list", list)

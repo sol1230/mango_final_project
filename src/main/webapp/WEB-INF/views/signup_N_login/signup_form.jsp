@@ -176,17 +176,17 @@ function insert(){
 				url:"/user/insertUser",
 				type:"post",
 				data:{
-					user_uid:$("#user_uid").val(),
-          password:$("#password").val(),
-          phone1:$("#phone1").val(),
-          phone2:$("#phone2").val(),
-          phone3:$("#phone3").val(),
-          post:$("#postcode").val(),
-          name:$("#name").val(),
-          birth:$("#birth").val(),
-          gender:$("#gender").val(),
-          addressDetail:$("#detailAddress").val(),
-          address:$("#address").val()
+					USER_UID:$("#user_uid").val(),
+          PASSWORD:$("#password").val(),
+          PHONE1:$("#phone1").val(),
+          PHONE2:$("#phone2").val(),
+          PHONE3:$("#phone3").val(),
+          POST:$("#postcode").val(),
+          NAME:$("#name").val(),
+          BIRTH:$("#birth").val(),
+          GENDER:$("#gender").val(),
+          ADDRESSDETAIL:$("#detailAddress").val(),
+          ADDRESS:$("#address").val()
 				},
 				success:function(result){
 					

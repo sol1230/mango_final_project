@@ -17,11 +17,11 @@ import lombok.Setter;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper=false)
 public class User {
-    
-    private String user_uid;
-    private String password;
-    private String password1;
-    private String name;
+    /*
+    private String USER_UID;
+    private String PASSWORD;
+    private String PASSWORD1;
+    private String NAME;
     private String birth;
     private String gender;
     private String phone;
@@ -41,5 +41,29 @@ public class User {
     private String review_content;
     private String wine_uid;
     private String wine_name;
+*/
 
+    private String USER_UID;
+    private String PASSWORD;
+    private String PASSWORD1;
+    private String NAME;
+    private String BIRTH;
+    private String GENDER;
+    private String PHONE;
+    private String PHONE1;
+    private String PHONE2;
+    private String PHONE3;
+    private String AUTHORITY;
+    private String POST;
+    private String ADDRESS;
+    private String ADDRESSDETAIL;
+    
+    private String NUMBER;
+    private String REVIEW_UID;
+    private String REVIEW_TITLE;
+    private String REVIEW_SCOPE;
+    private String REVIEW_DATE;
+    private String REVIEW_CONTENT;
+    private String WINE_UID;
+    private String WINE_NAME;
 }

@@ -28,7 +28,7 @@ public class loginController {
 		
 	    User loginUser = uService.loginUser(user);
 
-	    if(loginUser != null && bcryptPasswordEncoder.matches(user.getPassword(), loginUser.getPassword())){
+	    if(loginUser != null && bcryptPasswordEncoder.matches(user.getPASSWORD(), loginUser.getPASSWORD())){
 	        //로그인 성공
 	        session.setAttribute("loginUser", loginUser);
 	        return "S";

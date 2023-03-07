@@ -44,7 +44,7 @@
         <div class="pt-3">
           <div class="">
             <label for="" class="pb-1">아이디</label>
-            <input type="text" class="form-control" name="user_uid" value="${loginUser.user_uid}" readonly />
+            <input type="text" class="form-control" name="user_uid" value="${loginUser.USER_UID}" readonly />
           </div>
           <div class="pt-3">            
             <label for="" class="pb-1">현재 비밀번호</label>
@@ -81,7 +81,7 @@
 
           <div class="pt-3">
             <label for="" class="pb-1">이름</label>
-            <input type="text" class="form-control" name="name" value="${loginUser.name}" readonly/>
+            <input type="text" class="form-control" name="name" value="${loginUser.NAME}" readonly/>
           </div>
           <div class="pt-3">
             <label for="" class="pb-1">생년월일</label>
@@ -90,13 +90,13 @@
               name="birth"
               id="birth"
               class="form-control"
-              value="${loginUser.birth}"              
+              value="${loginUser.BIRTH}"              
               readonly
             />
           </div>
           <div class="pt-3">
             <label for="" class="pb-1">성별</label>
-            <input type="text" class="form-control" id="gender" value="${loginUser.gender}" readonly/>
+            <input type="text" class="form-control" id="gender" value="${loginUser.GENDER}" readonly/>
           </div>
           <div class="pt-3">
             <label for="" class="pb-1">휴대전화</label>            
@@ -133,14 +133,14 @@
                 <label for="" class="pb-1">주소</label>
                 <div class="row">
                   <div class="col">
-                    <input type="text" id="postcode" name="post" placeholder="우편번호" value ="${loginUser.post}"class="form-control">
+                    <input type="text" id="postcode" name="post" placeholder="우편번호" value ="${loginUser.POST}"class="form-control">
                   </div>
                   <div class="col">
                     <button type="button" onclick="daumPostcode();"class="btn btn-sm btn-outline-primary" style="margin-top: 2px;">우편번호 찾기</button>
                   </div>     
                 </div>
-                <input type="text" id="address" name="address" placeholder="주소" class="form-control" value ="${loginUser.address}">
-                <input type="text" id="detailAddress" name="addressDetail" placeholder="상세주소" class="form-control" value ="${loginUser.addressDetail}">
+                <input type="text" id="address" name="address" placeholder="주소" class="form-control" value ="${loginUser.ADDRESS}">
+                <input type="text" id="detailAddress" name="addressDetail" placeholder="상세주소" class="form-control" value ="${loginUser.ADDRESSDETAIL}">
               </div>
             </div>
           </div>
@@ -166,7 +166,7 @@
   <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script> 
   <script> 
     $(function(){      
-      var phone = "${loginUser.phone}"
+      var phone = "${loginUser.PHONE}"
       var phone1 = phone.substr(0,3);
       var phone2 = phone.substr(4,4);
       var phone3 = phone.substr(9,4);
@@ -183,7 +183,7 @@ function bye() {
   type:"post",
   data:{
     password:$("#password").val(),
-    user_uid:"${loginUser.user_uid}"
+    user_uid:"${loginUser.USER_UID}"
    },
   success:function(result){
     if(result == 'S'){
@@ -235,15 +235,15 @@ function bye() {
 				url:"/user/changeUser",
 				type:"post",
 				data:{
-					user_uid:"${loginUser.user_uid}",
-          password:$("#password").val(),
-					password1:$("#password1").val(),
-          phone1:$("#phone1").val(),
-          phone2:$("#phone2").val(),
-          phone3:$("#phone3").val(),
-          post:$("#postcode").val(),
-          addressDetail:$("#detailAddress").val(),
-          address:$("#address").val()
+					USER_UID:"${loginUser.USER_UID}",
+          PASSWORD:$("#password").val(),
+					PASSWORD1:$("#password1").val(),
+          PHONE1:$("#phone1").val(),
+          PHONE2:$("#phone2").val(),
+          PHONE3:$("#phone3").val(),
+          POST:$("#postcode").val(),
+          ADDRESSDETAIL:$("#detailAddress").val(),
+          ADDRESS:$("#address").val()
 				},
 				success:function(result){
 					

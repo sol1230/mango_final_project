@@ -41,7 +41,7 @@
     <%@ include file="../etc/user_nav.jsp" %>
       <div class="container mb-5 pb-5" style="width: 55rem">
         <div class="fs-4 fw-bold text-center pt-5">
-          ${loginUser.user_uid}님의 마이페이지
+          ${loginUser.USER_UID}님의 마이페이지
         </div>
         <form action="">
           <div class="info_area">
@@ -97,23 +97,23 @@
             <table class="table boder-top">
                <tr>
               <th>아이디</th>
-              <td>${loginUser.user_uid}</td>
+              <td>${loginUser.USER_UID}</td>
             </tr>
             <tr>
               <th>이름</th>
-              <td>${loginUser.name}</td>
+              <td>${loginUser.NAME}</td>
             </tr>
             <tr>
               <th>생년월일</th>
-              <td>${loginUser.birth}</td>
+              <td>${loginUser.BIRTH}</td>
             </tr>
             <tr>
               <th>성별</th>
-              <td>${loginUser.gender}</td>
+              <td>${loginUser.GENDER}</td>
             </tr>
             <tr>
               <th>휴대전화</th>
-              <td>${loginUser.phone}</td>
+              <td>${loginUser.PHONE}</td>
             </tr>
 			
 			    <tr>
@@ -155,7 +155,7 @@
     ></script>
     <script>
     $(function(){
-       var address = "${loginUser.address}" + " " + "${loginUser.addressDetail}";
+       var address = "${loginUser.ADDRESS}" + " " + "${loginUser.ADDRESSDETAIL}";
       $("#address").text(address);
 
     })
