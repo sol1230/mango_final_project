@@ -7,135 +7,134 @@
 <select id="userLogin"
  parameterType="com.mango.mango_final_project.user.model.vo.User"
  resultType="com.mango.mango_final_project.user.model.vo.User">
-select
-    user_uid
-  , password
-  , name
-  , birth
-  , gender
-  , phone
-  , authority
-  , post
-  , address
-  , address_detail as addressDetail
-from user
-where user_uid = #{user_uid}
+SELECT
+    USER_UID
+  , PASSWORD
+  , NAME
+  , BIRTH
+  , GENDER
+  , PHONE
+  , AUTHORITY
+  , POST
+  , ADDRESS
+  , ADDRESS_DETAIL AS ADDRESSDETAIL
+FROM USER
+WHERE USER_UID = #{USER_UID}
 <!--and password = #{password}-->
 </select>
 
 <!-- 회원가입 -->
 <insert id="insertUser">
-insert into user
+INSERT INTO USER
 ( 
-    user_uid
-  , password
-  , name
-  , birth
-  , gender
-  , phone
-  , authority
-  , address
-  , address_detail
-  , post
+    USER_UID
+  , PASSWORD
+  , NAME
+  , BIRTH
+  , GENDER
+  , PHONE
+  , AUTHORITY
+  , ADDRESS
+  , ADDRESS_DETAIL
+  , POST
 )
-values
+VALUES
 (
-    #{user_uid} 
-  , #{password}
-  , #{name}
-  , #{birth}
+    #{USER_UID} 
+  , #{PASSWORD}
+  , #{NAME}
+  , #{BIRTH}
   <choose>
-    <when test='"F".equals(gender)'>
+    <when test='"F".equals(GENDER)'>
       , '여자'
     </when>
-    <when test='"M".equals(gender)'>
+    <when test='"M".equals(GENDER)'>
       , '남자'
     </when>
   </choose>
-  , #{phone}
+  , #{PHONE}
   , 'USER'
-  , #{address}
-  , #{addressDetail}
-  , #{post}
+  , #{ADDRESS}
+  , #{ADDRESSDETAIL}
+  , #{POST}
 )
 </insert>
 
 <!-- 유저 정보 수정-->
 <update id="changeUserInfo">
-update
-    user
-set 
-  phone = #{phone}  
+UPDATE
+    USER
+SET 
+  PHONE = #{PHONE}  
    <if test="password != null and password != ''">
-    ,password = #{password}
+    ,PASSWORD = #{PASSWORD}
    </if>  
-  , address = #{address}
-  , address_detail = #{addressDetail}
-  , post = #{post}
-  where user_uid = #{user_uid}
+  , ADDRESS = #{ADDRESS}
+  , ADDRESS_DETAIL = #{ADDRESSDETAIL}
+  , POST = #{POST}
+  WHERE USER_UID = #{USER_UID}
 </update>
 
 <!-- 회원 탈퇴, 정보 삭제-->
 <delete id="deleteUser">
-delete 
-from user
-where user_uid = #{user_uid}
+DELETE
+FROM USER
+WHERE USER_UID = #{USER_UID}
 </delete>
 
 <select id="checkId" resultType="_int">
-select
-count(*)
-from user
-where user_uid = #{checkId}
+SELECT
+COUNT(*)
+FROM USER
+WHERE USER_UID = #{CHECKID}
 </select>
 
 <!-- 유저 ID 찾기-->
 <select id="findIdCheck"
  parameterType="com.mango.mango_final_project.user.model.vo.User"
  resultType="com.mango.mango_final_project.user.model.vo.User">
-select
-    user_uid,
-    name
-from user
-where name = #{name}
-	and phone = #{phone}
+SELECT
+    USER_UID,
+    NAME
+FROM USER
+WHERE NAME = #{NAME}
+	AND PHONE = #{PHONE}
 </select>
 
 <!-- 유저 비밀번호 찾기-->
 <select id="findUserPwd"
  parameterType="com.mango.mango_final_project.user.model.vo.User"
  resultType="com.mango.mango_final_project.user.model.vo.User">
-select
-    user_uid
-from user
-where 
- user_uid = #{user_uid}
-and name = #{name}
-and phone = #{phone}
+SELECT
+    USER_UID
+FROM USER
+WHERE
+ USER_UID = #{USER_UID}
+AND NAME = #{NAME}
+AND PHONE = #{PHONE}
 </select>
 
 <!-- 비밀번호 찾기 후 수정-->
 <update id="changePwd">
-update
-    user
-set 
-  password = #{password}    
-  where user_uid = #{user_uid}
+UPDATE USER
+SET
+  PASSWORD = #{PASSWORD}    
+  WHERE USER_UID = #{USER_UID}
 </update>
 
 <!-- 리뷰 갖고오기 -->
 <select id="selectReview"
  parameterType="com.mango.mango_final_project.user.model.vo.User"
  resultType="com.mango.mango_final_project.user.model.vo.User">
-select
+SELECT
   @ROWNUM := @ROWNUM + 1 AS NUMBER,
   A.*,
   B.WINE_NAME
-from review A
-left outer join wine B
- on A.wine_uid = B.wine_uid
-where user_uid = #{user_uid}
-  and (@ROWNUM:=0) =0
+FROM REVIEW A
+LEFT OUTER JOIN WINE B
+ON A.WINE_UID = B.WINE_UID
+WHERE USER_UID = #{USER_UID}
+  AND (@ROWNUM:=0) =0
 </select>
 
 

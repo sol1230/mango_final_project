@@ -96,7 +96,7 @@
           <c:forEach items="${resultMap.resultList}" var="resultData" varStatus="loop">
           <c:choose>
             <c:when test="${resultData.WINE_TYPE eq '레드'}">
-              <li class="col" style="list-style: none">
+              <li class="col-3" style="list-style: none">
               <div class="item me-0" style="text-align: center; width: 230px">
                 <div
                   class=""
@@ -141,7 +141,7 @@
             </li>
             </c:when>
             <c:when test="${resultData.WINE_TYPE eq '화이트'}">
-              <li class="col" style="list-style: none">
+              <li class="col-3" style="list-style: none">
             <div class="item" style="text-align: center; width: 230px">
               <div
                 class=""
@@ -183,7 +183,7 @@
           </li>
             </c:when>
             <c:when test="${resultData.WINE_TYPE eq '로제'}">
-              <li class="col" style="list-style: none">
+              <li class="col-3" style="list-style: none">
             <div class="item" style="text-align: center; width: 230px">
               <div
                 class=""
@@ -225,7 +225,7 @@
           </li>
             </c:when>
             <c:otherwise>
-              <li class="col" style="list-style: none">
+              <li class="col-3" style="list-style: none">
                  <div class="item" style="text-align: center; width: 230px">
                  <div
                    class=""

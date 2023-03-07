@@ -1,0 +1,14 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Spring Boot-MangoFinalProjectApplication<mango_final_project>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.mango.mango_final_project.MangoFinalProjectApplication",
+      "projectName": "mango_final_project",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ]
+}

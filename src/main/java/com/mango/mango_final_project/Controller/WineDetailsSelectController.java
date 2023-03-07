@@ -30,6 +30,33 @@ public class WineDetailsSelectController {
         String[] WINE_VARIETY_LIST = request.getParameterValues("WINE_VARIETY");
         String[] WINE_FOOD_PAIRING_LIST = request.getParameterValues("WINE_FOOD_PAIRING");
 
+        float wine_scope_min = 0;
+        float wine_scope_max = 0;
+
+        if(WINE_SCOPE_LIST != null){
+            wine_scope_max = Float.parseFloat(WINE_SCOPE_LIST[0]);
+            wine_scope_min = Float.parseFloat(WINE_SCOPE_LIST[0]);
+            if(WINE_SCOPE_LIST.length == 1) {
+                for(int i = 0; i < WINE_SCOPE_LIST.length; i ++){
+                    if(wine_scope_max < Float.parseFloat(WINE_SCOPE_LIST[i])){
+                        wine_scope_max = Float.parseFloat(WINE_SCOPE_LIST[i]);
+                    }
+                }
+                wine_scope_max = wine_scope_max + 1;
+            } else {
+                for(int i = 0; i < WINE_SCOPE_LIST.length; i ++){
+                    if(wine_scope_max < Float.parseFloat(WINE_SCOPE_LIST[i])){
+                        wine_scope_max = Float.parseFloat(WINE_SCOPE_LIST[i]);
+                    }
+                    if(wine_scope_min > Float.parseFloat(WINE_SCOPE_LIST[i])){
+                        wine_scope_min = Float.parseFloat(WINE_SCOPE_LIST[i]);
+                    }
+                }
+                wine_scope_max = wine_scope_max + 1;
+            }
+        }
+
+
         params.put("WINE_SCOPE_LIST", WINE_SCOPE_LIST);
         params.put("WINE_TYPE_LIST", WINE_TYPE_LIST);
         params.put("WINE_COUNTRY_LIST", WINE_COUNTRY_LIST);
@@ -37,6 +64,11 @@ public class WineDetailsSelectController {
         params.put("WINE_VARIETY_LIST", WINE_VARIETY_LIST);
         params.put("WINE_FOOD_PAIRING_LIST", WINE_FOOD_PAIRING_LIST);
         params.put("currentPage", Integer.parseInt(currentPage));
+
+        if(WINE_SCOPE_LIST != null){
+            params.put("WINE_SCOPE_MAX", wine_scope_max);
+            params.put("WINE_SCOPE_MIN", wine_scope_min);
+        }
 
         // WINE_SCOPE 출력 확인용
         // for(int i = 0; i < WINE_SCOPE_LIST.length; i++ ){

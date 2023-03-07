@@ -68,25 +68,25 @@
               </thead>
               <tbody>
                 <tr>
-                  <td><input type="text" class="form-control" name="USER_UID" value="${resultData.USER_UID}" /></td>
-                  <td><input type="text" class="form-control" name="PASSWORD" value="${resultData.PASSWORD}" /></td>
-                  <td><input type="text" class="form-control" name="NAME" value="${resultData.NAME}" /></td>
-                  <td><input type="text" class="form-control" name="BIRTH" value="${resultData.BIRTH}" /></td>
-                  <td><input type="text" class="form-control" name="GENDER" value="${resultData.GENDER}" /></td>
-                  <td><input type="text" class="form-control" name="PHONE" value="${resultData.PHONE}"/></td>
-                  <td><input type="text" class="form-control" name="ADDRESS" value="${resultData.ADDRESS}"/>
-                              <div class="row">
-            	<div class="col">
-            		<input type="text" id="postcode" name="post" placeholder="우편번호" class="form-control">
-            	</div>
-            	<div class="col">
-            		<button type="button" onclick="daumPostcode();"class="btn btn-sm btn-outline-primary" style="margin-top: 2px;">우편번호 찾기</button>
-            	</div>     
-            </div>
-            <input type="text" id="address" name="address" placeholder="주소" class="form-control">
-            <input type="text" id="detailAddress" name="addressDetail" placeholder="상세주소" class="form-control">
-          </div></td>
-                  <td><input type="text" class="form-control" name="AUTHORITY" value="${resultData.AUTHORITY}"/></td>
+                  <td><input type="text" class="form-control" name="USER_UID" value="${resultData.USER_UID}" required /></td>
+                  <td><input type="text" class="form-control" name="PASSWORD" value="${resultData.PASSWORD}"required /></td>
+                  <td><input type="text" class="form-control" name="NAME" value="${resultData.NAME}" required/></td>
+                  <td><input type="date" class="form-control" name="BIRTH" value="${resultData.BIRTH}" required /></td>
+                  <td><input type="text" class="form-control" name="GENDER" value="${resultData.GENDER}" required/></td>
+                  <td><input type="text" class="form-control" name="PHONE" value="${resultData.PHONE}" required/></td>
+                  <td><input type="text" class="form-control" name="ADDRESS" value="${resultData.ADDRESS}" required/>
+              <div class="row">
+                <div class="col">
+                  <input type="text" id="postcode" name="POST" value="${resultData.POST}" placeholder="우편번호" class="form-control">
+                </div>
+                <div class="col">
+                  <button type="button" onclick="daumPostcode();"class="btn btn-sm btn-outline-primary" style="margin-top: 2px;">우편번호 찾기</button>
+                </div>     
+              </div>
+              <input type="text" id="address" name="ADDRESS" value="${resultData.ADDRESS}" placeholder="주소" class="form-control" required>
+              <input type="text" id="detailAddress" name="ADDRESS_DETAIL" value="${resultData.ADDRESS_DETAIL}" placeholder="상세주소" class="form-control" required>
+          </td>
+                  <td><input type="text" class="form-control" name="AUTHORITY" value="${resultData.AUTHORITY}" required/></td>
                 </tr>
               </tbody>
             </table>

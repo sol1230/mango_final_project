@@ -66,6 +66,7 @@
                       id="COUPON_NAME"
                       class="form-control"
                       placeholder="이름을 입력해 주세요."
+                      required
                     />
                   </td>
                 </tr>
@@ -77,6 +78,7 @@
                       name="COUPON_DATETIME1"
                       id="COUPON_DATETIME1"
                       class="form-control"
+                      required
                     />
                   </td>
                   <td>
@@ -88,6 +90,7 @@
                       name="COUPON_DATETIME2"
                       id="COUPON_DATETIME2"
                       class="form-control"
+                      required
                     />
                   </td>
                 </tr>
