@@ -77,14 +77,14 @@
                   <td><input type="text" class="form-control" name="ADDRESS" value="${resultData.ADDRESS}"/>
                               <div class="row">
             	<div class="col">
-            		<input type="text" id="postcode" name="post" placeholder="우편번호" class="form-control">
+            		<input type="text" id="postcode" name="POST" value="${resultData.POST}" placeholder="우편번호" class="form-control">
             	</div>
             	<div class="col">
             		<button type="button" onclick="daumPostcode();"class="btn btn-sm btn-outline-primary" style="margin-top: 2px;">우편번호 찾기</button>
             	</div>     
             </div>
-            <input type="text" id="address" name="address" placeholder="주소" class="form-control">
-            <input type="text" id="detailAddress" name="addressDetail" placeholder="상세주소" class="form-control">
+            <input type="text" id="address" name="ADDRESS" value="${resultData.ADDRESS}" placeholder="주소" class="form-control">
+            <input type="text" id="detailAddress" name="ADDRESS_DETAIL" value="${resultData.ADDRESS_DETAIL}" placeholder="상세주소" class="form-control">
           </div></td>
                   <td><input type="text" class="form-control" name="AUTHORITY" value="${resultData.AUTHORITY}"/></td>
                 </tr>

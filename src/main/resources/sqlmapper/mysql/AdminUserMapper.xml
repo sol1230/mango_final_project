@@ -22,8 +22,8 @@
 
     <!-- AdminUser.insertUser -->
     <insert id="insertUser" parameterType="Map">
-        INSERT INTO USER (USER_UID, PASSWORD, NAME, BIRTH, GENDER, PHONE, ADDRESS, AUTHORITY)
-        VALUE (#{USER_UID}, #{PASSWORD}, #{NAME}, #{BIRTH}, #{GENDER}, #{PHONE}, #{ADDRESS}, #{AUTHORITY})
+        INSERT INTO USER (USER_UID, PASSWORD, NAME, BIRTH, GENDER, PHONE, ADDRESS, ADDRESS_DETAIL, POST, AUTHORITY)
+        VALUE (#{USER_UID}, #{PASSWORD}, #{NAME}, #{BIRTH}, #{GENDER}, #{PHONE}, #{ADDRESS}, #{ADDRESS_DETAIL}, #{POST}, #{AUTHORITY})
     </insert>
 
     <!-- AdminUser.selectUserInfo -->
