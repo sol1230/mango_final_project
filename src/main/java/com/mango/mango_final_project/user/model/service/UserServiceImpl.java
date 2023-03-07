@@ -70,6 +70,24 @@ public class UserServiceImpl implements UserService {
         ArrayList<User> selectReview = uDao.selectReview(sqlSession, user);
         return selectReview;
     }
+
+    @Override
+    public ArrayList<User> selectQna(User user) {
+        ArrayList<User> selectQna = uDao.selectQna(sqlSession, user);
+        return selectQna;
+    }
+
+    @Override
+    public User reviewCount(User user) {
+        User reviewCount = uDao.reviewCount(sqlSession, user);
+        return reviewCount;
+    }
+
+    @Override
+    public User qnaCount(User user) {
+        User qnaCount = uDao.qnaCount(sqlSession, user);
+        return qnaCount;
+    }
     
 
 }

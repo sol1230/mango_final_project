@@ -137,5 +137,35 @@ WHERE USER_UID = #{USER_UID}
   AND (@ROWNUM:=0) =0
 </select>
 
+<select id="selectQna"
+parameterType="com.mango.mango_final_project.user.model.vo.User"
+ resultType="com.mango.mango_final_project.user.model.vo.User">
+SELECT
+  @ROWNUM := @ROWNUM + 1 AS NUMBER,
+  A.*,
+  B.WINE_NAME
+FROM QNA A
+LEFT OUTER JOIN WINE B
+ON A.QNA_UID = B.WINE_UID
+WHERE USER_UID = #{USER_UID}
+  AND (@ROWNUM:=0) =0
+</select>
 
+<select id="reviewCount"
+parameterType="com.mango.mango_final_project.user.model.vo.User"
+ resultType="com.mango.mango_final_project.user.model.vo.User">
+SELECT 
+COUNT(*) AS REVIEWCOUNT
+FROM REVIEW
+WHERE USER_UID = #{USER_UID}
+</select>
+
+<select id="qnaCount"
+parameterType="com.mango.mango_final_project.user.model.vo.User"
+ resultType="com.mango.mango_final_project.user.model.vo.User">
+SELECT 
+COUNT(*) AS QNACOUNT
+FROM QNA
+WHERE USER_UID = #{USER_UID}
+</select>
 </mapper>
