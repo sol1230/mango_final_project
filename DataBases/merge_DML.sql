@@ -377,3 +377,11 @@ VALUES ('11번가', '815-81-01244', '하형일', 'https://www.11st.co.kr/main', 
 ('11번가', '815-81-01244', '하형일', 'http://www.11st.co.kr/main', 'ADMIN', 9, '50000', '2000'),
 ('11번가', '815-81-01244', '하형일', 'http://www.11st.co.kr/main', 'ADMIN', 10, '40000', '2000')
 ;
+
+
+-- 와인 추가
+INSERT INTO WINE (WINE_NAME, WINE_NAME_EN, WINE_SCOPE, WINE_COMPANY, WINE_VARIETY, WINE_COUNTRY, WINE_REGION, WINE_TYPE, WINE_ALCOHOL_DEGREE, WINE_PRICE, WINE_IMAGE, WINE_FILE, WINE_BODY, WINE_ACIDITY, WINE_SUGAR, WINE_TANNIN, WINE_FOOD_PAIRING)
+VALUES ('디아블로 까베르네 쇼비뇽', 'Casillero del Diablo Cabernet Sauvignon', '3.0', '콘차이 토로', '카베르네 쇼비뇽', '칠레', '칠레', '레드', '13.5', '12,800', '이미지', '파일', '중간', '중간', '약함', '중간', '양고기'),
+		('닥터 린드망 포피리 블랑', 'Lindeman Porphyry Blanc', '3.0', '린드망', '소비뇽블랑', '호주', '호주', '화이트', '9.0', '12,900', '이미지', '파일', '중간', '중간', '약함', '중간', '과일, 생선'),
+        ('텐센 샤르도네', 'Tenshen Chardonnay', '4.0', '텐센', '샤르도네', '미국', '소노마', '화이트', '14.8', '34,000', '이미지', '파일', '중간', '중간', '약함', '중간', '버섯');
+;
