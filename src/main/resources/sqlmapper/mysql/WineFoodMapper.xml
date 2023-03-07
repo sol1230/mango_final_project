@@ -8,6 +8,41 @@
         FROM WINE
         WHERE WINE_FOOD_PAIRING LIKE '%소%'
     </select>
+    
+    <select id="wineBeefSelectList" parameterType="Map" resultType="Map">
+        <choose>
+            <when test="select == 'latest'">
+                SELECT * 
+                FROM WINE
+                WHERE WINE_FOOD_PAIRING LIKE '%소%'
+                ORDER BY WINE_UID DESC
+            </when>
+            <when test="select == 'rowPrice'">
+                SELECT * 
+                FROM WINE
+                WHERE WINE_FOOD_PAIRING LIKE '%소%'
+                ORDER BY WINE_PRICE
+            </when>
+            <when test="select == 'highPrice'">
+                SELECT * 
+                FROM WINE
+                WHERE WINE_FOOD_PAIRING LIKE '%소%'
+                ORDER BY WINE_PRICE DESC
+            </when>
+            <when test="select == 'popular'">
+                SELECT *, COUNT(WISHLIST.WINE_UID)
+                FROM WINE LEFT JOIN WISHLIST
+                ON WINE.WINE_UID = WISHLIST.WINE_UID
+                WHERE WINE_FOOD_PAIRING LIKE '%소%'
+                ORDER BY COUNT(WISHLIST.WINE_UID) DESC
+            </when>
+            <otherwise>
+                SELECT * 
+                FROM WINE
+                WHERE WINE_FOOD_PAIRING LIKE '%소%'
+            </otherwise>
+        </choose>
+    </select>
     <!-- 소고기 와인 총 갯수 -->
     <select id="wineBeefTotal" 
         parameterType="Map" resultType="int">
@@ -21,6 +56,41 @@
         SELECT *
         FROM WINE
         WHERE WINE_FOOD_PAIRING LIKE '%돼지%'
+    </select>
+
+    <select id="winePorkSelectList" parameterType="Map" resultType="Map">
+        <choose>
+            <when test="select == 'latest'">
+                SELECT * 
+                FROM WINE
+                WHERE WINE_FOOD_PAIRING LIKE '%돼지%'
+                ORDER BY WINE_UID DESC
+            </when>
+            <when test="select == 'rowPrice'">
+                SELECT * 
+                FROM WINE
+                WHERE WINE_FOOD_PAIRING LIKE '%돼지%'
+                ORDER BY WINE_PRICE
+            </when>
+            <when test="select == 'highPrice'">
+                SELECT * 
+                FROM WINE
+                WHERE WINE_FOOD_PAIRING LIKE '%돼지%'
+                ORDER BY WINE_PRICE DESC
+            </when>
+            <when test="select == 'popular'">
+                SELECT *, COUNT(WISHLIST.WINE_UID)
+                FROM WINE LEFT JOIN WISHLIST
+                ON WINE.WINE_UID = WISHLIST.WINE_UID
+                WHERE WINE_FOOD_PAIRING LIKE '%돼지%'
+                ORDER BY COUNT(WISHLIST.WINE_UID) DESC
+            </when>
+            <otherwise>
+                SELECT * 
+                FROM WINE
+                WHERE WINE_FOOD_PAIRING LIKE '%돼지%'
+            </otherwise>
+        </choose>
     </select>
     <!-- 돼지고기 와인 총 갯수 -->
     <select id="winePorkTotal" 
@@ -36,6 +106,41 @@
         FROM WINE
         WHERE WINE_FOOD_PAIRING LIKE '%양%'
     </select>
+
+    <select id="wineLambSelectList" parameterType="Map" resultType="Map">
+        <choose>
+            <when test="select == 'latest'">
+                SELECT * 
+                FROM WINE
+                WHERE WINE_FOOD_PAIRING LIKE '%양%'
+                ORDER BY WINE_UID DESC
+            </when>
+            <when test="select == 'rowPrice'">
+                SELECT * 
+                FROM WINE
+                WHERE WINE_FOOD_PAIRING LIKE '%양%'
+                ORDER BY WINE_PRICE
+            </when>
+            <when test="select == 'highPrice'">
+                SELECT * 
+                FROM WINE
+                WHERE WINE_FOOD_PAIRING LIKE '%양%'
+                ORDER BY WINE_PRICE DESC
+            </when>
+            <when test="select == 'popular'">
+                SELECT *, COUNT(WISHLIST.WINE_UID)
+                FROM WINE LEFT JOIN WISHLIST
+                ON WINE.WINE_UID = WISHLIST.WINE_UID
+                WHERE WINE_FOOD_PAIRING LIKE '%양%'
+                ORDER BY COUNT(WISHLIST.WINE_UID) DESC
+            </when>
+            <otherwise>
+                SELECT * 
+                FROM WINE
+                WHERE WINE_FOOD_PAIRING LIKE '%양%'
+            </otherwise>
+        </choose>
+    </select>
     <!-- 양고기 와인 총 갯수 -->
     <select id="wineLambTotal" 
         parameterType="Map" resultType="int">
@@ -49,6 +154,41 @@
         SELECT *
         FROM WINE
         WHERE WINE_FOOD_PAIRING LIKE '%닭%'
+    </select>
+
+    <select id="wineChickenSelectList" parameterType="Map" resultType="Map">
+        <choose>
+            <when test="select == 'latest'">
+                SELECT * 
+                FROM WINE
+                WHERE WINE_FOOD_PAIRING LIKE '%닭%'
+                ORDER BY WINE_UID DESC
+            </when>
+            <when test="select == 'rowPrice'">
+                SELECT * 
+                FROM WINE
+                WHERE WINE_FOOD_PAIRING LIKE '%닭%'
+                ORDER BY WINE_PRICE
+            </when>
+            <when test="select == 'highPrice'">
+                SELECT * 
+                FROM WINE
+                WHERE WINE_FOOD_PAIRING LIKE '%닭%'
+                ORDER BY WINE_PRICE DESC
+            </when>
+            <when test="select == 'popular'">
+                SELECT *, COUNT(WISHLIST.WINE_UID)
+                FROM WINE LEFT JOIN WISHLIST
+                ON WINE.WINE_UID = WISHLIST.WINE_UID
+                WHERE WINE_FOOD_PAIRING LIKE '%닭%'
+                ORDER BY COUNT(WISHLIST.WINE_UID) DESC
+            </when>
+            <otherwise>
+                SELECT * 
+                FROM WINE
+                WHERE WINE_FOOD_PAIRING LIKE '%닭%'
+            </otherwise>
+        </choose>
     </select>
     <!-- 닭고기 와인 총 갯수 -->
     <select id="wineChickenTotal" 
@@ -64,6 +204,41 @@
         FROM WINE
         WHERE WINE_FOOD_PAIRING LIKE '%치즈%'
     </select>
+
+    <select id="wineCheeseSelectList" parameterType="Map" resultType="Map">
+        <choose>
+            <when test="select == 'latest'">
+                SELECT * 
+                FROM WINE
+                WHERE WINE_FOOD_PAIRING LIKE '%치즈%'
+                ORDER BY WINE_UID DESC
+            </when>
+            <when test="select == 'rowPrice'">
+                SELECT * 
+                FROM WINE
+                WHERE WINE_FOOD_PAIRING LIKE '%치즈%'
+                ORDER BY WINE_PRICE
+            </when>
+            <when test="select == 'highPrice'">
+                SELECT * 
+                FROM WINE
+                WHERE WINE_FOOD_PAIRING LIKE '%치즈%'
+                ORDER BY WINE_PRICE DESC
+            </when>
+            <when test="select == 'popular'">
+                SELECT *, COUNT(WISHLIST.WINE_UID)
+                FROM WINE LEFT JOIN WISHLIST
+                ON WINE.WINE_UID = WISHLIST.WINE_UID
+                WHERE WINE_FOOD_PAIRING LIKE '%치즈%'
+                ORDER BY COUNT(WISHLIST.WINE_UID) DESC
+            </when>
+            <otherwise>
+                SELECT * 
+                FROM WINE
+                WHERE WINE_FOOD_PAIRING LIKE '%치즈%'
+            </otherwise>
+        </choose>
+    </select>
     <!-- 치즈 와인 총 갯수 -->
     <select id="wineCheeseTotal" 
         parameterType="Map" resultType="int">
@@ -77,6 +252,41 @@
         SELECT *
         FROM WINE
         WHERE WINE_FOOD_PAIRING LIKE '%버섯%'
+    </select>
+
+    <select id="wineMushroomSelectList" parameterType="Map" resultType="Map">
+        <choose>
+            <when test="select == 'latest'">
+                SELECT * 
+                FROM WINE
+                WHERE WINE_FOOD_PAIRING LIKE '%버섯%'
+                ORDER BY WINE_UID DESC
+            </when>
+            <when test="select == 'rowPrice'">
+                SELECT * 
+                FROM WINE
+                WHERE WINE_FOOD_PAIRING LIKE '%버섯%'
+                ORDER BY WINE_PRICE
+            </when>
+            <when test="select == 'highPrice'">
+                SELECT * 
+                FROM WINE
+                WHERE WINE_FOOD_PAIRING LIKE '%버섯%'
+                ORDER BY WINE_PRICE DESC
+            </when>
+            <when test="select == 'popular'">
+                SELECT *, COUNT(WISHLIST.WINE_UID)
+                FROM WINE LEFT JOIN WISHLIST
+                ON WINE.WINE_UID = WISHLIST.WINE_UID
+                WHERE WINE_FOOD_PAIRING LIKE '%버섯%'
+                ORDER BY COUNT(WISHLIST.WINE_UID) DESC
+            </when>
+            <otherwise>
+                SELECT * 
+                FROM WINE
+                WHERE WINE_FOOD_PAIRING LIKE '%버섯%'
+            </otherwise>
+        </choose>
     </select>
     <!-- 버섯 와인 총 갯수 -->
     <select id="wineMushroomTotal" 

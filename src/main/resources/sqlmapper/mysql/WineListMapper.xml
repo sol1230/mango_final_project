@@ -16,6 +16,37 @@
         FROM WINE
     </select>
 
+    
+    <select id="wineSelectList" parameterType="Map" resultType="Map">
+        <choose>
+            <when test="select == 'latest'">
+                SELECT * 
+                FROM WINE
+                ORDER BY WINE_UID DESC
+            </when>
+            <when test="select == 'rowPrice'">
+                SELECT * 
+                FROM WINE
+                ORDER BY WINE_PRICE
+            </when>
+            <when test="select == 'highPrice'">
+                SELECT * 
+                FROM WINE
+                ORDER BY WINE_PRICE DESC
+            </when>
+            <when test="select == 'popular'">
+                SELECT *, COUNT(WISHLIST.WINE_UID)
+                FROM WINE LEFT JOIN WISHLIST
+                ON WINE.WINE_UID = WISHLIST.WINE_UID
+                GROUP BY 1
+                ORDER BY COUNT(WISHLIST.WINE_UID) DESC
+            </when>
+            <otherwise>
+                SELECT * 
+                FROM WINE
+            </otherwise>
+        </choose>
+    </select>
 
 
     <!-- 와인 삭제 -->

@@ -32,6 +32,18 @@ public class WinePriceController {
         modelAndView.setViewName("wine/wine_price_3");
         return modelAndView;
     }
+    @RequestMapping(value = "/wine/wine_price_3/select/{currentPage}", method = RequestMethod.GET)
+    public ModelAndView winePrice3Select(@RequestParam Map<String, Object> params
+    , @PathVariable String currentPage, ModelAndView modelAndView) {
+        params.put("currentPage", Integer.parseInt(currentPage));
+        params.put("pageScale", 10);
+        Object resultMap = winePriceService.winePrice3SelectListWithPagination(params);
+        Object selectName = params.get("select");
+        modelAndView.addObject("resultMap",resultMap);
+        modelAndView.addObject("selectName",selectName);
+        modelAndView.setViewName("wine/wine_price_3");
+        return modelAndView;
+    }
     // 3만원 ~ 6만원 와인 목록
     @RequestMapping(value = "/wine/wine_price_3_6/{currentPage}", method = RequestMethod.GET)
     public ModelAndView winePrice3_6(@RequestParam Map<String, Object> params
@@ -40,6 +52,18 @@ public class WinePriceController {
         params.put("pageScale", 10);
         Object resultMap = winePriceService.winePrice3_6ListWithPagination(params);
         modelAndView.addObject("resultMap",resultMap);
+        modelAndView.setViewName("wine/wine_price_3_6");
+        return modelAndView;
+    }
+    @RequestMapping(value = "/wine/wine_price_3_6/select/{currentPage}", method = RequestMethod.GET)
+    public ModelAndView winePrice3_6Select(@RequestParam Map<String, Object> params
+    , @PathVariable String currentPage, ModelAndView modelAndView) {
+        params.put("currentPage", Integer.parseInt(currentPage));
+        params.put("pageScale", 10);
+        Object resultMap = winePriceService.winePrice3_6SelectListWithPagination(params);
+        Object selectName = params.get("select");
+        modelAndView.addObject("resultMap",resultMap);
+        modelAndView.addObject("selectName",selectName);
         modelAndView.setViewName("wine/wine_price_3_6");
         return modelAndView;
     }
@@ -54,6 +78,18 @@ public class WinePriceController {
         modelAndView.setViewName("wine/wine_price_6_9");
         return modelAndView;
     }
+    @RequestMapping(value = "/wine/wine_price_6_9/select/{currentPage}", method = RequestMethod.GET)
+    public ModelAndView winePrice6_9Select(@RequestParam Map<String, Object> params
+    , @PathVariable String currentPage, ModelAndView modelAndView) {
+        params.put("currentPage", Integer.parseInt(currentPage));
+        params.put("pageScale", 10);
+        Object resultMap = winePriceService.winePrice6_9SelectListWithPagination(params);
+        Object selectName = params.get("select");
+        modelAndView.addObject("resultMap",resultMap);
+        modelAndView.addObject("selectName",selectName);
+        modelAndView.setViewName("wine/wine_price_6_9");
+        return modelAndView;
+    }
     // 9만원 ~ 15만원 와인 목록
     @RequestMapping(value = "/wine/wine_price_9_15/{currentPage}", method = RequestMethod.GET)
     public ModelAndView winePrice9_15(@RequestParam Map<String, Object> params
@@ -62,6 +98,18 @@ public class WinePriceController {
         params.put("pageScale", 10);
         Object resultMap = winePriceService.winePrice9_15ListWithPagination(params);
         modelAndView.addObject("resultMap",resultMap);
+        modelAndView.setViewName("wine/wine_price_9_15");
+        return modelAndView;
+    }
+    @RequestMapping(value = "/wine/wine_price_9_15/select/{currentPage}", method = RequestMethod.GET)
+    public ModelAndView winePrice9_15Select(@RequestParam Map<String, Object> params
+    , @PathVariable String currentPage, ModelAndView modelAndView) {
+        params.put("currentPage", Integer.parseInt(currentPage));
+        params.put("pageScale", 10);
+        Object resultMap = winePriceService.winePrice9_15SelectListWithPagination(params);
+        Object selectName = params.get("select");
+        modelAndView.addObject("resultMap",resultMap);
+        modelAndView.addObject("selectName",selectName);
         modelAndView.setViewName("wine/wine_price_9_15");
         return modelAndView;
     }
@@ -76,6 +124,18 @@ public class WinePriceController {
         modelAndView.setViewName("wine/wine_price_15_20");
         return modelAndView;
     }
+    @RequestMapping(value = "/wine/wine_price_15_20/select/{currentPage}", method = RequestMethod.GET)
+    public ModelAndView winePrice15_20Select(@RequestParam Map<String, Object> params
+    , @PathVariable String currentPage, ModelAndView modelAndView) {
+        params.put("currentPage", Integer.parseInt(currentPage));
+        params.put("pageScale", 10);
+        Object resultMap = winePriceService.winePrice15_20SelectListWithPagination(params);
+        Object selectName = params.get("select");
+        modelAndView.addObject("resultMap",resultMap);
+        modelAndView.addObject("selectName",selectName);
+        modelAndView.setViewName("wine/wine_price_15_20");
+        return modelAndView;
+    }
     // 20만원 이상 와인 목록
     @RequestMapping(value = "/wine/wine_price_20/{currentPage}", method = RequestMethod.GET)
     public ModelAndView winePrice20(@RequestParam Map<String, Object> params
@@ -84,6 +144,18 @@ public class WinePriceController {
         params.put("pageScale", 10);
         Object resultMap = winePriceService.winePrice20ListWithPagination(params);
         modelAndView.addObject("resultMap",resultMap);
+        modelAndView.setViewName("wine/wine_price_20");
+        return modelAndView;
+    }
+    @RequestMapping(value = "/wine/wine_price_20/select/{currentPage}", method = RequestMethod.GET)
+    public ModelAndView winePrice20Select(@RequestParam Map<String, Object> params
+    , @PathVariable String currentPage, ModelAndView modelAndView) {
+        params.put("currentPage", Integer.parseInt(currentPage));
+        params.put("pageScale", 10);
+        Object resultMap = winePriceService.winePrice20SelectListWithPagination(params);
+        Object selectName = params.get("select");
+        modelAndView.addObject("resultMap",resultMap);
+        modelAndView.addObject("selectName",selectName);
         modelAndView.setViewName("wine/wine_price_20");
         return modelAndView;
     }

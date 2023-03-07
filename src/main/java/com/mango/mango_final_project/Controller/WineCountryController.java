@@ -32,6 +32,18 @@ public class WineCountryController {
         modelAndView.setViewName("wine/wine_country_france");
         return modelAndView;
     }
+    @RequestMapping(value = "/wine/wine_france/select/{currentPage}", method = RequestMethod.GET)
+    public ModelAndView wineFranceSelect(@RequestParam Map<String, Object> params
+    , @PathVariable String currentPage, ModelAndView modelAndView) {
+        params.put("currentPage", Integer.parseInt(currentPage));
+        params.put("pageScale", 10);
+        Object resultMap = wineCountryService.wineFranceSelectListWithPagination(params);
+        Object selectName = params.get("select");
+        modelAndView.addObject("resultMap",resultMap);
+        modelAndView.addObject("selectName",selectName);
+        modelAndView.setViewName("wine/wine_country_france");
+        return modelAndView;
+    }
 
     // 스페인 와인 목록
     @RequestMapping(value = "/wine/wine_spain/{currentPage}", method = RequestMethod.GET)
@@ -41,6 +53,18 @@ public class WineCountryController {
         params.put("pageScale", 10);
         Object resultMap = wineCountryService.wineSpainListWithPagination(params);
         modelAndView.addObject("resultMap",resultMap);
+        modelAndView.setViewName("wine/wine_country_spain");
+        return modelAndView;
+    }
+    @RequestMapping(value = "/wine/wine_spain/select/{currentPage}", method = RequestMethod.GET)
+    public ModelAndView wineSpainSeslect(@RequestParam Map<String, Object> params
+    , @PathVariable String currentPage, ModelAndView modelAndView) {
+        params.put("currentPage", Integer.parseInt(currentPage));
+        params.put("pageScale", 10);
+        Object resultMap = wineCountryService.wineSpainSelectListWithPagination(params);
+        Object selectName = params.get("select");
+        modelAndView.addObject("resultMap",resultMap);
+        modelAndView.addObject("selectName",selectName);
         modelAndView.setViewName("wine/wine_country_spain");
         return modelAndView;
     }
@@ -56,6 +80,18 @@ public class WineCountryController {
         modelAndView.setViewName("wine/wine_country_italy");
         return modelAndView;
     }
+    @RequestMapping(value = "/wine/wine_italy/select/{currentPage}", method = RequestMethod.GET)
+    public ModelAndView wineItalySelect(@RequestParam Map<String, Object> params
+    , @PathVariable String currentPage, ModelAndView modelAndView) {
+        params.put("currentPage", Integer.parseInt(currentPage));
+        params.put("pageScale", 10);
+        Object resultMap = wineCountryService.wineItalySelectListWithPagination(params);
+        Object selectName = params.get("select");
+        modelAndView.addObject("resultMap",resultMap);
+        modelAndView.addObject("selectName",selectName);
+        modelAndView.setViewName("wine/wine_country_italy");
+        return modelAndView;
+    }
 
     // 독일 와인 목록
     @RequestMapping(value = "/wine/wine_germany/{currentPage}", method = RequestMethod.GET)
@@ -65,6 +101,18 @@ public class WineCountryController {
         params.put("pageScale", 10);
         Object resultMap = wineCountryService.wineGermanyListWithPagination(params);
         modelAndView.addObject("resultMap",resultMap);
+        modelAndView.setViewName("wine/wine_country_germany");
+        return modelAndView;
+    }
+    @RequestMapping(value = "/wine/wine_germany/select/{currentPage}", method = RequestMethod.GET)
+    public ModelAndView wineGermanySelect(@RequestParam Map<String, Object> params
+    , @PathVariable String currentPage, ModelAndView modelAndView) {
+        params.put("currentPage", Integer.parseInt(currentPage));
+        params.put("pageScale", 10);
+        Object resultMap = wineCountryService.wineGermanySelectListWithPagination(params);
+        Object selectName = params.get("select");
+        modelAndView.addObject("resultMap",resultMap);
+        modelAndView.addObject("selectName",selectName);
         modelAndView.setViewName("wine/wine_country_germany");
         return modelAndView;
     }
@@ -80,6 +128,18 @@ public class WineCountryController {
         modelAndView.setViewName("wine/wine_country_chile");
         return modelAndView;
     }
+    @RequestMapping(value = "/wine/wine_chile/select/{currentPage}", method = RequestMethod.GET)
+    public ModelAndView wineChileSelect(@RequestParam Map<String, Object> params
+    , @PathVariable String currentPage, ModelAndView modelAndView) {
+        params.put("currentPage", Integer.parseInt(currentPage));
+        params.put("pageScale", 10);
+        Object resultMap = wineCountryService.wineChileSelectListWithPagination(params);
+        Object selectName = params.get("select");
+        modelAndView.addObject("resultMap",resultMap);
+        modelAndView.addObject("selectName",selectName);
+        modelAndView.setViewName("wine/wine_country_chile");
+        return modelAndView;
+    }
 
     // 미국 와인 목록
     @RequestMapping(value = "/wine/wine_usa/{currentPage}", method = RequestMethod.GET)
@@ -89,6 +149,18 @@ public class WineCountryController {
         params.put("pageScale", 10);
         Object resultMap = wineCountryService.wineUsaListWithPagination(params);
         modelAndView.addObject("resultMap",resultMap);
+        modelAndView.setViewName("wine/wine_country_usa");
+        return modelAndView;
+    }
+    @RequestMapping(value = "/wine/wine_usa/select/{currentPage}", method = RequestMethod.GET)
+    public ModelAndView wineUsaSelect(@RequestParam Map<String, Object> params
+    , @PathVariable String currentPage, ModelAndView modelAndView) {
+        params.put("currentPage", Integer.parseInt(currentPage));
+        params.put("pageScale", 10);
+        Object resultMap = wineCountryService.wineUsaSelectListWithPagination(params);
+        Object selectName = params.get("select");
+        modelAndView.addObject("resultMap",resultMap);
+        modelAndView.addObject("selectName",selectName);
         modelAndView.setViewName("wine/wine_country_usa");
         return modelAndView;
     }

@@ -20,6 +20,11 @@ public class WineCountryService {
     Object result = commonDao.getList(sqlMapId, dataMap);
     return result;
   }
+  public Object wineFranceSelectList(Object dataMap){
+    String sqlMapId = "WineCountry.wineFranceSelectList";
+    Object result = commonDao.getList(sqlMapId, dataMap);
+    return result;
+  }
   public Object wineFranceListWithPagination(Object dataMap){
     Map<String, Object> result = new HashMap<String, Object>();
     int totalCount = (int) this.wineFranceTotal(dataMap);
@@ -28,6 +33,16 @@ public class WineCountryService {
     result.put("paginations", paginations);
     ((Map<String, Object>) dataMap).put("pageBegin", paginations.getPageBegin());
     result.put("resultList", this.wineFranceList(dataMap));
+    return result;
+  }
+  public Object wineFranceSelectListWithPagination(Object dataMap){
+    Map<String, Object> result = new HashMap<String, Object>();
+    int totalCount = (int) this.wineFranceTotal(dataMap);
+    int currentPage = (int) ((Map<String, Object>) dataMap).get("currentPage");
+    Paginations paginations = new Paginations(totalCount, currentPage);
+    result.put("paginations", paginations);
+    ((Map<String, Object>) dataMap).put("pageBegin", paginations.getPageBegin());
+    result.put("resultList", this.wineFranceSelectList(dataMap));
     return result;
   }
   public Object wineFranceTotal(Object dataMap){
@@ -42,6 +57,11 @@ public class WineCountryService {
     Object result = commonDao.getList(sqlMapId, dataMap);
     return result;
   }
+  public Object wineSpainSelectList(Object dataMap){
+    String sqlMapId = "WineCountry.wineSpainSelectList";
+    Object result = commonDao.getList(sqlMapId, dataMap);
+    return result;
+  }
   public Object wineSpainListWithPagination(Object dataMap){
     Map<String, Object> result = new HashMap<String, Object>();
     int totalCount = (int) this.wineSpainTotal(dataMap);
@@ -50,6 +70,16 @@ public class WineCountryService {
     result.put("paginations", paginations);
     ((Map<String, Object>) dataMap).put("pageBegin", paginations.getPageBegin());
     result.put("resultList", this.wineSpainList(dataMap));
+    return result;
+  }
+  public Object wineSpainSelectListWithPagination(Object dataMap){
+    Map<String, Object> result = new HashMap<String, Object>();
+    int totalCount = (int) this.wineSpainTotal(dataMap);
+    int currentPage = (int) ((Map<String, Object>) dataMap).get("currentPage");
+    Paginations paginations = new Paginations(totalCount, currentPage);
+    result.put("paginations", paginations);
+    ((Map<String, Object>) dataMap).put("pageBegin", paginations.getPageBegin());
+    result.put("resultList", this.wineSpainSelectList(dataMap));
     return result;
   }
   public Object wineSpainTotal(Object dataMap){
@@ -64,6 +94,11 @@ public class WineCountryService {
     Object result = commonDao.getList(sqlMapId, dataMap);
     return result;
   }
+  public Object wineItalySelectList(Object dataMap){
+    String sqlMapId = "WineCountry.wineItalySelectList";
+    Object result = commonDao.getList(sqlMapId, dataMap);
+    return result;
+  }
   public Object wineItalyListWithPagination(Object dataMap){
     Map<String, Object> result = new HashMap<String, Object>();
     int totalCount = (int) this.wineItalyTotal(dataMap);
@@ -72,6 +107,16 @@ public class WineCountryService {
     result.put("paginations", paginations);
     ((Map<String, Object>) dataMap).put("pageBegin", paginations.getPageBegin());
     result.put("resultList", this.wineItalyList(dataMap));
+    return result;
+  }
+  public Object wineItalySelectListWithPagination(Object dataMap){
+    Map<String, Object> result = new HashMap<String, Object>();
+    int totalCount = (int) this.wineItalyTotal(dataMap);
+    int currentPage = (int) ((Map<String, Object>) dataMap).get("currentPage");
+    Paginations paginations = new Paginations(totalCount, currentPage);
+    result.put("paginations", paginations);
+    ((Map<String, Object>) dataMap).put("pageBegin", paginations.getPageBegin());
+    result.put("resultList", this.wineItalySelectList(dataMap));
     return result;
   }
   public Object wineItalyTotal(Object dataMap){
@@ -86,6 +131,11 @@ public class WineCountryService {
     Object result = commonDao.getList(sqlMapId, dataMap);
     return result;
   }
+  public Object wineGermanySelectList(Object dataMap){
+    String sqlMapId = "WineCountry.wineGermanySelectList";
+    Object result = commonDao.getList(sqlMapId, dataMap);
+    return result;
+  }
   public Object wineGermanyListWithPagination(Object dataMap){
     Map<String, Object> result = new HashMap<String, Object>();
     int totalCount = (int) this.wineGermanyTotal(dataMap);
@@ -94,6 +144,16 @@ public class WineCountryService {
     result.put("paginations", paginations);
     ((Map<String, Object>) dataMap).put("pageBegin", paginations.getPageBegin());
     result.put("resultList", this.wineGermanyList(dataMap));
+    return result;
+  }
+  public Object wineGermanySelectListWithPagination(Object dataMap){
+    Map<String, Object> result = new HashMap<String, Object>();
+    int totalCount = (int) this.wineGermanyTotal(dataMap);
+    int currentPage = (int) ((Map<String, Object>) dataMap).get("currentPage");
+    Paginations paginations = new Paginations(totalCount, currentPage);
+    result.put("paginations", paginations);
+    ((Map<String, Object>) dataMap).put("pageBegin", paginations.getPageBegin());
+    result.put("resultList", this.wineGermanySelectList(dataMap));
     return result;
   }
   public Object wineGermanyTotal(Object dataMap){
@@ -108,6 +168,11 @@ public class WineCountryService {
     Object result = commonDao.getList(sqlMapId, dataMap);
     return result;
   }
+  public Object wineChileSelectList(Object dataMap){
+    String sqlMapId = "WineCountry.wineChileSelectList";
+    Object result = commonDao.getList(sqlMapId, dataMap);
+    return result;
+  }
   public Object wineChileListWithPagination(Object dataMap){
     Map<String, Object> result = new HashMap<String, Object>();
     int totalCount = (int) this.wineChileTotal(dataMap);
@@ -116,6 +181,16 @@ public class WineCountryService {
     result.put("paginations", paginations);
     ((Map<String, Object>) dataMap).put("pageBegin", paginations.getPageBegin());
     result.put("resultList", this.wineChileList(dataMap));
+    return result;
+  }
+  public Object wineChileSelectListWithPagination(Object dataMap){
+    Map<String, Object> result = new HashMap<String, Object>();
+    int totalCount = (int) this.wineChileTotal(dataMap);
+    int currentPage = (int) ((Map<String, Object>) dataMap).get("currentPage");
+    Paginations paginations = new Paginations(totalCount, currentPage);
+    result.put("paginations", paginations);
+    ((Map<String, Object>) dataMap).put("pageBegin", paginations.getPageBegin());
+    result.put("resultList", this.wineChileSelectList(dataMap));
     return result;
   }
   public Object wineChileTotal(Object dataMap){
@@ -130,6 +205,11 @@ public class WineCountryService {
     Object result = commonDao.getList(sqlMapId, dataMap);
     return result;
   }
+  public Object wineUsaSelectList(Object dataMap){
+    String sqlMapId = "WineCountry.wineUsaSelectList";
+    Object result = commonDao.getList(sqlMapId, dataMap);
+    return result;
+  }
   public Object wineUsaListWithPagination(Object dataMap){
     Map<String, Object> result = new HashMap<String, Object>();
     int totalCount = (int) this.wineUsaTotal(dataMap);
@@ -138,6 +218,16 @@ public class WineCountryService {
     result.put("paginations", paginations);
     ((Map<String, Object>) dataMap).put("pageBegin", paginations.getPageBegin());
     result.put("resultList", this.wineUsaList(dataMap));
+    return result;
+  }
+  public Object wineUsaSelectListWithPagination(Object dataMap){
+    Map<String, Object> result = new HashMap<String, Object>();
+    int totalCount = (int) this.wineUsaTotal(dataMap);
+    int currentPage = (int) ((Map<String, Object>) dataMap).get("currentPage");
+    Paginations paginations = new Paginations(totalCount, currentPage);
+    result.put("paginations", paginations);
+    ((Map<String, Object>) dataMap).put("pageBegin", paginations.getPageBegin());
+    result.put("resultList", this.wineUsaSelectList(dataMap));
     return result;
   }
   public Object wineUsaTotal(Object dataMap){

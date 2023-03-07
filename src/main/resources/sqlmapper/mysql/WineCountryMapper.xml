@@ -8,6 +8,43 @@
         FROM WINE
         WHERE WINE_COUNTRY LIKE '프랑스%'
     </select>
+
+    <select id="wineFranceSelectList" parameterType="Map" resultType="Map">
+        <choose>
+            <when test="select == 'latest'">
+                SELECT * 
+                FROM WINE
+                WHERE WINE_COUNTRY LIKE '프랑스%'
+                ORDER BY WINE_UID DESC
+            </when>
+            <when test="select == 'rowPrice'">
+                SELECT * 
+                FROM WINE
+                WHERE WINE_COUNTRY LIKE '프랑스%'
+                ORDER BY WINE_PRICE
+            </when>
+            <when test="select == 'highPrice'">
+                SELECT * 
+                FROM WINE
+                WHERE WINE_COUNTRY LIKE '프랑스%'
+                ORDER BY WINE_PRICE DESC
+            </when>
+            <when test="select == 'popular'">
+                SELECT *, COUNT(WISHLIST.WINE_UID)
+                FROM WINE LEFT JOIN WISHLIST
+                ON WINE.WINE_UID = WISHLIST.WINE_UID
+                WHERE WINE_COUNTRY LIKE '프랑스%'
+                GROUP BY 1
+                ORDER BY COUNT(WISHLIST.WINE_UID) DESC
+            </when>
+            <otherwise>
+                SELECT * 
+                FROM WINE
+                WHERE WINE_COUNTRY LIKE '프랑스%'
+            </otherwise>
+        </choose>
+    </select>
+
     <!-- 프랑스 와인 총 갯수 -->
     <select id="wineFranceTotal" 
         parameterType="Map" resultType="int">
@@ -21,6 +58,42 @@
         SELECT *
         FROM WINE
         WHERE WINE_COUNTRY LIKE '스페인%'
+    </select>
+
+    <select id="wineSpainSelectList" parameterType="Map" resultType="Map">
+        <choose>
+            <when test="select == 'latest'">
+                SELECT * 
+                FROM WINE
+                WHERE WINE_COUNTRY LIKE '스페인%'
+                ORDER BY WINE_UID DESC
+            </when>
+            <when test="select == 'rowPrice'">
+                SELECT * 
+                FROM WINE
+                WHERE WINE_COUNTRY LIKE '스페인%'
+                ORDER BY WINE_PRICE
+            </when>
+            <when test="select == 'highPrice'">
+                SELECT * 
+                FROM WINE
+                WHERE WINE_COUNTRY LIKE '스페인%'
+                ORDER BY WINE_PRICE DESC
+            </when>
+            <when test="select == 'popular'">
+                SELECT *, COUNT(WISHLIST.WINE_UID)
+                FROM WINE LEFT JOIN WISHLIST
+                ON WINE.WINE_UID = WISHLIST.WINE_UID
+                WHERE WINE_COUNTRY LIKE '스페인%'
+                GROUP BY 1
+                ORDER BY COUNT(WISHLIST.WINE_UID) DESC
+            </when>
+            <otherwise>
+                SELECT * 
+                FROM WINE
+                WHERE WINE_COUNTRY LIKE '스페인%'
+            </otherwise>
+        </choose>
     </select>
     <!-- 스페인 와인 총 갯수 -->
     <select id="wineSpainTotal" 
@@ -36,6 +109,42 @@
         FROM WINE
         WHERE WINE_COUNTRY LIKE '이탈리아%'
     </select>
+
+    <select id="wineItalySelectList" parameterType="Map" resultType="Map">
+        <choose>
+            <when test="select == 'latest'">
+                SELECT * 
+                FROM WINE
+                WHERE WINE_COUNTRY LIKE '이탈리아%'
+                ORDER BY WINE_UID DESC
+            </when>
+            <when test="select == 'rowPrice'">
+                SELECT * 
+                FROM WINE
+                WHERE WINE_COUNTRY LIKE '이탈리아%'
+                ORDER BY WINE_PRICE
+            </when>
+            <when test="select == 'highPrice'">
+                SELECT * 
+                FROM WINE
+                WHERE WINE_COUNTRY LIKE '이탈리아%'
+                ORDER BY WINE_PRICE DESC
+            </when>
+            <when test="select == 'popular'">
+                SELECT *, COUNT(WISHLIST.WINE_UID)
+                FROM WINE LEFT JOIN WISHLIST
+                ON WINE.WINE_UID = WISHLIST.WINE_UID
+                WHERE WINE_COUNTRY LIKE '이탈리아%'
+                GROUP BY 1
+                ORDER BY COUNT(WISHLIST.WINE_UID) DESC
+            </when>
+            <otherwise>
+                SELECT * 
+                FROM WINE
+                WHERE WINE_COUNTRY LIKE '이탈리아%'
+            </otherwise>
+        </choose>
+    </select>
     <!-- 이탈리아 와인 총 갯수 -->
     <select id="wineItalyTotal" 
         parameterType="Map" resultType="int">
@@ -49,6 +158,41 @@
         SELECT *
         FROM WINE
         WHERE WINE_COUNTRY LIKE '독일%'
+    </select>
+
+    <select id="wineGermanySelectList" parameterType="Map" resultType="Map">
+        <choose>
+            <when test="select == 'latest'">
+                SELECT * 
+                FROM WINE
+                WHERE WINE_COUNTRY LIKE '독일%'
+                ORDER BY WINE_UID DESC
+            </when>
+            <when test="select == 'rowPrice'">
+                SELECT * 
+                FROM WINE
+                WHERE WINE_COUNTRY LIKE '독일
+            </when>
+            <when test="select == 'highPrice'">
+                SELECT * 
+                FROM WINE
+                WHERE WINE_COUNTRY LIKE '독일%'
+                ORDER BY WINE_PRICE DESC
+            </when>
+            <when test="select == 'popular'">
+                SELECT *, COUNT(WISHLIST.WINE_UID)
+                FROM WINE LEFT JOIN WISHLIST
+                ON WINE.WINE_UID = WISHLIST.WINE_UID
+                WHERE WINE_COUNTRY LIKE '독일%'
+                GROUP BY 1
+                ORDER BY COUNT(WISHLIST.WINE_UID) DESC
+            </when>
+            <otherwise>
+                SELECT * 
+                FROM WINE
+                WHERE WINE_COUNTRY LIKE '독일%'
+            </otherwise>
+        </choose>
     </select>
     <!-- 독일 와인 총 갯수 -->
     <select id="wineGermanyTotal" 
@@ -64,6 +208,42 @@
         FROM WINE
         WHERE WINE_COUNTRY LIKE '칠레%'
     </select>
+
+    <select id="wineChileSelectList" parameterType="Map" resultType="Map">
+        <choose>
+            <when test="select == 'latest'">
+                SELECT * 
+                FROM WINE
+                WHERE WINE_COUNTRY LIKE '칠레%'
+                ORDER BY WINE_UID DESC
+            </when>
+            <when test="select == 'rowPrice'">
+                SELECT * 
+                FROM WINE
+                WHERE WINE_COUNTRY LIKE '칠레%'
+                ORDER BY WINE_PRICE
+            </when>
+            <when test="select == 'highPrice'">
+                SELECT * 
+                FROM WINE
+                WHERE WINE_COUNTRY LIKE '칠레%'
+                ORDER BY WINE_PRICE DESC
+            </when>
+            <when test="select == 'popular'">
+                SELECT *, COUNT(WISHLIST.WINE_UID)
+                FROM WINE LEFT JOIN WISHLIST
+                ON WINE.WINE_UID = WISHLIST.WINE_UID
+                WHERE WINE_COUNTRY LIKE '칠레%'
+                GROUP BY 1
+                ORDER BY COUNT(WISHLIST.WINE_UID) DESC
+            </when>
+            <otherwise>
+                SELECT * 
+                FROM WINE
+                WHERE WINE_COUNTRY LIKE '칠레%'
+            </otherwise>
+        </choose>
+    </select>
     <!-- 칠레 와인 총 갯수 -->
     <select id="wineChileTotal" 
         parameterType="Map" resultType="int">
@@ -77,6 +257,41 @@
         SELECT *
         FROM WINE
         WHERE WINE_COUNTRY LIKE '미국%'
+    </select>
+
+    <select id="wineUsaSelectList" parameterType="Map" resultType="Map">
+        <choose>
+            <when test="select == 'latest'">
+                SELECT * 
+                FROM WINE
+                WHERE WINE_COUNTRY LIKE '미국%'
+                ORDER BY WINE_UID DESC
+            </when>
+            <when test="select == 'rowPrice'">
+                SELECT * 
+                FROM WINE
+                WHERE WINE_COUNTRY LIKE '미국%'
+                ORDER BY WINE_PRICE
+            </when>
+            <when test="select == 'highPrice'">
+                SELECT * 
+                FROM WINE
+                WHERE WINE_COUNTRY LIKE '미국%'
+                ORDER BY WINE_PRICE DESC
+            </when>
+            <when test="select == 'popular'">
+                SELECT *, COUNT(WISHLIST.WINE_UID)
+                FROM WINE LEFT JOIN WISHLIST
+                ON WINE.WINE_UID = WISHLIST.WINE_UID
+                WHERE WINE_COUNTRY LIKE '미국%'
+                ORDER BY COUNT(WISHLIST.WINE_UID) DESC
+            </when>
+            <otherwise>
+                SELECT * 
+                FROM WINE
+                WHERE WINE_COUNTRY LIKE '미국%'
+            </otherwise>
+        </choose>
     </select>
     <!-- 미국 와인 총 갯수 -->
     <select id="wineUsaTotal" 
