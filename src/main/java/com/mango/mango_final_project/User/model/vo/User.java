@@ -66,6 +66,22 @@ public class User {
     private String REVIEW_CONTENT;
     private String WINE_UID;
     private String WINE_NAME;
+    private String WINE_NAME_EN;
+    private String WINE_SCOPE;
+    private String WINE_COMPANY;
+    private String WINE_VIRIETY;
+    private String WINE_COUNTRY;
+    private String WINE_REGION;
+    private String WINE_TYPE;
+    private String WINE_ALCOHOL_DEGREE;
+    private String WINE_PRICE;
+    private String WINE_IMAGE;
+    private String WINE_FILE;
+    private String WINE_BODY;
+    private String WINE_ACIDTY;
+    private String WINE_SUGAR;
+    private String WINE_TANNIN;
+    private String WINE_FOOD_PAIRING;
 
     private String QNA_UID;
     private String QNA_TITLE;

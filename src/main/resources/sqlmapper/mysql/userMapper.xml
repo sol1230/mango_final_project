@@ -147,6 +147,15 @@ FROM REVIEW
 WHERE USER_UID = #{USER_UID}
 </select>
 
+<select id="qnaCount"
+parameterType="com.mango.mango_final_project.user.model.vo.User"
+ resultType="com.mango.mango_final_project.user.model.vo.User">
+SELECT 
+COUNT(*) AS QNACOUNT
+FROM QNA
+WHERE USER_UID = #{USER_UID}
+</select>
+
 
 <!-- QNA -->
 <select id="selectQna"
