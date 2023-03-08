@@ -12,13 +12,6 @@
         LIMIT 4
     </select>
 
-        <!-- IndexNotice.wineTotal -->
-    <select id="wineTotal" 
-        parameterType="Map" resultType="int">
-        SELECT count(*) as cnt
-        FROM WINE
-    </select>
-
 <!-- NOTICE -->
     <!-- IndexNotice.selectNotice -->
     <select id="selectNotice" parameterType="Map" resultType="Map">

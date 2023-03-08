@@ -95,6 +95,185 @@
       <div class="mt-5 text-center" style="font-weight: bold; font-size: large">
         베스트 와인
       </div>
+      <ul class="row mb-5">
+        <%-- <c:forEach items="${resultMap.resultList}" var="resultMap" varStatus=""> --%>
+          <c:choose>
+            <c:when test="${(resultMap.WINE_TYPE).equals('레드')}">
+              <li class="col" style="list-style: none">
+              <div class="item" style="text-align: center; width: 230px">
+                <div
+                  class=""
+                  style="background-color: #e8daea; width: 230px; height: 250px"
+                >
+                    <a href="/wine/wine_info/${resultMap.WINE_NAME_EN}" class="text-decoration-none text-black">
+                      <div class="pt-4">
+                          <img
+                           src="/img/wine/${resultMap.WINE_NAME_EN}.png"
+                           alt="wine1"
+                           width="200"
+                          />
+                      </div>
+                    </a>
+                </div>
+                <div class="info">
+                  <div class="more_info">
+                      <a href="/wine/wine_info/${resultMap.WINE_NAME_EN}" class="text-decoration-none text-black">
+                        <p class="box mt-2 prd_name fw-bold">
+                          ${resultMap.WINE_NAME}
+                        </p>
+                      </a>
+                    <p class="box" style="font-size: small">
+                      ${resultMap.WINE_NAME_EN}
+                    </p>
+                    <span
+                      class="badge badge-pill"
+                      style="background-color: #dc0000"
+                      >${resultMap.WINE_TYPE}와인</span
+                    >
+                    <span
+                      class="badge badge-pill"
+                      style="background-color: #dc0000"
+                      >${resultMap.WINE_COUNTRY}</span
+                    >
+                  </div>
+                  <div class="price_area mt-3">
+                    <p class="price">${resultMap.WINE_PRICE}&#8361;</p>
+                  </div>
+                </div>
+              </div>
+            </li>
+            </c:when>
+            <c:when test="${(resultMap.WINE_TYPE).equals('화이트')}">
+              <li class="col" style="list-style: none">
+            <div class="item" style="text-align: center; width: 230px">
+              <div
+                class=""
+                style="background-color: #fffbb0; width: 230px; height: 250px"
+              >
+                <a href="/wine/wine_info/${resultMap.WINE_NAME_EN}" class="text-decoration-none text-black">
+                  <div class="pt-4">
+                    <img
+                      src="/img/wine/${resultMap.WINE_NAME_EN}.png"
+                      alt="wine2"
+                      width="200"
+                    />
+                  </div>
+                </a>
+              </div>
+              <div class="info">
+                <div class="more_info">
+                  <a href="/wine/wine_info/${resultMap.WINE_NAME_EN}" class="text-decoration-none text-black">
+                    <p class="mt-2 prd_name fw-bold mt-1">${resultMap.WINE_NAME}</p>
+                  </a>
+                  <p style="font-size: small">${resultMap.WINE_NAME_EN}</p>
+                  <span
+                    class="badge badge-pill"
+                    style="background-color: #ffd500"
+                    >${resultMap.WINE_TYPE}</span
+                  >
+                  <span
+                    class="badge badge-pill"
+                    style="background-color: #ffd500"
+                    >${resultMap.WINE_COUNTRY}</span
+                  >
+                </div>
+
+                <div class="price_area mt-3">
+                  <p class="price">${resultMap.WINE_PRICE}&#8361;</p>
+                </div>
+              </div>
+            </div>
+          </li>
+            </c:when>
+            <c:when test="${(resultMap.WINE_TYPE).equals('로제')}">
+              <li class="col" style="list-style: none">
+            <div class="item" style="text-align: center; width: 230px">
+              <div
+                class=""
+                style="background-color: #ffe2e2; width: 230px; height: 250px"
+              >
+                <a href="/wine/wine_info/${resultMap.WINE_NAME_EN}" class="text-decoration-none text-black">
+                  <div class="pt-4">
+                    <img
+                      src="/img/wine/${resultMap.WINE_NAME_EN}.png"
+                      alt="wine2"
+                      width="200"
+                    />
+                  </div>
+                </a>
+              </div>
+              <div class="info">
+                <div class="more_info">
+                  <a href="/wine/wine_info/${resultMap.WINE_NAME_EN}" class="text-decoration-none text-black">
+                    <p class="mt-2 prd_name fw-bold">${resultMap.WINE_NAME}</p>
+                  </a>
+                  <p style="font-size: small">${resultMap.WINE_NAME_EN}</p>
+                  <span
+                    class="badge badge-pill"
+                    style="background-color: #fe999f"
+                    >${resultMap.WINE_TYPE}</span
+                  >
+                  <span
+                    class="badge badge-pill"
+                    style="background-color: #fe999f"
+                    >${resultMap.WINE_COUNTRY}</span
+                  >
+                </div>
+
+                <div class="price_area mt-3">
+                  <p class="price">${resultMap.WINE_PRICE}&#8361;</p>
+                </div>
+              </div>
+            </div>
+          </li>
+            </c:when>
+            <c:otherwise>
+              <li class="col" style="list-style: none">
+                 <div class="item" style="text-align: center; width: 230px">
+                 <div
+                   class=""
+                    style="background-color: #d7f6f8; width: 230px; height: 250px"
+                  >
+                   <a
+                     href="/wine/wine_info/${resultMap.WINE_NAME_EN}"
+                     class="text-decoration-none text-black"
+                    >
+                     <div class="pt-4">
+                       <img
+                         src="/img/wine/${resultMap.WINE_NAME_EN}.png"
+                          alt="wine2"
+                         width="200"
+                        />
+                     </div>
+                    </a>
+                 </div>
+                 <div class="info">
+                   <div class="more_info">
+                     <a href="/wine/wine_info/${resultMap.WINE_NAME_EN}" class="text-decoration-none text-black">
+                       <p class="mt-2 prd_name fw-bold">${resultMap.WINE_NAME}</p>
+                     </a>
+                     <p style="font-size: small">${resultMap.WINE_NAME_EN}</p>
+                     <span
+                        class="badge badge-pill"
+                       style="background-color: #85d9e4"
+                        >${resultMap.WINE_TYPE}</span
+                     >
+                     <span
+                        class="badge badge-pill"
+                       style="background-color: #85d9e4"
+                        >${resultMap.WINE_COUNTRY}</span
+                     >
+                   </div>
+                   <div class="price_area mt-3">
+                     <p class="price">${resultMap.WINE_PRICE}&#8361;</p>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </c:otherwise>
+          </c:choose>
+        <%-- </c:forEach> --%>
+        </ul>
       <div class="mt-3 d-flex">
         <div class="card me-4">
           <img src="../img/디아블로 카베르네 소비뇽 할로윈.PNG" alt="" />

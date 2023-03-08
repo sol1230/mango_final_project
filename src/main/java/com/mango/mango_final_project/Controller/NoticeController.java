@@ -16,15 +16,12 @@ public class NoticeController {
   NoticeService noticeService;
 
   //index
-  @RequestMapping(value = "/index", method = RequestMethod.POST)
+  @RequestMapping(value = { "/index", "/", "" }, method = RequestMethod.GET)
   public ModelAndView index(
     @RequestParam Map<String, Object> params,
-    @PathVariable String currentPage,
     ModelAndView modelAndView
   ) {
-    params.put("currentPage", Integer.parseInt(currentPage));
-    params.put("pageScale", 10);
-    Object resultMap = noticeService.bestWineList(params);
+    Object resultMap = noticeService.wineList(params);
     modelAndView.addObject("resultMap", resultMap);
     modelAndView.setViewName("index");
     return modelAndView;
