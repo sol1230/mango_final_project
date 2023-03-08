@@ -49,15 +49,6 @@
        <%-- carousel inner  --%>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <a href="/wine/wine_info/LA%20CHAPELLE%20GORDONNE%20ROSE">
-              <img
-                class="w-100"
-                src="../img/메인_와인_라샤펠고르돈느로제.png"
-                alt=""
-              />
-            </a>
-          </div>
-          <div class="carousel-item">
             <a href="/wine/wine_info/MARTIN%20RAY%20SOMONA%20NAPA%20COUNTY%20CABERNET%20SAUVIGNON">
               <img
                 class="w-100"
@@ -71,6 +62,15 @@
               <img
                 class="w-100"
                 src="../img/메인_와인_베니카-트레-비니스.png"
+                alt=""
+              />
+            </a>
+          </div>
+          <div class="carousel-item ">
+            <a href="/wine/wine_info/LA%20CHAPELLE%20GORDONNE%20ROSE">
+              <img
+                class="w-100"
+                src="../img/메인_와인_라샤펠고르돈느로제.png"
                 alt=""
               />
             </a>
