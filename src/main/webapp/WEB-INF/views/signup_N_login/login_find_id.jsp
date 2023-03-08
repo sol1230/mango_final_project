@@ -119,10 +119,10 @@
 				url:"/user/findIdCheck",
 				type:"post",
 				data:{
-					name:$("#name").val(),
-					phone1:$("#phone1").val(),
-					phone2:$("#phone2").val(),
-					phone3:$("#phone3").val()
+					NAME:$("#name").val(),
+					PHONE1:$("#phone1").val(),
+					PHONE2:$("#phone2").val(),
+					PHONE3:$("#phone3").val()
 				},
 				success:function(result){
 					if(!result){
@@ -140,7 +140,7 @@
 					}else{
 						return new Swal({
 							  icon: 'success',
-							  title: result.name+' 님의 아이디는 '+result.user_uid+' 입니다',
+							  title: result.name+' 님의 아이디는 '+ result.user_UID +' 입니다',
 							  footer: '<a href="/signup_N_login/login_find_password">비밀번호를 찾으시겠습니까?</a>'
 							})
 						.then((value) => {

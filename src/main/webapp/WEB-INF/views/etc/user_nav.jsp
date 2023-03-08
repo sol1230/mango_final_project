@@ -16,7 +16,7 @@
               >
             </li>
             <li class="d-flex align-items-center">
-              <a href="/user/user_qna" class="text-decoration-none nav-link"
+              <a href="/user/myQna" class="text-decoration-none nav-link"
                 >상품 문의</a
               >
             </li>

@@ -82,120 +82,31 @@
         </thead>
         <!-- 문의 -->
         <tbody style="font-size: small">
+         <c:forEach var="q" items="${qna}">
           <tr class="questions text-center">
-            <td>2</td>
-            <td class="justify-content-left">
-              <div class="row">
-                <a href="/wine/wine_info" class="col">
-                  <img src="../img/wine/wine_canti.png" alt="" width="20px" />
-                </a>
-                <ul class="list-unstyled col" style="margin: auto">
-                  <li>칸티</li>
-                  <li><a href="/wine/wine_info">모스카토 다스티</a></li>
-                </ul>
-              </div>
-            </td>
+            <td>${q.NUMBER}</td>
+            <td>${q.WINE_NAME}</td>
+            <td>${q.QNA_TITLE}</td>
+            <td>${q.QNA_DATE}</td>
+            <td>${q.QNA_ANSWER_DATE}</td>
             <td>
-              <a href="#myCont" class="left" data-bs-toggle="collapse"
-              >많이 달달한가요?</a>
-            </td>
-            <td>YYYY-MM-DD</td>
-            <td>YYYY-MM-DD</td>
-            <td>
-              <form action="" method="post">
-                <button class="btn btn-outline-secondary btn-sm">
-                  수정
-                </button>
-                <button
-                  class="btn btn-outline-danger btn-sm"
-                  onclick="if(!confirm('정말로 삭제하시겠습니까?')) return false"
-                >
-                  삭제
-                </button>
-                <input type="hidden" name="user_id" value="" />
-              </form>
+                 <div>
+                    <form action="" method="post">
+                      <button class="btn btn-outline-secondary btn-sm">
+                        수정
+                      </button>
+                      <button
+                        class="btn btn-outline-danger btn-sm"
+                        onclick="if(!confirm('정말로 삭제하시겠습니까?')) return false"
+                      >
+                        삭제
+                      </button>
+                      <input type="hidden" name="user_id" value="" />
+                    </form>
+                  </div>
             </td>
           </tr>
-          <tr class="collapse" id="myCont">
-            <td  class="bg-light p-4" colspan="6">
-              <%-- 문의 내용 --%>
-              <div>
-                <span class="fw-bold fs-5 text-secondary">
-                  Q. 
-                </span>
-                <span>
-                  선물용인데 많이 단가요?
-                </span>
-              </div>
-              <%-- 답변 내용 --%>
-              <div class="mt-2">
-                <span class="fw-bold fs-5 text-danger">
-                  A. 
-                </span>
-                <span>
-                 안녕하세요. 와인타임 입니다. 해당 제품은 당도가 ...
-                </span>
-              </div>
-            </td>
-          </tr>
-
-          <tr class="text-center">
-            <td>1</td>
-            <td>
-              <div class="row">
-                <a href="/wine/wine_info" class="col">
-                  <img
-                    src="../img/wine/france_CLOS BELLANE COTES DU RHONE VILLAGES VALREAS BLANC ECHALAS.png"
-                    alt=""
-                    width="80px"
-                  />
-                </a>
-                <ul class="list-unstyled col" style="margin: auto">
-                  <li>끌로</li>
-                  <li><a href="/wine/wine_info">벨란 꼬뜨 뒤 빌라쥐 발레아 블랑 에찰라</a></li>
-                </ul>
-              </div>
-            </td>
-            <td><a href="#myCont2" data-bs-toggle="collapse">선물용으로 적합할까요?</a></td>
-            <td>YYYY-MM-DD</td>
-            <td>YYYY-MM-DD</td>
-            <td>
-              <form action="" method="post">
-                <button class="btn btn-outline-secondary btn-sm">
-                  수정
-                </button>
-                <button
-                  class="btn btn-outline-danger btn-sm"
-                  onclick="if(!confirm('정말로 삭제하시겠습니까?')) return false"
-                >
-                  삭제
-                </button>
-                <input type="hidden" name="user_id" value="" />
-              </form>
-            </td>
-          </tr>
-          <tr class="collapse" id="myCont2">
-            <td  class="bg-light p-4" colspan="6">
-              <%-- 문의 내용 --%>
-              <div>
-                <span class="fw-bold fs-5 text-secondary">
-                  Q. 
-                </span>
-                <span>
-                  단거 안 좋아하시는 분 입니다.
-                </span>
-              </div>
-              <%-- 답변 내용 --%>
-              <div class="mt-2">
-                <span class="fw-bold fs-5 text-danger">
-                  A. 
-                </span>
-                <span>
-                 안녕하세요. 와인타임 입니다. 당도가 높지 않는 제품으로는...
-                </span>
-              </div>
-            </td>
-          </tr>
+          </c:forEach>
         </tbody>
       </table>
       </main>

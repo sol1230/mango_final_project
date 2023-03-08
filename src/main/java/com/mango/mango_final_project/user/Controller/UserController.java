@@ -109,7 +109,15 @@ public class UserController {
   }
 
   @RequestMapping("myPage")
-  public String myPage() {
+  public String myPage(HttpSession session) {
+    User user = new User();
+    user.setUSER_UID(((User) session.getAttribute("loginUser")).getUSER_UID());
+   
+    User reviewCount = uService.reviewCount(user);
+    ((User) session.getAttribute("loginUser")).setREVIEWCOUNT(reviewCount.getREVIEWCOUNT());
+
+    User qnaCount = uService.qnaCount(user);
+    ((User) session.getAttribute("loginUser")).setQNACOUNT(qnaCount.getQNACOUNT());
     return "/user/myPage";
   }
 
@@ -176,6 +184,18 @@ public class UserController {
     mv.addObject("list", list)
     .setViewName("user/user_review_modify");
     
+    return mv;
+  }
+
+  @RequestMapping("myQna")
+  public ModelAndView myQna(ModelAndView mv, HttpSession session){
+    User user = new User();
+    user.setUSER_UID(((User) session.getAttribute("loginUser")).getUSER_UID());
+    ArrayList<User> qna = uService.selectQna(user);
+
+    mv.addObject("qna", qna)
+    .setViewName("user/user_qna");
+
     return mv;
   }
 	
