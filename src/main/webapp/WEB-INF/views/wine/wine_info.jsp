@@ -550,7 +550,8 @@
 
       <%-- <!-- 상품문의 --> --%>
       <div class="mt-5" style="width: 60%">
-        <span class="fw-bold">상품 문의</span><span>(총 20건)</span>
+      <c:set var="_pagination" value="${resultQNAList.paginations}" />
+        <span class="fw-bold">상품 문의</span><span>(총 ${_pagination.totalCount}건)</span>
         <span class="float-end">
           <a
             href="#modalQnA"
@@ -565,17 +566,17 @@
             <tr>
               <th>번호</th>
               <th>답변여부</th>
-              <th>내용</th>
+              <th>제목</th>
               <th>작성자</th>
               <th>등록일자</th>
             </tr>
           </thead>
           <tbody>
-            <c:forEach items="${resultQNAList}" var="resultData" varStatus="loop">
+            <c:forEach items="${resultQNAList.resultList}" var="resultData" varStatus="loop">
               <tr>
                 <td>${resultData.QNA_NO}</td>
                 <td>${resultData.ANSWER_STATUS}</td>
-                <td><a href="#"> 탄닌 관련 문의</a></td>
+                <td><a href="#">${resultData.QNA_TITLE}</a></td>
                 <td>${resultData.USER_UID}</td>
                 <td>${resultData.QNA_DATE}</td>
               </tr>
@@ -583,27 +584,43 @@
           </tbody>
         </table>
         <div class="pagination pagination-sm justify-content-center mt-4">
-          <a class="page-item page-link" href="">이전</a>
-          <a class="page-item page-link" href="">1</a>
-          <a class="page-item page-link" href="">2</a>
-          <a class="page-item page-link" href="">3</a>
-          <a class="page-item page-link" href="">4</a>
-          <a class="page-item page-link" href="">다음</a>
+          <nav aria-label="Page navigation">
+              <ul class="pagination pagination-sm">
+                <li class="page-item">
+                  <a class="page-link" href="/wine/wine_info/${resultMap.WINE_NAME_EN}/${_pagination.previousPage}" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                    <span class="sr-only">이전</span>
+                  </a>
+                </li>
+                <c:forEach var="i" begin="${_pagination.blockStart}" end="${_pagination.blockEnd}" >
+                <li class="page-item">
+                  <a class="page-link" href="/wine/wine_info/${resultMap.WINE_NAME_EN}/${i}">${i}</a>
+                </li>
+                </c:forEach>
+                <li class="page-item">
+                  <a class="page-link" href="/wine/wine_info/${resultMap.WINE_NAME_EN}/${_pagination.nextPage}" aria-label="Next">
+                    <span class="sr-only">다음</span>
+                    <span aria-hidden="true">&raquo;</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
         </div>
       </div>
       <div class="modal fade" id="modalQnA">
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content text-center p-5">
             <div class="fs-4 fw-bold"><상품문의></div>
-            <form action="/wine/wine_info">
+            <form action="/wine/wine_info/${WINE_NAME_EN}" method="post">
+            <input type="hidden" name="WINE_UID" value="${resultMap.WINE_UID}">
               <div class="pt-3 align-self-center">
                 <div class="ms-3 p-2 bg-light rounded-3 row" style="width: 90%">
                   <div class="col" style="margin: 0%; padding: 0%">
                     <img src="../img/wine/wine_canti.png" alt="" width="20px" />
                   </div>
                   <div class="col-8 align-items-center align-self-center mt-2">
-                    <p>모스카토 칸티 다스티</p>
-                    <p style="font-size: small">Moscato Canti d'asti</p>
+                    <p>${resultMap.WINE_NAME}</p>
+                    <p style="font-size: small">${resultMap.WINE_NAME_EN}</p>
                   </div>
                 </div>
                 <br />
@@ -614,7 +631,8 @@
                       <td>
                         <input
                           type="text"
-                          name="title"
+                          name="TITLE"
+                          value="${QNA_TITLE}"
                           style="width: 100%"
                           placeholder="제목 입력"
                         />
@@ -624,7 +642,8 @@
                       <th>내용</th>
                       <td>
                         <textarea
-                          name="question"
+                          name="CONTENT"
+                          value="${QNA_CONTENT}"
                           id=""
                           cols="35"
                           rows="10"
@@ -634,7 +653,6 @@
                     </tr>
                   </tbody>
                 </table>
-
                 <div class="text-center pt-4">
                   <a
                     href="#"

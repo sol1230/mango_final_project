@@ -32,12 +32,19 @@
         AND WINE_NAME_EN = #{WINE_NAME_EN}
     </select>
 
-    <!-- 와인 문의 총 갯수 -->
-    <select id="wineInfoTotal" 
+    <!-- 와인 문의 갯수 -->
+    <select id="wineQNATotal" 
         parameterType="Map" resultType="int">
         SELECT count(*) as cnt
-        FROM REVIEW
+        FROM QNA
+        WHERE WINE_UID = #{WINE_UID}
     </select>
+    <!-- 와인 문의 작성 -->
+    <insert id="wineQNAInsert" 
+        parameterType="Map">
+        INSERT INTO QNA (QNA_TITLE, QNA_CONTENT, QNA_DATE, QNA_ANSWER, QNA_ANSWER_DATE, ANSWER_STATUS, USER_UID, WINE_UID) 
+        VALUE (#{QNA_TITLE}, #{QNA_CONTENT}, date_format(now(), '%Y-%m-%d'), NULL, NULL, '답변대기', #{USER_UID}, #{WINE_UID})
+    </insert>
 
 
 </mapper>

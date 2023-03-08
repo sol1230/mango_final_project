@@ -1,6 +1,5 @@
 package com.mango.mango_final_project.Controller;
 
-import java.util.ArrayList;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,14 +22,15 @@ public class WineInfoController {
     CommonUtils commonUtils;
 
     // 와인 정보
-    @RequestMapping(value = "/wine/wine_info/{wineName}", method = RequestMethod.GET)
+    @RequestMapping(value = "/wine/wine_info/{wineName}/{currentPage}", method = RequestMethod.GET)
     public ModelAndView wineInfo(@RequestParam Map<String, Object> params
-    , @PathVariable String wineName, ModelAndView modelAndView) {
+    , @PathVariable String wineName, @PathVariable String currentPage, ModelAndView modelAndView) {
         params.put("WINE_NAME_EN", wineName);
+        params.put("currentPage", Integer.parseInt(currentPage));
         Object resultMap = wineInfoService.wineInfoList(params);
         Object resultStoreList = wineInfoService.wineStoreInfoList(params);
         Object resultReviewList = wineInfoService.wineReviewInfoList(params);
-        Object resultQNAList = wineInfoService.wineQNAInfoList(params);
+        Object resultQNAList = wineInfoService.wineQNAWithPagination(params);
         modelAndView.addObject("resultMap", resultMap);
         modelAndView.addObject("resultStoreList", resultStoreList);
         modelAndView.addObject("resultReviewList", resultReviewList);
@@ -39,17 +39,4 @@ public class WineInfoController {
         return modelAndView;
     }
 
-    // // 와인 리뷰
-    // @RequestMapping(value = { "/wine/wine_info/{wineName}" }, method = RequestMethod.GET)
-    // public ModelAndView wineReviewList(@RequestParam Map<String, Object> params
-    //         , @PathVariable String wineName, ModelAndView modelAndView) {
-    //     params.put("wineName", Integer.parseInt(wineName));
-    //     params.put("pageScale", 10);
-    //     Object resultMap = wineInfoService.wineReviewWithPagination(params);
-    //     modelAndView.addObject("resultMap", resultMap);
-    //     modelAndView.setViewName("wine/wine_info");
-    //     return modelAndView;
-    // }
-    
-    
 }

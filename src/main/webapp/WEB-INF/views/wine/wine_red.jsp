@@ -99,7 +99,7 @@
                   class=""
                   style="background-color: #e8daea; width: 230px; height: 250px"
                 >
-                  <a href="/wine/wine_info/${resultData.WINE_NAME_EN}" class="text-decoration-none text-black">
+                  <a href="/wine/wine_info/${resultData.WINE_NAME_EN}/1" class="text-decoration-none text-black">
                     <div class="pt-4">
                       <img
                         src="/img/wine/${resultData.WINE_NAME_EN}.png"
@@ -111,7 +111,7 @@
                 </div>
                 <div class="info">
                   <div class="more_info">
-                    <a href="/wine/wine_info/${resultData.WINE_NAME_EN}" class="text-decoration-none text-black">
+                    <a href="/wine/wine_info/${resultData.WINE_NAME_EN}/1" class="text-decoration-none text-black">
                       <p class="box mt-2 prd_name fw-bold">
                         ${resultData.WINE_NAME}
                       </p>

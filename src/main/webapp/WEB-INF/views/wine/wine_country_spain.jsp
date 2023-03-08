@@ -102,7 +102,7 @@
                   class=""
                   style="background-color: #e8daea; width: 230px; height: 250px"
                 >
-                  <a href="/wine/wine_info/${resultData.WINE_NAME_EN}" class="text-decoration-none text-black">
+                  <a href="/wine/wine_info/${resultData.WINE_NAME_EN}/1" class="text-decoration-none text-black">
                     <div class="pt-4">
                       <img
                         src="/img/wine/${resultData.WINE_NAME_EN}.png"
@@ -114,7 +114,7 @@
                 </div>
                 <div class="info">
                   <div class="more_info">
-                    <a href="/wine/wine_info/${resultData.WINE_NAME_EN}" class="text-decoration-none text-black">
+                    <a href="/wine/wine_info/${resultData.WINE_NAME_EN}/1" class="text-decoration-none text-black">
                       <p class="box mt-2 prd_name fw-bold">
                         ${resultData.WINE_NAME}
                       </p>
@@ -147,7 +147,7 @@
                 class=""
                 style="background-color: #fffbb0; width: 230px; height: 250px"
               >
-                <a href="/wine/wine_info/${resultData.WINE_NAME_EN}" class="text-decoration-none text-black">
+                <a href="/wine/wine_info/${resultData.WINE_NAME_EN}/1" class="text-decoration-none text-black">
                   <div class="pt-4">
                     <img
                       src="/img/wine/${resultData.WINE_NAME_EN}.png"
@@ -159,7 +159,7 @@
               </div>
               <div class="info">
                 <div class="more_info">
-                  <a href="/wine/wine_info/${resultData.WINE_NAME_EN}" class="text-decoration-none text-black">
+                  <a href="/wine/wine_info/${resultData.WINE_NAME_EN}/1" class="text-decoration-none text-black">
                     <p class="mt-2 prd_name fw-bold mt-1">${resultData.WINE_NAME}</p>
                   </a>
                   <p style="font-size: small">${resultData.WINE_NAME_EN}</p>
@@ -189,7 +189,7 @@
                 class=""
                 style="background-color: #ffe2e2; width: 230px; height: 250px"
               >
-                <a href="/wine/wine_info/${resultData.WINE_NAME_EN}" class="text-decoration-none text-black">
+                <a href="/wine/wine_info/${resultData.WINE_NAME_EN}/1" class="text-decoration-none text-black">
                   <div class="pt-4">
                     <img
                       src="/img/wine/${resultData.WINE_NAME_EN}.png"
@@ -201,7 +201,7 @@
               </div>
               <div class="info">
                 <div class="more_info">
-                  <a href="/wine/wine_info/${resultData.WINE_NAME_EN}" class="text-decoration-none text-black">
+                  <a href="/wine/wine_info/${resultData.WINE_NAME_EN}/1" class="text-decoration-none text-black">
                     <p class="mt-2 prd_name fw-bold">${resultData.WINE_NAME}</p>
                   </a>
                   <p style="font-size: small">${resultData.WINE_NAME_EN}</p>
@@ -232,7 +232,7 @@
                     style="background-color: #d7f6f8; width: 230px; height: 250px"
                   >
                    <a
-                     href="/wine/wine_info/${resultData.WINE_NAME_EN}"
+                     href="/wine/wine_info/${resultData.WINE_NAME_EN}/1"
                      class="text-decoration-none text-black"
                     >
                      <div class="pt-4">
@@ -246,7 +246,7 @@
                  </div>
                  <div class="info">
                    <div class="more_info">
-                     <a href="/wine/wine_info/${resultData.WINE_NAME_EN}" class="text-decoration-none text-black">
+                     <a href="/wine/wine_info/${resultData.WINE_NAME_EN}/1" class="text-decoration-none text-black">
                        <p class="mt-2 prd_name fw-bold">${resultData.WINE_NAME}</p>
                      </a>
                      <p style="font-size: small">${resultData.WINE_NAME_EN}</p>
