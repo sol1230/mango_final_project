@@ -73,8 +73,9 @@
         <thead>
           <tr class="text-center">
             <th scope="col">번호</th>
-            <th scope="col" style="width: 25%">상품 정보</th>
+            <th scope="col" style="width: 25%">상품명</th>
             <th scope="col">제목</th>
+            <th scope="col">답변상태</th>
             <th scope="col">등록일</th>
             <th scope="col">처리일</th>
             <th scope="col">기능</th>
@@ -82,29 +83,62 @@
         </thead>
         <!-- 문의 -->
         <tbody style="font-size: small">
-         <c:forEach var="q" items="${qna}">
+         <c:forEach var="q" items="${qna}" varStatus="loop">
           <tr class="questions text-center">
             <td>${q.NUMBER}</td>
-            <td>${q.WINE_NAME}</td>
-            <td>${q.QNA_TITLE}</td>
+            <td><a href="/wine/wine_info/${r.WINE_NAME_EN}/1">${q.WINE_NAME}</a></td>
+            <td><a href="#myQna${loop.count}" class="left" data-bs-toggle="collapse">${q.QNA_TITLE}</a></td>
+            <td>${q.ANSWER_STATUS}</td>
             <td>${q.QNA_DATE}</td>
             <td>${q.QNA_ANSWER_DATE}</td>
-            <td>
-                 <div>
-                    <form action="" method="post">
-                      <button class="btn btn-outline-secondary btn-sm">
+           <td>
+                <div class="d-flex justify-content-center">
+                  <div>
+                    <form action="/user/myQna_edit" method="post">
+                    <input type="hidden" name="USER_UID" value="${q.QNA_DATE}" />
+                    <input type="hidden" name="NAME" value="${q.QNA_TITLE}" />
+                    <input type="hidden" name="GENDER" value="${q.QNA_CONTENT}" />
+                      <button
+                        class="btn btn-sm btn-outline-secondary"
+                      >
                         수정
                       </button>
+                    </form>
+                  </div>
+                  <div>
+                    <form action="" class="ps-2">
                       <button
-                        class="btn btn-outline-danger btn-sm"
-                        onclick="if(!confirm('정말로 삭제하시겠습니까?')) return false"
+                        type="submit"
+                        class="btn btn btn-sm btn-outline-danger"
                       >
                         삭제
                       </button>
-                      <input type="hidden" name="user_id" value="" />
                     </form>
                   </div>
-            </td>
+                </div>
+              </td>
+          </tr>
+          <tr class="collapse" id="myQna${loop.count}">
+                  <td  class="bg-light p-4" colspan="7">
+                    <%-- 문의 내용 --%>
+                    <div>
+                     <span class="fw-bold fs-5 text-secondary">
+                        Q. 
+                      </span>
+                      <span>
+                        ${q.QNA_CONTENT}
+                      </span>
+                    </div>
+                    <%-- 답변 내용 --%>
+                    <div class="mt-2">
+                      <span class="fw-bold fs-5 text-danger">
+                        A. 
+                      </span>
+                      <span>
+                        ${q.QNA_ANSWER}
+                      </span>
+                    </div>
+                  </td>
           </tr>
           </c:forEach>
         </tbody>

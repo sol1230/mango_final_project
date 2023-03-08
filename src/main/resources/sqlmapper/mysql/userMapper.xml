@@ -123,30 +123,17 @@ SET
 </update>
 
 <!-- 리뷰 갖고오기 -->
+  <!-- userMapper.selectReview  -->
 <select id="selectReview"
- parameterType="com.mango.mango_final_project.user.model.vo.User"
- resultType="com.mango.mango_final_project.user.model.vo.User">
+ parameterType="Map"
+ resultType="Map">
 SELECT
   @ROWNUM := @ROWNUM + 1 AS NUMBER,
   A.*,
-  B.WINE_NAME
+  B.*
 FROM REVIEW A
 LEFT OUTER JOIN WINE B
 ON A.WINE_UID = B.WINE_UID
-WHERE USER_UID = #{USER_UID}
-  AND (@ROWNUM:=0) =0
-</select>
-
-<select id="selectQna"
-parameterType="com.mango.mango_final_project.user.model.vo.User"
- resultType="com.mango.mango_final_project.user.model.vo.User">
-SELECT
-  @ROWNUM := @ROWNUM + 1 AS NUMBER,
-  A.*,
-  B.WINE_NAME
-FROM QNA A
-LEFT OUTER JOIN WINE B
-ON A.QNA_UID = B.WINE_UID
 WHERE USER_UID = #{USER_UID}
   AND (@ROWNUM:=0) =0
 </select>
@@ -160,12 +147,73 @@ FROM REVIEW
 WHERE USER_UID = #{USER_UID}
 </select>
 
-<select id="qnaCount"
+
+<!-- QNA -->
+<select id="selectQna"
 parameterType="com.mango.mango_final_project.user.model.vo.User"
  resultType="com.mango.mango_final_project.user.model.vo.User">
-SELECT 
-COUNT(*) AS QNACOUNT
-FROM QNA
+SELECT
+  @ROWNUM := @ROWNUM + 1 AS NUMBER,
+  A.*,
+  B.*
+FROM QNA A
+LEFT OUTER JOIN WINE B
+ON A.QNA_UID = B.WINE_UID
 WHERE USER_UID = #{USER_UID}
+  AND (@ROWNUM:=0) =0
 </select>
+
+
+<!-- sol -->
+  <!-- userMapper.selectReviewInfo  -->
+  <select id="selectReviewInfo"
+  parameterType="Map"
+  resultType="Map">
+    SELECT *
+    FROM REVIEW
+    INNER JOIN USER
+    ON REVIEW.USER_UID = USER.USER_UID
+    WHERE REVIEW_UID = #{REVIEW_UID}
+  </select>
+
+  <!-- userMapper.updateReview  -->
+  <update id="updateReview" parameterType="com.mango.mango_final_project.user.model.vo.User">
+      UPDATE REVIEW 
+      SET REVIEW_TITLE = #{REVIEW_TITLE},
+          REVIEW_SCOPE = #{REVIEW_SCOPE},
+          REVIEW_CONTENT = #{REVIEW_CONTENT}
+      WHERE REVIEW_UID = #{REVIEW_UID}
+  </update>
+
+  <!-- userMapper.deleteReview -->
+  <delete id="deleteReview" parameterType="com.mango.mango_final_project.user.model.vo.User">
+      DELETE FROM REVIEW
+      WHERE REVIEW_UID = #{REVIEW_UID}
+  </delete>
+
+  <!-- userMapper.selectQnaInfo  -->
+  <select id="selectQnaInfo"
+  parameterType="com.mango.mango_final_project.user.model.vo.User"
+  resultType="com.mango.mango_final_project.user.model.vo.User">
+    SELECT *
+    FROM QNA
+    INNER JOIN USER
+    ON QNA.USER_UID = USER.USER_UID
+    WHERE QNA_UID = #{QNA_UID}
+  </select>
+
+  <!-- userMapper.updateQna  -->
+  <update id="updateQna" parameterType="com.mango.mango_final_project.user.model.vo.User">
+      UPDATE QNA 
+      SET QNA_TITLE = #{REVIEW_TITLE},
+          QNA_CONTENT = #{REVIEW_SCOPE}
+      WHERE QNA_UID = #{QNA_UID}
+  </update>
+
+  <!-- userMapper.deleteQna -->
+  <delete id="deleteQna" parameterType="com.mango.mango_final_project.user.model.vo.User">
+      DELETE FROM QNA
+      WHERE QNA_UID = #{QNA_UID}
+  </delete>
+
 </mapper>
