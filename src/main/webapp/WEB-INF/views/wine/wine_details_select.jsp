@@ -90,7 +90,7 @@
             </select>
           </span>
         </div>
-        <ul class="row row-cols-5 ps-2">
+        <ul class="row row-cols-lg-5 ps-2">
           <c:forEach items="${resultMap.resultList}" var="resultData" varStatus="loop">
           <c:choose>
             <c:when test="${resultData.WINE_TYPE eq '레드'}">
@@ -224,24 +224,24 @@
             </c:when>
             <c:otherwise>
               <li class="col" style="list-style: none">
-                 <div class="item" style="text-align: center; width: 230px">
-                 <div
-                   class=""
-                    style="background-color: #d7f6f8; width: 230px; height: 250px"
-                  >
-                   <a
-                     href="/wine/wine_info/${resultData.WINE_NAME_EN}"
-                     class="text-decoration-none text-black"
+                <div class="item" style="text-align: center; width: 230px">
+                  <div
+                    class=""
+                      style="background-color: #d7f6f8; width: 230px; height: 250px"
                     >
-                     <div class="pt-4">
-                       <img
-                         src="/img/wine/${resultData.WINE_NAME_EN}.png"
-                          alt="wine2"
-                         width="200"
-                        />
-                     </div>
-                    </a>
-                 </div>
+                    <a
+                      href="/wine/wine_info/${resultData.WINE_NAME_EN}"
+                      class="text-decoration-none text-black"
+                      >
+                      <div class="pt-4">
+                        <img
+                          src="/img/wine/${resultData.WINE_NAME_EN}.png"
+                            alt="wine2"
+                          width="200"
+                          />
+                      </div>
+                      </a>
+                  </div>
                  <div class="info">
                    <div class="more_info">
                      <a href="/wine/wine_info/${resultData.WINE_NAME_EN}" class="text-decoration-none text-black">
