@@ -8,7 +8,7 @@
     <select id="wineList" parameterType="Map" resultType="Map">
         SELECT *
         FROM WINE 
-        WHERE WINE_SCOPE LIKE '4.%'
+        WHERE WINE_SCOPE <![CDATA[ >= ]]> '4%'
         LIMIT 4
     </select>
 
