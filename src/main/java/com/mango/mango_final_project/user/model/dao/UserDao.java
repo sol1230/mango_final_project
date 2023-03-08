@@ -60,4 +60,9 @@ public class UserDao {
   public User qnaCount(SqlSessionTemplate sqlSession, User user) {
     return sqlSession.selectOne("userMapper.qnaCount", user);
   }
+
+  public ArrayList<User> selectWishlist(SqlSessionTemplate sqlSession, User user){
+    return (ArrayList)sqlSession.selectList("userMapper.selectWishlist", user);
+}
+
 }

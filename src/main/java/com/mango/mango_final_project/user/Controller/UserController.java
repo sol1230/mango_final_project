@@ -275,4 +275,16 @@ public class UserController {
     modelAndView.setViewName("user/user_qna");
     return modelAndView;
   }
+
+  @RequestMapping("myWishlist")
+  public ModelAndView myWishlist(ModelAndView mv, HttpSession session){
+    User user = new User();
+    user.setUSER_UID(((User) session.getAttribute("loginUser")).getUSER_UID());
+    ArrayList<User> wishlist = uService.selectWishlist(user);
+
+    mv.addObject("wishlist", wishlist)
+    .setViewName("user/user_wishlist");
+
+    return mv;
+  }
 }

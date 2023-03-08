@@ -216,4 +216,18 @@ WHERE USER_UID = #{USER_UID}
       WHERE QNA_UID = #{QNA_UID}
   </delete>
 
+  <select id="selectWishlist"
+parameterType="com.mango.mango_final_project.user.model.vo.User"
+ resultType="com.mango.mango_final_project.user.model.vo.User">
+SELECT
+  @ROWNUM := @ROWNUM + 1 AS NUMBER,
+  A.*,
+  B.*
+FROM WISHLIST A
+LEFT OUTER JOIN WINE B
+ON A.WINE_UID = B.WINE_UID
+WHERE USER_UID = #{USER_UID}
+  AND (@ROWNUM:=0) =0
+</select>
+
 </mapper>
