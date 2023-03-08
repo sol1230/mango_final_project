@@ -93,5 +93,7 @@ public class User {
 
     private String REVIEWCOUNT;
     private String QNACOUNT;
+    private String WISHLISTCOUNT;
+    
 
 }

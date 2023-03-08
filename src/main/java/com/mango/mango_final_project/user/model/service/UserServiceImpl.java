@@ -95,6 +95,12 @@ public class UserServiceImpl implements UserService {
         return selectWishlist;
     }
 
+    @Override
+    public User wishlistCount(User user) {
+        User wishlistCount = uDao.wishlistCount(sqlSession, user);
+        return wishlistCount;
+    }
+
 
    
     

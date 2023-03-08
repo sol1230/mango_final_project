@@ -127,6 +127,13 @@ public class UserController {
     ((User) session.getAttribute("loginUser")).setQNACOUNT(
         qnaCount.getQNACOUNT()
       );
+
+      User wishlistCount = uService.wishlistCount(user);
+      ((User) session.getAttribute("loginUser")).setWISHLISTCOUNT(
+          wishlistCount.getWISHLISTCOUNT()
+        );
+
+
     return "/user/myPage";
   }
 

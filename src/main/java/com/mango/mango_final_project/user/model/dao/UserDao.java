@@ -65,4 +65,7 @@ public class UserDao {
     return (ArrayList)sqlSession.selectList("userMapper.selectWishlist", user);
 }
 
+public User wishlistCount(SqlSessionTemplate sqlSession, User user) {
+  return sqlSession.selectOne("userMapper.wishlistCount", user);
+}
 }

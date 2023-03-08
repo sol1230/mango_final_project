@@ -156,6 +156,15 @@ FROM QNA
 WHERE USER_UID = #{USER_UID}
 </select>
 
+<select id="wishlistCount"
+parameterType="com.mango.mango_final_project.user.model.vo.User"
+ resultType="com.mango.mango_final_project.user.model.vo.User">
+SELECT 
+COUNT(*) AS WISHLISTCOUNT
+FROM WISHLIST
+WHERE USER_UID = #{USER_UID}
+</select>
+
 
 <!-- QNA -->
 <select id="selectQna"
