@@ -158,9 +158,9 @@
               <div class="info">
                 <div class="more_info">
                   <a href="/wine/wine_info/${resultData.WINE_NAME_EN}" class="text-decoration-none text-black">
-                    <p class="mt-2 prd_name fw-bold mt-1">${resultData.WINE_NAME}</p>
+                    <p class="box mt-2 prd_name fw-bold mt-1">${resultData.WINE_NAME}</p>
                   </a>
-                  <p style="font-size: small">${resultData.WINE_NAME_EN}</p>
+                  <p class="box" style="font-size: small">${resultData.WINE_NAME_EN}</p>
                   <span
                     class="badge badge-pill"
                     style="background-color: #ffd500"
@@ -200,9 +200,9 @@
               <div class="info">
                 <div class="more_info">
                   <a href="/wine/wine_info/${resultData.WINE_NAME_EN}" class="text-decoration-none text-black">
-                    <p class="mt-2 prd_name fw-bold">${resultData.WINE_NAME}</p>
+                    <p class="box mt-2 prd_name fw-bold">${resultData.WINE_NAME}</p>
                   </a>
-                  <p style="font-size: small">${resultData.WINE_NAME_EN}</p>
+                  <p class="box" style="font-size: small">${resultData.WINE_NAME_EN}</p>
                   <span
                     class="badge badge-pill"
                     style="background-color: #fe999f"
@@ -245,9 +245,9 @@
                  <div class="info">
                    <div class="more_info">
                      <a href="/wine/wine_info/${resultData.WINE_NAME_EN}" class="text-decoration-none text-black">
-                       <p class="mt-2 prd_name fw-bold">${resultData.WINE_NAME}</p>
+                       <p class="box mt-2 prd_name fw-bold">${resultData.WINE_NAME}</p>
                      </a>
-                     <p style="font-size: small">${resultData.WINE_NAME_EN}</p>
+                     <p class="box" style="font-size: small">${resultData.WINE_NAME_EN}</p>
                      <span
                         class="badge badge-pill"
                        style="background-color: #85d9e4"
