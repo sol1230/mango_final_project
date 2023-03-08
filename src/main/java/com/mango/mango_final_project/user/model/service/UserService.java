@@ -45,4 +45,8 @@ public interface UserService {
 
      // 내가 남긴 wishlist 조회 서비스
     ArrayList<User> selectWishlist(User user);
+
+    int deleteWishlist(User user);
+
+    int deleteAllWishlist(User user);
 }

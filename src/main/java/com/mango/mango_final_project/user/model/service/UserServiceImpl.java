@@ -101,6 +101,20 @@ public class UserServiceImpl implements UserService {
         return wishlistCount;
     }
 
+    @Override
+    public int deleteWishlist(User user) {
+        return uDao.deleteWishlist(sqlSession, user);
+    }
+
+    @Override
+    public int deleteAllWishlist(User user) {
+        return uDao.deleteAllWishlist(sqlSession, user);
+    }
+
+   
+
+   
+
 
    
     

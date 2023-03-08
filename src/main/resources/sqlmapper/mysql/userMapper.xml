@@ -239,7 +239,7 @@ parameterType="com.mango.mango_final_project.user.model.vo.User"
  resultType="com.mango.mango_final_project.user.model.vo.User">
 SELECT
   @ROWNUM := @ROWNUM + 1 AS NUMBER,
-  A.*,
+  A.USER_UID,
   B.*
 FROM WISHLIST A
 LEFT OUTER JOIN WINE B
@@ -247,5 +247,18 @@ ON A.WINE_UID = B.WINE_UID
 WHERE USER_UID = #{USER_UID}
   AND (@ROWNUM:=0) =0
 </select>
+
+<delete id="deleteWishlist" parameterType="com.mango.mango_final_project.user.model.vo.User"
+ >
+DELETE FROM WISHLIST
+WHERE WINE_UID = #{WINE_UID}
+AND USER_UID = #{USER_UID}
+</delete>
+
+<delete id="deleteAllWishlist" parameterType="com.mango.mango_final_project.user.model.vo.User"
+ >
+DELETE FROM WISHLIST
+WHERE USER_UID = #{USER_UID}
+</delete>
 
 </mapper>

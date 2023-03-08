@@ -5,6 +5,8 @@ import com.mango.mango_final_project.user.model.service.UserService;
 import com.mango.mango_final_project.user.model.vo.User;
 import java.util.ArrayList;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -294,4 +296,29 @@ public class UserController {
 
     return mv;
   }
-}
+
+  @ResponseBody
+  @RequestMapping(value = "deleteWishlist")
+  public String deleteWishlist(HttpSession session, HttpServletRequest request, Model model, User user){
+    user.setUSER_UID(((User) session.getAttribute("loginUser")).getUSER_UID());
+
+
+    int result = uService.deleteWishlist(user);
+
+    return result > 0 ? "success" : "fail";
+  }
+
+  @ResponseBody
+  @RequestMapping(value = "deleteAllWishlist")
+  public String deleteAllWishlist(HttpSession session, HttpServletRequest request, Model model, User user){
+    user.setUSER_UID(((User) session.getAttribute("loginUser")).getUSER_UID());
+
+
+    int result = uService.deleteAllWishlist(user);
+
+    return result > 0 ? "success" : "fail";
+  }
+  
+
+  }
+

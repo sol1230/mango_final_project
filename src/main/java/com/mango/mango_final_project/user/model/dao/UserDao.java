@@ -68,4 +68,12 @@ public class UserDao {
 public User wishlistCount(SqlSessionTemplate sqlSession, User user) {
   return sqlSession.selectOne("userMapper.wishlistCount", user);
 }
+
+public int deleteWishlist(SqlSessionTemplate sqlSession, User user){
+  return sqlSession.delete("userMapper.deleteWishlist", user);
+}
+
+public int deleteAllWishlist(SqlSessionTemplate sqlSession, User user){
+  return sqlSession.delete("userMapper.deleteAllWishlist", user);
+}
 }

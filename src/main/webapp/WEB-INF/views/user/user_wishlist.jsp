@@ -44,16 +44,17 @@
           <button class="btn btn-danger" onclick="deleteAll();">전체 삭제</button>
         </div>
       </div>
-      <div class="mt-2 d-flex" style="margin:auto;">
+<div class="mt-2 d-flex" style="margin:auto;">
       <c:forEach var="w" items="${wishlist}">
       <c:choose>
       <c:when test="${(w.WINE_TYPE).equals('레드')}">
         <div class="row p-3 d-flex">
          <div class="col-md-4">
+          
             <div class="card" style="width: 230px">
-              <img src="/img/wine/${w.WINE_NAME_EN}.png" alt="" />
+              <img src="/img/wine/${w.WINE_NAME_EN}.png" alt="" style="background-color: #e8daea" />
               <div class="card-body">
-              
+              <input type="hidden" id="wineUid" value="${w.WINE_UID}" />
                 <h5 class="card-title">
                   ${w.WINE_NAME}
                   
@@ -70,94 +71,100 @@
                 >
                 <br />
                 <a href="/wine/wine_info/${w.WINE_NAME}" class="btn btn-outline-danger mt-3">더보기</a>
-                <button class="btn btn-danger  mt-3" style="float:right;" onclick="deleteSelected();">삭제</button>
-              </div>
-          </div>
-          </div>
-          </div>
-          </c:when>
- <c:when test="${(w.WINE_TYPE).equals('로제')}">
-           <div class="row p-3 d-flex">
-           <div class="col-md-4 ">
-            <div class="card" style="width: 230px">
-              <img src="/img/wine/${w.WINE_NAME_EN}.png" alt="" />
-              <div class="card-body">
-                <h5 class="card-title">
-                  ${w.WINE_NAME}
-                  <input type="checkbox" name="" id="" />
-                </h5>
-                <span
-                  class="badge badge-pill"
-                  style="background-color: rgb(224, 216, 234)"
-                  >${w.WINE_TYPE}</span
-                >
-                <span
-                  class="badge badge-pill"
-                  style="background-color: rgb(224, 216, 234)"
-                  >${w.WINE_COUNTRY}</span
-                >
-                <br />
-                <a href="/wine/wine_info/${w.WINE_NAME}" class="btn btn-outline-danger mt-3">더보기</a>
+                <button class="btn btn-danger  mt-3" style="float:right;" onclick="deleteSelected(this);">삭제</button>
             </div>
           </div>
-          </div>
-          </div>
-</c:when>
-<c:when test="${(w.WINE_TYPE).equals('화이트')}">
-    <div class="row p-3 d-flex">
-           <div class="col-md-4">
+        </div>
+      </div>
+
+          </c:when>
+ <c:when test="${(w.WINE_TYPE).equals('로제')}">
+     <div class="row p-3 d-flex">
+           <div class="col-md-4 ">
             <div class="card" style="width: 230px">
-              <img src="/img/wine/${w.WINE_NAME_EN}.png" alt="" />
+              <img src="/img/wine/${w.WINE_NAME_EN}.png" alt=""  style="background-color: #ffe2e2"/>
               <div class="card-body">
+              <input type="hidden" id="wineUid" value="${w.WINE_UID}" />
                 <h5 class="card-title">
                   ${w.WINE_NAME}
-                  <input type="checkbox" name="" id="" />
+                 
                 </h5>
                 <span
                   class="badge badge-pill"
-                  style="background-color: rgb(224, 216, 234)"
+                  style="background-color: #ffe2e2"
                   >${w.WINE_TYPE}</span
                 >
                 <span
                   class="badge badge-pill"
-                  style="background-color: rgb(224, 216, 234)"
+                  style="background-color: #ffe2e2"
                   >${w.WINE_COUNTRY}</span
                 >
                 <br />
                 <a href="/wine/wine_info/${w.WINE_NAME}" class="btn btn-outline-danger mt-3">더보기</a>
-              </div>
-          </div>
-          </div>
-          </div>
-</c:when>
-   <c:otherwise>
-         <div class="row p-3 d-flex">
-           <div class="col-md-4">
-            <div class="card" style="width: 230px">
-              <img src="/img/wine/${w.WINE_NAME_EN}.png" alt="" />
-              <div class="card-body">
-                <h5 class="card-title">
-                  ${w.WINE_NAME}
-                  <input type="checkbox" name="" id="" />
-                </h5>
-                <span
-                  class="badge badge-pill"
-                  style="background-color: rgb(224, 216, 234)"
-                  >${w.WINE_TYPE}</span
-                >
-                <span
-                  class="badge badge-pill"
-                  style="background-color: rgb(224, 216, 234)"
-                  >${w.WINE_COUNTRY}</span
-                >
-                <br />
-                <a href="/wine/wine_info/${w.WINE_NAME_EN}" class="btn btn-outline-danger mt-3">더보기</a>
+                <button class="btn btn-danger  mt-3" style="float:right;" onclick="deleteSelected(this);">삭제</button>
             </div>
           </div>
           </div>
           </div>
 
-        </div>
+</c:when>
+<c:when test="${(w.WINE_TYPE).equals('화이트')}">
+    <div class="row p-3 d-flex">
+           <div class="col-md-4 ">
+            <div class="card" style="width: 230px">
+              <img src="/img/wine/${w.WINE_NAME_EN}.png" alt="" style="background-color: #fffbb0" />
+              <div class="card-body">
+              <input type="hidden" id="wineUid" value="${w.WINE_UID}" />
+                <h5 class="card-title">
+                  ${w.WINE_NAME}
+                  
+                </h5>
+                <span
+                  class="badge badge-pill"
+                  style="background-color: #fffbb0"
+                  >${w.WINE_TYPE}</span
+                >
+                <span
+                  class="badge badge-pill"
+                  style="background-color: #fffbb0"
+                  >${w.WINE_COUNTRY}</span
+                >
+                <br />
+                <a href="/wine/wine_info/${w.WINE_NAME}" class="btn btn-outline-danger mt-3">더보기</a>
+                <button class="btn btn-danger  mt-3" style="float:right;" onclick="deleteSelected(this);">삭제</button>
+              </div>
+          </div>
+</div>
+          </div>
+</c:when>
+   <c:otherwise>
+       <div class="row p-3 d-flex">
+           <div class="col-md-4">
+            <div class="card" style="width: 230px">
+              <img src="/img/wine/${w.WINE_NAME_EN}.png" alt="" style="background-color: #d7f6f8" />
+              <div class="card-body">
+              <input type="hidden" id="wineUid" value="${w.WINE_UID}" />
+                <h5 class="card-title">
+                  ${w.WINE_NAME}
+               
+                </h5>
+                <span
+                  class="badge badge-pill"
+                  style="background-color: #d7f6f8"
+                  >${w.WINE_TYPE}</span
+                >
+                <span
+                  class="badge badge-pill"
+                  style="background-color: #d7f6f8"
+                  >${w.WINE_COUNTRY}</span
+                >
+                <br />
+                <a href="/wine/wine_info/${w.WINE_NAME_EN}" class="btn btn-outline-danger mt-3">더보기</a>
+                <button class="btn btn-danger  mt-3" style="float:right;" onclick="deleteSelected(this);">삭제</button>
+            </div>
+          </div>
+          </div>
+          </div>
 </c:otherwise>
 </c:choose>
 </c:forEach>
@@ -167,7 +174,91 @@
 
     <%-- footer --%>
     <%@ include file="../etc/footer.jsp" %>
-    
+    <script>
+    function deleteSelected(btn) {
+
+      var wineUid = $(btn).siblings('#wineUid').val();
+			
+ $.ajax({
+  url:"/user/deleteWishlist",
+  type:"post",
+  data:{
+    USER_UID:"${loginUser.USER_UID}",
+    WINE_UID: wineUid
+   },
+  success:function(result){
+    if(result == 'success'){
+						return new swal({
+							title:"삭제되었습니다.",
+							icon:"success",
+							closeOnClickOutside:false
+						})
+						.then((value) => {
+							if(value){
+								location.href="/user/myWishlist";
+							}
+						})
+					}else{
+						return new swal({
+							title:"삭제에 실패하였습니다.",
+							icon:"error",
+							closeOnClickOutside:false
+						})
+						.then((value) => {
+							if(value){
+								return false;
+							}
+						})
+  
+ 
+          }
+  }
+  })
+  }
+    </script>
+
+     <script>
+    function deleteAll(btn) {
+
+      var wineUid = $(btn).siblings('#wineUid').val();
+			
+ $.ajax({
+  url:"/user/deleteAllWishlist",
+  type:"post",
+  data:{
+    USER_UID:"${loginUser.USER_UID}",
+    WINE_UID: wineUid
+   },
+  success:function(result){
+    if(result == 'success'){
+						return new swal({
+							title:"삭제되었습니다.",
+							icon:"success",
+							closeOnClickOutside:false
+						})
+						.then((value) => {
+							if(value){
+								location.href="/user/myWishlist";
+							}
+						})
+					}else{
+						return new swal({
+							title:"삭제에 실패하였습니다.",
+							icon:"error",
+							closeOnClickOutside:false
+						})
+						.then((value) => {
+							if(value){
+								return false;
+							}
+						})
+  
+ 
+          }
+  }
+  })
+  }
+    </script>
 
     
     <script
