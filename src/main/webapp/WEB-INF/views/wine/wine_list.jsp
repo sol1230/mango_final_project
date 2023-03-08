@@ -161,10 +161,15 @@
               </div>
               <div class="info">
                 <div class="more_info">
+<<<<<<< HEAD
                   <a href="/wine/wine_info/${resultData.WINE_NAME_EN}/1" class="text-decoration-none text-black">
                     <p class="mt-2 prd_name fw-bold mt-1">${resultData.WINE_NAME}</p>
+=======
+                  <a href="/wine/wine_info/${resultData.WINE_NAME_EN}" class="text-decoration-none text-black">
+                    <p class="box mt-2 prd_name fw-bold mt-1">${resultData.WINE_NAME}</p>
+>>>>>>> f2421836ef75022ce10262a4e7f5b2957df32695
                   </a>
-                  <p style="font-size: small">${resultData.WINE_NAME_EN}</p>
+                  <p class="box" style="font-size: small">${resultData.WINE_NAME_EN}</p>
                   <span
                     class="badge badge-pill"
                     style="background-color: #ffd500"
@@ -205,8 +210,9 @@
                 <div class="more_info">
                   <a href="/wine/wine_info/${resultData.WINE_NAME_EN}/1" class="text-decoration-none text-black">
                     <p class="mt-2 prd_name fw-bold">${resultData.WINE_NAME}</p>
+
                   </a>
-                  <p style="font-size: small">${resultData.WINE_NAME_EN}</p>
+                  <p class="box" style="font-size: small">${resultData.WINE_NAME_EN}</p>
                   <span
                     class="badge badge-pill"
                     style="background-color: #fe999f"
@@ -248,10 +254,15 @@
                  </div>
                  <div class="info">
                    <div class="more_info">
+<<<<<<< HEAD
                      <a href="/wine/wine_info/${resultData.WINE_NAME_EN}/1" class="text-decoration-none text-black">
                        <p class="mt-2 prd_name fw-bold">${resultData.WINE_NAME}</p>
+=======
+                     <a href="/wine/wine_info/${resultData.WINE_NAME_EN}" class="text-decoration-none text-black">
+                       <p class="box mt-2 prd_name fw-bold">${resultData.WINE_NAME}</p>
+>>>>>>> f2421836ef75022ce10262a4e7f5b2957df32695
                      </a>
-                     <p style="font-size: small">${resultData.WINE_NAME_EN}</p>
+                     <p class="box" style="font-size: small">${resultData.WINE_NAME_EN}</p>
                      <span
                         class="badge badge-pill"
                        style="background-color: #85d9e4"

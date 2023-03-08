@@ -47,4 +47,15 @@ public class UserDao {
         return (ArrayList)sqlSession.selectList("userMapper.selectReview", user);
     }
 
+    public ArrayList<User> selectQna(SqlSessionTemplate sqlSession, User user){
+        return (ArrayList)sqlSession.selectList("userMapper.selectQna", user);
+    }
+
+    public User reviewCount(SqlSessionTemplate sqlSession, User user){
+        return sqlSession.selectOne("userMapper.reviewCount", user);
+    }
+
+    public User qnaCount(SqlSessionTemplate sqlSession, User user){
+        return sqlSession.selectOne("userMapper.qnaCount", user);
+    }
 }

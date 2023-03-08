@@ -409,7 +409,7 @@
         <div class="mt-5 ms-5">
           <div class="fw-bold">상세정보</div>
           <div class="text-center">
-            <img src="/img/wine/wine_canti_info.jpg" alt="" width="70%" />
+            <img src="/img/wine_info/${resultMap.WINE_NAME_EN}_상세.png" alt="" width="70%" />
           </div>
         </div>
       </div>

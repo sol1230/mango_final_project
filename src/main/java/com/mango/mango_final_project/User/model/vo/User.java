@@ -66,4 +66,16 @@ public class User {
     private String REVIEW_CONTENT;
     private String WINE_UID;
     private String WINE_NAME;
+
+    private String QNA_UID;
+    private String QNA_TITLE;
+    private String QNA_CONTENT;
+    private String QNA_DATE;
+    private String QNA_ANSWER;
+    private String QNA_ANSWER_DATE;
+    private String ANSWER_STATUS;
+
+    private String REVIEWCOUNT;
+    private String QNACOUNT;
+
 }

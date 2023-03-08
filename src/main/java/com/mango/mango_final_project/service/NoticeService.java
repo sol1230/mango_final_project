@@ -20,30 +20,6 @@ public class NoticeService {
     return result;
   }
 
-  public Object bestWineList(Object dataMap) {
-    Map<String, Object> result = new HashMap<String, Object>();
-    int totalCount = (int) this.wineTotal(dataMap);
-    int currentPage = (int) ((Map<String, Object>) dataMap).get("currentPage");
-    Paginations paginations = new Paginations(totalCount, currentPage);
-    result.put("paginations", paginations);
-    ((Map<String, Object>) dataMap).put(
-        "pageBegin",
-        paginations.getPageBegin()
-      );
-    ((Map<String, Object>) dataMap).put(
-        "pageScale",
-        paginations.getPageScale()
-      );
-    result.put("resultList", this.wineList(dataMap));
-    return result;
-  }
-
-  public Object wineTotal(Object dataMap) {
-    String sqlMapId = "WineList.wineTotal";
-    Object result = commonDao.getOne(sqlMapId, dataMap);
-    return result;
-  }
-
   // NOTICE
   // notice list
   public Object getNoticeList(Object dataMap) {

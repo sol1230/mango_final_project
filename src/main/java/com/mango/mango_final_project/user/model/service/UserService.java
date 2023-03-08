@@ -31,6 +31,13 @@ public interface UserService {
      // 비밀번호 변경 서비스 (update)
      int changePwd(User user);
 
-     // 리뷰 서비스 (select)
+     // 내가 남긴 리뷰 서비스 (select)
      ArrayList<User> selectReview(User user);
+
+     // 내가 남긴 qna 조회 서비스
+    ArrayList<User> selectQna(User user);
+
+    User reviewCount(User user);
+
+    User qnaCount(User user);
 }
