@@ -122,4 +122,10 @@ public class UserServiceImpl implements UserService {
   public int wishlistCheck(User user) {
     return uDao.wishlistCheck(sqlSession, user);
   }
+
+  @Override
+  public int myQnaUpdate(User user) {
+    return uDao.myQnaUpdate(sqlSession, user);
+  }
+
 }

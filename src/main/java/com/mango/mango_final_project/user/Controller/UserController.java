@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -38,6 +39,27 @@ public class UserController {
   @RequestMapping("signUp")
   public String signUp() {
     return "signup_N_login/signup_form";
+  }
+
+  @RequestMapping("user_qna_modify")
+  public String user_qna_modify(HttpSession session, Model model) {
+
+    User user = new User();
+    user.setUSER_UID(((User) session.getAttribute("loginUser")).getUSER_UID());
+
+  // 유저 서비스를 이용해 Q&A 정보 리스트 가져오기
+  ArrayList<User> qnaList = uService.selectQna(user);
+
+  // 리스트에서 가장 최근에 작성한 Q&A 정보 가져오기
+  User latestQna = qnaList.get(qnaList.size() - 1);
+
+  // 가져온 Q&A 정보를 세션에 담기
+  session.setAttribute("qnaTitle", latestQna.getQNA_TITLE());
+  session.setAttribute("qnaContent", latestQna.getQNA_CONTENT());
+
+
+
+    return "user/user_qna_modify";
   }
 
   @ResponseBody
@@ -269,18 +291,18 @@ public class UserController {
     return result.size() > 0 ? result : new ArrayList<Object>();
   }
 
+ 
   // user qna update 페이지
-  @RequestMapping(value = "/myQna_edit", method = RequestMethod.POST)
-  public ModelAndView myQna_Edit(
-    @RequestParam Map<String, Object> params,
-    ModelAndView modelAndView
-  ) {
-    Object resultMap = mypageService.getMyQnaInfo(params);
-    modelAndView.addObject("qna", resultMap);
-    modelAndView.setViewName("user/user_qna_modify");
-    return modelAndView;
+  @ResponseBody
+  @RequestMapping(value = "myQnaUpdate", method = RequestMethod.POST)
+  public String myQnaUpdate(HttpSession session, User user) {
+    user.setUSER_UID(((User) session.getAttribute("loginUser")).getUSER_UID());
+    int result = uService.myQnaUpdate(user);
+
+    return result >= 1 ? "success" : "fail";
   }
 
+  /*
   //user qna update complete 페이지
   @RequestMapping(value = "/myQna_update", method = RequestMethod.POST)
   public ModelAndView myQnaUpdate(
@@ -292,7 +314,7 @@ public class UserController {
     modelAndView.setViewName("user/user_qna");
     return modelAndView;
   }
-
+*/
   // user qna delete 페이지
   @RequestMapping(value = "/myQna_delete", method = RequestMethod.POST)
   public ModelAndView myQnaDelete(

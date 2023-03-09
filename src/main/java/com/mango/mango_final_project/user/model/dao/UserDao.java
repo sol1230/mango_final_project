@@ -96,4 +96,10 @@ public class UserDao {
   public int wishlistCheck(SqlSessionTemplate sqlSession, User user) {
     return sqlSession.selectOne("userMapper.checkWishlist", user);
   }
+
+ 
+public int myQnaUpdate (SqlSessionTemplate sqlSession, User user){
+    return sqlSession.update("userMapper.updateQna", user);
+  }
+
 }

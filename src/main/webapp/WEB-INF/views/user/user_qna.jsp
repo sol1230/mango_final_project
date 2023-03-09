@@ -94,14 +94,11 @@
            <td>
                 <div class="d-flex justify-content-center">
                   <div>
-                    <form action="/user/myQna_edit" method="post">
-                    <input type="hidden" name="USER_UID" value="${q.QNA_DATE}" />
-                    <input type="hidden" name="NAME" value="${q.QNA_TITLE}" />
-                    <input type="hidden" name="GENDER" value="${q.QNA_CONTENT}" />
+                    
                       <button
                         class="btn btn-sm btn-outline-secondary"
                       >
-                        수정
+                        <a href="/user/user_qna_modify">수정</a>
                       </button>
                     </form>
                   </div>
@@ -113,7 +110,7 @@
                       >
                         삭제
                       </button>
-                    </form>
+                  
                   </div>
                 </div>
               </td>

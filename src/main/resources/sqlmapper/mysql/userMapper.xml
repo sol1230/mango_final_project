@@ -227,6 +227,7 @@ WHERE USER_UID = #{USER_UID}
       SET QNA_TITLE = #{QNA_TITLE},
           QNA_CONTENT = #{QNA_CONTENT}
       WHERE QNA_UID = #{QNA_UID}
+      AND USER_UID = #{USER_UID}
   </update>
 
   <!-- userMapper.deleteQna -->
