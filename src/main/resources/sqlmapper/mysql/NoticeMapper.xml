@@ -9,6 +9,7 @@
         SELECT *
         FROM WINE 
         WHERE WINE_SCOPE <![CDATA[ >= ]]> '4%'
+        ORDER BY WINE_SCOPE DESC
         LIMIT 4
     </select>
 
