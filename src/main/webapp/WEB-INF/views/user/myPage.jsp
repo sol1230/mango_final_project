@@ -46,7 +46,7 @@
         <form action="">
           <div class="info_area">
             <div class="title">
-              <string>찜한 상품</string>
+              <string>위시리스트</string>
             </div>
             <div class="number">${loginUser.WISHLISTCOUNT} <span>(개)</span></div>
             <div class="detail mt-1">

@@ -12,7 +12,7 @@
             </li>
             <li class="d-flex align-items-center">
               <a href="/user/myWishlist" class="text-decoration-none nav-link"
-                >찜한 상품</a
+                >위시리스트</a
               >
             </li>
             <li class="d-flex align-items-center">
