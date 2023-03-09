@@ -356,8 +356,5 @@ public class UserController {
 
     return result > 0 ? "success" : "fail";
   }
-<<<<<<< HEAD
-=======
 
->>>>>>> 9238e4e498932000e5f08736d90a22ff9752fe6d
 }

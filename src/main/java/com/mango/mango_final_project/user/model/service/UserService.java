@@ -50,10 +50,8 @@ public interface UserService {
 
     int deleteAllWishlist(User user);
 
-<<<<<<< HEAD
-    ArrayList<Object> deleteMyReview(User user);
 
-=======
->>>>>>> 9238e4e498932000e5f08736d90a22ff9752fe6d
+    ArrayList<Object> deleteMyReview(User user);
+    
     int insertWishlist(User user);
 }

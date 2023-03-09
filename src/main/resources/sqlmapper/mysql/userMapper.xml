@@ -262,4 +262,10 @@ DELETE FROM WISHLIST
 WHERE USER_UID = #{USER_UID}
 </delete>
 
+    <!-- 위시리스트 insert -->
+    <insert id="wineWishlistInsert" parameterType="Map">
+        INSERT INTO WISHLIST (USER_UID, WINE_UID) 
+        VALUE (#{USER_UID}, #{WINE_UID})
+    </insert>
+
 </mapper>
