@@ -24,6 +24,21 @@
         WHERE WINE.WINE_UID = REVIEW.WINE_UID
         AND WINE_NAME_EN = #{WINE_NAME_EN}
     </select>
+    <!-- 와인 리뷰 갯수 -->
+    <select id="wineReviewTotal" 
+        parameterType="Map" resultType="int">
+        SELECT count(*) as cnt
+        FROM REVIEW
+        WHERE WINE_UID = #{WINE_UID}
+    </select>
+    <!-- 와인 리뷰 작성 -->
+    <insert id="wineReviewInsert" 
+        parameterType="Map">
+        INSERT INTO REVIEW (REVIEW_TITLE, REVIEW_SCOPE, REVIEW_DATE, REVIEW_CONTENT, USER_UID, WINE_UID) 
+        VALUE (#{REVIEW_TITLE}, #{REVIEW_SCOPE}, date_format(now(), '%Y-%m-%d'), #{REVIEW_CONTENT}, #{USER_UID}, #{WINE_UID})
+    </insert>
+
+
     <!-- 와인 qna 정보 -->
     <select id="wineQNAInfo" parameterType="Map" resultType="Map">
         SELECT WINE.*, QNA.*
@@ -32,14 +47,14 @@
         AND WINE_NAME_EN = #{WINE_NAME_EN}
     </select>
 
-    <!-- 와인 문의 갯수 -->
+    <!-- 와인 QNA 갯수 -->
     <select id="wineQNATotal" 
         parameterType="Map" resultType="int">
         SELECT count(*) as cnt
         FROM QNA
         WHERE WINE_UID = #{WINE_UID}
     </select>
-    <!-- 와인 문의 작성 -->
+    <!-- 와인 QNA 작성 -->
     <insert id="wineQNAInsert" 
         parameterType="Map">
         INSERT INTO QNA (QNA_TITLE, QNA_CONTENT, QNA_DATE, QNA_ANSWER, QNA_ANSWER_DATE, ANSWER_STATUS, USER_UID, WINE_UID) 

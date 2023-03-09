@@ -34,6 +34,38 @@ public class WineInfoService {
     Object result = commonDao.getList(sqlMapId, dataMap);
     return result;
   }
+  // 리뷰 total
+  public Object wineReviewTotal(Object dataMap){
+    String sqlMapId = "WineInfo.wineReviewTotal";
+    Object result = commonDao.getOne(sqlMapId, dataMap);
+    return result;
+    }
+  
+  // 리뷰 insert
+  public Object wineReviewInsert(Object dataMap) {
+    String sqlMapId = "WineInfo.wineReviewInsert";
+    Object result = commonDao.insert(sqlMapId, dataMap);
+    return result;
+  }
+  
+  // 리뷰 pagination
+  public Object wineReviewWithPagination(Object dataMap){
+    Map<String, Object> result = new HashMap<String, Object>();
+    int totalCount = (int) this.wineReviewTotal(dataMap);
+    int currentPage = (int) ((Map<String, Object>) dataMap).get("currentPage");
+    Paginations paginations = new Paginations(totalCount, currentPage);
+    result.put("paginations", paginations);
+    ((Map<String, Object>) dataMap).put("pageBegin", paginations.getPageBegin());
+    result.put("resultList", this.wineReviewInfoList(dataMap));
+    return result;
+  }
+  
+  // 리뷰 insert + pagination
+  public Object wineReviewInsertAndList(Object dataMap){
+    Object result = this.wineReviewInsert(dataMap);
+    result = this.wineReviewWithPagination(dataMap);
+    return result;
+  }
 
   // QNA 목록
   public Object wineQNAInfoList(Object dataMap){
