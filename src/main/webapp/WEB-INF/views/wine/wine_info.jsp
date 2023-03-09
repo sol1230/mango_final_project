@@ -769,7 +769,7 @@
       <div class="modal fade" id="modalLogin">
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content text-center p-5">
-            <div class="fs-4 fw-bold">로그인 후 작성이 가능합니다.</div>
+            <div class="fs-4 fw-bold">로그인 후 이용이 가능합니다.</div>
           </div>
         </div>
       </div>
