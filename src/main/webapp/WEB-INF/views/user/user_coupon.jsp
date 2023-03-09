@@ -54,17 +54,17 @@
        
             <tr>
                 <td>
-                  <img src="../img/무료 배송 쿠폰.PNG" width="300rem;" >
+                   <img src="../img/할인 쿠폰.PNG" width="300rem;">
                 </td>
                 <td>
-                  <img src="../img/할인 쿠폰.PNG" width="300rem;">
+                 
                 </td>
  
             </tr>
 
             <tr style="border: hidden;">
               <td>
-                <button class="btn btn-outline-primary">다운로드 ↓ </button>
+                <button type="submit" class="btn btn-outline-primary">다운로드 ↓ </button>
               </td>
               <td>
                

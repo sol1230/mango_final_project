@@ -195,7 +195,7 @@
 						})
 						.then((value) => {
 							if(value){
-								location.href="/user/myWishlist";
+								location.reload();
 							}
 						})
 					}else{

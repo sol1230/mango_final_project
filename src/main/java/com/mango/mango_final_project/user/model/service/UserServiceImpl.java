@@ -109,7 +109,12 @@ public class UserServiceImpl implements UserService {
   }
 
   @Override
-  public int deleteMyReview(User user) {
+  public ArrayList<Object> deleteMyReview(User user) {
     return uDao.deleteMyReview(sqlSession, user);
+  }
+
+  @Override
+  public int insertWishlist(User user) {
+      return uDao.insertWishlist(sqlSession, user);
   }
 }
