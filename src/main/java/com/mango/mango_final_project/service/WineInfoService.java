@@ -107,9 +107,10 @@ public class WineInfoService {
     return result;
   }
 
-  // Wishlist insert
-  public Object wineWishlistInsert(Object dataMap){
-
-    return null;
+  // Wishlist 목록
+  public Object wineWishlistCheck(Object dataMap){
+    String sqlMapId = "WineInfo.wishlistCheck";
+    Object result = commonDao.getOne(sqlMapId, dataMap);
+    return result;
   }
 }

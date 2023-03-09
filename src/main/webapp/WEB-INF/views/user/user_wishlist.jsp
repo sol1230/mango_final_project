@@ -55,10 +55,12 @@
               <img src="/img/wine/${w.WINE_NAME_EN}.png" alt="" style="background-color: #e8daea" />
               <div class="card-body">
               <input type="hidden" id="wineUid" value="${w.WINE_UID}" />
-                <h5 class="card-title">
-                  ${w.WINE_NAME}
-                  
+                <h5 class="box card-title">
+                  ${w.WINE_NAME}  
                 </h5>
+                <p class="box" style="font-size: small">
+                   ${w.WINE_NAME_EN}
+                </p>
                 <span
                   class="badge badge-pill"
                   style="background-color: rgb(224, 216, 234)"
@@ -85,10 +87,12 @@
               <img src="/img/wine/${w.WINE_NAME_EN}.png" alt=""  style="background-color: #ffe2e2"/>
               <div class="card-body">
               <input type="hidden" id="wineUid" value="${w.WINE_UID}" />
-                <h5 class="card-title">
-                  ${w.WINE_NAME}
-                 
+                <h5 class="box card-title">
+                  ${w.WINE_NAME} 
                 </h5>
+                <p class="box" style="font-size: small">
+                  ${w.WINE_NAME_EN}
+                </p>
                 <span
                   class="badge badge-pill"
                   style="background-color: #ffe2e2"
@@ -115,10 +119,12 @@
               <img src="/img/wine/${w.WINE_NAME_EN}.png" alt="" style="background-color: #fffbb0" />
               <div class="card-body">
               <input type="hidden" id="wineUid" value="${w.WINE_UID}" />
-                <h5 class="card-title">
+                <h5 class="box card-title">
                   ${w.WINE_NAME}
-                  
                 </h5>
+                <p class="box" style="font-size: small">
+                  ${w.WINE_NAME_EN}
+                </p>
                 <span
                   class="badge badge-pill"
                   style="background-color: #fffbb0"
@@ -144,10 +150,12 @@
               <img src="/img/wine/${w.WINE_NAME_EN}.png" alt="" style="background-color: #d7f6f8" />
               <div class="card-body">
               <input type="hidden" id="wineUid" value="${w.WINE_UID}" />
-                <h5 class="card-title">
+                <h5 class="box card-title">
                   ${w.WINE_NAME}
-               
                 </h5>
+                <p class="box" style="font-size: small">
+                      ${w.WINE_NAME_EN}
+                </p>
                 <span
                   class="badge badge-pill"
                   style="background-color: #d7f6f8"
@@ -195,7 +203,7 @@
 						})
 						.then((value) => {
 							if(value){
-								location.href="/user/myWishlist";
+								location.reload();
 							}
 						})
 					}else{

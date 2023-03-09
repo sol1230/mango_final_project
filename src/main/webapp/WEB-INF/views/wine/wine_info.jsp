@@ -28,6 +28,8 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
     />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <link rel="stylesheet" href="/css/wine_info.css" />
 
   </head>
@@ -49,9 +51,25 @@
         <div class="me-4">
           <div>
             <span class="fs-5 fw-bold">${resultMap.WINE_NAME}</span>
-            <span class="btn">
-              <i class="bi bi-bookmark-heart fs-4"></i>
-            </span>
+            <c:choose>
+              <c:when test="${empty loginUser}">
+                  <button class="btn" name="wishListButton" id="wishListButton" href="#modalLogin" data-bs-toggle="modal">
+                    <i class="bi bi-bookmark-heart fs-4"></i>
+                  </button>
+              </c:when>
+              <c:otherwise>
+                <c:if test="${empty wishlistChcek}">
+                  <button class="btn" name="wishListButton" id="wishListButton" onclick="wishList()">
+                    <i class="bi bi-bookmark-heart fs-4"></i>
+                  </button>
+                </c:if>
+                <c:if test= "${!empty wishlistChcek}">
+                  <button class="btn" style="color: red;" name="wishListButton" id="wishListButton" onclick="wishList()">
+                    <i class="bi bi-bookmark-heart fs-4"></i>
+                  </button>
+                </c:if>
+              </c:otherwise>
+            </c:choose>
           </div>
           <p class="mb-3 ms-2" style="font-size: small">
             ${resultMap.WINE_NAME_EN}
@@ -752,7 +770,7 @@
       <div class="modal fade" id="modalLogin">
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content text-center p-5">
-            <div class="fs-4 fw-bold">로그인 후 작성이 가능합니다.</div>
+            <div class="fs-4 fw-bold">로그인 후 이용이 가능합니다.</div>
           </div>
         </div>
       </div>
@@ -1001,7 +1019,27 @@
 
     <%-- footer --%>
     <%@ include file="../etc/footer.jsp" %>
-  
+    
+    <script>
+      function wishList() {
+        $.ajax({
+          url:"/user/insertWishlist",
+          type:"get",
+          data:{
+            WINE_UID:${resultMap.WINE_UID}
+          },
+          success:function(result){
+            if(result == 'success'){
+              $("#wishListButton").css("color", "red");
+            } else {
+              $("#wishListButton").css("color", "");
+            }
+          },error:function(){
+					 alert("error");
+				  }
+        });
+      }
+    </script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"

@@ -41,7 +41,7 @@
               <a
                 href="/admin/admin_stores/1"
                 class="text-decoration-none nav-link"
-                >거래처 관리</a
+                >판매처 관리</a
               >
             </li>
             <li class="d-flex align-items-center">

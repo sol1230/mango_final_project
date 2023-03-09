@@ -256,7 +256,7 @@ public class UserController {
 
   @ResponseBody
   @RequestMapping(value = "deleteMyReview")
-  public String deleteMyReview(
+  public ArrayList<Object> deleteMyReview(
     HttpSession session,
     HttpServletRequest request,
     Model model,
@@ -264,9 +264,9 @@ public class UserController {
   ) {
     user.setUSER_UID(((User) session.getAttribute("loginUser")).getUSER_UID());
 
-    int result = uService.deleteMyReview(user);
+     ArrayList<Object> result = uService.deleteMyReview(user);
 
-    return result > 0 ? "success" : "fail";
+    return result.size() > 0 ? result : new ArrayList<Object>();
   }
 
   // user qna update 페이지
@@ -345,4 +345,27 @@ public class UserController {
 
     return result > 0 ? "success" : "fail";
   }
+
+  @ResponseBody
+  @RequestMapping(value = "insertWishlist")
+  public String insertWishlist(HttpSession session, HttpServletRequest request, Model model, User user){
+    user.setUSER_UID(((User) session.getAttribute("loginUser")).getUSER_UID());
+
+
+    int result = 0;
+    int count = uService.wishlistCheck(user);
+    String message = "";
+    if(count > 0) {
+      // 삭제
+      result = uService.deleteWishlist(user);
+      message = "delete";
+    } else {
+      // 추가
+      result = uService.insertWishlist(user);
+      message = "success";
+    }
+
+    return message;
+  }
+
 }
