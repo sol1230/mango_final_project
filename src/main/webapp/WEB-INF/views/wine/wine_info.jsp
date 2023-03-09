@@ -56,12 +56,18 @@
                   <button class="btn" name="wishListButton" id="wishListButton" href="#modalLogin" data-bs-toggle="modal">
                     <i class="bi bi-bookmark-heart fs-4"></i>
                   </button>
-      
               </c:when>
               <c:otherwise>
+                <c:if test="${empty wishlistChcek}">
                   <button class="btn" name="wishListButton" id="wishListButton" onclick="wishList()">
                     <i class="bi bi-bookmark-heart fs-4"></i>
                   </button>
+                </c:if>
+                <c:if test= "${!empty wishlistChcek}">
+                  <button class="btn" style="color: red;" name="wishListButton" id="wishListButton" onclick="wishList()">
+                    <i class="bi bi-bookmark-heart fs-4"></i>
+                  </button>
+                </c:if>
               </c:otherwise>
             </c:choose>
           </div>
@@ -1027,6 +1033,7 @@
               $("#wishListButton").css("color", "red");
             } else {
               alert("위시리스트가 취소되었습니다!");
+              $("#wishListButton").css("color", "");
             }
           },error:function(){
 					 alert("error");
