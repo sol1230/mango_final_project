@@ -54,4 +54,7 @@ public interface UserService {
     ArrayList<Object> deleteMyReview(User user);
     
     int insertWishlist(User user);
+
+    // 위시리스트 중복체크 서비스 (select)
+    int wishlistCheck(User user);
 }

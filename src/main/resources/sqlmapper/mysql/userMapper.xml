@@ -268,4 +268,12 @@ WHERE USER_UID = #{USER_UID}
         VALUE (#{USER_UID}, #{WINE_UID})
     </insert>
 
+    <!-- 위시리스트 중복체크 -->
+    <select id="checkWishlist" resultType="_int">
+      SELECT
+      COUNT(*)
+      FROM WISHLIST
+      WHERE USER_UID = #{USER_UID} AND WINE_UID = #{WINE_UID}
+    </select>
+
 </mapper>

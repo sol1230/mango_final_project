@@ -117,4 +117,9 @@ public class UserServiceImpl implements UserService {
   public int insertWishlist(User user) {
       return uDao.insertWishlist(sqlSession, user);
   }
+
+  @Override
+  public int wishlistCheck(User user) {
+    return uDao.wishlistCheck(sqlSession, user);
+  }
 }

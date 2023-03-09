@@ -92,4 +92,8 @@ public class UserDao {
   public int insertWishlist(SqlSessionTemplate sqlSession, User user){
     return sqlSession.insert("userMapper.wineWishlistInsert", user);
   }
+
+  public int wishlistCheck(SqlSessionTemplate sqlSession, User user) {
+    return sqlSession.selectOne("userMapper.checkWishlist", user);
+  }
 }
