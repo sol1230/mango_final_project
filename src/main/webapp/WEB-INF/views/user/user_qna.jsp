@@ -84,6 +84,7 @@
         <!-- 문의 -->
         <tbody style="font-size: small">
          <c:forEach var="q" items="${qna}" varStatus="loop">
+        
           <tr class="questions text-center">
             <td>${q.NUMBER}</td>
             <td><a href="/wine/wine_info/${r.WINE_NAME_EN}/1">${q.WINE_NAME}</a></td>
@@ -96,17 +97,18 @@
                   <div>
                     
                       <button
-                        class="btn btn-sm btn-outline-secondary"
+                       class="btn btn-sm btn-outline-secondary"
                       >
                         <a href="/user/user_qna_modify">수정</a>
                       </button>
-                    </form>
+                   
                   </div>
                   <div>
-                    <form action="" class="ps-2">
+                   <input type="hidden" id="QNAUID" value="${q.QNA_UID}" />
                       <button
                         type="submit"
                         class="btn btn btn-sm btn-outline-danger"
+                          onclick="deleteSelected(this);"
                       >
                         삭제
                       </button>
@@ -137,6 +139,7 @@
                     </div>
                   </td>
           </tr>
+          
           </c:forEach>
         </tbody>
       </table>
@@ -145,6 +148,49 @@
 
     <%-- footer --%>
     <%@ include file="../etc/footer.jsp" %>
+
+     <script>
+    function deleteSelected(btn) {
+
+      var QNAUID = $(btn).siblings('#QNAUID').val();
+			
+ $.ajax({
+  url:"/user/deleteQna",
+  type:"post",
+  data:{
+    USER_UID:"${loginUser.USER_UID}",
+    QNA_UID: QNAUID
+   },
+  success:function(result){
+    if(result == 'success'){
+						return new swal({
+							title:"삭제되었습니다.",
+							icon:"success",
+							closeOnClickOutside:false
+						})
+						.then((value) => {
+							if(value){
+								location.reload();
+							}
+						})
+					}else{
+						return new swal({
+							title:"삭제에 실패하였습니다.",
+							icon:"error",
+							closeOnClickOutside:false
+						})
+						.then((value) => {
+							if(value){
+								return false;
+							}
+						})
+  
+ 
+          }
+  }
+  })
+  }
+    </script>
     
        <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"

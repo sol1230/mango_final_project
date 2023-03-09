@@ -76,6 +76,10 @@ public class UserDao {
     return sqlSession.delete("userMapper.deleteWishlist", user);
   }
 
+  public int deleteQna(SqlSessionTemplate sqlSession, User user) {
+    return sqlSession.delete("userMapper.deleteQna", user);
+  }
+
   public int deleteAllWishlist(SqlSessionTemplate sqlSession, User user) {
     return sqlSession.delete("userMapper.deleteAllWishlist", user);
   }

@@ -232,8 +232,9 @@ WHERE USER_UID = #{USER_UID}
 
   <!-- userMapper.deleteQna -->
   <delete id="deleteQna" parameterType="com.mango.mango_final_project.user.model.vo.User">
-      DELETE FROM QNA
-      WHERE QNA_UID = #{QNA_UID}
+DELETE FROM QNA
+WHERE QNA_UID = #{QNA_UID}
+AND USER_UID = #{USER_UID}
   </delete>
 
   <select id="selectWishlist"

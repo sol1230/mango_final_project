@@ -315,17 +315,7 @@ public class UserController {
     return modelAndView;
   }
 */
-  // user qna delete 페이지
-  @RequestMapping(value = "/myQna_delete", method = RequestMethod.POST)
-  public ModelAndView myQnaDelete(
-    @RequestParam Map<String, Object> params,
-    ModelAndView modelAndView
-  ) {
-    Object resultMap = mypageService.deleteMyQnaAndGetMyQna(params);
-    modelAndView.addObject("qna", resultMap);
-    modelAndView.setViewName("user/user_qna");
-    return modelAndView;
-  }
+ 
 
   @RequestMapping("myWishlist")
   public ModelAndView myWishlist(ModelAndView mv, HttpSession session) {
@@ -349,6 +339,21 @@ public class UserController {
     user.setUSER_UID(((User) session.getAttribute("loginUser")).getUSER_UID());
 
     int result = uService.deleteWishlist(user);
+
+    return result > 0 ? "success" : "fail";
+  }
+
+  @ResponseBody
+  @RequestMapping(value = "deleteQna")
+  public String deleteQna(
+    HttpSession session,
+    HttpServletRequest request,
+    Model model,
+    User user
+  ) {
+    user.setUSER_UID(((User) session.getAttribute("loginUser")).getUSER_UID());
+
+    int result = uService.deleteQna(user);
 
     return result > 0 ? "success" : "fail";
   }

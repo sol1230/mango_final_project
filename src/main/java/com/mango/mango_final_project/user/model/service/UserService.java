@@ -48,6 +48,8 @@ public interface UserService {
 
     int deleteWishlist(User user);
 
+    int deleteQna(User user);
+
     int deleteAllWishlist(User user);
 
 

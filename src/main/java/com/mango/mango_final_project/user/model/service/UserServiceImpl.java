@@ -104,6 +104,11 @@ public class UserServiceImpl implements UserService {
   }
 
   @Override
+  public int deleteQna(User user) {
+    return uDao.deleteQna(sqlSession, user);
+  }
+
+  @Override
   public int deleteAllWishlist(User user) {
     return uDao.deleteAllWishlist(sqlSession, user);
   }
