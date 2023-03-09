@@ -72,6 +72,7 @@
                     <input
                       type="date"
                       name="COUPON_DATETIME1"
+                      id="COUPON_DATETIME1"
                       class="form-control"
                       value="${resultMap.COUPON_DATETIME1}"
                     />
@@ -81,6 +82,7 @@
                      <input
                       type="date"
                       name="COUPON_DATETIME2"
+                      id="COUPON_DATETIME2"
                       class="form-control"
                       value="${resultMap.COUPON_DATETIME2}"
                     />
