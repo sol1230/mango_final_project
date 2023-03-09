@@ -108,4 +108,16 @@ public int myQnaUpdate (SqlSessionTemplate sqlSession, User user){
     return sqlSession.update("userMapper.updateQna", user);
   }
 
+  public int myReviewUpdate (SqlSessionTemplate sqlSession, User user){
+    return sqlSession.update("userMapper.updateReview", user);
+  }
+
+  public User getQna(SqlSessionTemplate sqlSession, User user){
+    return sqlSession.selectOne("userMapper.getQna", user);
+  }
+
+  public User getReview(SqlSessionTemplate sqlSession, User user){
+    return sqlSession.selectOne("userMapper.getReview", user);
+  }
+
 }

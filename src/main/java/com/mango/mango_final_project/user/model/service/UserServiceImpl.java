@@ -133,4 +133,19 @@ public class UserServiceImpl implements UserService {
     return uDao.myQnaUpdate(sqlSession, user);
   }
 
+  @Override
+  public int myReviewUpdate(User user) {
+    return uDao.myReviewUpdate(sqlSession, user);
+  }
+
+  @Override
+  public User getQna(User user){
+    return uDao.getQna(sqlSession, user);
+  }
+
+  @Override
+  public User getReview(User user){
+    return uDao.getReview(sqlSession, user);
+  }
+
 }

@@ -184,9 +184,7 @@ WHERE USER_UID = #{USER_UID}
 
 <!-- sol -->
   <!-- userMapper.selectReviewInfo  -->
-  <select id="selectReviewInfo"
-  parameterType="Map"
-  resultType="Map">
+  <select id="selectReviewInfo">
     SELECT *
     FROM REVIEW
     INNER JOIN USER
@@ -201,6 +199,7 @@ WHERE USER_UID = #{USER_UID}
           REVIEW_SCOPE = #{REVIEW_SCOPE},
           REVIEW_CONTENT = #{REVIEW_CONTENT}
       WHERE REVIEW_UID = #{REVIEW_UID}
+      AND USER_UID = #{USER_UID}
   </update>
 
   <!-- userMapper.deleteReview -->
@@ -277,5 +276,27 @@ WHERE USER_UID = #{USER_UID}
       FROM WISHLIST
       WHERE USER_UID = #{USER_UID} AND WINE_UID = #{WINE_UID}
     </select>
+
+  <select id="getQna"
+  parameterType="com.mango.mango_final_project.user.model.vo.User"
+  resultType="com.mango.mango_final_project.user.model.vo.User">
+    SELECT
+    *
+    FROM QNA
+    WHERE USER_UID = #{USER_UID} AND QNA_UID = #{QNA_UID}
+
+
+  </select>
+
+    <select id="getReview"
+  parameterType="com.mango.mango_final_project.user.model.vo.User"
+  resultType="com.mango.mango_final_project.user.model.vo.User">
+    SELECT
+    *
+    FROM REVIEW
+    WHERE USER_UID = #{USER_UID} AND REVIEW_UID = #{REVIEW_UID}
+
+
+  </select>
 
 </mapper>

@@ -61,4 +61,12 @@ public interface UserService {
     int wishlistCheck(User user);
 
    int myQnaUpdate(User user);
+
+   int myReviewUpdate(User user);
+
+   User getQna(User user);
+
+   User getReview(User user);
+
+
 }

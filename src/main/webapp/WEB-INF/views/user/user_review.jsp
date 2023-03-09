@@ -73,16 +73,14 @@
                 <td>
                 <div class="d-flex justify-content-center">
                   <div>
-                    <form action="/user/myReview_edit" method="post">
-                    <input type="hidden" name="REVIEW_UID" value="${r.REVIEW_UID}" />
-                    <input type="hidden" name="REVIEW_DATE" value="${r.REVIEW_DATE}" />
-                    <input type="hidden" name="REVIEW_TITLE" value="${r.REVIEW_TITLE}" />
-                    <input type="hidden" name="REVIEW_SCOPE" value="${r.REVIEW_SCOPE}" />
-                    <input type="hidden" name="REVIEW_CONTENT" value="${r.REVIEW_CONTENT}" />
-                      <button class="btn btn-sm btn-outline-secondary">
-                        수정
+                   
+                    <input type="hidden" name="REVIEW_UID" id="REVIEWUID" value="${r.REVIEW_UID}" />
+                      <button class="btn btn-sm btn-outline-secondary"
+                      onclick="modifyReview(this);">
+                       수정
+                        
                       </button>
-                    </form>
+                  
                   </div>
                   <div>
                     
@@ -157,6 +155,24 @@
           }
         })
       }
+
+      function modifyReview(btn) {
+
+      var REVIEWUID = $(btn).siblings('#REVIEWUID').val();
+			
+ $.ajax({
+  url:"/user/user_review_detail",
+  type:"post",
+  data:{
+    USER_UID:"${loginUser.USER_UID}",
+    REVIEW_UID: REVIEWUID
+   },
+  success:function(result){
+  					
+		location.href= "/user/user_review_modify";
+  }
+  })
+   }
     </script>
     
        <script

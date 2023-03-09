@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -40,26 +39,38 @@ public class UserController {
   public String signUp() {
     return "signup_N_login/signup_form";
   }
+  
+  @ResponseBody
+  @RequestMapping("user_qna_detail")
+  public User user_qna_detail(User user, HttpSession session) {
+    
+    User qna = uService.getQna(user);    
+
+    session.setAttribute("qna", qna);
+
+    return qna;
+  }
+
+  @ResponseBody
+  @RequestMapping("user_review_detail")
+  public User user_review_detail(User user, HttpSession session) {
+    
+    User review = uService.getReview(user);    
+
+    session.setAttribute("review", review);
+
+    return review;
+  }
 
   @RequestMapping("user_qna_modify")
-  public String user_qna_modify(HttpSession session, Model model) {
-
-    User user = new User();
-    user.setUSER_UID(((User) session.getAttribute("loginUser")).getUSER_UID());
-
-  // 유저 서비스를 이용해 Q&A 정보 리스트 가져오기
-  ArrayList<User> qnaList = uService.selectQna(user);
-
-  // 리스트에서 가장 최근에 작성한 Q&A 정보 가져오기
-  User latestQna = qnaList.get(qnaList.size() - 1);
-
-  // 가져온 Q&A 정보를 세션에 담기
-  session.setAttribute("qnaTitle", latestQna.getQNA_TITLE());
-  session.setAttribute("qnaContent", latestQna.getQNA_CONTENT());
-
-
+  public String user_qna_modify(User user, HttpSession session) {    
 
     return "user/user_qna_modify";
+  }
+
+  @RequestMapping("user_review_modify")
+  public String user_review_modify(User user, HttpSession session){
+    return "user/user_review_modify";
   }
 
   @ResponseBody
@@ -285,6 +296,15 @@ public class UserController {
   public String myQnaUpdate(HttpSession session, User user) {
     user.setUSER_UID(((User) session.getAttribute("loginUser")).getUSER_UID());
     int result = uService.myQnaUpdate(user);
+
+    return result >= 1 ? "success" : "fail";
+  }
+
+  @ResponseBody
+  @RequestMapping(value = "myReviewUpdate", method = RequestMethod.POST)
+  public String myReviewUpdate(HttpSession session, User user) {
+    user.setUSER_UID(((User) session.getAttribute("loginUser")).getUSER_UID());
+    int result = uService.myReviewUpdate(user);
 
     return result >= 1 ? "success" : "fail";
   }

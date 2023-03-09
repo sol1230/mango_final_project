@@ -52,7 +52,7 @@
          
                 <tr>
                   <th scope="" class="bg-secondary bg-opacity-25">작성일</th>
-                  <td scope="" name="QNA_DATE">${loginUser.QNA_DATE}</td>
+                  <td scope="" name="QNA_DATE">${qna.QNA_DATE}</td>
                 </tr>
                 <tr scope="row">
                   <th scope="" class="bg-secondary bg-opacity-25">제목</th>
@@ -62,7 +62,7 @@
                       name="notice_title"
                       id="notice_title"
                       class="form-control"
-                     value="${qnaTitle}"
+                     value="${qna.QNA_TITLE}"
                     />
                   </td>
                 </tr>
@@ -78,7 +78,7 @@
                       cols="30"
                       rows="10"
                      
-                    >${qnaContent}</textarea
+                    >${qna.QNA_CONTENT}</textarea
                     >
                   </td>
                 </tr>
@@ -98,20 +98,16 @@
     <%@ include file="../etc/footer.jsp" %>
 
      <script>
-    function myQnaUpdate(btn) {
-
-      var qnaTitle = $(btn).siblings('#notice_title').val();
-       var qnaContent = $(btn).siblings('#notice_contents').val();
-      
+    function myQnaUpdate() {
 			
  $.ajax({
   url:"/user/myQnaUpdate",
   type:"post",
   data:{
     USER_UID:"${loginUser.USER_UID}",
-    QNA_TITLE: qnaTitle,
-    QNA_CONTENT: qnaContent,
-    QNA_UID:"${loginUser.QNA_UID}"
+    QNA_TITLE: $("#notice_title").val(),
+    QNA_CONTENT: $("#notice_contents").val(),
+    QNA_UID:"${qna.QNA_UID}"
    },
   success:function(result){
     if(result == 'success'){

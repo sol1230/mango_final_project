@@ -95,11 +95,12 @@
            <td>
                 <div class="d-flex justify-content-center">
                   <div>
-                    
+                    <input type="hidden" id="QNAUID" value="${q.QNA_UID}" />
                       <button
                        class="btn btn-sm btn-outline-secondary"
+                       onclick="modifyQna(this);"
                       >
-                        <a href="/user/user_qna_modify">수정</a>
+                      수정
                       </button>
                    
                   </div>
@@ -190,6 +191,27 @@
   }
   })
   }
+
+   function modifyQna(btn) {
+
+      var QNAUID = $(btn).siblings('#QNAUID').val();
+			
+ $.ajax({
+  url:"/user/user_qna_detail",
+  type:"post",
+  data:{
+    USER_UID:"${loginUser.USER_UID}",
+    QNA_UID: QNAUID
+   },
+  success:function(result){
+  					
+		location.href= "/user/user_qna_modify";
+  }
+  })
+   }
+  
+  
+
     </script>
     
        <script
