@@ -65,7 +65,9 @@
               <%-- 리뷰 --%>
                 <td>${r.NUMBER}</td>
                 <td>${r.REVIEW_DATE}</td>
-                <td><a href="/wine/wine_info/${r.WINE_NAME_EN}/1">${r.WINE_NAME}</a></td>
+                <td>
+                <img src="/img/wine/${r.WINE_NAME_EN}.png" width="30"/>
+                <a href="/wine/wine_info/${r.WINE_NAME_EN}/1">${r.WINE_NAME}</a></td>
                 <td> <a href="#myReview${loop.count}" class="left" data-bs-toggle="collapse">${r.REVIEW_TITLE}</a></td>
                 <td>${r.REVIEW_SCOPE}</td>
                 <td>
