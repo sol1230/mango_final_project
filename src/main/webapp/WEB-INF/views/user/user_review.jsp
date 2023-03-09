@@ -86,7 +86,7 @@
                   </div>
                   <div>
                     
-                   <input type="hidden" name="delete" id="REVIEWUID" value="${r.REVIEW_UID}" />
+                   <input type="hidden" id="REVIEWUID" value="${r.REVIEW_UID}" />
                       <button
                         class="btn btn-sm btn-outline-danger"
                         onclick="deleteReview(this);"
@@ -121,17 +121,17 @@
 
     <script>
       function deleteReview(btn) {
-        var REVIEW_UID = $(btn).siblings('input[name=delete]').val();
+        var REVIEWUID = $(btn).siblings('#REVIEWUID').val();
 
         $.ajax({
           url:"/user/deleteMyReview",
           type:"post",
           data:{
             USER_UID:"${loginUser.USER_UID}",
-            REVIEW_UID:REVIEW_UID
+            REVIEW_UID: REVIEWUID
           },
           success:function(result){
-            if(result == 1){
+            if(result == 'success' ){
               return new swal({
                 title:"삭제되었습니다",
                 icon:"success",
@@ -139,7 +139,7 @@
               })
               .then((value) => {
                 if(value){
-                  location.href="/user/myReview";
+                  location.reload();
                 }
               })
             }else{

@@ -53,7 +53,7 @@ public interface UserService {
     int deleteAllWishlist(User user);
 
 
-    ArrayList<Object> deleteMyReview(User user);
+   int deleteMyReview(User user);
 
     int insertWishlist(User user);
 

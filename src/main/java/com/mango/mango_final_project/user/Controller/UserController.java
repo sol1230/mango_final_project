@@ -276,20 +276,7 @@ public class UserController {
   //   return modelAndView;
   // }
 
-  @ResponseBody
-  @RequestMapping(value = "deleteMyReview")
-  public ArrayList<Object> deleteMyReview(
-    HttpSession session,
-    HttpServletRequest request,
-    Model model,
-    User user
-  ) {
-    user.setUSER_UID(((User) session.getAttribute("loginUser")).getUSER_UID());
 
-     ArrayList<Object> result = uService.deleteMyReview(user);
-
-    return result.size() > 0 ? result : new ArrayList<Object>();
-  }
 
  
   // user qna update 페이지
@@ -356,6 +343,22 @@ public class UserController {
     int result = uService.deleteQna(user);
 
     return result > 0 ? "success" : "fail";
+  }
+
+  @ResponseBody
+  @RequestMapping(value = "deleteMyReview")
+  public String deleteMyReview(
+    HttpSession session,
+    HttpServletRequest request,
+    Model model,
+    User user
+  ) {
+    user.setUSER_UID(((User) session.getAttribute("loginUser")).getUSER_UID());
+
+    int result = uService.deleteMyReview(user);
+
+
+     return result > 0 ? "success" : "fail";
   }
 
   @ResponseBody

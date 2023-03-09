@@ -80,6 +80,10 @@ public class UserDao {
     return sqlSession.delete("userMapper.deleteQna", user);
   }
 
+  public int deleteMyReview(SqlSessionTemplate sqlSession, User user) {
+    return sqlSession.delete("userMapper.deleteReview", user);
+  }
+
   public int deleteAllWishlist(SqlSessionTemplate sqlSession, User user) {
     return sqlSession.delete("userMapper.deleteAllWishlist", user);
   }
@@ -89,9 +93,7 @@ public class UserDao {
     return sqlSession.selectOne("userMapper.selectReviewInfo", user);
   }
 
-  public ArrayList<Object> deleteMyReview(SqlSessionTemplate sqlSession, User user) {
-    return (ArrayList<Object>) sqlSession.selectList("userMapper.deleteReview", user);
-  }
+
 
   public int insertWishlist(SqlSessionTemplate sqlSession, User user){
     return sqlSession.insert("userMapper.wineWishlistInsert", user);
