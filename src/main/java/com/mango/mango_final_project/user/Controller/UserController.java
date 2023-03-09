@@ -352,9 +352,20 @@ public class UserController {
     user.setUSER_UID(((User) session.getAttribute("loginUser")).getUSER_UID());
 
 
-    int result = uService.insertWishlist(user);
+    int result = 0;
+    int count = uService.wishlistCheck(user);
+    String message = "";
+    if(count > 0) {
+      // 삭제
+      result = uService.deleteWishlist(user);
+      message = "delete";
+    } else {
+      // 추가
+      result = uService.insertWishlist(user);
+      message = "success";
+    }
 
-    return result > 0 ? "success" : "fail";
+    return message;
   }
 
 }
