@@ -123,7 +123,7 @@
                     <span
                       class="badge badge-pill"
                       style="background-color: #dc0000"
-                      >${resultData.WINE_TYPE}</span
+                      >${resultData.WINE_TYPE}와인</span
                     >
                     <span
                       class="badge badge-pill"
