@@ -33,7 +33,7 @@
     <%-- admin nav --%>
     <%@ include file="../etc/admin_nav.jsp" %>
       <main class="col-9 p-0 mb-5 ms-5">
-        <form action="/admin/admin_coupon_update/1" method="post" enctype="multipart/form-data">
+        <form action="/admin/admin_coupon_update/1" method="post" enctype="multipart/form-data" id="couponDate">
           <input type="hidden" name="COUPON_UID" value="${resultMap.COUPON_UID}" />
           <input type="hidden" name="COUPON_DATE" value="${resultMap.COUPON_DATE}" />
           <input type="hidden" name="NAME" value="${resultMap.NAME}" />
@@ -72,6 +72,7 @@
                     <input
                       type="date"
                       name="COUPON_DATETIME1"
+                      id="COUPON_DATETIME1"
                       class="form-control"
                       value="${resultMap.COUPON_DATETIME1}"
                     />
@@ -81,6 +82,7 @@
                      <input
                       type="date"
                       name="COUPON_DATETIME2"
+                      id="COUPON_DATETIME2"
                       class="form-control"
                       value="${resultMap.COUPON_DATETIME2}"
                     />
@@ -88,17 +90,23 @@
                 </tr>
               </thead>
               <tbody>
-                <%-- <c:choose> --%>
-                  <%-- <c:when test="${not empty resultMap.C_PHYSICALFILE_NAME}"> --%>
                     <tr scope=row>
+                      <th class="bg-secondary bg-opacity-25">파일 첨부</th>
+                      <td colspan="3">
+                        <input type="file" name="COUPON_FILE" class="form-control" />
+                      </td>
+                    </tr>
+                <c:choose>
+                  <c:when test="${not empty resultMap.C_PHYSICALFILE_NAME}">
+                       <tr scope=row>
                       <th class="bg-secondary bg-opacity-25">첨부한 파일</th>
                       <td colspan="3">
                         <img src="/files/${resultMap.C_PHYSICALFILE_NAME}/${resultMap.C_ORIGINALFILE_NAME}" class="w-25">
-                        <input type="file" name="COUPON_FILE" value="${resultMap.COUPON_FILE}" class="form-control" />
+                        <%-- <input type="file" name="COUPON_FILE" value="${resultMap.COUPON_FILE}" class="form-control" /> --%>
                       </td>
                     </tr>
-                  <%-- </c:when> --%>
-                <%-- </c:choose> --%>
+                  </c:when>
+                </c:choose>
               </tbody>
             </table>
             <div class="text-center">
@@ -111,6 +119,22 @@
       </main>
     </div>
 
+    <script>
+    $(function() {
+      $("#couponDate").submit(function() {
+        var cDate1 = $("#COUPON_DATETIME1").val();
+        var cDate2 = $("#COUPON_DATETIME2").val();
+        var date1Array = cDate1.split('-');
+        var date2Array = cDate2.split('-');
+        var dateStart = new Date(date1Array[0], date1Array[1], date1Array[2]);
+        var dateEnd = new Date(date2Array[0], date2Array[1], date2Array[2]);
+        if(dateStart.getTime() > dateEnd.getTime()) {
+          alert("시작날짜가 종료날짜보다 작아야 합니다.")
+          return false;
+        }
+      });
+    });
+    </script>
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"

@@ -6,7 +6,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My review</title>
+    <title>My review modify</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -14,9 +14,6 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="/css/font.css" />
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
@@ -24,79 +21,88 @@
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
-    />    
-    <link rel="stylesheet" href="/css/common.css" />
-    <link rel="stylesheet" href="/css/info_area.css" />
-
+    />
+      <link rel="stylesheet" href="/css/common.css" />
+      <link rel="stylesheet" href="/css/info_area.css" />
   </head>
+  
   <body>
     <%-- header --%>
     <%@ include file="../etc/header.jsp" %>
     <%-- select --%>
     <%@ include file="../etc/nav_select.jsp" %>
-
+    
     <%-- 본 페이지 --%>
-    <!-- 로그인한 회원만 보여지는 리뷰-->
-
     <div class="row g-0 vh-auto ">
       <%-- user_nav --%>
       <%@ include file="../etc/user_nav.jsp" %>
       <main class="col-9 p-0 mb-5 ms-5">
-      <div class="fs-4 fw-bold text-center" style="margin-top: 3rem">
-        내가 작성한 리뷰
-      </div>
-      <div class="content mb-5">
-        <br /><br />
-          <table
-            id="boardList"
-            class="table table-hover"
-            style="text-align: center"
-          >
-            <thead>
-              <tr>
-                <th>번호</th>
-                <th>작성일</th>
-                <th>제품</th>
-                <th>내용</th>
-                <th>기능</th>
-              </tr>
-            </thead>
-            <tbody>
-            <c:forEach var="r" items="${list}">
-              <tr>
-                <td>${r.NUMBER}</td>
-                <td>${r.REVIEW_DATE}</td>
-                <td>${r.WINE_NAME}</td>
-                <td>${r.REVIEW_CONTENT}</td>
-                <td>
-                  <div>
-                    <form action="" method="post">
-                      <button class="btn btn-outline-secondary btn-sm">
-                        수정
-                      </button>
-                      <button
-                        class="btn btn-outline-danger btn-sm"
-                        onclick="if(!confirm('정말로 삭제하시겠습니까?')) return false"
-                      >
-                        삭제
-                      </button>
-                      <input type="hidden" name="user_id" value="" />
-                    </form>
-                  </div>
-                </td>
-              </tr>
-              </c:forEach>
-              
-            </tbody>
-          </table>
-        </div>
-        </main>
-      </div>
+        <form action="/myReview_update" method="post">
+          <div class="mt-4 p-4 border bg-white">
+            <div>
+              <label for="" class="form-label fw-bold pe-3 m-0"
+                >리뷰 수정하기</label
+              >
+            </div>
+            <table
+              class="mt-3 table border text-center align-middle"
+              style="font-size: small"
+            >
+              <thead class="">
+                <tr colspan="">
+                  <th scope="" class="bg-secondary bg-opacity-25">작성일</th>
+                  <td scope="" name="REVIEW_DATE">${list.REVIEW_DATE}</td>
+                </tr>
+                <tr>
+                  <th scope="" class="bg-secondary bg-opacity-25">제목</th>
+                  <td scope="">
+                    <input
+                      type="text"
+                      name="REVIEW_TITLE"
+                      class="form-control"
+                      value="${list.REVIEW_TITLE}"
+                    />
+                  <th scope="" class="bg-secondary bg-opacity-25">평점</th>
+                  <td scope="">
+                    <input
+                      type="text"
+                      name="REVIEW_SCOPE"
+                      class="form-control"
+                      value="${list.REVIEW_SCOPE}"
+                    />
+                  </td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr scope="row">
+                  <th class="bg-secondary bg-opacity-25">내용</th>
+                  <td colspan="3">
+                    <textarea
+                      class="form-control"
+                      name="REVIEW_CONTENT"
+                      cols="30"
+                      rows="10"
+                      value="${list.REVIEW_CONTENT}"
+                    ></textarea
+                    >
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="text-center">
+              <button type="submit" class="btn btn-outline-secondary">
+                수정하기
+              </button>
+            </div>
+          </div>
+        </form>
+      </main>
+    </div>
 
     <%-- footer --%>
     <%@ include file="../etc/footer.jsp" %>
-    
-       <script
+
+    <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
       crossorigin="anonymous"

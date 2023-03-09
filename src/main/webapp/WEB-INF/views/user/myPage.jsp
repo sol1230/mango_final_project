@@ -48,9 +48,9 @@
             <div class="title">
               <string>찜한 상품</string>
             </div>
-            <div class="number">0 <span>(개)</span></div>
+            <div class="number">${loginUser.WISHLISTCOUNT} <span>(개)</span></div>
             <div class="detail mt-1">
-              <a href="/user/user_wishlist">
+              <a href="/user/myWishlist">
                 <span class="width80" style="color : rgb(239, 70, 109)">자세히 보기</span>
               </a>
             </div>

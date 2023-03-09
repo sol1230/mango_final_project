@@ -49,7 +49,7 @@
        <%-- carousel inner  --%>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <a href="/wine/wine_info/MARTIN%20RAY%20SOMONA%20NAPA%20COUNTY%20CABERNET%20SAUVIGNON">
+            <a href="/wine/wine_info/MARTIN%20RAY%20SOMONA%20NAPA%20COUNTY%20CABERNET%20SAUVIGNON/1">
               <img
                 class="w-100"
                 src="../img/메인_와인_마틴레이소노마나파카운티카베르네소비뇽.png"
@@ -58,7 +58,7 @@
             </a>
           </div>
           <div class="carousel-item">
-            <a href="/wine/wine_info/VENICA%20TRE%20VIGNIS">
+            <a href="/wine/wine_info/VENICA%20TRE%20VIGNIS/1">
               <img
                 class="w-100"
                 src="../img/메인_와인_베니카-트레-비니스.png"
@@ -67,7 +67,7 @@
             </a>
           </div>
           <div class="carousel-item ">
-            <a href="/wine/wine_info/LA%20CHAPELLE%20GORDONNE%20ROSE">
+            <a href="/wine/wine_info/LA%20CHAPELLE%20GORDONNE%20ROSE/1">
               <img
                 class="w-100"
                 src="../img/메인_와인_라샤펠고르돈느로제.png"
@@ -100,7 +100,7 @@
           <c:choose>
             <c:when test="${(resultMapData.WINE_TYPE).equals('레드')}">
               <div class="card me-4">
-                <a href="/wine/wine_info/${resultMapData.WINE_NAME_EN}" class="text-decoration-none text-black">
+                <a href="/wine/wine_info/${resultMapData.WINE_NAME_EN}/1" class="text-decoration-none text-black">
                   <img src="/img/wine/${resultMapData.WINE_NAME_EN}.png" alt="${resultMapData.WINE_NAME_EN}.png" class="w-100 p-2" style="background-color: #e8daea" />
                   <div class="card-body border-0">
                     <h5 class="card-title box">${resultMapData.WINE_NAME}</h5>
@@ -131,7 +131,7 @@
             </c:when>
             <c:when test="${(resultMapData.WINE_TYPE).equals('화이트')}">
               <div class="card me-4">
-                <a href="/wine/wine_info/${resultMapData.WINE_NAME_EN}" class="text-decoration-none text-black">
+                <a href="/wine/wine_info/${resultMapData.WINE_NAME_EN}/1" class="text-decoration-none text-black">
                   <img src="/img/wine/${resultMapData.WINE_NAME_EN}.png" alt="${resultMapData.WINE_NAME_EN}.png" class="w-100 p-2" style="background-color: #fffbb0" />
                   <div class="card-body border-0">
                     <h5 class="card-title box">${resultMapData.WINE_NAME}</h5>
@@ -162,7 +162,7 @@
             </c:when>
             <c:when test="${(resultMapData.WINE_TYPE).equals('로제')}">
               <div class="card me-4">
-                <a href="/wine/wine_info/${resultMapData.WINE_NAME_EN}" class="text-decoration-none text-black">
+                <a href="/wine/wine_info/${resultMapData.WINE_NAME_EN}/1" class="text-decoration-none text-black">
                   <img src="/img/wine/${resultMapData.WINE_NAME_EN}.png" alt="${resultMapData.WINE_NAME_EN}.png" class="w-100 p-2" style="background-color: #ffe2e2" />
                   <div class="card-body border-0">
                     <h5 class="card-title box">${resultMapData.WINE_NAME}</h5>
@@ -193,7 +193,7 @@
             </c:when>
             <c:otherwise>
               <div class="card me-4">
-                <a href="/wine/wine_info/${resultMapData.WINE_NAME_EN}" class="text-decoration-none text-black">
+                <a href="/wine/wine_info/${resultMapData.WINE_NAME_EN}/1" class="text-decoration-none text-black">
                   <img src="/img/wine/${resultMapData.WINE_NAME_EN}.png" alt="${resultMapData.WINE_NAME_EN}.png" class="w-100 p-2" style="background-color: #d7f6f8" />
                   <div class="card-body border-0">
                     <h5 class="card-title box">${resultMapData.WINE_NAME}</h5>
@@ -224,78 +224,6 @@
             </c:otherwise>
           </c:choose>
         </c:forEach>
-
-        <%-- <div class="card me-4">
-          <img src="../img/쥬세페 베르디 람브루스코 미디엄 드라이.PNG" alt="" />
-          <div class="card-body">
-            <h5 class="card-title">쥬세페 베르디 람브루스코 미디엄 드라이</h5>
-            <p style="font-size: small">
-              Ceci Giuseppe Verdi Lambrusco Medium Dry
-            </p>
-            <span
-              class="badge badge-pill"
-              style="background-color: rgb(224, 235, 248)"
-              >스파클링</span
-            >
-            <span
-              class="badge badge-pill"
-              style="background-color: rgb(224, 235, 248)"
-              >이탈리아</span
-            >
-            <br />
-            <div>
-              <a href="/wine/wine_info/CECI%20GIUSEPPE%20VERDI%20LAMBRUSCO%20MEDIUM%20DRY" class="btn btn-outline-danger mt-3">더보기</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="card me-4">
-          <img src="../img/닥터 린드만 포피리 블랑.PNG" alt="" />
-          <div class="card-body">
-            <h5 class="card-title">닥터 린드만 포피리 블랑</h5>
-            <p style="font-size: small">Lindman's Porphyry Blanc</p>
-            <span
-              class="badge badge-pill"
-              style="background-color: rgb(246, 236, 156)"
-              >화이트</span
-            >
-            <span
-              class="badge badge-pill"
-              style="background-color: rgb(246, 236, 156)"
-              >호주</span
-            >
-            <br />
-            <div>
-              <a href="/wine/wine_info/Lindeman%20Porphyry%20Blanc" class="btn btn-outline-danger mt-3">더보기</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <img src="../img/텐션 샤르도네.PNG" alt="" />
-          <div class="card-body">
-            <h5 class="card-title">텐센 샤르도네</h5>
-            <p style="font-size: small">Tenshen Chardonnay</p>
-            <span
-              class="badge badge-pill"
-              style="background-color: rgb(246, 236, 156)"
-              >화이트</span
-            >
-            <span
-              class="badge badge-pill"
-              style="background-color: rgb(246, 236, 156)"
-              >미국</span
-            >
-            <span
-              class="badge badge-pill"
-              style="background-color: rgb(246, 236, 156)"
-              >샤르도네</span
-            >
-            <div>
-              <a href="/wine/wine_info/Tenshen%20Chardonnay" class="btn btn-outline-danger mt-3">더보기</a>
-            </div>
-          </div>
-        </div> --%>
       </div>
     </div>
 
