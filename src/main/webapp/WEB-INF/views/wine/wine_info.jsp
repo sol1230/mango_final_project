@@ -49,9 +49,19 @@
         <div class="me-4">
           <div>
             <span class="fs-5 fw-bold">${resultMap.WINE_NAME}</span>
-              <button class="btn" name="wishListButton" id="wishListButton" onclick="wishList()">
-                <i class="bi bi-bookmark-heart fs-4"></i>
-              </button>
+            <c:choose>
+              <c:when test="${empty loginUser}">
+                  <button class="btn" name="wishListButton" id="wishListButton" href="#modalLogin" data-bs-toggle="modal">
+                    <i class="bi bi-bookmark-heart fs-4"></i>
+                  </button>
+      
+              </c:when>
+              <c:otherwise>
+                  <button class="btn" name="wishListButton" id="wishListButton" onclick="wishList()">
+                    <i class="bi bi-bookmark-heart fs-4"></i>
+                  </button>
+              </c:otherwise>
+            </c:choose>
           </div>
           <p class="mb-3 ms-2" style="font-size: small">
             ${resultMap.WINE_NAME_EN}
