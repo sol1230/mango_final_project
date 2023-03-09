@@ -22,13 +22,6 @@ public class WineListController {
     CommonUtils commonUtils;
 
     // 전체 와인 목록
-    // @RequestMapping(value = "/wine", method = RequestMethod.GET)
-    // public ModelAndView wineList(@RequestParam Map<String, Object> params, ModelAndView modelAndView) {
-    //     Object resultMap = wineService.wineList(params);
-    //     modelAndView.addObject("resultMap",resultMap);
-    //     modelAndView.setViewName("wine/wine_list");
-    //     return modelAndView;
-    // }
     @RequestMapping(value = { "/wine/{currentPage}" }, method = RequestMethod.GET)
     public ModelAndView wineList(@RequestParam Map<String, Object> params
             , @PathVariable String currentPage, ModelAndView modelAndView) {
@@ -38,6 +31,8 @@ public class WineListController {
         modelAndView.setViewName("wine/wine_list");
         return modelAndView;
     }
+
+    // 최신순, 가격순, 인기순 나열
     @RequestMapping(value = { "/wine/wineSelect/{currentPage}" }, method = RequestMethod.GET)
     public ModelAndView wineSelectList(@RequestParam Map<String, Object> params
             , @PathVariable String currentPage, ModelAndView modelAndView) {

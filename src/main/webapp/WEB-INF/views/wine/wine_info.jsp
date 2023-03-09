@@ -648,6 +648,7 @@
           </c:forEach>
         </ul>
         <%-- 페이지네이션 --%>
+        <c:set var="_pagination" value="${resultReviewList.paginations}" />
         <div class="pagination pagination-sm justify-content-center mt-4">
           <nav aria-label="Page navigation">
               <ul class="pagination pagination-sm">
