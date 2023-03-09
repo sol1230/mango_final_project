@@ -100,7 +100,7 @@
 <img width="500" src="https://user-images.githubusercontent.com/111327647/223940988-0ea89c3d-6a58-4c0a-a5e9-7dea830d89ec.png">
 <img width="550" height="300" src="https://user-images.githubusercontent.com/111327647/223939957-e57b2350-7543-4fdb-9221-956827d554a6.png">
 <img width="450" src="https://user-images.githubusercontent.com/111327647/223939325-2c4eb5e6-82e4-4598-96aa-01242b6a1b1e.png">
-<img width="500" height="300" src="https://user-images.githubusercontent.com/111327647/223942013-7aef5218-a702-4305-8ec8-c6014293c56d.png">
+<img  height="300" src="https://user-images.githubusercontent.com/111327647/223942013-7aef5218-a702-4305-8ec8-c6014293c56d.png">
 <img width="500" height="300" src="https://user-images.githubusercontent.com/111327647/223942122-b5977e96-afec-4973-8344-d81a4027b3a2.png">
 <img width="500" height="300" src="https://user-images.githubusercontent.com/111327647/223942222-53a8388a-f49b-4fd6-8c57-f5647c671fd5.png">
 <img width="500" height="300" src="https://user-images.githubusercontent.com/111327647/223942423-847467fa-c1d1-43f0-8397-b0b13aaa6d68.png">
