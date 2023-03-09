@@ -75,6 +75,7 @@
                 <div class="d-flex justify-content-center">
                   <div>
                     <form action="/user/myReview_edit" method="post">
+                    <input type="hidden" name="REVIEW_UID" value="${r.REVIEW_UID}" />
                     <input type="hidden" name="REVIEW_DATE" value="${r.REVIEW_DATE}" />
                     <input type="hidden" name="REVIEW_TITLE" value="${r.REVIEW_TITLE}" />
                     <input type="hidden" name="REVIEW_SCOPE" value="${r.REVIEW_SCOPE}" />
@@ -85,14 +86,14 @@
                     </form>
                   </div>
                   <div>
-                    <form action="/user/myReview_delete" class="ps-2" method="post">
+                    <%-- <form action="/user/myReview_delete" class="ps-2" method="post"> --%>
                       <button
                         class="btn btn btn-sm btn-outline-danger"
-                        onclick="if(!confirm('정말로 삭제하시겠습니까?')) return false"
+                        onclick="deleteReview(this);"
                       >
                         삭제
                       </button>
-                    </form>
+                    <%-- </form> --%>
                   </div>
                 </div>
               </td>
@@ -117,6 +118,45 @@
 
     <%-- footer --%>
     <%@ include file="../etc/footer.jsp" %>
+
+    <script>
+      function deleteReview(btn) {
+        var REVIEW_UID = $(btn).siblings('#REVIEW_UID').val();
+
+        $.ajax({
+          url:"/user/deleteMyReview",
+          type:"post",
+          data:{
+            REVIEW_UID:REVIEW_UID
+          },
+          success:function(result){
+            if(result == 'success'){
+              return new swal({
+                title:"삭제되었습니다"
+                icon:"success",
+                closeOnClickOutside:false
+              })
+              .then((value) => {
+                if(value){
+                  location.href="/user/myReview";
+                }
+              })
+            }else{
+              	return new swal({
+							title:"삭제에 실패하였습니다.",
+							icon:"error",
+							closeOnClickOutside:false
+						})
+						.then((value) => {
+							if(value){
+								return false;
+							}
+						})
+            }
+          }
+        })
+      }
+    </script>
     
        <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"

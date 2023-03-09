@@ -223,8 +223,8 @@ WHERE USER_UID = #{USER_UID}
   <!-- userMapper.updateQna  -->
   <update id="updateQna" parameterType="com.mango.mango_final_project.user.model.vo.User">
       UPDATE QNA 
-      SET QNA_TITLE = #{REVIEW_TITLE},
-          QNA_CONTENT = #{REVIEW_SCOPE}
+      SET QNA_TITLE = #{QNA_TITLE},
+          QNA_CONTENT = #{QNA_CONTENT}
       WHERE QNA_UID = #{QNA_UID}
   </update>
 

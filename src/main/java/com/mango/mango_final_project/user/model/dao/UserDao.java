@@ -61,19 +61,31 @@ public class UserDao {
     return sqlSession.selectOne("userMapper.qnaCount", user);
   }
 
-  public ArrayList<User> selectWishlist(SqlSessionTemplate sqlSession, User user){
-    return (ArrayList)sqlSession.selectList("userMapper.selectWishlist", user);
-}
+  public ArrayList<User> selectWishlist(
+    SqlSessionTemplate sqlSession,
+    User user
+  ) {
+    return (ArrayList) sqlSession.selectList("userMapper.selectWishlist", user);
+  }
 
-public User wishlistCount(SqlSessionTemplate sqlSession, User user) {
-  return sqlSession.selectOne("userMapper.wishlistCount", user);
-}
+  public User wishlistCount(SqlSessionTemplate sqlSession, User user) {
+    return sqlSession.selectOne("userMapper.wishlistCount", user);
+  }
 
-public int deleteWishlist(SqlSessionTemplate sqlSession, User user){
-  return sqlSession.delete("userMapper.deleteWishlist", user);
-}
+  public int deleteWishlist(SqlSessionTemplate sqlSession, User user) {
+    return sqlSession.delete("userMapper.deleteWishlist", user);
+  }
 
-public int deleteAllWishlist(SqlSessionTemplate sqlSession, User user){
-  return sqlSession.delete("userMapper.deleteAllWishlist", user);
-}
+  public int deleteAllWishlist(SqlSessionTemplate sqlSession, User user) {
+    return sqlSession.delete("userMapper.deleteAllWishlist", user);
+  }
+
+  //
+  public User getMyReviewInfo(SqlSessionTemplate sqlSession, User user) {
+    return sqlSession.selectOne("userMapper.selectReviewInfo", user);
+  }
+
+  public int deleteMyReview(SqlSessionTemplate sqlSession, User user) {
+    return sqlSession.selectOne("userMapper.deleteReview", user);
+  }
 }

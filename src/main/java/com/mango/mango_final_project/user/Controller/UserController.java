@@ -5,7 +5,6 @@ import com.mango.mango_final_project.user.model.service.UserService;
 import com.mango.mango_final_project.user.model.vo.User;
 import java.util.ArrayList;
 import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -130,11 +129,10 @@ public class UserController {
         qnaCount.getQNACOUNT()
       );
 
-      User wishlistCount = uService.wishlistCount(user);
-      ((User) session.getAttribute("loginUser")).setWISHLISTCOUNT(
-          wishlistCount.getWISHLISTCOUNT()
-        );
-
+    User wishlistCount = uService.wishlistCount(user);
+    ((User) session.getAttribute("loginUser")).setWISHLISTCOUNT(
+        wishlistCount.getWISHLISTCOUNT()
+      );
 
     return "/user/myPage";
   }
@@ -214,16 +212,23 @@ public class UserController {
 
   // sol
   // user review update 페이지
-  @RequestMapping(value = "/myReview_edit", method = RequestMethod.POST)
-  public ModelAndView myReviewEdit(
-    @RequestParam Map<String, Object> params,
-    ModelAndView modelAndView
-  ) {
-    Object resultMap = mypageService.getMyReviewInfo(params);
-    modelAndView.addObject("list", resultMap);
-    modelAndView.setViewName("user/user_review_modify");
-    return modelAndView;
-  }
+  // @RequestMapping("myReview_edit")
+  // public ModelAndView myReviewEdit(
+  //   ModelAndView modelAndView,
+  //   HttpSession session
+  // ) {
+  //   User user = new User();
+  //   user.setUSER_UID(((User) session.getAttribute("loginUser")).getUSER_UID());
+  //   User result = uService.getMyReviewInfo(user);
+
+  //   if (result > 0) { // 수정성공
+  //     return "S";
+  //   } else {
+  //     return "F2";
+  //   }
+  //   modelAndView.setViewName("user/user_review_modify");
+  //   return modelAndView;
+  // }
 
   //user review update complete 페이지
   @RequestMapping(value = "/myReview_update", method = RequestMethod.POST)
@@ -238,15 +243,30 @@ public class UserController {
   }
 
   // user review delete 페이지
-  @RequestMapping(value = "/myReview_delete", method = RequestMethod.POST)
-  public ModelAndView myReviewDelete(
-    @RequestParam Map<String, Object> params,
-    ModelAndView modelAndView
+  // @RequestMapping(value = "/myReview_delete", method = RequestMethod.POST)
+  // public ModelAndView myReviewDelete(
+  //   @RequestParam Map<String, Object> params,
+  //   ModelAndView modelAndView
+  // ) {
+  //   Object resultMap = mypageService.deleteMyReviewAndGetMyReview(params);
+  //   modelAndView.addObject("list", resultMap);
+  //   modelAndView.setViewName("user/user_review");
+  //   return modelAndView;
+  // }
+
+  @ResponseBody
+  @RequestMapping(value = "deleteMyReview")
+  public String deleteMyReview(
+    HttpSession session,
+    HttpServletRequest request,
+    Model model,
+    User user
   ) {
-    Object resultMap = mypageService.deleteMyReviewAndGetMyReview(params);
-    modelAndView.addObject("list", resultMap);
-    modelAndView.setViewName("user/user_review");
-    return modelAndView;
+    user.setUSER_UID(((User) session.getAttribute("loginUser")).getUSER_UID());
+
+    int result = uService.deleteMyReview(user);
+
+    return result > 0 ? "success" : "fail";
   }
 
   // user qna update 페이지
@@ -286,22 +306,25 @@ public class UserController {
   }
 
   @RequestMapping("myWishlist")
-  public ModelAndView myWishlist(ModelAndView mv, HttpSession session){
+  public ModelAndView myWishlist(ModelAndView mv, HttpSession session) {
     User user = new User();
     user.setUSER_UID(((User) session.getAttribute("loginUser")).getUSER_UID());
     ArrayList<User> wishlist = uService.selectWishlist(user);
 
-    mv.addObject("wishlist", wishlist)
-    .setViewName("user/user_wishlist");
+    mv.addObject("wishlist", wishlist).setViewName("user/user_wishlist");
 
     return mv;
   }
 
   @ResponseBody
   @RequestMapping(value = "deleteWishlist")
-  public String deleteWishlist(HttpSession session, HttpServletRequest request, Model model, User user){
+  public String deleteWishlist(
+    HttpSession session,
+    HttpServletRequest request,
+    Model model,
+    User user
+  ) {
     user.setUSER_UID(((User) session.getAttribute("loginUser")).getUSER_UID());
-
 
     int result = uService.deleteWishlist(user);
 
@@ -310,15 +333,16 @@ public class UserController {
 
   @ResponseBody
   @RequestMapping(value = "deleteAllWishlist")
-  public String deleteAllWishlist(HttpSession session, HttpServletRequest request, Model model, User user){
+  public String deleteAllWishlist(
+    HttpSession session,
+    HttpServletRequest request,
+    Model model,
+    User user
+  ) {
     user.setUSER_UID(((User) session.getAttribute("loginUser")).getUSER_UID());
-
 
     int result = uService.deleteAllWishlist(user);
 
     return result > 0 ? "success" : "fail";
   }
-  
-
-  }
-
+}
