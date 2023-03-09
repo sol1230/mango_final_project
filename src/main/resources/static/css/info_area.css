@@ -13,3 +13,8 @@
   cursor: pointer;
   color: rgb(239, 70, 109);
 }
+.box {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
