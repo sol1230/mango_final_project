@@ -29,7 +29,40 @@ public class WineInfoController {
         params.put("currentPage", Integer.parseInt(currentPage));
         Object resultMap = wineInfoService.wineInfoList(params);
         Object resultStoreList = wineInfoService.wineStoreInfoList(params);
-        Object resultReviewList = wineInfoService.wineReviewInfoList(params);
+        Object resultReviewList = wineInfoService.wineReviewWithPagination(params);
+        Object resultQNAList = wineInfoService.wineQNAWithPagination(params);
+        modelAndView.addObject("resultMap", resultMap);
+        modelAndView.addObject("resultStoreList", resultStoreList);
+        modelAndView.addObject("resultReviewList", resultReviewList);
+        modelAndView.addObject("resultQNAList", resultQNAList);
+        modelAndView.setViewName("wine/wine_info");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/wine/wine_info/insert/{wineName}/{currentPage}", method = RequestMethod.POST)
+    public ModelAndView wineQNAInsert(@RequestParam Map<String, Object> params
+    , @PathVariable String wineName, @PathVariable String currentPage, ModelAndView modelAndView) {
+        params.put("WINE_NAME_EN", wineName);
+        params.put("currentPage", Integer.parseInt(currentPage));
+        Object resultMap = wineInfoService.wineInfoList(params);
+        Object resultStoreList = wineInfoService.wineStoreInfoList(params);
+        Object resultReviewList = wineInfoService.wineReviewWithPagination(params);
+        Object resultQNAList = wineInfoService.wineQNAInsertAndList(params);
+        modelAndView.addObject("resultMap", resultMap);
+        modelAndView.addObject("resultStoreList", resultStoreList);
+        modelAndView.addObject("resultReviewList", resultReviewList);
+        modelAndView.addObject("resultQNAList", resultQNAList);
+        modelAndView.setViewName("wine/wine_info");
+        return modelAndView;
+    }
+    @RequestMapping(value = "/wine/wine_info/review_insert/{wineName}/{currentPage}", method = RequestMethod.POST)
+    public ModelAndView wineReviewInsert(@RequestParam Map<String, Object> params
+    , @PathVariable String wineName, @PathVariable String currentPage, ModelAndView modelAndView) {
+        params.put("WINE_NAME_EN", wineName);
+        params.put("currentPage", Integer.parseInt(currentPage));
+        Object resultMap = wineInfoService.wineInfoList(params);
+        Object resultStoreList = wineInfoService.wineStoreInfoList(params);
+        Object resultReviewList = wineInfoService.wineReviewInsertAndList(params);
         Object resultQNAList = wineInfoService.wineQNAWithPagination(params);
         modelAndView.addObject("resultMap", resultMap);
         modelAndView.addObject("resultStoreList", resultStoreList);

@@ -14,9 +14,6 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="/css/font.css" />
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
@@ -24,7 +21,7 @@
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
-    />    
+    />
     <link rel="stylesheet" href="/css/common.css" />
     <link rel="stylesheet" href="/css/info_area.css" />
 
@@ -86,21 +83,22 @@
                     </form>
                   </div>
                   <div>
-                    <%-- <form action="/user/myReview_delete" class="ps-2" method="post"> --%>
+                    
+                   <input type="hidden" name="delete" id="REVIEWUID" value="${r.REVIEW_UID}" />
                       <button
-                        class="btn btn btn-sm btn-outline-danger"
+                        class="btn btn-sm btn-outline-danger"
                         onclick="deleteReview(this);"
                       >
+                      
                         삭제
                       </button>
-                    <%-- </form> --%>
                   </div>
                 </div>
               </td>
               </tr>
               <tr class="collapse" id="myReview${loop.count}">
                   <td  class="bg-light p-4" colspan="7">
-                    <%-- 리뷰 내용 --%>
+                 
                     <div>
                       <span>
                         ${r.REVIEW_CONTENT}
@@ -121,18 +119,19 @@
 
     <script>
       function deleteReview(btn) {
-        var REVIEW_UID = $(btn).siblings('#REVIEW_UID').val();
+        var REVIEW_UID = $(btn).siblings('input[name=delete]').val();
 
         $.ajax({
           url:"/user/deleteMyReview",
           type:"post",
           data:{
+            USER_UID:"${loginUser.USER_UID}",
             REVIEW_UID:REVIEW_UID
           },
           success:function(result){
-            if(result == 'success'){
+            if(result == 1){
               return new swal({
-                title:"삭제되었습니다"
+                title:"삭제되었습니다",
                 icon:"success",
                 closeOnClickOutside:false
               })

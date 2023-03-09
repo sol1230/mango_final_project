@@ -206,7 +206,8 @@ WHERE USER_UID = #{USER_UID}
   <!-- userMapper.deleteReview -->
   <delete id="deleteReview" parameterType="com.mango.mango_final_project.user.model.vo.User">
       DELETE FROM REVIEW
-      WHERE REVIEW_UID = #{REVIEW_UID}
+      WHERE USER_UID = #{USER_UID}
+      AND REVIEW_UID = #{REVIEW_UID}
   </delete>
 
   <!-- userMapper.selectQnaInfo  -->
@@ -260,5 +261,11 @@ AND USER_UID = #{USER_UID}
 DELETE FROM WISHLIST
 WHERE USER_UID = #{USER_UID}
 </delete>
+
+    <!-- 위시리스트 insert -->
+    <insert id="wineWishlistInsert" parameterType="Map">
+        INSERT INTO WISHLIST (USER_UID, WINE_UID) 
+        VALUE (#{USER_UID}, #{WINE_UID})
+    </insert>
 
 </mapper>

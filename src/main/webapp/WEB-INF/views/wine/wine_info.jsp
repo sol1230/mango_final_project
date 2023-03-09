@@ -49,9 +49,9 @@
         <div class="me-4">
           <div>
             <span class="fs-5 fw-bold">${resultMap.WINE_NAME}</span>
-            <span class="btn">
-              <i class="bi bi-bookmark-heart fs-4"></i>
-            </span>
+              <button class="btn" name="wishListButton" id="wishListButton" onclick="wishList()">
+                <i class="bi bi-bookmark-heart fs-4"></i>
+              </button>
           </div>
           <p class="mb-3 ms-2" style="font-size: small">
             ${resultMap.WINE_NAME_EN}
@@ -474,11 +474,110 @@
                     </c:otherwise>
                   </c:choose>
           </span>
+          <span class="float-end">
+          <%-- 로그인 안되어있을 경우 --%>
+            <c:choose>
+              <c:when test="${empty loginUser}">
+                <a
+                  href="#modalLogin"
+                  class="btn btn-outline-secondary btn-sm"
+                  data-bs-toggle="modal"
+                >
+                  작성하기</a
+                >
+              </c:when>
+              <c:otherwise>
+                <a
+                href="#modalReview"
+                class="btn btn-outline-secondary btn-sm"
+                data-bs-toggle="modal"
+                >
+                  작성하기</a
+                >
+              </c:otherwise>
+            </c:choose>
+          </span>
+        </div>
+        <%-- 후기 작성 modal --%>
+        <div class="modal fade" id="modalReview">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content text-center p-5">
+              <div class="fs-4 fw-bold"><후기></div>
+              <form action="/wine/wine_info/review_insert/${resultMap.WINE_NAME_EN}/1" method="post">
+              <input type="hidden" name="WINE_UID" value="${resultMap.WINE_UID}">
+              <input type="hidden" name="USER_UID" value="${loginUser.USER_UID}">
+                <div class="pt-3 align-self-center">
+                  <div class="ms-3 p-2 bg-light rounded-3 row" style="width: 90%">
+                    <div class="col" style="margin: 0%; padding: 0%">
+                      <img src="/img/wine/${resultMap.WINE_NAME_EN}.png" alt="" width="100px" />
+                    </div>
+                    <div class="col-8 align-items-center align-self-center mt-2">
+                      <p>${resultMap.WINE_NAME}</p>
+                      <p style="font-size: small">${resultMap.WINE_NAME_EN}</p>
+                    </div>
+                  </div>
+                  <br />
+                  <table style="border-collapse: collapse">
+                    <tbody>
+                      <tr>
+                        <th>별점</th>
+                        <td>
+                          <input
+                            type="text"
+                            name="REVIEW_SCOPE"
+                            value="${resultMap.REVIEW_SCOPE}"
+                            style="width: 100%"
+                            placeholder="별점 입력 (0.0 ~ 5.0)"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>제목</th>
+                        <td>
+                          <input
+                            type="text"
+                            name="REVIEW_TITLE"
+                            value="${resultMap.REVIEW_TITLE}"
+                            style="width: 100%"
+                            placeholder="제목 입력"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>내용</th>
+                        <td>
+                          <textarea
+                            name="REVIEW_CONTENT"
+                            value="${resultMap.REVIEW_CONTENT}"
+                            id=""
+                            cols="35"
+                            rows="10"
+                            placeholder="내용 입력"
+                          ></textarea>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div class="text-center pt-4">
+                    <a
+                      href="#"
+                      class="btn btn-outline-danger"
+                      onclick="location.reload();"
+                      >취소</a
+                    >
+                    <button tpye="submit" class="btn btn-danger">
+                    작성하기
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
         </div>
 
         <%-- 내가 쓴 리뷰 수정, 삭제 가능하게.. --%>
-        <ul class="list-unstyled">
-          <c:forEach items="${resultReviewList}" var="resultData" varStatus="loop">
+        <ul class="list-unstyled mt-3">
+          <c:forEach items="${resultReviewList.resultList}" var="resultData" varStatus="loop">
             <li class="text-decoration-none">
               <div class="card p-3" style="width: 80%, height 20%">
                 <div class="fw-bold">
@@ -538,6 +637,9 @@
                   </c:choose>
                   </span>
                 </div>
+                <div class="mt-2 fw-bold">
+                  ${resultData.REVIEW_TITLE}
+                </div>
                 <div class="mt-2">
                   ${resultData.REVIEW_CONTENT}
                 </div>
@@ -545,44 +647,7 @@
             </li>
           </c:forEach>
         </ul>
-      </div>
-      <hr />
-
-      <%-- <!-- 상품문의 --> --%>
-      <div class="mt-5" style="width: 60%">
-      <c:set var="_pagination" value="${resultQNAList.paginations}" />
-        <span class="fw-bold">상품 문의</span><span>(총 ${_pagination.totalCount}건)</span>
-        <span class="float-end">
-          <a
-            href="#modalQnA"
-            class="btn btn-outline-secondary btn-sm"
-            data-bs-toggle="modal"
-          >
-            작성하기</a
-          >
-        </span>
-        <table style="font-size: small; width: 120%">
-          <thead>
-            <tr>
-              <th>번호</th>
-              <th>답변여부</th>
-              <th>제목</th>
-              <th>작성자</th>
-              <th>등록일자</th>
-            </tr>
-          </thead>
-          <tbody>
-            <c:forEach items="${resultQNAList.resultList}" var="resultData" varStatus="loop">
-              <tr>
-                <td>${resultData.QNA_NO}</td>
-                <td>${resultData.ANSWER_STATUS}</td>
-                <td><a href="#">${resultData.QNA_TITLE}</a></td>
-                <td>${resultData.USER_UID}</td>
-                <td>${resultData.QNA_DATE}</td>
-              </tr>
-            </c:forEach>
-          </tbody>
-        </table>
+        <%-- 페이지네이션 --%>
         <div class="pagination pagination-sm justify-content-center mt-4">
           <nav aria-label="Page navigation">
               <ul class="pagination pagination-sm">
@@ -607,16 +672,101 @@
             </nav>
         </div>
       </div>
+      <hr />
+
+      <%-- <!-- 상품문의 --> --%>
+      <div class="mt-5" style="width: 60%">
+      <c:set var="_pagination" value="${resultQNAList.paginations}" />
+        <span class="fw-bold">상품 문의</span><span>(총 ${_pagination.totalCount}건)</span>
+        <span class="float-end">
+        <c:choose>
+          <c:when test="${empty loginUser}">
+            <a
+              href="#modalLogin"
+              class="btn btn-outline-secondary btn-sm"
+              data-bs-toggle="modal"
+            >
+              작성하기</a
+            >
+          </c:when>
+          <c:otherwise>
+            <a
+            href="#modalQnA"
+            class="btn btn-outline-secondary btn-sm"
+            data-bs-toggle="modal"
+            >
+              작성하기</a
+            >
+          </c:otherwise>
+        </c:choose>
+        </span>
+        <table style="font-size: small; width: 120%">
+          <thead>
+            <tr>
+              <th>번호</th>
+              <th>답변여부</th>
+              <th>제목</th>
+              <th>작성자</th>
+              <th>등록일자</th>
+            </tr>
+          </thead>
+          <tbody>
+            <c:forEach items="${resultQNAList.resultList}" var="resultData" varStatus="loop">
+              <tr>
+                <td>${resultData.QNA_UID}</td>
+                <td>${resultData.ANSWER_STATUS}</td>
+                <td><a href="#">${resultData.QNA_TITLE}</a></td>
+                <td>${resultData.USER_UID}</td>
+                <td>${resultData.QNA_DATE}</td>
+              </tr>
+            </c:forEach>
+          </tbody>
+        </table>
+        <%-- 페이지네이션 --%>
+        <div class="pagination pagination-sm justify-content-center mt-4">
+          <nav aria-label="Page navigation">
+              <ul class="pagination pagination-sm">
+                <li class="page-item">
+                  <a class="page-link" href="/wine/wine_info/${resultMap.WINE_NAME_EN}/${_pagination.previousPage}" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                    <span class="sr-only">이전</span>
+                  </a>
+                </li>
+                <c:forEach var="i" begin="${_pagination.blockStart}" end="${_pagination.blockEnd}" >
+                <li class="page-item">
+                  <a class="page-link" href="/wine/wine_info/${resultMap.WINE_NAME_EN}/${i}">${i}</a>
+                </li>
+                </c:forEach>
+                <li class="page-item">
+                  <a class="page-link" href="/wine/wine_info/${resultMap.WINE_NAME_EN}/${_pagination.nextPage}" aria-label="Next">
+                    <span class="sr-only">다음</span>
+                    <span aria-hidden="true">&raquo;</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+        </div>
+      </div>
+      <%-- <!-- 로그인 안되어있을 경우 modal --> --%>
+      <div class="modal fade" id="modalLogin">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content text-center p-5">
+            <div class="fs-4 fw-bold">로그인 후 작성이 가능합니다.</div>
+          </div>
+        </div>
+      </div>
+      <%-- QNA 작성 modal --%>
       <div class="modal fade" id="modalQnA">
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content text-center p-5">
             <div class="fs-4 fw-bold"><상품문의></div>
-            <form action="/wine/wine_info/${WINE_NAME_EN}" method="post">
+            <form action="/wine/wine_info/insert/${resultMap.WINE_NAME_EN}/1" method="post">
             <input type="hidden" name="WINE_UID" value="${resultMap.WINE_UID}">
+            <input type="hidden" name="USER_UID" value="${loginUser.USER_UID}">
               <div class="pt-3 align-self-center">
                 <div class="ms-3 p-2 bg-light rounded-3 row" style="width: 90%">
                   <div class="col" style="margin: 0%; padding: 0%">
-                    <img src="../img/wine/wine_canti.png" alt="" width="20px" />
+                    <img src="/img/wine/${resultMap.WINE_NAME_EN}.png" alt="" width="100px" />
                   </div>
                   <div class="col-8 align-items-center align-self-center mt-2">
                     <p>${resultMap.WINE_NAME}</p>
@@ -631,8 +781,8 @@
                       <td>
                         <input
                           type="text"
-                          name="TITLE"
-                          value="${QNA_TITLE}"
+                          name="QNA_TITLE"
+                          value="${resultMap.QNA_TITLE}"
                           style="width: 100%"
                           placeholder="제목 입력"
                         />
@@ -642,8 +792,8 @@
                       <th>내용</th>
                       <td>
                         <textarea
-                          name="CONTENT"
-                          value="${QNA_CONTENT}"
+                          name="QNA_CONTENT"
+                          value="${resultMap.QNA_CONTENT}"
                           id=""
                           cols="35"
                           rows="10"
@@ -660,12 +810,9 @@
                     onclick="location.reload();"
                     >취소</a
                   >
-                  <a
-                    href="#"
-                    class="btn btn-danger"
-                    onclick="location.reload();"
-                    >작성하기</a
-                  >
+                  <button tpye="submit" class="btn btn-danger">
+                  작성하기
+                  </button>
                 </div>
               </div>
             </form>
@@ -854,6 +1001,27 @@
     <%-- footer --%>
     <%@ include file="../etc/footer.jsp" %>
     
+    <script>
+      function wishList() {
+        $.ajax({
+          url:"/user/insertWishlist",
+          type:"get",
+          data:{
+            WINE_UID:${resultMap.WINE_UID}
+          },
+          success:function(result){
+            if(result == 'success'){
+              alert("위시리스트에 담겼습니다.");
+              $("#wishListButton").css("color", "red");
+            } else {
+              alert("위시리스트 담기 실패");
+            }
+          },error:function(){
+					 alert("에러");
+				  }
+        });
+      }
+    </script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
