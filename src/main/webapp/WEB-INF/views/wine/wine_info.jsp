@@ -769,7 +769,7 @@
       <div class="modal fade" id="modalLogin">
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content text-center p-5">
-            <div class="fs-4 fw-bold">로그인 후 작성이 가능합니다.</div>
+            <div class="fs-4 fw-bold">로그인 후 이용이 가능합니다.</div>
           </div>
         </div>
       </div>
@@ -1029,10 +1029,8 @@
           },
           success:function(result){
             if(result == 'success'){
-              alert("위시리스트에 담겼습니다!");
               $("#wishListButton").css("color", "red");
             } else {
-              alert("위시리스트가 취소되었습니다!");
               $("#wishListButton").css("color", "");
             }
           },error:function(){

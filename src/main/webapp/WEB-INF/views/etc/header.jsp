@@ -93,7 +93,7 @@
           </c:otherwise>
           </c:choose>
           <a
-            href="/user/user_wishlist"
+            href="/user/myWishlist"
             class="nav-link link-dark"
             ><i class="material-icons col-1 text-secondary fs-3" id="favorite">
               favorite</i
