@@ -1029,10 +1029,8 @@
           },
           success:function(result){
             if(result == 'success'){
-              alert("위시리스트에 담겼습니다!");
               $("#wishListButton").css("color", "red");
             } else {
-              alert("위시리스트가 취소되었습니다!");
               $("#wishListButton").css("color", "");
             }
           },error:function(){
