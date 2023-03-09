@@ -143,10 +143,53 @@ public class AdminCouponController {
     method = RequestMethod.POST
   )
   public ModelAndView couponUpdate(
+    MultipartHttpServletRequest multipartHttpServletRequest,
     @RequestParam Map<String, Object> parmas,
     @PathVariable String currentPage,
     ModelAndView modelAndView
   ) {
+    Iterator<String> fileNames = multipartHttpServletRequest.getFileNames();
+    String absolutePath = commonUtils.getRelativeToAbsolutePath(
+      "src/main/resources/static/files/"
+    );
+    Map attachfile = null;
+    List attachfiles = new ArrayList();
+    String physicalFileName = commonUtils.getUniqueSequence();
+    String storePath = absolutePath + physicalFileName + File.separator;
+    File newPath = new File(storePath);
+    newPath.mkdir();
+    while (fileNames.hasNext()) {
+      String fileName = fileNames.next();
+      MultipartFile multipartFile = multipartHttpServletRequest.getFile(
+        fileName
+      );
+      String originalFileName = multipartFile.getOriginalFilename();
+
+      if (originalFileName != null && multipartFile.getSize() > 0) {
+        String storePathFileName = storePath + originalFileName;
+        try {
+          multipartFile.transferTo(new File(storePathFileName));
+
+          attachfile = new HashMap<>();
+          attachfile.put("COUPON_UID", parmas.get("COUPON_UID"));
+          attachfile.put("COUPON_FILE", parmas.get("COUPON_FILE"));
+          attachfile.put("COUPON_NAME", parmas.get("COUPON_NAME"));
+          attachfile.put("COUPON_DATETIME1", parmas.get("COUPON_DATETIME1"));
+          attachfile.put("COUPON_DATETIME2", parmas.get("COUPON_DATETIME2"));
+          attachfile.put("C_ATTACHFILE_SEQ", commonUtils.getUniqueSequence());
+          attachfile.put("C_ORIGINALFILE_NAME", originalFileName);
+          attachfile.put("C_PHYSICALFILE_NAME", physicalFileName);
+          attachfile.put("USER_UID", parmas.get("USER_UID"));
+
+          attachfiles.add(attachfile);
+        } catch (IllegalStateException e) {
+          e.printStackTrace();
+        } catch (IOException e) {
+          e.printStackTrace();
+        }
+      }
+    }
+    parmas.put("attachfiles", attachfiles);
     parmas.put("currentPage", Integer.parseInt(currentPage));
     Object resultMap = adminCouponService.updateCouponAndGetList(parmas);
     modelAndView.addObject("resultMap", resultMap);

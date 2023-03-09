@@ -35,7 +35,7 @@
     <%@ include file="../etc/admin_nav.jsp" %>
 
       <main class="col-9 p-0 mb-5 ms-5">
-        <form action="/admin/admin_coupon_insert_done/1" method="post" enctype="multipart/form-data">
+        <form action="/admin/admin_coupon_insert_done/1" method="post" enctype="multipart/form-data" id="couponDate">
           <input type="hidden" name="USER_UID" value="ADMIN" />
           <div class="mt-4 p-4 border bg-white">
             <div>
@@ -115,6 +115,23 @@
         </form>
       </main>
     </div>
+
+<script>
+    $(function() {
+      $("#couponDate").submit(function() {
+        var cDate1 = $("#COUPON_DATETIME1").val();
+        var cDate2 = $("#COUPON_DATETIME2").val();
+        var date1Array = cDate1.split('-');
+        var date2Array = cDate2.split('-');
+        var dateStart = new Date(date1Array[0], date1Array[1], date1Array[2]);
+        var dateEnd = new Date(date2Array[0], date2Array[1], date2Array[2]);
+        if(dateStart.getTime() > dateEnd.getTime()) {
+          alert("시작날짜가 종료날짜보다 작아야 합니다.")
+          return false;
+        }
+      });
+    });
+    </script>
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"

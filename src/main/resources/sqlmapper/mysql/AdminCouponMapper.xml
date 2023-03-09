@@ -51,15 +51,20 @@
     <!-- AdminCoupon.updateCoupon  -->
     <update id="updateCoupon" parameterType="Map">
         UPDATE COUPON
-        SET COUPON_FILE = #{COUPON_FILE},
-            COUPON_DATETIME1 = #{COUPON_DATETIME1},
-            COUPON_DATETIME2 = #{COUPON_DATETIME2},
-            COUPON_NAME = #{COUPON_NAME},
-            C_PHYSICALFILE_NAME = #{C_PHYSICALFILE_NAME},
-            C_ATTACHFILE_SEQ = #{C_ATTACHFILE_SEQ},
-            C_ORIGINALFILE_NAME = #{C_ORIGINALFILE_NAME},
-            COUPON_UID = #{COUPON_UID}
-        WHERE COUPON_UID = #{COUPON_UID}
+        SET 
+         <choose>
+            <when test="attachfiles != null and attachfiles.size != 0">
+                <foreach collection="attachfiles" item="attachfile">
+                    COUPON_FILE = #{attachfile.COUPON_FILE}, C_ATTACHFILE_SEQ = #{attachfile.C_ATTACHFILE_SEQ}, C_ORIGINALFILE_NAME = #{attachfile.C_ORIGINALFILE_NAME}, C_PHYSICALFILE_NAME = #{attachfile.C_PHYSICALFILE_NAME},
+                    COUPON_NAME = #{attachfile.COUPON_NAME}, COUPON_DATETIME1 = #{attachfile.COUPON_DATETIME1}, COUPON_DATETIME2 =#{attachfile.COUPON_DATETIME2}
+                    WHERE COUPON_UID = #{COUPON_UID}
+                </foreach>
+            </when>
+            <otherwise>
+                COUPON_FILE = #{COUPON_FILE}, COUPON_NAME = #{COUPON_NAME}, COUPON_DATETIME1 = #{COUPON_DATETIME1}, COUPON_DATETIME2 = #{COUPON_DATETIME2}
+                WHERE COUPON_UID = #{COUPON_UID}
+            </otherwise>
+        </choose>
     </update>
 
     <!-- AdminCoupon.deleteCoupon -->

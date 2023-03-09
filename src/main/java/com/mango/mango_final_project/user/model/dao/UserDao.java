@@ -92,5 +92,8 @@ public class UserDao {
   public int insertWishlist(SqlSessionTemplate sqlSession, User user){
     return sqlSession.insert("userMapper.wineWishlistInsert", user);
   }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 9238e4e498932000e5f08736d90a22ff9752fe6d
 }
