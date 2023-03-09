@@ -88,4 +88,8 @@ public class UserDao {
   public int deleteMyReview(SqlSessionTemplate sqlSession, User user) {
     return sqlSession.selectOne("userMapper.deleteReview", user);
   }
+
+  public int insertWishlist(SqlSessionTemplate sqlSession, User user){
+    return sqlSession.insert("userMapper.wineWishlistInsert", user);
+  }
 }

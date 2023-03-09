@@ -49,4 +49,6 @@ public interface UserService {
     int deleteWishlist(User user);
 
     int deleteAllWishlist(User user);
+
+    int insertWishlist(User user);
 }

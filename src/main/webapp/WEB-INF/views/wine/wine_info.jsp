@@ -49,9 +49,9 @@
         <div class="me-4">
           <div>
             <span class="fs-5 fw-bold">${resultMap.WINE_NAME}</span>
-            <span class="btn">
-              <i class="bi bi-bookmark-heart fs-4"></i>
-            </span>
+              <button class="btn" name="wishListButton" id="wishListButton" onclick="wishList()">
+                <i class="bi bi-bookmark-heart fs-4"></i>
+              </button>
           </div>
           <p class="mb-3 ms-2" style="font-size: small">
             ${resultMap.WINE_NAME_EN}
@@ -853,6 +853,28 @@
 
     <%-- footer --%>
     <%@ include file="../etc/footer.jsp" %>
+
+    <script>
+      function wishList() {
+        $.ajax({
+          url:"/user/insertWishlist",
+          type:"get",
+          data:{
+            WINE_UID:${resultMap.WINE_UID}
+          },
+          success:function(result){
+            if(result == 'success'){
+              alert("위시리스트에 담겼습니다.");
+              $("#wishListButton").css("color", "red");
+            } else {
+              alert("위시리스트 담기 실패");
+            }
+          },error:function(){
+					 alert("에러");
+				  }
+        });
+      }
+    </script>
     
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"

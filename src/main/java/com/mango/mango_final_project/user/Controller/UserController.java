@@ -345,4 +345,16 @@ public class UserController {
 
     return result > 0 ? "success" : "fail";
   }
+
+  @ResponseBody
+  @RequestMapping(value = "insertWishlist")
+  public String insertWishlist(HttpSession session, HttpServletRequest request, Model model, User user){
+    user.setUSER_UID(((User) session.getAttribute("loginUser")).getUSER_UID());
+
+
+    int result = uService.insertWishlist(user);
+
+    return result > 0 ? "success" : "fail";
+  }
+
 }
