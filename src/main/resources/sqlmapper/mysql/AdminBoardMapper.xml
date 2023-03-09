@@ -7,7 +7,7 @@
         SELECT * 
         FROM QNA
         <if test="pageScale != null">
-            ORDER BY QNA_DATE
+            ORDER BY QNA_DATE DESC
             LIMIT #{pageBegin}, #{pageScale}
         </if>
     </select>
@@ -70,7 +70,7 @@
         FROM USER INNER JOIN NOTICE
         ON USER.USER_UID = NOTICE.USER_UID
         <if test="pageScale != null">
-            ORDER BY NOTICE_DATE
+            ORDER BY NOTICE_DATE DESC
             LIMIT #{pageBegin}, #{pageScale}
         </if>
     </select>
