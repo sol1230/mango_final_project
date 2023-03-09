@@ -74,4 +74,10 @@ public class WineInfoService {
     result = this.wineQNAWithPagination(dataMap);
     return result;
   }
+
+  // Wishlist insert
+  public Object wineWishlistInsert(Object dataMap){
+
+    return null;
+  }
 }
