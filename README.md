@@ -152,19 +152,23 @@
 
 ```
 📗이은솔 : 검색기능 구현
-- controller
+- jsp
 
- @RequestMapping(
-    value = "/admin_users_search/{currentPage}", method = RequestMethod.GET)
-  public ModelAndView userSearch(@RequestParam Map<String, Object> params,@PathVariable String currentPage,ModelAndView modelAndView) {
-    params.put("currentPage", Integer.parseInt(currentPage));
-    Object resultMap = adminUserService.getSearchUserAndGetList(params);
-    Object searchUser = params.get("SERCH_KEYWORD");
-    modelAndView.addObject("resultMap", resultMap);
-    modelAndView.addObject("searchUser", searchUser);
-    modelAndView.setViewName("admin/admin_users_search");
-    return modelAndView;
-  }
+ <form action="/admin/admin_users_search/1" method="get">
+  <div class="input-group">
+    <select class="form-select" name="keyType" id="">
+      <option value="NONE">선택</option>
+      <option value="USER_UID" <c:if test="${keyType == 'USER_UID'}">selected</c:if>>아이디</option>
+      <option value="NAME" <c:if test="${keyType == 'NAME'}">selected</c:if>>이름</option>
+      <option value="BIRTH" <c:if test="${keyType == 'BIRTH'}">selected</c:if>>생년월일</option>
+      <option value="PHONE" <c:if test="${keyType == 'PHONE'}">selected</c:if>>전화번호</option>
+    </select>
+    <input 
+      type="search" aria-label="Search" name="SERCH_KEYWORD" value="${searchUser}" placeholder="검색어를 입력하세요." class="form-control w-50" required
+      />
+    <button class="btn btn-outline-secondary">검색</button>
+  </div>
+ </form>
 ```
 
 ```
