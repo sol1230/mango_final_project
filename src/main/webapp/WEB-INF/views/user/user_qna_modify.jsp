@@ -37,7 +37,7 @@
       <%-- user_nav --%>
       <%@ include file="../etc/user_nav.jsp" %>
       <main class="col-9 p-0 mb-5 ms-5">
-        <form action="/userQna_update" method="post">
+        
           <div class="mt-4 p-4 border bg-white">
             <div>
               <label for="" class="form-label fw-bold pe-3 m-0"
@@ -49,6 +49,7 @@
               style="font-size: small"
             >
               <thead class="">
+         
                 <tr>
                   <th scope="" class="bg-secondary bg-opacity-25">작성일</th>
                   <td scope="" name="QNA_DATE">${qna.QNA_DATE}</td>
@@ -61,7 +62,7 @@
                       name="notice_title"
                       id="notice_title"
                       class="form-control"
-                      value="${qna.QNA_TITLE}"
+                     value="${qna.QNA_TITLE}"
                     />
                   </td>
                 </tr>
@@ -76,87 +77,68 @@
                       id="notice_contents"
                       cols="30"
                       rows="10"
-                      value="${qna.QNA_CONTENT}"
-                    ></textarea
+                     
+                    >${qna.QNA_CONTENT}</textarea
                     >
                   </td>
                 </tr>
               </tbody>
             </table>
             <div class="text-center">
-              <button class="btn btn-outline-secondary">
+              <button class="btn btn-outline-secondary" onclick="myQnaUpdate();">
                 등록하기
               </button>
             </div>
           </div>
-        </form>
+  
       </main>
     </div>
 
-    <footer
-      class="p-5 d-flex justify-content-between align-items-center"
-      style="background-color: #eae0da; font-size: 0.8rem"
-    >
-      <div class="row">
-        <div class="">
-          <div class="">
-            <ul class="list-unstyled d-flex">
-              <li>
-                <a
-                  href="./companyInfo.html"
-                  class="text-black text-decoration-none border-end border-secondary"
-                  >회사소개 &nbsp;</a
-                >
-              </li>
-              <li>
-                <a
-                  href="./terms_of_use.html"
-                  class="text-black text-decoration-none ps-2 border-end border-secondary"
-                  >이용약관 &nbsp;</a
-                >
-              </li>
-              <li>
-                <a
-                  href="./privacy_policy.html"
-                  class="text-black text-decoration-none ps-2 border-end border-secondary"
-                  >개인정보처리방침 &nbsp;</a
-                >
-              </li>
-              <li>
-                <a
-                  href="./notice_questions.html"
-                  class="text-black text-decoration-none ps-2"
-                  >고객센터</a
-                >
-              </li>
-            </ul>
-          </div>
-          <div>
-            <ul class="list-unstyled m-0">
-              <li class="pt-1">
-                대표번호 : 080-513-5420 (업무시간 : 09:00-17:00 월~금) 주말,
-                공휴일 휴무
-              </li>
-              <li class="pt-1">
-                <span class="pe-3">대표자 : 망고</span>
-                <span>주소 : 서울시 서초대로 17길</span>
-              </li>
-              <li class="pt-1">
-                <span>법인명 : (주)와인타임</span>
-                <span>사업자 등록정보 : 172-83-53438</span>
-              </li>
-              <li class="pt-1">
-                <span>호스팅 : (주)와인타임</span>
-                <span>E-MAIL : mgo@winetime.com</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <img src="./img/와인.png" alt="logo" height="150rem" />
-      </div>
-    </footer>
+      <%-- footer --%>
+    <%@ include file="../etc/footer.jsp" %>
+
+     <script>
+    function myQnaUpdate() {
+			
+ $.ajax({
+  url:"/user/myQnaUpdate",
+  type:"post",
+  data:{
+    USER_UID:"${loginUser.USER_UID}",
+    QNA_TITLE: $("#notice_title").val(),
+    QNA_CONTENT: $("#notice_contents").val(),
+    QNA_UID:"${qna.QNA_UID}"
+   },
+  success:function(result){
+    if(result == 'success'){
+						return new swal({
+							title:"수정되었습니다.",
+							icon:"success",
+							closeOnClickOutside:false
+						})
+						.then((value) => {
+							if(value){
+								location.href="/user/myQna"
+							}
+						})
+					}else{
+						return new swal({
+							title:"등록에 실패하였습니다.",
+							icon:"error",
+							closeOnClickOutside:false
+						})
+						.then((value) => {
+							if(value){
+								return false;
+							}
+						})
+  
+ 
+          }
+  }
+  })
+  }
+    </script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"

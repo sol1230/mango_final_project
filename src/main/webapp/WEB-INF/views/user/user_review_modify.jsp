@@ -37,7 +37,7 @@
       <%-- user_nav --%>
       <%@ include file="../etc/user_nav.jsp" %>
       <main class="col-9 p-0 mb-5 ms-5">
-        <form action="/myReview_update" method="post">
+        
           <div class="mt-4 p-4 border bg-white">
             <div>
               <label for="" class="form-label fw-bold pe-3 m-0"
@@ -51,7 +51,7 @@
               <thead class="">
                 <tr colspan="">
                   <th scope="" class="bg-secondary bg-opacity-25">작성일</th>
-                  <td scope="" name="REVIEW_DATE">${list.REVIEW_DATE}</td>
+                  <td scope="" name="REVIEW_DATE">${review.REVIEW_DATE}</td>
                 </tr>
                 <tr>
                   <th scope="" class="bg-secondary bg-opacity-25">제목</th>
@@ -60,7 +60,8 @@
                       type="text"
                       name="REVIEW_TITLE"
                       class="form-control"
-                      value="${list.REVIEW_TITLE}"
+                       id="review_title"
+                      value="${review.REVIEW_TITLE}"
                     />
                   <th scope="" class="bg-secondary bg-opacity-25">평점</th>
                   <td scope="">
@@ -68,7 +69,8 @@
                       type="text"
                       name="REVIEW_SCOPE"
                       class="form-control"
-                      value="${list.REVIEW_SCOPE}"
+                      id="review_scope"
+                      value="${review.REVIEW_SCOPE}"
                     />
                   </td>
                 </tr>
@@ -82,26 +84,68 @@
                       name="REVIEW_CONTENT"
                       cols="30"
                       rows="10"
-                      value="${list.REVIEW_CONTENT}"
-                    ></textarea
+                      id="review_contents"
+                    >${review.REVIEW_CONTENT}</textarea
                     >
                   </td>
                 </tr>
               </tbody>
             </table>
             <div class="text-center">
-              <button type="submit" class="btn btn-outline-secondary">
+              <button onclick="myReviewUpdate();" class="btn btn-outline-secondary">
                 수정하기
               </button>
             </div>
           </div>
-        </form>
+     
       </main>
     </div>
 
     <%-- footer --%>
     <%@ include file="../etc/footer.jsp" %>
-
+    <script>
+    function myReviewUpdate() {
+			
+ $.ajax({
+  url:"/user/myReviewUpdate",
+  type:"post",
+  data:{
+    USER_UID:"${loginUser.USER_UID}",
+    REVIEW_TITLE: $("#review_title").val(),
+    REVIEW_CONTENT: $("#review_contents").val(),
+    REVIEW_UID:"${review.REVIEW_UID}",
+    REVIEW_SCOPE:$("#review_scope").val()
+   },
+  success:function(result){
+    if(result == 'success'){
+						return new swal({
+							title:"수정되었습니다.",
+							icon:"success",
+							closeOnClickOutside:false
+						})
+						.then((value) => {
+							if(value){
+								location.href="/user/myReview"
+							}
+						})
+					}else{
+						return new swal({
+							title:"등록에 실패하였습니다.",
+							icon:"error",
+							closeOnClickOutside:false
+						})
+						.then((value) => {
+							if(value){
+								return false;
+							}
+						})
+  
+ 
+          }
+  }
+  })
+  }
+    </script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"

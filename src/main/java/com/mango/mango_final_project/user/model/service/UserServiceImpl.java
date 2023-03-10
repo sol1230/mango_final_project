@@ -104,12 +104,17 @@ public class UserServiceImpl implements UserService {
   }
 
   @Override
+  public int deleteQna(User user) {
+    return uDao.deleteQna(sqlSession, user);
+  }
+
+  @Override
   public int deleteAllWishlist(User user) {
     return uDao.deleteAllWishlist(sqlSession, user);
   }
 
   @Override
-  public ArrayList<Object> deleteMyReview(User user) {
+  public int deleteMyReview(User user) {
     return uDao.deleteMyReview(sqlSession, user);
   }
 
@@ -122,4 +127,25 @@ public class UserServiceImpl implements UserService {
   public int wishlistCheck(User user) {
     return uDao.wishlistCheck(sqlSession, user);
   }
+
+  @Override
+  public int myQnaUpdate(User user) {
+    return uDao.myQnaUpdate(sqlSession, user);
+  }
+
+  @Override
+  public int myReviewUpdate(User user) {
+    return uDao.myReviewUpdate(sqlSession, user);
+  }
+
+  @Override
+  public User getQna(User user){
+    return uDao.getQna(sqlSession, user);
+  }
+
+  @Override
+  public User getReview(User user){
+    return uDao.getReview(sqlSession, user);
+  }
+
 }

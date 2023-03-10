@@ -67,7 +67,7 @@
             <tbody>
               <c:forEach items="${resultMap.resultList}" var="resultData" varStatus="loop">
                 <tr class="text-center">
-                  <th scope="">${resultData.NOTICE_UID}</th>
+                  <th scope="">${loop.count}</th>
                   <td>
                     <a href="#noticeCont${loop.count}" class="text-decoration-none text-black" data-bs-toggle="collapse">
                       ${resultData.NOTICE_TITLE}</a

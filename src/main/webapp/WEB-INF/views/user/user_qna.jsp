@@ -84,6 +84,7 @@
         <!-- 문의 -->
         <tbody style="font-size: small">
          <c:forEach var="q" items="${qna}" varStatus="loop">
+        
           <tr class="questions text-center">
             <td>${q.NUMBER}</td>
             <td><a href="/wine/wine_info/${r.WINE_NAME_EN}/1">${q.WINE_NAME}</a></td>
@@ -94,26 +95,25 @@
            <td>
                 <div class="d-flex justify-content-center">
                   <div>
-                    <form action="/user/myQna_edit" method="post">
-                    <input type="hidden" name="USER_UID" value="${q.QNA_DATE}" />
-                    <input type="hidden" name="NAME" value="${q.QNA_TITLE}" />
-                    <input type="hidden" name="GENDER" value="${q.QNA_CONTENT}" />
+                    <input type="hidden" id="QNAUID" value="${q.QNA_UID}" />
                       <button
-                        class="btn btn-sm btn-outline-secondary"
+                       class="btn btn-sm btn-outline-secondary"
+                       onclick="modifyQna(this);"
                       >
-                        수정
+                      수정
                       </button>
-                    </form>
+                   
                   </div>
                   <div>
-                    <form action="" class="ps-2">
+                   <input type="hidden" id="QNAUID" value="${q.QNA_UID}" />
                       <button
                         type="submit"
                         class="btn btn btn-sm btn-outline-danger"
+                          onclick="deleteSelected(this);"
                       >
                         삭제
                       </button>
-                    </form>
+                  
                   </div>
                 </div>
               </td>
@@ -140,6 +140,7 @@
                     </div>
                   </td>
           </tr>
+          
           </c:forEach>
         </tbody>
       </table>
@@ -148,6 +149,70 @@
 
     <%-- footer --%>
     <%@ include file="../etc/footer.jsp" %>
+
+     <script>
+    function deleteSelected(btn) {
+
+      var QNAUID = $(btn).siblings('#QNAUID').val();
+			
+ $.ajax({
+  url:"/user/deleteQna",
+  type:"post",
+  data:{
+    USER_UID:"${loginUser.USER_UID}",
+    QNA_UID: QNAUID
+   },
+  success:function(result){
+    if(result == 'success'){
+						return new swal({
+							title:"삭제되었습니다.",
+							icon:"success",
+							closeOnClickOutside:false
+						})
+						.then((value) => {
+							if(value){
+								location.reload();
+							}
+						})
+					}else{
+						return new swal({
+							title:"삭제에 실패하였습니다.",
+							icon:"error",
+							closeOnClickOutside:false
+						})
+						.then((value) => {
+							if(value){
+								return false;
+							}
+						})
+  
+ 
+          }
+  }
+  })
+  }
+
+   function modifyQna(btn) {
+
+      var QNAUID = $(btn).siblings('#QNAUID').val();
+			
+ $.ajax({
+  url:"/user/user_qna_detail",
+  type:"post",
+  data:{
+    USER_UID:"${loginUser.USER_UID}",
+    QNA_UID: QNAUID
+   },
+  success:function(result){
+  					
+		location.href= "/user/user_qna_modify";
+  }
+  })
+   }
+  
+  
+
+    </script>
     
        <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"

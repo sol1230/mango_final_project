@@ -8,7 +8,7 @@
         FROM REVIEW INNER JOIN WINE
         ON REVIEW.WINE_UID = WINE.WINE_UID
         <if test="pageScale != null">
-            ORDER BY REVIEW_DATE
+            ORDER BY REVIEW_DATE DESC
             LIMIT #{pageBegin}, #{pageScale}
         </if>
     </select>

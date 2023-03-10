@@ -209,10 +209,7 @@ public class ByPassController {
     int i = 0;
   }
 
-  @RequestMapping(value = { "/user/user_review_modify" })
-  public void user_review_modify() {
-    int i = 0;
-  }
+
 
   @RequestMapping(value = { "/user/user_wishlist" })
   public void user_wishlist() {

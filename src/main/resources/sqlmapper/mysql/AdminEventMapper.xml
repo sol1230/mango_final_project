@@ -7,7 +7,7 @@
         SELECT *
         FROM EVENT
         <if test="pageScale != null">
-            ORDER BY EVENT_UID
+            ORDER BY EVENT_UID DESC
             LIMIT #{pageBegin}, #{pageScale}
         </if>
     </select>

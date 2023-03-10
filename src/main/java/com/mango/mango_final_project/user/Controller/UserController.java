@@ -39,6 +39,39 @@ public class UserController {
   public String signUp() {
     return "signup_N_login/signup_form";
   }
+  
+  @ResponseBody
+  @RequestMapping("user_qna_detail")
+  public User user_qna_detail(User user, HttpSession session) {
+    
+    User qna = uService.getQna(user);    
+
+    session.setAttribute("qna", qna);
+
+    return qna;
+  }
+
+  @ResponseBody
+  @RequestMapping("user_review_detail")
+  public User user_review_detail(User user, HttpSession session) {
+    
+    User review = uService.getReview(user);    
+
+    session.setAttribute("review", review);
+
+    return review;
+  }
+
+  @RequestMapping("user_qna_modify")
+  public String user_qna_modify(User user, HttpSession session) {    
+
+    return "user/user_qna_modify";
+  }
+
+  @RequestMapping("user_review_modify")
+  public String user_review_modify(User user, HttpSession session){
+    return "user/user_review_modify";
+  }
 
   @ResponseBody
   @RequestMapping("insertUser")
@@ -254,33 +287,29 @@ public class UserController {
   //   return modelAndView;
   // }
 
-  @ResponseBody
-  @RequestMapping(value = "deleteMyReview")
-  public ArrayList<Object> deleteMyReview(
-    HttpSession session,
-    HttpServletRequest request,
-    Model model,
-    User user
-  ) {
-    user.setUSER_UID(((User) session.getAttribute("loginUser")).getUSER_UID());
 
-     ArrayList<Object> result = uService.deleteMyReview(user);
 
-    return result.size() > 0 ? result : new ArrayList<Object>();
-  }
-
+ 
   // user qna update 페이지
-  @RequestMapping(value = "/myQna_edit", method = RequestMethod.POST)
-  public ModelAndView myQna_Edit(
-    @RequestParam Map<String, Object> params,
-    ModelAndView modelAndView
-  ) {
-    Object resultMap = mypageService.getMyQnaInfo(params);
-    modelAndView.addObject("qna", resultMap);
-    modelAndView.setViewName("user/user_qna_modify");
-    return modelAndView;
+  @ResponseBody
+  @RequestMapping(value = "myQnaUpdate", method = RequestMethod.POST)
+  public String myQnaUpdate(HttpSession session, User user) {
+    user.setUSER_UID(((User) session.getAttribute("loginUser")).getUSER_UID());
+    int result = uService.myQnaUpdate(user);
+
+    return result >= 1 ? "success" : "fail";
   }
 
+  @ResponseBody
+  @RequestMapping(value = "myReviewUpdate", method = RequestMethod.POST)
+  public String myReviewUpdate(HttpSession session, User user) {
+    user.setUSER_UID(((User) session.getAttribute("loginUser")).getUSER_UID());
+    int result = uService.myReviewUpdate(user);
+
+    return result >= 1 ? "success" : "fail";
+  }
+
+  /*
   //user qna update complete 페이지
   @RequestMapping(value = "/myQna_update", method = RequestMethod.POST)
   public ModelAndView myQnaUpdate(
@@ -292,18 +321,8 @@ public class UserController {
     modelAndView.setViewName("user/user_qna");
     return modelAndView;
   }
-
-  // user qna delete 페이지
-  @RequestMapping(value = "/myQna_delete", method = RequestMethod.POST)
-  public ModelAndView myQnaDelete(
-    @RequestParam Map<String, Object> params,
-    ModelAndView modelAndView
-  ) {
-    Object resultMap = mypageService.deleteMyQnaAndGetMyQna(params);
-    modelAndView.addObject("qna", resultMap);
-    modelAndView.setViewName("user/user_qna");
-    return modelAndView;
-  }
+*/
+ 
 
   @RequestMapping("myWishlist")
   public ModelAndView myWishlist(ModelAndView mv, HttpSession session) {
@@ -329,6 +348,37 @@ public class UserController {
     int result = uService.deleteWishlist(user);
 
     return result > 0 ? "success" : "fail";
+  }
+
+  @ResponseBody
+  @RequestMapping(value = "deleteQna")
+  public String deleteQna(
+    HttpSession session,
+    HttpServletRequest request,
+    Model model,
+    User user
+  ) {
+    user.setUSER_UID(((User) session.getAttribute("loginUser")).getUSER_UID());
+
+    int result = uService.deleteQna(user);
+
+    return result > 0 ? "success" : "fail";
+  }
+
+  @ResponseBody
+  @RequestMapping(value = "deleteMyReview")
+  public String deleteMyReview(
+    HttpSession session,
+    HttpServletRequest request,
+    Model model,
+    User user
+  ) {
+    user.setUSER_UID(((User) session.getAttribute("loginUser")).getUSER_UID());
+
+    int result = uService.deleteMyReview(user);
+
+
+     return result > 0 ? "success" : "fail";
   }
 
   @ResponseBody

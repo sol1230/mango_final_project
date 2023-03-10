@@ -76,6 +76,14 @@ public class UserDao {
     return sqlSession.delete("userMapper.deleteWishlist", user);
   }
 
+  public int deleteQna(SqlSessionTemplate sqlSession, User user) {
+    return sqlSession.delete("userMapper.deleteQna", user);
+  }
+
+  public int deleteMyReview(SqlSessionTemplate sqlSession, User user) {
+    return sqlSession.delete("userMapper.deleteReview", user);
+  }
+
   public int deleteAllWishlist(SqlSessionTemplate sqlSession, User user) {
     return sqlSession.delete("userMapper.deleteAllWishlist", user);
   }
@@ -85,9 +93,7 @@ public class UserDao {
     return sqlSession.selectOne("userMapper.selectReviewInfo", user);
   }
 
-  public ArrayList<Object> deleteMyReview(SqlSessionTemplate sqlSession, User user) {
-    return (ArrayList<Object>) sqlSession.selectList("userMapper.deleteReview", user);
-  }
+
 
   public int insertWishlist(SqlSessionTemplate sqlSession, User user){
     return sqlSession.insert("userMapper.wineWishlistInsert", user);
@@ -96,4 +102,22 @@ public class UserDao {
   public int wishlistCheck(SqlSessionTemplate sqlSession, User user) {
     return sqlSession.selectOne("userMapper.checkWishlist", user);
   }
+
+ 
+public int myQnaUpdate (SqlSessionTemplate sqlSession, User user){
+    return sqlSession.update("userMapper.updateQna", user);
+  }
+
+  public int myReviewUpdate (SqlSessionTemplate sqlSession, User user){
+    return sqlSession.update("userMapper.updateReview", user);
+  }
+
+  public User getQna(SqlSessionTemplate sqlSession, User user){
+    return sqlSession.selectOne("userMapper.getQna", user);
+  }
+
+  public User getReview(SqlSessionTemplate sqlSession, User user){
+    return sqlSession.selectOne("userMapper.getReview", user);
+  }
+
 }
