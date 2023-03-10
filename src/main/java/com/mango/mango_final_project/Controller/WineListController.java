@@ -26,7 +26,7 @@ public class WineListController {
     public ModelAndView wineList(@RequestParam Map<String, Object> params
             , @PathVariable String currentPage, ModelAndView modelAndView) {
         params.put("currentPage", Integer.parseInt(currentPage));
-        Object resultMap = wineService.wineListWithPagination(params);
+         Object resultMap = wineService.wineListWithPagination(params);
         modelAndView.addObject("resultMap", resultMap);
         modelAndView.setViewName("wine/wine_list");
         return modelAndView;
