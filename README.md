@@ -14,6 +14,12 @@
 와인 검색 사이트를 만들어 달라는 의뢰를 받아 구현한 사이트  
 원하는 품종, 지역 등에 맞는 메뉴와 필터 설정을 통해 찾고자 하는 가장 알맞은 와인의 정보를 알아낼 수 있게끔 만듦.
 
+## 구현 페이지 링크  
+[page](https://mango-final-project-cqrjp.run.goorm.site/)
+
+## 📀 구현 페이지 영상  
+[video](https://youtu.be/ZBZBFRYZsYw)
+
 ## 프로젝트 참여 인원
 
 📗이은솔 /
@@ -139,10 +145,6 @@
 <img width="500" height="300" src="https://user-images.githubusercontent.com/111327647/223942013-7aef5218-a702-4305-8ec8-c6014293c56d.png">
 <img width="500" height="300" src="https://user-images.githubusercontent.com/111327647/223942122-b5977e96-afec-4973-8344-d81a4027b3a2.png">
 </div>
-
-## 📀 구현 페이지 영상
-
-[video](https://youtu.be/ZBZBFRYZsYw)
 
 ## 💻 주요 코드
 
