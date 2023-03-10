@@ -188,7 +188,7 @@
 ```
 
 ```
-📕배하선 : Mybatis 동적 쿼리 조건문 <choose> <whem> <otherwise>를 사용
+📕배하선 : Mybatis 동적 쿼리 조건문 <choose> <when> <otherwise>를 사용
 -jsp
 
 <th>바디</th>
