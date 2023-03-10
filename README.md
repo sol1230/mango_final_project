@@ -137,7 +137,7 @@
 
 ## 📀 구현 페이지 영상
 
-[video](https://youtu.be/-R9-58lSz_M)
+[video](https://youtu.be/ZBZBFRYZsYw)
 
 ## 💻 주요 코드
 
