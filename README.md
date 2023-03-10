@@ -16,6 +16,8 @@
 
 ## 구현 페이지 링크  
 [page](https://mango-final-project-cqrjp.run.goorm.site/)
+회원 id : mango / pw : 1234
+관리자 id : ADMIN / pw : 1234
 
 ## 📀 구현 페이지 영상  
 [video](https://youtu.be/ZBZBFRYZsYw)
