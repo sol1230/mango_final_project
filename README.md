@@ -7,7 +7,13 @@
 
 ## 💁 프로젝트 기간
 
-# 2023.01.06 ~ 2023.03.09
+2023.01.06 ~ 2023.03.09
+
+## 프로젝트 참여 인원
+📗이은솔
+📘김소희
+📙박찬희
+📕배하선
 
 ## 🎒 업무 분담
 
@@ -136,5 +142,77 @@
 #### 코드내용
 
 ```
+📗이은솔 : 검색기능 구현
+- controller
 
+ @RequestMapping(
+    value = "/admin_users_search/{currentPage}", method = RequestMethod.GET)
+  public ModelAndView userSearch(@RequestParam Map<String, Object> params,@PathVariable String currentPage,ModelAndView modelAndView) {
+    params.put("currentPage", Integer.parseInt(currentPage));
+    Object resultMap = adminUserService.getSearchUserAndGetList(params);
+    Object searchUser = params.get("SERCH_KEYWORD");
+    modelAndView.addObject("resultMap", resultMap);
+    modelAndView.addObject("searchUser", searchUser);
+    modelAndView.setViewName("admin/admin_users_search");
+    return modelAndView;
+  }
+```
+
+```
+📘김소희 : 서블릿의 기능을 이용하여 파라미터의 각 항목별로 배열로 만들어 사용
+-controller
+
+ @RequestMapping(value = "/wine/wineDetailsSelect/{currentPage}", method = RequestMethod.GET)
+    public ModelAndView wineDetailsSelect(HttpServletRequest request, @PathVariable String currentPage, @RequestParam Map<String, Object> params, ModelAndView modelAndView) {
+        String[] WINE_SCOPE_LIST = request.getParameterValues("WINE_SCOPE");
+        String[] WINE_TYPE_LIST = request.getParameterValues("WINE_TYPE");
+        String[] WINE_COUNTRY_LIST = request.getParameterValues("WINE_COUNTRY");
+        String[] WINE_REGION_LIST = request.getParameterValues("WINE_REGION");
+        String[] WINE_VARIETY_LIST = request.getParameterValues("WINE_VARIETY");
+        String[] WINE_FOOD_PAIRING_LIST = request.getParameterValues("WINE_FOOD_PAIRING");
+```
+
+```
+📙박찬희 : 아이디 중복 체크 
+-controller
+
+  @ResponseBody
+  @RequestMapping("idCheck")
+  public String idCheck(String checkId) {
+    int count = uService.idCheck(checkId);
+
+    return count > 0 ? "NNNNN" : "NNNNY";
+  }
+```
+
+```
+📕배하선 : Mybatis 동적 쿼리 조건문 <choose> <whem> <otherwise>를 사용
+-jsp
+
+<th>바디</th>
+  <c:choose>
+    <c:when test="${(resultMap.WINE_BODY).equals('가벼움')}">
+      <td>
+        <span class="label" style="background: #dfb8b8">가벼움</span>
+      </td>
+      <td><span>중간</span></td>
+      <td><span>무거움</span></td>
+    </c:when>
+    <c:when test="${(resultMap.WINE_BODY).equals('중간')}">
+      <td>
+        <span>가벼움</span>
+      </td>
+      <td><span class="label" style="background: #dfb8b8">중간</span></td>
+      <td><span>무거움</span></td>
+    </c:when>
+    <c:otherwise>
+      <td>
+        <span>가벼움</span>
+      </td>
+      <td><span>중간</span></td>
+      <td><span class="label" style="background: #dfb8b8">무거움</span></td>
+    </c:otherwise>
+  </c:choose>
+  <td>
+</tr>
 ```
