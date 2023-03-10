@@ -170,6 +170,8 @@ public class UserController {
     return "/user/myPage";
   }
 
+  // 아이디 중복 체크
+  
   @ResponseBody
   @RequestMapping("idCheck")
   public String idCheck(String checkId) {
