@@ -15,8 +15,8 @@
 원하는 품종, 지역 등에 맞는 메뉴와 필터 설정을 통해 찾고자 하는 가장 알맞은 와인의 정보를 알아낼 수 있게끔 만듦.
 
 ## 구현 페이지 링크  
-[page](https://mango-final-project-cqrjp.run.goorm.site/)
-회원 id : mango / pw : 1234
+[page](https://mango-final-project-cqrjp.run.goorm.site/)  
+회원 id : mango / pw : 1234  
 관리자 id : ADMIN / pw : 1234
 
 ## 📀 구현 페이지 영상  
