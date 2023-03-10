@@ -417,7 +417,7 @@
           <div class="m-3 fw-bold">추천 음식</div>
           <div class="ms-2">
             <div class="">
-              <img src="/img/소.png" alt="${resultMap.WINE_FOOD_PAIRING}" width="70px" />
+              <img src="/img/치즈.png" alt="${resultMap.WINE_FOOD_PAIRING}" width="70px" />
 
               <span>${resultMap.WINE_FOOD_PAIRING}</span>
             </div>
