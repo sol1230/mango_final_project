@@ -10,9 +10,10 @@
 2023.01.06 ~ 2023.03.09
 
 ## 프로젝트 참여 인원
-📗이은솔 / 
-📘김소희 / 
-📙박찬희 / 
+
+📗이은솔 /
+📘김소희 /
+📙박찬희 /
 📕배하선
 
 ## 🎒 업무 분담
@@ -106,8 +107,10 @@
 | &nbsp;                                                                                                       | [와인-종류 스파클링 화면](https://github.com/sol1230/mango_final_project/blob/master/src/main/webapp/WEB-INF/views/wine/wine_sparkling.jsp)     |
 | &nbsp;                                                                                                       | [와인-종류 화이트 화면](https://github.com/sol1230/mango_final_project/blob/master/src/main/webapp/WEB-INF/views/wine/wine_white.jsp)           |
 
-## 📷 구현 페이지 이미지  
--와인 목록, 검색 
+## 📷 구현 페이지 이미지
+
+-와인 목록, 검색
+
 <div> 
 <img width="500" height="500" src="https://user-images.githubusercontent.com/111327647/223936133-d53987ce-eded-4340-98e4-1a0bcc89776c.png">
 <img height="300" src="https://user-images.githubusercontent.com/111327647/223936952-91adf67a-4596-4b7f-ae0b-772dbcdfffdc.png">
@@ -138,7 +141,7 @@
 
 ## 📀 구현 페이지 영상
 
-[video]()
+[video](https://youtu.be/GFMJLBIwkxI)
 
 ## 💻 주요 코드
 
@@ -176,7 +179,7 @@
 ```
 
 ```
-📙박찬희 : 아이디 중복 체크 
+📙박찬희 : 아이디 중복 체크
 -controller
 
   @ResponseBody
