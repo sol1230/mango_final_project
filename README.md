@@ -5,11 +5,11 @@
 ![main](https://user-images.githubusercontent.com/111327647/223902851-c5e7ac98-e7d5-473c-aef0-03f1d93b6357.png)
 ![main](https://user-images.githubusercontent.com/111327647/223906547-de980aa7-f17f-4f27-96a4-2a01246a6b3f.png)
 
-## 프로젝트 기간
+## 💁 프로젝트 기간
 
-2023.02.22 ~ 2023.03.09
+# 2023.02.22 ~ 2023.03.09
 
-## 업무 분담
+## 🎒 업무 분담
 
 #### 📗이은솔
 
@@ -100,7 +100,7 @@
 | &nbsp;                                                                                                       | [와인-종류 스파클링 화면](https://github.com/sol1230/mango_final_project/blob/master/src/main/webapp/WEB-INF/views/wine/wine_sparkling.jsp)     |
 | &nbsp;                                                                                                       | [와인-종류 화이트 화면](https://github.com/sol1230/mango_final_project/blob/master/src/main/webapp/WEB-INF/views/wine/wine_white.jsp)           |
 
-## 구현 페이지 이미지
+## 📷 구현 페이지 이미지
 
 <div>
 <img height="500" src="https://user-images.githubusercontent.com/111327647/223936133-d53987ce-eded-4340-98e4-1a0bcc89776c.png">
@@ -118,11 +118,11 @@
 <img height="450" src="https://user-images.githubusercontent.com/111327647/223943308-fe9a07b6-fb86-4cfa-b1a0-d3e5e776b011.png">
 </div>
 
-## 구현 페이지 영상
+## 📀 구현 페이지 영상
 
 [video]()
 
-## 주요 코드
+## 💻 주요 코드
 
 #### 코드내용
 
