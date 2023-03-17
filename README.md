@@ -48,6 +48,9 @@
   <img src="https://img.shields.io/badge/GoormIDE-007ACC?style=for-the-badge&logo=GoormIDE&logoColor=white"> 
 </div>
   
+  
+## DB 설계
+<img width="610" alt="aaa" src="https://user-images.githubusercontent.com/111327647/225957796-3f703bac-195f-408b-8d36-4adaae02b814.png">
 
 ## 🎒 업무 분담
 
